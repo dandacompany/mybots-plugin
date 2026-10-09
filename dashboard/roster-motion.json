@@ -1,0 +1,559 @@
+[
+  {
+    "bot": "lumi",
+    "motion": {
+      "version": 1,
+      "sha256": "31aacab796100938ad48f7e9590057ab90009b1085ffa5310d19ef56e13ad505",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 110,
+          "y": 128,
+          "rx": 9,
+          "ry": 15,
+          "skin": "#f9a9cc"
+        },
+        {
+          "x": 145,
+          "y": 125.5,
+          "rx": 9,
+          "ry": 14.5,
+          "skin": "#fcadcf"
+        }
+      ],
+      "pace": 0.94,
+      "phase": 0
+    }
+  },
+  {
+    "bot": "mybots-mira",
+    "motion": {
+      "version": 1,
+      "sha256": "352a7fd23f1b0ffc8aece97502256575e19ec5d4908fcda706d25f5f97f1c08b",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 110,
+          "y": 128.5,
+          "rx": 8,
+          "ry": 14.5,
+          "skin": "#8cb9fb"
+        },
+        {
+          "x": 142,
+          "y": 128.5,
+          "rx": 8,
+          "ry": 14.5,
+          "skin": "#82b4fc"
+        }
+      ],
+      "pace": 1,
+      "phase": 0.61
+    }
+  },
+  {
+    "bot": "mybots-nori",
+    "motion": {
+      "version": 1,
+      "sha256": "0fd42a5baf70e345f103130a22f350136b5a901af08e5d7ae45806f80b4286e1",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 109.5,
+          "y": 128.5,
+          "rx": 8.5,
+          "ry": 14.5,
+          "skin": "#fd8f7b"
+        },
+        {
+          "x": 144.5,
+          "y": 128.5,
+          "rx": 8.5,
+          "ry": 14.5,
+          "skin": "#fd8a75"
+        }
+      ],
+      "pace": 1.06,
+      "phase": 1.22
+    }
+  },
+  {
+    "bot": "mybots-sage",
+    "motion": {
+      "version": 1,
+      "sha256": "4e9de8f24b0938502bc2204a0c7bea6842dd291f90d0442f2b73493724b2fb9d",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 109.5,
+          "y": 129.5,
+          "rx": 8.5,
+          "ry": 14.5,
+          "skin": "#92e3bb"
+        },
+        {
+          "x": 141.5,
+          "y": 129.5,
+          "rx": 8.5,
+          "ry": 14.5,
+          "skin": "#89deb4"
+        }
+      ],
+      "pace": 0.94,
+      "phase": 1.83
+    }
+  },
+  {
+    "bot": "mybots-pico",
+    "motion": {
+      "version": 1,
+      "sha256": "79e57e5e0e6e9ffeb70e18dc0fed26072e365c302a97dee0743d27a2ad8c4eef",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 111,
+          "y": 142,
+          "rx": 8,
+          "ry": 14,
+          "skin": "#d0c1f0"
+        },
+        {
+          "x": 143,
+          "y": 142,
+          "rx": 8,
+          "ry": 14,
+          "skin": "#d3c5f2"
+        }
+      ],
+      "pace": 1,
+      "phase": 2.44
+    }
+  },
+  {
+    "bot": "mybots-tess",
+    "motion": {
+      "version": 1,
+      "sha256": "12cb05ffb1a12908cbb843406c0cd8ca09687dfe6f13f80ffc0ea5b528705fb8",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 109,
+          "y": 128,
+          "rx": 9,
+          "ry": 15,
+          "skin": "#f9d05a"
+        },
+        {
+          "x": 144,
+          "y": 128,
+          "rx": 9,
+          "ry": 15,
+          "skin": "#f9ce5a"
+        }
+      ],
+      "pace": 1.06,
+      "phase": 3.05
+    }
+  },
+  {
+    "bot": "mybots-echo",
+    "motion": {
+      "version": 1,
+      "sha256": "5f135ba001bbbea24cee8e5df86497763b2e53eb1232c44cabf79ef3491e961f",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 114.5,
+          "y": 126.5,
+          "rx": 8.5,
+          "ry": 14.5,
+          "skin": "#beacec"
+        },
+        {
+          "x": 147.5,
+          "y": 127,
+          "rx": 8.5,
+          "ry": 15,
+          "skin": "#b9a6e8"
+        }
+      ],
+      "pace": 0.94,
+      "phase": 3.66
+    }
+  },
+  {
+    "bot": "mybots-roan",
+    "motion": {
+      "version": 1,
+      "sha256": "8dcddc0e661c627c1af5f5527473e64bbce7b7dd7a250f60b1b07a160102814b",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 108,
+          "y": 126,
+          "rx": 9,
+          "ry": 15,
+          "skin": "#fca4b6"
+        },
+        {
+          "x": 145,
+          "y": 125.5,
+          "rx": 9,
+          "ry": 15.5,
+          "skin": "#fca0b3"
+        }
+      ],
+      "pace": 1,
+      "phase": 4.27
+    }
+  },
+  {
+    "bot": "mybots-vera",
+    "motion": {
+      "version": 1,
+      "sha256": "e2fb83d03e8380fdf80f4f82e286676a69b8ea46f6cd5910d53003531d2f5936",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 110,
+          "y": 125.5,
+          "rx": 9,
+          "ry": 14.5,
+          "skin": "#8bbffa"
+        },
+        {
+          "x": 143,
+          "y": 125,
+          "rx": 9,
+          "ry": 15,
+          "skin": "#83bcfc"
+        }
+      ],
+      "pace": 1.06,
+      "phase": 4.88
+    }
+  },
+  {
+    "bot": "mybots-cleo",
+    "motion": {
+      "version": 1,
+      "sha256": "944fbc6ad45af98c69595a765a07aa8a94b4ef263563358bd2fd20045e979575",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 109.5,
+          "y": 137,
+          "rx": 8.5,
+          "ry": 15,
+          "skin": "#f0caa2"
+        },
+        {
+          "x": 142.5,
+          "y": 137,
+          "rx": 8.5,
+          "ry": 15,
+          "skin": "#eecca7"
+        }
+      ],
+      "pace": 0.94,
+      "phase": 5.49
+    }
+  },
+  {
+    "bot": "mybots-milo",
+    "motion": {
+      "version": 1,
+      "sha256": "41b78d2472ca3fe3a102ef0b14c5def578eb4b9bff3cc79f79804f273a0a43f2",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 109.5,
+          "y": 130.5,
+          "rx": 8.5,
+          "ry": 14.5,
+          "skin": "#74dab5"
+        },
+        {
+          "x": 143,
+          "y": 130.5,
+          "rx": 9,
+          "ry": 14.5,
+          "skin": "#71d6b0"
+        }
+      ],
+      "pace": 1,
+      "phase": 6.1
+    }
+  },
+  {
+    "bot": "mybots-quill",
+    "motion": {
+      "version": 1,
+      "sha256": "c1a92425eae0b9233edda0ed7b1ad291b233b6b82ab099e2d136c7ff5783fdeb",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 110,
+          "y": 122,
+          "rx": 9,
+          "ry": 15,
+          "skin": "#fd8268"
+        },
+        {
+          "x": 145,
+          "y": 122,
+          "rx": 9,
+          "ry": 15,
+          "skin": "#fc7c64"
+        }
+      ],
+      "pace": 1.06,
+      "phase": 6.71
+    }
+  },
+  {
+    "bot": "mybots-lexi",
+    "motion": {
+      "version": 1,
+      "sha256": "3627789cc3f24e3e58ff636410f581c59cb739961e2e7ab6fa306f22a1cc5ab9",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 109.5,
+          "y": 130.5,
+          "rx": 8.5,
+          "ry": 14.5,
+          "skin": "#a4bffc"
+        },
+        {
+          "x": 142.5,
+          "y": 130.5,
+          "rx": 8.5,
+          "ry": 14.5,
+          "skin": "#a3bffc"
+        }
+      ],
+      "pace": 0.94,
+      "phase": 7.32
+    }
+  },
+  {
+    "bot": "mybots-orbit",
+    "motion": {
+      "version": 1,
+      "sha256": "6f76db98f23bbe3183d193afeaf5452ac0f4bbd7d86879d771312a1c1bd54d47",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 111,
+          "y": 133,
+          "rx": 9,
+          "ry": 15,
+          "skin": "#fddb7d"
+        },
+        {
+          "x": 143.5,
+          "y": 133,
+          "rx": 8.5,
+          "ry": 15,
+          "skin": "#fbd779"
+        }
+      ],
+      "pace": 1,
+      "phase": 7.93
+    }
+  },
+  {
+    "bot": "mybots-finn",
+    "motion": {
+      "version": 1,
+      "sha256": "b0029db99882ea8ec52bbc1a010547c137d609f4a3e97bb56f9f92d1436a9e57",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 109.5,
+          "y": 128,
+          "rx": 8.5,
+          "ry": 15,
+          "skin": "#e999de"
+        },
+        {
+          "x": 143,
+          "y": 127.5,
+          "rx": 9,
+          "ry": 15.5,
+          "skin": "#e598dd"
+        }
+      ],
+      "pace": 1.06,
+      "phase": 8.54
+    }
+  },
+  {
+    "bot": "mybots-lyra",
+    "motion": {
+      "version": 1,
+      "sha256": "47a7b834be13acdeebdd9a699fcc4fe9b9c4f75f57c3580844d5592b784c0b54",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 89,
+          "y": 141,
+          "rx": 8,
+          "ry": 14,
+          "skin": "#9bb5fa"
+        },
+        {
+          "x": 121.5,
+          "y": 141.5,
+          "rx": 8.5,
+          "ry": 14.5,
+          "skin": "#92aef9"
+        }
+      ],
+      "pace": 0.94,
+      "phase": 9.15
+    }
+  },
+  {
+    "bot": "mybots-momo",
+    "motion": {
+      "version": 1,
+      "sha256": "160da77d4d536c8b1120a21a9c9ed173613d04c38dd5ec9f6ebfce114565dde6",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 104,
+          "y": 136,
+          "rx": 9,
+          "ry": 15,
+          "skin": "#a8d798"
+        },
+        {
+          "x": 138.5,
+          "y": 135.5,
+          "rx": 8.5,
+          "ry": 15.5,
+          "skin": "#a3d291"
+        }
+      ],
+      "pace": 1,
+      "phase": 9.76
+    }
+  },
+  {
+    "bot": "mybots-pepper",
+    "motion": {
+      "version": 1,
+      "sha256": "37be1ceaba32abe3b9f566ef032f7231dd677fc2488a22e84d16d3a413822785",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 106,
+          "y": 125.5,
+          "rx": 9,
+          "ry": 15.5,
+          "skin": "#eedfc6"
+        },
+        {
+          "x": 142,
+          "y": 125,
+          "rx": 9,
+          "ry": 16,
+          "skin": "#eadac0"
+        }
+      ],
+      "pace": 1.06,
+      "phase": 10.37
+    }
+  },
+  {
+    "bot": "mybots-atlas",
+    "motion": {
+      "version": 1,
+      "sha256": "ac44a64d51b3e61716bb0b498122ac4676c11e3c040914c084331bae57d4923d",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 109,
+          "y": 129,
+          "rx": 9,
+          "ry": 15,
+          "skin": "#76ddd9"
+        },
+        {
+          "x": 143,
+          "y": 129,
+          "rx": 9,
+          "ry": 15,
+          "skin": "#72dbd9"
+        }
+      ],
+      "pace": 0.94,
+      "phase": 10.98
+    }
+  },
+  {
+    "bot": "mybots-clover",
+    "motion": {
+      "version": 1,
+      "sha256": "a08c800269f8245a12cb703278503fe290e6e93e249f0bc3f6af64402bc2fbe9",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 110.5,
+          "y": 132.5,
+          "rx": 8.5,
+          "ry": 14.5,
+          "skin": "#fdc38f"
+        },
+        {
+          "x": 144.5,
+          "y": 132.5,
+          "rx": 8.5,
+          "ry": 14.5,
+          "skin": "#fcbe89"
+        }
+      ],
+      "pace": 1,
+      "phase": 11.59
+    }
+  },
+  {
+    "bot": "mybots-bloom",
+    "motion": {
+      "version": 1,
+      "sha256": "77d99ee496f2e8dc284ac8d1ecf0ff479c959d8960248bc9b3e84a5b438415c4",
+      "referenceSize": 256,
+      "eyes": [
+        {
+          "x": 105,
+          "y": 126,
+          "rx": 9,
+          "ry": 15,
+          "skin": "#d5bee6"
+        },
+        {
+          "x": 141.5,
+          "y": 124.5,
+          "rx": 9.5,
+          "ry": 15.5,
+          "skin": "#d1b8e4"
+        }
+      ],
+      "pace": 1.06,
+      "phase": 12.2
+    }
+  },
+  {
+    "bot": "lumi",
+    "motion": {
+      "version": 1,
+      "sha256": "5a736b557d06a1d226489597dd112b5fe06431c82d1a101a902d8a018503674e",
+      "referenceSize": 256,
+      "eyes": [],
+      "pace": 1,
+      "phase": 0
+    }
+  }
+]

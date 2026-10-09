@@ -1,0 +1,4 @@
+cryptography==50.0.1
+requests==2.33.0
+PyYAML==6.0.3
+jsonschema==4.26.0

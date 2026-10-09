@@ -1,0 +1,68 @@
+# mybots-plugin
+
+**바로 함께 일할 AI 동료를 Hermes Desktop에 영입하세요.**
+
+English: [README.md](./README.md)
+
+MyBots는 Hermes Desktop과 [MyBots 갤러리](https://mybots.work)를 연결합니다.
+AI 동료를 둘러보고, 소울과 아바타를 확인한 뒤 봇마다 제공하는 스킬·MCP·플러그인·추천
+보이스를 선택해 설치할 수 있습니다. 설치한 프로필은 Hermes에서 개인화할 수 있습니다.
+
+## 준비
+
+- 로컬 백엔드가 준비된 Hermes Desktop v0.21.5 이상.
+- 프로필 설치 시 **이 기기(This device) / default** 연결.
+- `plugin.yaml`에 선언된 Python 의존성. 설치 과정에서 Hermes가 의존성 검토를 안내합니다.
+
+MyBots는 Hermes Agent만 지원합니다. 봇 탐색과 설치에는 MyBots 제작자 API 키가
+필요하지 않습니다. 대화 모델, 음성 제공자와 사용하는 외부 서비스는 Hermes에서 별도로
+설정하고 인증하세요.
+
+## 설치
+
+1. **Hermes → 설정 → 플러그인 → 플러그인 관리**를 엽니다.
+2. **Git에서 설치**를 누릅니다.
+3. `https://github.com/dandacompany/mybots-plugin`을 입력하고 **저장소 검토**를 누릅니다.
+4. **에이전트**와 **데스크톱** 구성을 모두 포함합니다. 에이전트 대상은 **이 기기 / default**로
+   선택하고, 의존성을 검토한 뒤 설치합니다.
+5. 플러그인 목록에서 두 구성이 모두 켜져 있는지 확인합니다. Hermes가 재시작을 안내하면
+   다시 연 뒤 왼쪽 메뉴에서 **MyBots**를 엽니다.
+
+로컬에서 개발할 때도 같은 창에 해당 Git 저장소 주소를 입력하세요. CLI로 에이전트
+구성만 설치하면 위 데스크톱 설치 절차가 완료되지 않습니다.
+
+## 사용
+
+MyBots에서 동료를 고르고 설치할 구성을 검토하세요. 웹사이트의 영입 버튼으로도
+설치를 시작할 수 있습니다. 기존 프로필은 보존합니다. 설치한 소울의 성격·말투·배경·업무
+기준을 수정해 나만의 동료로 만들 수 있습니다.
+
+직접 만든 봇을 제출하려면 발급받은 MyBots 제작자 API 키를 연결 설정에서 등록하세요.
+제작자 키는 이 저장소에 포함되어 있지 않습니다.
+
+## 보안과 권한
+
+- 처음 사용하는 카탈로그는 `https://mybots.work`입니다. 패키지에 고정된 운영 Ed25519
+  공개키로 카탈로그 서명을 검증하고, 검토한 패키지를 설치하기 전에 파일 해시를 확인합니다.
+- 프로필 설치는 로컬 default 연결에서 진행합니다. 선택한 구성요소를 로컬 Hermes
+  프로필에 기록하며 기존 프로필은 보존합니다.
+- 선택한 MCP와 플러그인은 코드를 실행할 수 있습니다. 설치 전에 제공하는 구성과 권한을
+  확인하세요.
+- 서비스 인증정보와 기기별 설정은 패키지에 포함하지 않습니다. 기존 MyBots 로컬 설정은
+  보존합니다. 서명 검증은 발행자와 패키지 무결성을 확인하며, 설치한 코드를 격리하지 않습니다.
+
+## 패키지 구성
+
+`plugin.yaml`과 `__init__.py`는 에이전트 패키지를 식별합니다. `dashboard/`는 Hermes의
+인증된 전송 경로 뒤에서 API를 제공합니다. `desktop/plugin.js`는 Hermes 플러그인 SDK로
+사이드바 갤러리와 설치 화면을 제공합니다.
+
+코드 주석과 커밋 메시지는 영문으로 작성합니다. 설치 방식이 바뀌면 영문과 한국어 README를
+함께 갱신합니다.
+
+## 라이선스
+
+[MIT](./LICENSE) © 2026 Dante Labs.
+
+---
+[Dante Labs](https://dante-labs.com) · [YouTube @dante-labs](https://youtube.com/@dante-labs) · [메일](mailto:dante@dante-labs.com) · [커뮤니티](https://discord.com/invite/rXyy5e9ujs) · [후원](https://buymeacoffee.com/dante.labs)

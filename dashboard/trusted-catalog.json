@@ -1,0 +1,2187 @@
+{
+  "schemaVersion": 1,
+  "installerVersion": "0.3.0",
+  "bots": [
+    {
+      "metadata": {
+        "id": "lumi",
+        "version": "0.2.0",
+        "name": "루미",
+        "englishName": "Lumi",
+        "role": "자료 요약 파트너",
+        "personality": "핵심을 차분하게 정리하는 다정한 동료",
+        "description": "예시 자료의 핵심과 다음 할 일을 정리하는 다정한 요약 파트너",
+        "category": "business",
+        "firstPrompt": "이 자료의 핵심 세 가지와 다음에 할 일을 정리해 줘.",
+        "optional": [
+          "skills",
+          "mcp",
+          "plugin",
+          "voice"
+        ],
+        "skillId": "lumi-summary",
+        "mcp": {
+          "serverId": "lumi-examples",
+          "tools": [
+            "list_examples",
+            "read_example"
+          ]
+        },
+        "pluginId": "lumi-helper",
+        "external": [],
+        "voice": {
+          "id": "marin",
+          "style": "다정하고 차분하게, 핵심을 짧게 정리하세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "d807ba6846724070ae68f1ca6500f54d921361883add23577e385f73c9c7f164",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 23925,
+          "sha256": "31aacab796100938ad48f7e9590057ab90009b1085ffa5310d19ef56e13ad505"
+        },
+        {
+          "path": "mcp/example.md",
+          "component": "mcp",
+          "size": 472,
+          "sha256": "9b5d83223c237753377341b6481b6087d269b79258e94a610d4a636199e77a50"
+        },
+        {
+          "path": "mcp/examples.py",
+          "component": "mcp",
+          "size": 2188,
+          "sha256": "da66ccaac35bfd7f3fc87100db04970b4ea018aa964b8e69ef43b2fb99a4a257"
+        },
+        {
+          "path": "plugins/lumi-helper/__init__.py",
+          "component": "plugin",
+          "size": 524,
+          "sha256": "e0f224762aa8c8ed7b111ba03fc3ea666a56c50d80bc864c86a6e3ca20fbe0b4"
+        },
+        {
+          "path": "plugins/lumi-helper/plugin.yaml",
+          "component": "plugin",
+          "size": 163,
+          "sha256": "ae18ead7833c22e4371075047632c9de00082fa1d27f2c217fa0f362409233d5"
+        },
+        {
+          "path": "skills/lumi-summary/example.md",
+          "component": "skills",
+          "size": 472,
+          "sha256": "9b5d83223c237753377341b6481b6087d269b79258e94a610d4a636199e77a50"
+        },
+        {
+          "path": "skills/lumi-summary/SKILL.md",
+          "component": "skills",
+          "size": 647,
+          "sha256": "96fb32e33ed027262aee3bd04430e54fa47147b9e8386dcc18146b28d485df3d"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 900,
+          "sha256": "ebe90482b02b46d0cdf1ded5ff583fc5ac7f68a5b7ed53a3c9c525b6ed2a863b"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 464,
+          "sha256": "3b68fdaa268a6c67c143821c7c003225598760562dd0dac4c2bca99dac168f24"
+        }
+      ],
+      "mcp": {
+        "serverId": "lumi-examples",
+        "tools": [
+          "list_examples",
+          "read_example"
+        ],
+        "entrypoint": "mcp/examples.py"
+      },
+      "pluginId": "lumi-helper"
+    },
+    {
+      "metadata": {
+        "id": "mybots-mira",
+        "version": "0.1.0",
+        "name": "미라",
+        "englishName": "Mira",
+        "role": "UI 디자이너",
+        "personality": "작은 차이를 잘 보는 미감 있는 동료",
+        "description": "화면 비평 → 우선 수정 3개 → 색·타입·간격 표.",
+        "category": "business",
+        "firstPrompt": "이 화면을 더 읽기 쉽게 만드는 수정 세 가지와 대비 비율을 알려줘.",
+        "optional": [
+          "skills",
+          "mcp",
+          "plugin",
+          "voice"
+        ],
+        "skillId": "interface-critique",
+        "mcp": {
+          "serverId": "mybots-mira-materials",
+          "tools": [
+            "mira_list_materials",
+            "mira_read_material"
+          ]
+        },
+        "pluginId": "mybots-mira-tools",
+        "external": [
+          {
+            "service": "figma",
+            "label": "Figma",
+            "guide": "https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/",
+            "requirement": "Figma 계정과 사용자 인증 필요",
+            "status": "not-connected"
+          }
+        ],
+        "voice": {
+          "id": "gleam",
+          "style": "세밀하고 명료하게, 화면의 우선순위를 설명하세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "cc647af3f05f8827864f2bc57baaee5e0266561c1e50df88e1512fa26749db47",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 24495,
+          "sha256": "352a7fd23f1b0ffc8aece97502256575e19ec5d4908fcda706d25f5f97f1c08b"
+        },
+        {
+          "path": "mcp/data.json",
+          "component": "mcp",
+          "size": 1461,
+          "sha256": "65b0766922a6fe08edb2897e17623bf69c66300936e0c4ba5c3af437ba86bdc0"
+        },
+        {
+          "path": "mcp/server.py",
+          "component": "mcp",
+          "size": 157,
+          "sha256": "27620da0de89c93b517223ae65412ac1958582c47dd7fe4cb19258f870ae556c"
+        },
+        {
+          "path": "mcp/transport.py",
+          "component": "mcp",
+          "size": 6199,
+          "sha256": "4963caee2e01391e502a7caf0fb52b6e712ef0224b89d1aa1d135509c3d4935b"
+        },
+        {
+          "path": "plugins/mybots-mira-tools/__init__.py",
+          "component": "plugin",
+          "size": 127,
+          "sha256": "4b821811fe8813ec3a75538c63853ac3849ac424129e80bad5b501d3b5e6d5ad"
+        },
+        {
+          "path": "plugins/mybots-mira-tools/adapter.py",
+          "component": "plugin",
+          "size": 2726,
+          "sha256": "99db6b696a3516b84402bcd0fae15e56ec259bb0d20bb4bda2bb9bb31d358997"
+        },
+        {
+          "path": "plugins/mybots-mira-tools/logic.py",
+          "component": "plugin",
+          "size": 1443,
+          "sha256": "e3e6892bdf4d72a0ee0f9225ba209f7fac67534d43b4768d6e1a99136a9b8292"
+        },
+        {
+          "path": "plugins/mybots-mira-tools/plugin.yaml",
+          "component": "plugin",
+          "size": 143,
+          "sha256": "950bc4b1149d742042e54de8fb76afd4e3e2f412baad5fad3c4fdf52e5d1a9f2"
+        },
+        {
+          "path": "skills/interface-critique/example.md",
+          "component": "skills",
+          "size": 797,
+          "sha256": "01cd9336f074f76a6c37a8827b6f390c3950133b4abbdf3d8c8e3fb41345b42e"
+        },
+        {
+          "path": "skills/interface-critique/SKILL.md",
+          "component": "skills",
+          "size": 2153,
+          "sha256": "ad2ab71cb4f405108bfa05825c2c770b916cde695c54d96ae32257b07da86bf1"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2373,
+          "sha256": "2ff61019ddf1b8175fea564635a76d0641b80e05f87f65d90ee2ee5e9ab5fc6d"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 465,
+          "sha256": "56d4ac0df3359980a20110a83d310e653ef362c075fb68bffc8863a6bdbf07be"
+        }
+      ],
+      "mcp": {
+        "serverId": "mybots-mira-materials",
+        "tools": [
+          "mira_list_materials",
+          "mira_read_material"
+        ],
+        "entrypoint": "mcp/server.py"
+      },
+      "pluginId": "mybots-mira-tools"
+    },
+    {
+      "metadata": {
+        "id": "mybots-nori",
+        "version": "0.1.0",
+        "name": "노리",
+        "englishName": "Nori",
+        "role": "브랜드 전략가",
+        "personality": "짧고 선명한 질문을 하는 조율자",
+        "description": "대상·약속·근거 → 브랜드 보이스 → 채널별 문장.",
+        "category": "business",
+        "firstPrompt": "다정하지만 가볍지 않은 브랜드 말투로 소개 문장 세 개를 다듬어 줘.",
+        "optional": [
+          "skills",
+          "plugin",
+          "voice"
+        ],
+        "skillId": "brand-voice",
+        "mcp": null,
+        "pluginId": "mybots-nori-tools",
+        "external": [
+          {
+            "service": "notion",
+            "label": "Notion",
+            "guide": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+            "requirement": "Notion 계정과 OAuth 연결 필요",
+            "status": "not-connected"
+          }
+        ],
+        "voice": {
+          "id": "cedar",
+          "style": "부드럽고 일관되게, 브랜드 표현을 다듬으세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "80b7093045f246cdaf00e070c3250bcf9246e0152107c12e447881b67e438233",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 26780,
+          "sha256": "0fd42a5baf70e345f103130a22f350136b5a901af08e5d7ae45806f80b4286e1"
+        },
+        {
+          "path": "plugins/mybots-nori-tools/__init__.py",
+          "component": "plugin",
+          "size": 127,
+          "sha256": "4b821811fe8813ec3a75538c63853ac3849ac424129e80bad5b501d3b5e6d5ad"
+        },
+        {
+          "path": "plugins/mybots-nori-tools/adapter.py",
+          "component": "plugin",
+          "size": 2726,
+          "sha256": "99db6b696a3516b84402bcd0fae15e56ec259bb0d20bb4bda2bb9bb31d358997"
+        },
+        {
+          "path": "plugins/mybots-nori-tools/logic.py",
+          "component": "plugin",
+          "size": 1759,
+          "sha256": "6bfa934021e63f672fd384dce412d386af5a83df45109c6c18b64089bb2feeda"
+        },
+        {
+          "path": "plugins/mybots-nori-tools/plugin.yaml",
+          "component": "plugin",
+          "size": 169,
+          "sha256": "9aca03f8459c99e9352341810a6d37daffe656fed14473bb96fa67939fb7fd8d"
+        },
+        {
+          "path": "skills/brand-voice/example.md",
+          "component": "skills",
+          "size": 782,
+          "sha256": "66ff828da96800a47e90a0f5b94a5773bdc45b4f8d3d8d071ab9f9a215b59907"
+        },
+        {
+          "path": "skills/brand-voice/SKILL.md",
+          "component": "skills",
+          "size": 2075,
+          "sha256": "aca723c1c7fce53179970b393df89ae02bc063f0f64c0e2a035ee04880a046a3"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2307,
+          "sha256": "225ffb21c860949d185b2aee4ac690c13613028b7952eda765e495c20186e503"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 463,
+          "sha256": "5b4e0ff31fed6fcf46f842f39221e6a0feb67328480b130e37bf0319569bcc97"
+        }
+      ],
+      "mcp": null,
+      "pluginId": "mybots-nori-tools"
+    },
+    {
+      "metadata": {
+        "id": "mybots-sage",
+        "version": "0.1.0",
+        "name": "세이지",
+        "englishName": "Sage",
+        "role": "리서처",
+        "personality": "추측보다 출처를 먼저 찾는 탐정",
+        "description": "질문 분해 → 근거 표 → 반론·빈칸 → 판단.",
+        "category": "business",
+        "firstPrompt": "이 자료만으로 확실히 말할 수 있는 것과 아직 모르는 것을 나눠 줘.",
+        "optional": [
+          "skills",
+          "mcp",
+          "voice"
+        ],
+        "skillId": "evidence-brief",
+        "mcp": {
+          "serverId": "mybots-sage-materials",
+          "tools": [
+            "sage_list_materials",
+            "sage_read_material"
+          ]
+        },
+        "pluginId": null,
+        "external": [
+          {
+            "service": "web-search",
+            "label": "Hermes 웹 검색",
+            "guide": "https://hermes-agent.nousresearch.com/docs/user-guide/features/tools",
+            "requirement": "Hermes에 설정한 검색 제공자 필요",
+            "status": "not-connected"
+          }
+        ],
+        "voice": {
+          "id": "vesper",
+          "style": "차분하고 신중하게, 근거와 추정을 구분하세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "fb49c479c442ca8ad17b3e85a966626d8f39eea8e1a41e9c890715082a16e337",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 22564,
+          "sha256": "4e9de8f24b0938502bc2204a0c7bea6842dd291f90d0442f2b73493724b2fb9d"
+        },
+        {
+          "path": "mcp/data.json",
+          "component": "mcp",
+          "size": 478,
+          "sha256": "5495dcea455fd7a6d56ea5071e7ec45ebdf84a600684bb6032244dcf491557b8"
+        },
+        {
+          "path": "mcp/server.py",
+          "component": "mcp",
+          "size": 157,
+          "sha256": "fd4e78ceb0d97c583b74836fe8f8ab5f1ace83bc44772b04d562979dd1fa45e0"
+        },
+        {
+          "path": "mcp/transport.py",
+          "component": "mcp",
+          "size": 6199,
+          "sha256": "4963caee2e01391e502a7caf0fb52b6e712ef0224b89d1aa1d135509c3d4935b"
+        },
+        {
+          "path": "skills/evidence-brief/example.md",
+          "component": "skills",
+          "size": 722,
+          "sha256": "70ae963baae3796cd6bddd82b9d53459772c275481b9fbf0db820e6688da325c"
+        },
+        {
+          "path": "skills/evidence-brief/SKILL.md",
+          "component": "skills",
+          "size": 1964,
+          "sha256": "d8765b0039153bb62739d5594b004edd5cfb947db206458d4ba4a8c2eb065493"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2195,
+          "sha256": "03384475265ed93c623af014ff9cfd6d1c8699c7d5124beaba5308bef5f340ca"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 457,
+          "sha256": "cdd41e8f345a4596274b46d6ca499eeb4154e84e2a7f108174f5bfec363ae7ba"
+        }
+      ],
+      "mcp": {
+        "serverId": "mybots-sage-materials",
+        "tools": [
+          "sage_list_materials",
+          "sage_read_material"
+        ],
+        "entrypoint": "mcp/server.py"
+      },
+      "pluginId": null
+    },
+    {
+      "metadata": {
+        "id": "mybots-pico",
+        "version": "0.1.0",
+        "name": "피코",
+        "englishName": "Pico",
+        "role": "제품 기획자",
+        "personality": "범위를 잘라 실행으로 옮기는 설계자",
+        "description": "문제·대상·성공지표 → 한 페이지 PRD → 검증 계획.",
+        "category": "business",
+        "firstPrompt": "작은 첫 버전의 PRD를 쓰고 후보 기능을 RICE로 비교해 줘.",
+        "optional": [
+          "skills",
+          "plugin",
+          "voice"
+        ],
+        "skillId": "product-brief",
+        "mcp": null,
+        "pluginId": "mybots-pico-tools",
+        "external": [
+          {
+            "service": "notion",
+            "label": "Notion",
+            "guide": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+            "requirement": "Notion 계정과 OAuth 연결 필요",
+            "status": "not-connected"
+          }
+        ],
+        "voice": {
+          "id": "meridian",
+          "style": "활기차고 간결하게, 선택과 다음 단계를 말하세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "d1baef8a04bb3ab7a2dab299f09091d2e44e8e31c8fa135efaea6e6c3bf0de42",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 24423,
+          "sha256": "79e57e5e0e6e9ffeb70e18dc0fed26072e365c302a97dee0743d27a2ad8c4eef"
+        },
+        {
+          "path": "plugins/mybots-pico-tools/__init__.py",
+          "component": "plugin",
+          "size": 127,
+          "sha256": "4b821811fe8813ec3a75538c63853ac3849ac424129e80bad5b501d3b5e6d5ad"
+        },
+        {
+          "path": "plugins/mybots-pico-tools/adapter.py",
+          "component": "plugin",
+          "size": 2726,
+          "sha256": "99db6b696a3516b84402bcd0fae15e56ec259bb0d20bb4bda2bb9bb31d358997"
+        },
+        {
+          "path": "plugins/mybots-pico-tools/logic.py",
+          "component": "plugin",
+          "size": 2081,
+          "sha256": "b5eea8617575774c7ca773f8d5b8166cb7c671f365d8474d8dbaf83344c3c147"
+        },
+        {
+          "path": "plugins/mybots-pico-tools/plugin.yaml",
+          "component": "plugin",
+          "size": 164,
+          "sha256": "f8ca80b50574fd7b7c8998f8478080270ce3001fd21304c3b9c4cea37f534164"
+        },
+        {
+          "path": "skills/product-brief/example.md",
+          "component": "skills",
+          "size": 721,
+          "sha256": "f6f4165f3430fac70fe830df1c887aec225e168f034238664ef86f960ff26563"
+        },
+        {
+          "path": "skills/product-brief/SKILL.md",
+          "component": "skills",
+          "size": 1997,
+          "sha256": "ad04111c9114d2a473ad53ef6eb641cb28abe45dd4b62c928d88c42f00cc356b"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2238,
+          "sha256": "dc78892f14ea9b53b8703267f2a230fab6708e0d9ea18cb3b7c8265872845c7d"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 467,
+          "sha256": "04ea46dcd2a7f0d67e42c092cedbdc0fc57bae54bde9830e6b65f7a1530defcd"
+        }
+      ],
+      "mcp": null,
+      "pluginId": "mybots-pico-tools"
+    },
+    {
+      "metadata": {
+        "id": "mybots-tess",
+        "version": "0.1.0",
+        "name": "테스",
+        "englishName": "Tess",
+        "role": "UX 리서처",
+        "personality": "먼저 듣고 섣불리 일반화하지 않는 관찰자",
+        "description": "중립 인터뷰 질문 → 발화 코딩 → 관찰/해석 분리.",
+        "category": "business",
+        "firstPrompt": "반복되는 불편을 발화 근거와 연결하되 표본 한계를 밝혀 줘.",
+        "optional": [
+          "skills",
+          "mcp",
+          "voice"
+        ],
+        "skillId": "interview-synthesis",
+        "mcp": {
+          "serverId": "mybots-tess-materials",
+          "tools": [
+            "tess_list_materials",
+            "tess_read_material"
+          ]
+        },
+        "pluginId": null,
+        "external": [
+          {
+            "service": "notion",
+            "label": "Notion",
+            "guide": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+            "requirement": "Notion 계정과 OAuth 연결 필요",
+            "status": "not-connected"
+          }
+        ],
+        "voice": {
+          "id": "willow",
+          "style": "따뜻하고 주의 깊게, 사람의 말을 요약하세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "e80dce43c07f1c4e537b55c975d4a4114efe9652e4b52e1ea7975a029a5c9afe",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 28180,
+          "sha256": "12cb05ffb1a12908cbb843406c0cd8ca09687dfe6f13f80ffc0ea5b528705fb8"
+        },
+        {
+          "path": "mcp/data.json",
+          "component": "mcp",
+          "size": 655,
+          "sha256": "2a9c8c5072a461fa5efdf4e370d01cfe3e5a29ac551b0587477408843ec1899b"
+        },
+        {
+          "path": "mcp/server.py",
+          "component": "mcp",
+          "size": 157,
+          "sha256": "ad2fba612fbac91c9f8a884691b7f1480ddc70853ab1213b5c721baad7b6c14b"
+        },
+        {
+          "path": "mcp/transport.py",
+          "component": "mcp",
+          "size": 6199,
+          "sha256": "4963caee2e01391e502a7caf0fb52b6e712ef0224b89d1aa1d135509c3d4935b"
+        },
+        {
+          "path": "skills/interview-synthesis/example.md",
+          "component": "skills",
+          "size": 769,
+          "sha256": "94d30d818df505f0e03e88f6e337f7378b7ed6ad2306d6111c08b11198399667"
+        },
+        {
+          "path": "skills/interview-synthesis/SKILL.md",
+          "component": "skills",
+          "size": 1951,
+          "sha256": "6f3650366ecbd1ce61310c274c0a23b6195ca5075359d7229201c3405e60871a"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2179,
+          "sha256": "42720b2af4f2ec47c095b5f2fa4557f0784fad83b47302e15b2d6317b8462952"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 455,
+          "sha256": "f47f0642931f19c93794d999b19e11f2a0cfa8032e4a6c0d6aed4f2a6a4a1715"
+        }
+      ],
+      "mcp": {
+        "serverId": "mybots-tess-materials",
+        "tools": [
+          "tess_list_materials",
+          "tess_read_material"
+        ],
+        "entrypoint": "mcp/server.py"
+      },
+      "pluginId": null
+    },
+    {
+      "metadata": {
+        "id": "mybots-echo",
+        "version": "0.1.0",
+        "name": "에코",
+        "englishName": "Echo",
+        "role": "카피라이터",
+        "personality": "말맛은 살리고 과장은 덜어내는 편집자",
+        "description": "독자·행동 확인 → 헤드라인 3안 → CTA → 편집 이유.",
+        "category": "business",
+        "firstPrompt": "과장 없이 신청하고 싶어지는 제목 3안과 CTA를 써 줘.",
+        "optional": [
+          "skills",
+          "voice"
+        ],
+        "skillId": "conversion-copy",
+        "mcp": null,
+        "pluginId": null,
+        "external": [],
+        "voice": {
+          "id": "quartz",
+          "style": "리듬감 있게 짧은 문장으로, 표현의 차이를 보여주세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "df94d2165c4cde8d4a867778a4a0679335909a6e3911e2848213ef8bf6a4816e",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 25127,
+          "sha256": "5f135ba001bbbea24cee8e5df86497763b2e53eb1232c44cabf79ef3491e961f"
+        },
+        {
+          "path": "skills/conversion-copy/example.md",
+          "component": "skills",
+          "size": 734,
+          "sha256": "3bfe8acd64823dfbbb652c911e71c9d2fa3e7f165916c08589d04f1f1f56b873"
+        },
+        {
+          "path": "skills/conversion-copy/SKILL.md",
+          "component": "skills",
+          "size": 1968,
+          "sha256": "c30bec1c2c91204e7900352aef0e23748d1fcd28b61c2d7f5aac7a1c1db5f09b"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2214,
+          "sha256": "b9bc093138f121d60a0cc1c18ee0aab2a97962179dc58b82ea267d81b7277963"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 471,
+          "sha256": "62b01e9c70d4887c1af1106eb734b47d55f1d4f1780c6042e72f04e253205a48"
+        }
+      ],
+      "mcp": null,
+      "pluginId": null
+    },
+    {
+      "metadata": {
+        "id": "mybots-roan",
+        "version": "0.1.0",
+        "name": "로언",
+        "englishName": "Roan",
+        "role": "그로스 실험가",
+        "personality": "작은 실험과 숫자를 좋아하는 동료",
+        "description": "가설 → 실험·측정 → 중단 기준 → 학습 기록.",
+        "category": "business",
+        "firstPrompt": "다음 2주에 할 실험 하나를 골라 측정·중단 기준을 정해 줘.",
+        "optional": [
+          "skills",
+          "plugin",
+          "voice"
+        ],
+        "skillId": "growth-experiment",
+        "mcp": null,
+        "pluginId": "mybots-roan-tools",
+        "external": [
+          {
+            "service": "notion",
+            "label": "Notion",
+            "guide": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+            "requirement": "Notion 계정과 OAuth 연결 필요",
+            "status": "not-connected"
+          }
+        ],
+        "voice": {
+          "id": "ripple",
+          "style": "밝고 분석적으로, 실험 가설과 측정을 구분하세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "4380732b81f3adca7b4569b4e7c492511809a318398632754f3c8522d5fc4d94",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 25747,
+          "sha256": "8dcddc0e661c627c1af5f5527473e64bbce7b7dd7a250f60b1b07a160102814b"
+        },
+        {
+          "path": "plugins/mybots-roan-tools/__init__.py",
+          "component": "plugin",
+          "size": 127,
+          "sha256": "4b821811fe8813ec3a75538c63853ac3849ac424129e80bad5b501d3b5e6d5ad"
+        },
+        {
+          "path": "plugins/mybots-roan-tools/adapter.py",
+          "component": "plugin",
+          "size": 2726,
+          "sha256": "99db6b696a3516b84402bcd0fae15e56ec259bb0d20bb4bda2bb9bb31d358997"
+        },
+        {
+          "path": "plugins/mybots-roan-tools/logic.py",
+          "component": "plugin",
+          "size": 1775,
+          "sha256": "88a255c74383fb2eadfd09fe76e604a36e070c8ab3d9301b962d9b8a682c4911"
+        },
+        {
+          "path": "plugins/mybots-roan-tools/plugin.yaml",
+          "component": "plugin",
+          "size": 191,
+          "sha256": "546b4d4a44d121269e218aa96c35bf42ec2952e57d8c47a55cc1efe6b5ca1ab7"
+        },
+        {
+          "path": "skills/growth-experiment/example.md",
+          "component": "skills",
+          "size": 679,
+          "sha256": "b4837b253ed3daee8c64b7c16f96294908560fbffa8974330c80be42a566c168"
+        },
+        {
+          "path": "skills/growth-experiment/SKILL.md",
+          "component": "skills",
+          "size": 1925,
+          "sha256": "21eab6390d58b2e36829978923c3e2f1e98ea96270277110b214c04ff3f0e5c5"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2157,
+          "sha256": "68d66d22107bee935cb49a659b50b8612dcb20aeb1a236286824f74e8de16198"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 468,
+          "sha256": "f606c65e1c91824f85525ca12325930b9db03399210e3472f481cd90b2f464e8"
+        }
+      ],
+      "mcp": null,
+      "pluginId": "mybots-roan-tools"
+    },
+    {
+      "metadata": {
+        "id": "mybots-vera",
+        "version": "0.1.0",
+        "name": "베라",
+        "englishName": "Vera",
+        "role": "데이터 분석가",
+        "personality": "숫자를 설명 가능한 문장으로 바꾸는 분석가",
+        "description": "데이터 사전 → 품질 확인 → 지표 → 한계·다음 질문.",
+        "category": "business",
+        "firstPrompt": "매출을 보기 전에 데이터의 문제부터 찾아 줘.",
+        "optional": [
+          "skills",
+          "mcp",
+          "voice"
+        ],
+        "skillId": "csv-insight",
+        "mcp": {
+          "serverId": "mybots-vera-materials",
+          "tools": [
+            "vera_list_materials",
+            "vera_read_material",
+            "vera_summarize_csv"
+          ]
+        },
+        "pluginId": null,
+        "external": [
+          {
+            "service": "github",
+            "label": "GitHub",
+            "guide": "https://github.com/github/github-mcp-server",
+            "requirement": "GitHub 계정과 읽기 권한 설정 필요",
+            "status": "not-connected"
+          }
+        ],
+        "voice": {
+          "id": "marin",
+          "style": "차분하고 정확하게, 숫자와 결측값을 확인하세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "e8f622c69bf12bbffbcfce949dd5540d45760e082a756e8014301f984f7f6bef",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 24551,
+          "sha256": "e2fb83d03e8380fdf80f4f82e286676a69b8ea46f6cd5910d53003531d2f5936"
+        },
+        {
+          "path": "mcp/data.json",
+          "component": "mcp",
+          "size": 1075,
+          "sha256": "5b8e8d11af929ded0bd02d5ed46ecd3e5f98fc2a656949265b6474b3e34a6419"
+        },
+        {
+          "path": "mcp/server.py",
+          "component": "mcp",
+          "size": 156,
+          "sha256": "36530b3067984f02fc0a56fdfe626a22206fefba7dd698336fe4da1523814889"
+        },
+        {
+          "path": "mcp/transport.py",
+          "component": "mcp",
+          "size": 6199,
+          "sha256": "4963caee2e01391e502a7caf0fb52b6e712ef0224b89d1aa1d135509c3d4935b"
+        },
+        {
+          "path": "skills/csv-insight/example.md",
+          "component": "skills",
+          "size": 604,
+          "sha256": "095fa42ce5d191d19f343f75292f0b837fb5bc495dbdb8c7b6d551e29c8f7309"
+        },
+        {
+          "path": "skills/csv-insight/SKILL.md",
+          "component": "skills",
+          "size": 1945,
+          "sha256": "3b2f85a5af65774e6c9583bf8a0e3d0be593e5f74582f23e8e248eca9137769a"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2189,
+          "sha256": "337bcf19f1eb14bfc8be2e56e0ee66c4009f2798b2dec7c7ba7cb9375e4720b6"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 466,
+          "sha256": "0788f08be44ac4610887ba26ac4c0b2e1ad3e00cc1302191b086f3d49145db3a"
+        }
+      ],
+      "mcp": {
+        "serverId": "mybots-vera-materials",
+        "tools": [
+          "vera_list_materials",
+          "vera_read_material",
+          "vera_summarize_csv"
+        ],
+        "entrypoint": "mcp/server.py"
+      },
+      "pluginId": null
+    },
+    {
+      "metadata": {
+        "id": "mybots-cleo",
+        "version": "0.1.0",
+        "name": "클레오",
+        "englishName": "Cleo",
+        "role": "회의 퍼실리테이터",
+        "personality": "조용한 의견도 챙기는 진행자",
+        "description": "목적별 아젠다 → 결정/보류 구분 → 담당·기한 명확화.",
+        "category": "business",
+        "firstPrompt": "의견이 갈릴 때도 결정을 남길 수 있는 회의안을 만들어 줘.",
+        "optional": [
+          "skills",
+          "voice"
+        ],
+        "skillId": "meeting-facilitation",
+        "mcp": null,
+        "pluginId": null,
+        "external": [
+          {
+            "service": "notion",
+            "label": "Notion",
+            "guide": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+            "requirement": "Notion 계정과 OAuth 연결 필요",
+            "status": "not-connected"
+          }
+        ],
+        "voice": {
+          "id": "gleam",
+          "style": "친절하고 균형 있게, 참여자의 의견을 정리하세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "bf4441cbca99413669a748537e5f051ab725fc17750901b0c36d24e56ebee7b4",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 29084,
+          "sha256": "944fbc6ad45af98c69595a765a07aa8a94b4ef263563358bd2fd20045e979575"
+        },
+        {
+          "path": "skills/meeting-facilitation/example.md",
+          "component": "skills",
+          "size": 732,
+          "sha256": "dee89ec962bc912b8fceb3ba0471a83a3adbad130c93a5bc7612377403c0749e"
+        },
+        {
+          "path": "skills/meeting-facilitation/SKILL.md",
+          "component": "skills",
+          "size": 1941,
+          "sha256": "ae3589861f92f1d52866ff7c9694204c47da807acb1050dbc0bca0c381c1086c"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2145,
+          "sha256": "cfc42f6167f90687fb55a911f2eea300240f71ee050af627b0483b491944d3cc"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 476,
+          "sha256": "289d3be72c55273eeb95df0fb2b80f6b1a4e9bb2118509b922fcca9ee1eb2da9"
+        }
+      ],
+      "mcp": null,
+      "pluginId": null
+    },
+    {
+      "metadata": {
+        "id": "mybots-milo",
+        "version": "0.1.0",
+        "name": "마일로",
+        "englishName": "Milo",
+        "role": "프로젝트 코디네이터",
+        "personality": "일정의 빈틈을 부드럽게 짚는 정리자",
+        "description": "작업·의존성 → 일정 → 병목·리스크 → 주간 상태.",
+        "category": "business",
+        "firstPrompt": "병렬로 할 수 있는 일과 출시를 늦출 병목을 찾아 줘.",
+        "optional": [
+          "skills",
+          "mcp",
+          "plugin",
+          "voice"
+        ],
+        "skillId": "project-checkpoint",
+        "mcp": {
+          "serverId": "mybots-milo-materials",
+          "tools": [
+            "milo_list_materials",
+            "milo_read_material"
+          ]
+        },
+        "pluginId": "mybots-milo-tools",
+        "external": [
+          {
+            "service": "notion",
+            "label": "Notion",
+            "guide": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+            "requirement": "Notion 계정과 OAuth 연결 필요",
+            "status": "not-connected"
+          },
+          {
+            "service": "todoist",
+            "label": "Todoist",
+            "guide": "https://developer.todoist.com/",
+            "requirement": "Todoist 계정과 OAuth 연결 필요",
+            "status": "not-connected"
+          }
+        ],
+        "voice": {
+          "id": "meridian",
+          "style": "또렷하고 안정적으로, 의존성과 다음 일을 짚으세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "0c84dd33eaabf6caa2556cd83f774c0e1c1d51bee0f132d0197cf4d4b6b25f84",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 27672,
+          "sha256": "41b78d2472ca3fe3a102ef0b14c5def578eb4b9bff3cc79f79804f273a0a43f2"
+        },
+        {
+          "path": "mcp/data.json",
+          "component": "mcp",
+          "size": 1152,
+          "sha256": "c04a3f8d672eb8b0452b33a5d8b832b5e8e5092f89c9d4398cb2927041a3cf46"
+        },
+        {
+          "path": "mcp/server.py",
+          "component": "mcp",
+          "size": 157,
+          "sha256": "05011696130db7ecb41140be42aea8487beb86138d06c08c9236e64ce9a1800f"
+        },
+        {
+          "path": "mcp/transport.py",
+          "component": "mcp",
+          "size": 6199,
+          "sha256": "4963caee2e01391e502a7caf0fb52b6e712ef0224b89d1aa1d135509c3d4935b"
+        },
+        {
+          "path": "plugins/mybots-milo-tools/__init__.py",
+          "component": "plugin",
+          "size": 127,
+          "sha256": "4b821811fe8813ec3a75538c63853ac3849ac424129e80bad5b501d3b5e6d5ad"
+        },
+        {
+          "path": "plugins/mybots-milo-tools/adapter.py",
+          "component": "plugin",
+          "size": 2726,
+          "sha256": "99db6b696a3516b84402bcd0fae15e56ec259bb0d20bb4bda2bb9bb31d358997"
+        },
+        {
+          "path": "plugins/mybots-milo-tools/logic.py",
+          "component": "plugin",
+          "size": 2315,
+          "sha256": "4dfcc729477f3684127ca9f968f70198a4701ce90e7dec215962e2f367351940"
+        },
+        {
+          "path": "plugins/mybots-milo-tools/plugin.yaml",
+          "component": "plugin",
+          "size": 163,
+          "sha256": "652744e29852aaaa63364e9ad1488b125a98db340cf86c6c43a05e2176f6b306"
+        },
+        {
+          "path": "skills/project-checkpoint/example.md",
+          "component": "skills",
+          "size": 691,
+          "sha256": "7ed1ca8d93080b573033ad27bbb219491ea129a521bab23c10f1eb4ebfa28d42"
+        },
+        {
+          "path": "skills/project-checkpoint/SKILL.md",
+          "component": "skills",
+          "size": 1969,
+          "sha256": "47f8ecb473ada50382e76b39a41ca6fe1d5c5ff42a1e2f335d2abe0bbfeb4f26"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2154,
+          "sha256": "14db8e1d7fa3b4a8558ea72df69d9f27632d12caa03522dba53bfce4b3e93420"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 485,
+          "sha256": "a7a1c8f99040afd14ffde2362933ae040f3b0e5118e0bd94d1a0d09866fe11f2"
+        }
+      ],
+      "mcp": {
+        "serverId": "mybots-milo-materials",
+        "tools": [
+          "milo_list_materials",
+          "milo_read_material"
+        ],
+        "entrypoint": "mcp/server.py"
+      },
+      "pluginId": "mybots-milo-tools"
+    },
+    {
+      "metadata": {
+        "id": "mybots-quill",
+        "version": "0.1.0",
+        "name": "퀼",
+        "englishName": "Quill",
+        "role": "글쓰기 튜터",
+        "personality": "대신 써주기보다 생각을 꺼내는 질문자",
+        "description": "글의 목적 → 주장·근거 지도 → 한 문단 피드백 → 재작성 연습.",
+        "category": "learning",
+        "firstPrompt": "답을 대신 쓰지 말고 주장과 근거를 고칠 질문부터 해 줘.",
+        "optional": [
+          "skills",
+          "voice"
+        ],
+        "skillId": "writing-workshop",
+        "mcp": null,
+        "pluginId": null,
+        "external": [],
+        "voice": {
+          "id": "cedar",
+          "style": "느긋하고 섬세하게, 글쓴이의 문체를 존중하세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "191120469a46e59d157f180860ba6981db5551c85027805225b68d25a71a7897",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 27557,
+          "sha256": "c1a92425eae0b9233edda0ed7b1ad291b233b6b82ab099e2d136c7ff5783fdeb"
+        },
+        {
+          "path": "skills/writing-workshop/example.md",
+          "component": "skills",
+          "size": 772,
+          "sha256": "1046a37b81e632cfd23104637ce67e5cd13624146d2ff82d837f20471a15e7ec"
+        },
+        {
+          "path": "skills/writing-workshop/SKILL.md",
+          "component": "skills",
+          "size": 1977,
+          "sha256": "b439c4845aa1cfd8e688736d028dc977041776fccd2fd00ec34012c91a1842ce"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2199,
+          "sha256": "4c6ef478295d6c7ec55a541fc313b09dbfd3d2066e5c0078c56625d176a8fcd1"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 460,
+          "sha256": "77000c652d11f18356b8b44e85bebae9286944a13c406ce39492ffa8daec90f1"
+        }
+      ],
+      "mcp": null,
+      "pluginId": null
+    },
+    {
+      "metadata": {
+        "id": "mybots-lexi",
+        "version": "0.1.0",
+        "name": "렉시",
+        "englishName": "Lexi",
+        "role": "영어 대화 코치",
+        "personality": "틀려도 대화를 이어 주는 친구",
+        "description": "수준·상황 설정 → 한 턴 대화 → 핵심 교정 1개 → 재시도.",
+        "category": "learning",
+        "firstPrompt": "카페 주문 대화를 한 턴씩 하고 중요한 실수 하나만 고쳐 줘.",
+        "optional": [
+          "skills",
+          "mcp",
+          "voice"
+        ],
+        "skillId": "conversation-practice",
+        "mcp": {
+          "serverId": "mybots-lexi-materials",
+          "tools": [
+            "lexi_list_materials",
+            "lexi_read_material"
+          ]
+        },
+        "pluginId": null,
+        "external": [],
+        "voice": {
+          "id": "gleam",
+          "style": "연습은 쉬운 영어 한 턴씩, 핵심 교정 하나 후 재시도하세요. 설명 언어는 사용자 요청에 따르세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "25b7295171313a213a1033f3ea037dceff0789ce20a62f1f02919a7ef412e148",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 29736,
+          "sha256": "3627789cc3f24e3e58ff636410f581c59cb739961e2e7ab6fa306f22a1cc5ab9"
+        },
+        {
+          "path": "mcp/data.json",
+          "component": "mcp",
+          "size": 1179,
+          "sha256": "82b9340a825df0791a045efe4df606550840d657b35810342b0c2c5ba4a4bbb9"
+        },
+        {
+          "path": "mcp/server.py",
+          "component": "mcp",
+          "size": 157,
+          "sha256": "0e641d9d459f304e68989b7e00832ffb844469e0c39c3b0c343f9e29253a6815"
+        },
+        {
+          "path": "mcp/transport.py",
+          "component": "mcp",
+          "size": 6199,
+          "sha256": "4963caee2e01391e502a7caf0fb52b6e712ef0224b89d1aa1d135509c3d4935b"
+        },
+        {
+          "path": "skills/conversation-practice/example.md",
+          "component": "skills",
+          "size": 707,
+          "sha256": "a8cbf01c6a1eaa0875fb82d89f367b49d2b40c134e5d7e7eb4362577fbe5df86"
+        },
+        {
+          "path": "skills/conversation-practice/SKILL.md",
+          "component": "skills",
+          "size": 1955,
+          "sha256": "6dc860b07c09d0c0f211cd3431655225ae1552d454aa6df9889f6262804b53f6"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2138,
+          "sha256": "fdbba35bb0387c93175bafeb5223ccfe128fc1f4508867a61ff70031fb711324"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 452,
+          "sha256": "c5a83437a17c6231045acf9d468a07253ee8d7c60ae8fe70b9f6944d501b0a52"
+        }
+      ],
+      "mcp": {
+        "serverId": "mybots-lexi-materials",
+        "tools": [
+          "lexi_list_materials",
+          "lexi_read_material"
+        ],
+        "entrypoint": "mcp/server.py"
+      },
+      "pluginId": null
+    },
+    {
+      "metadata": {
+        "id": "mybots-orbit",
+        "version": "0.1.0",
+        "name": "오르빗",
+        "englishName": "Orbit",
+        "role": "코딩 튜터",
+        "personality": "답보다 실험을 권하는 호기심 많은 동료",
+        "description": "개념 예측 → 작은 코드 읽기 → 힌트 → 테스트 관점 설명.",
+        "category": "learning",
+        "firstPrompt": "정답 전에 코드 결과를 내가 예측할 수 있도록 힌트를 줘.",
+        "optional": [
+          "skills",
+          "mcp",
+          "voice"
+        ],
+        "skillId": "code-learning",
+        "mcp": {
+          "serverId": "mybots-orbit-materials",
+          "tools": [
+            "orbit_list_materials",
+            "orbit_read_material"
+          ]
+        },
+        "pluginId": null,
+        "external": [
+          {
+            "service": "github",
+            "label": "GitHub",
+            "guide": "https://github.com/github/github-mcp-server",
+            "requirement": "GitHub 계정과 읽기 권한 설정 필요",
+            "status": "not-connected"
+          },
+          {
+            "service": "context7",
+            "label": "Context7",
+            "guide": "https://context7.com/docs/resources/all-clients",
+            "requirement": "Context7 API 키 또는 지원되는 OAuth 연결 필요",
+            "status": "not-connected"
+          }
+        ],
+        "voice": {
+          "id": "ripple",
+          "style": "호기심 있게, 코드의 결과를 먼저 예측하게 도우세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "013ad4fa0557053d5bb25fddd00106d67b4dc5ed1e5f23eecc0aa2de10a13ac0",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 26045,
+          "sha256": "6f76db98f23bbe3183d193afeaf5452ac0f4bbd7d86879d771312a1c1bd54d47"
+        },
+        {
+          "path": "mcp/data.json",
+          "component": "mcp",
+          "size": 1165,
+          "sha256": "4db2148707e07fed2a7c8a2d918d5bacff394cdd95cee584ccbb9abae157c143"
+        },
+        {
+          "path": "mcp/server.py",
+          "component": "mcp",
+          "size": 158,
+          "sha256": "e476d07720c5ffd299b260d4d303c89deff94ee77cd0194cd830dba1754e220d"
+        },
+        {
+          "path": "mcp/transport.py",
+          "component": "mcp",
+          "size": 6199,
+          "sha256": "4963caee2e01391e502a7caf0fb52b6e712ef0224b89d1aa1d135509c3d4935b"
+        },
+        {
+          "path": "skills/code-learning/example.md",
+          "component": "skills",
+          "size": 694,
+          "sha256": "bf3fcad4012513f39c47f7ac4b390b1770e2f636de56914373bd41eb7280431e"
+        },
+        {
+          "path": "skills/code-learning/SKILL.md",
+          "component": "skills",
+          "size": 1936,
+          "sha256": "93c943ba71ec51a97c6266b7ca76ce8e1b982d5cd55be6066dd2babf820cb9cf"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2154,
+          "sha256": "af6d601a4d40dd7ec004c38dbbf0a2f767a72dc4f2e01eb396c52afbaf31a49d"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 469,
+          "sha256": "088638d603fb844e1b76ba2394825c56b98c26b99e6aea78e69b4abb9d778ecf"
+        }
+      ],
+      "mcp": {
+        "serverId": "mybots-orbit-materials",
+        "tools": [
+          "orbit_list_materials",
+          "orbit_read_material"
+        ],
+        "entrypoint": "mcp/server.py"
+      },
+      "pluginId": null
+    },
+    {
+      "metadata": {
+        "id": "mybots-finn",
+        "version": "0.1.0",
+        "name": "핀",
+        "englishName": "Finn",
+        "role": "학습 설계 코치",
+        "personality": "욕심을 현실적인 주간 계획으로 바꾸는 코치",
+        "description": "목표·가용 시간 → 진단 → 인출 연습 → 복습 일정.",
+        "category": "learning",
+        "firstPrompt": "평일 30분으로 인출 연습과 복습을 포함한 계획을 짜 줘.",
+        "optional": [
+          "skills",
+          "plugin",
+          "voice"
+        ],
+        "skillId": "study-plan",
+        "mcp": null,
+        "pluginId": "mybots-finn-tools",
+        "external": [
+          {
+            "service": "notion",
+            "label": "Notion",
+            "guide": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+            "requirement": "Notion 계정과 OAuth 연결 필요",
+            "status": "not-connected"
+          }
+        ],
+        "voice": {
+          "id": "marin",
+          "style": "격려하되 과장 없이, 복습 단위를 작게 나누세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "506848115420e01c344e6740053a65f966979601e79e6816e21b2db0146ce687",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 30386,
+          "sha256": "b0029db99882ea8ec52bbc1a010547c137d609f4a3e97bb56f9f92d1436a9e57"
+        },
+        {
+          "path": "plugins/mybots-finn-tools/__init__.py",
+          "component": "plugin",
+          "size": 127,
+          "sha256": "4b821811fe8813ec3a75538c63853ac3849ac424129e80bad5b501d3b5e6d5ad"
+        },
+        {
+          "path": "plugins/mybots-finn-tools/adapter.py",
+          "component": "plugin",
+          "size": 2726,
+          "sha256": "99db6b696a3516b84402bcd0fae15e56ec259bb0d20bb4bda2bb9bb31d358997"
+        },
+        {
+          "path": "plugins/mybots-finn-tools/logic.py",
+          "component": "plugin",
+          "size": 1260,
+          "sha256": "514d690e200567ecc1888a687eae885164aab041863713b4c652d655df55742e"
+        },
+        {
+          "path": "plugins/mybots-finn-tools/plugin.yaml",
+          "component": "plugin",
+          "size": 174,
+          "sha256": "d0a37d799cd315ba7244e0e413938caa0673b12a5aa6ce8066dc4d496ed1274c"
+        },
+        {
+          "path": "skills/study-plan/example.md",
+          "component": "skills",
+          "size": 729,
+          "sha256": "16a5f86d1be7b791734c8b657286f5c3937f3069d378884719428dba149396c0"
+        },
+        {
+          "path": "skills/study-plan/SKILL.md",
+          "component": "skills",
+          "size": 1946,
+          "sha256": "ff2517b8422edbc0292165986234a508097c7b71bfa360c4d4ec52d96fced4a0"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2186,
+          "sha256": "ef510a55c8fb2bf628fd3de6de8c64976e14f30cef85aafba87e41c1182d788f"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 463,
+          "sha256": "0f02025f9b16e8db34548f8afb368517bbcf4217e8f345b5e663ee8540757597"
+        }
+      ],
+      "mcp": null,
+      "pluginId": "mybots-finn-tools"
+    },
+    {
+      "metadata": {
+        "id": "mybots-lyra",
+        "version": "0.1.0",
+        "name": "라이라",
+        "englishName": "Lyra",
+        "role": "독서 파트너",
+        "personality": "서로 다른 해석을 환영하는 대화자",
+        "description": "읽은 부분 확인 → 질문 → 주장/해석 구분 → 독서 메모.",
+        "category": "learning",
+        "firstPrompt": "줄거리 시험보다 내 생각을 넓힐 질문 세 개를 해 줘.",
+        "optional": [
+          "skills",
+          "mcp",
+          "voice"
+        ],
+        "skillId": "reading-dialogue",
+        "mcp": {
+          "serverId": "mybots-lyra-materials",
+          "tools": [
+            "lyra_list_materials",
+            "lyra_read_material"
+          ]
+        },
+        "pluginId": null,
+        "external": [
+          {
+            "service": "notion",
+            "label": "Notion",
+            "guide": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+            "requirement": "Notion 계정과 OAuth 연결 필요",
+            "status": "not-connected"
+          }
+        ],
+        "voice": {
+          "id": "willow",
+          "style": "조용하고 여유롭게, 책 속 문장과 해석을 구분하세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "e98fa5804f0c8be562c70da68526a9073a0d968509c0e857e0c4cd28628fb5f9",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 27015,
+          "sha256": "47a7b834be13acdeebdd9a699fcc4fe9b9c4f75f57c3580844d5592b784c0b54"
+        },
+        {
+          "path": "mcp/data.json",
+          "component": "mcp",
+          "size": 2206,
+          "sha256": "42547f20a8817340a7f1ec25de77ca8c353740941287f9123c45f594e987e21f"
+        },
+        {
+          "path": "mcp/server.py",
+          "component": "mcp",
+          "size": 157,
+          "sha256": "499cbff8f5e29d9de3720c7aecb85897692c6f3d9a8a2928eb4eec1f750674f2"
+        },
+        {
+          "path": "mcp/transport.py",
+          "component": "mcp",
+          "size": 6199,
+          "sha256": "4963caee2e01391e502a7caf0fb52b6e712ef0224b89d1aa1d135509c3d4935b"
+        },
+        {
+          "path": "skills/reading-dialogue/example.md",
+          "component": "skills",
+          "size": 1751,
+          "sha256": "82180a1485b7afce67ccd8909acd0d7c511e80e07d19378ada6d04e1a62796ba"
+        },
+        {
+          "path": "skills/reading-dialogue/SKILL.md",
+          "component": "skills",
+          "size": 1934,
+          "sha256": "90b60c52235a09ffca5074a59f6c59f9c73c5bdea2f7d69abc9746a30113b978"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2145,
+          "sha256": "21feb7dace3694e8fe83d6da5694b54e09d1ad1febdbe2630a18d2db78e0f6dc"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 472,
+          "sha256": "8692e042ed8a5f7236ef9f8c83bf5e88c13731adc3bc4277c574da46d3e1f9aa"
+        }
+      ],
+      "mcp": {
+        "serverId": "mybots-lyra-materials",
+        "tools": [
+          "lyra_list_materials",
+          "lyra_read_material"
+        ],
+        "entrypoint": "mcp/server.py"
+      },
+      "pluginId": null
+    },
+    {
+      "metadata": {
+        "id": "mybots-momo",
+        "version": "0.1.0",
+        "name": "모모",
+        "englishName": "Momo",
+        "role": "하루 계획 비서",
+        "personality": "여유도 일정의 일부로 보는 동료",
+        "description": "해야 할 일·에너지 → 우선 3개 → 휴식 포함 시간표.",
+        "category": "daily",
+        "firstPrompt": "집중 시간이 3시간뿐이야. 여유를 남긴 하루 계획을 만들어 줘.",
+        "optional": [
+          "skills",
+          "plugin",
+          "voice"
+        ],
+        "skillId": "gentle-day-plan",
+        "mcp": null,
+        "pluginId": "mybots-momo-tools",
+        "external": [
+          {
+            "service": "todoist",
+            "label": "Todoist",
+            "guide": "https://developer.todoist.com/",
+            "requirement": "Todoist 계정과 OAuth 연결 필요",
+            "status": "not-connected"
+          }
+        ],
+        "voice": {
+          "id": "marin",
+          "style": "포근하고 부담 없이, 오늘 할 일을 작게 나누세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "70607429fcdcf8f744c3e8ebedb52e0a21780f6872d4893198bdf7d33b160b00",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 27770,
+          "sha256": "160da77d4d536c8b1120a21a9c9ed173613d04c38dd5ec9f6ebfce114565dde6"
+        },
+        {
+          "path": "plugins/mybots-momo-tools/__init__.py",
+          "component": "plugin",
+          "size": 127,
+          "sha256": "4b821811fe8813ec3a75538c63853ac3849ac424129e80bad5b501d3b5e6d5ad"
+        },
+        {
+          "path": "plugins/mybots-momo-tools/adapter.py",
+          "component": "plugin",
+          "size": 2726,
+          "sha256": "99db6b696a3516b84402bcd0fae15e56ec259bb0d20bb4bda2bb9bb31d358997"
+        },
+        {
+          "path": "plugins/mybots-momo-tools/logic.py",
+          "component": "plugin",
+          "size": 2205,
+          "sha256": "35b80a8edc01368fd51555304133d085511812c11bc75897c457e7c4bb6cf940"
+        },
+        {
+          "path": "plugins/mybots-momo-tools/plugin.yaml",
+          "component": "plugin",
+          "size": 161,
+          "sha256": "a27a24779223004dff32b4557383c9132f5a117009c9b77506b2ae034fe3ff80"
+        },
+        {
+          "path": "skills/gentle-day-plan/example.md",
+          "component": "skills",
+          "size": 664,
+          "sha256": "2e2f7accb5f763d2c2aa86beecce311440621ee35c40cec65e56fa19aba9a421"
+        },
+        {
+          "path": "skills/gentle-day-plan/SKILL.md",
+          "component": "skills",
+          "size": 1979,
+          "sha256": "05059b73ba3cc237fcfda99666f4edb9b6705f4ab86670afaecb2f6315a3c833"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2203,
+          "sha256": "28d04944788218c1b331a5e484a9d59b671f419ee1a568de02e80023570b6583"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 467,
+          "sha256": "7e91f793554a94491d5f916e7af07735eff53689063f3b64c7fb30a645c45d38"
+        }
+      ],
+      "mcp": null,
+      "pluginId": "mybots-momo-tools"
+    },
+    {
+      "metadata": {
+        "id": "mybots-pepper",
+        "version": "0.1.0",
+        "name": "페퍼",
+        "englishName": "Pepper",
+        "role": "식사 준비 비서",
+        "personality": "냉장고 재료부터 살펴보는 실용가",
+        "description": "재료·기호 확인 → 메뉴 3안 → 조리 순서 → 장보기 목록.",
+        "category": "daily",
+        "firstPrompt": "두부와 달걀로 2인분 저녁을 만들고 필요한 재료량을 맞춰 줘.",
+        "optional": [
+          "skills",
+          "mcp",
+          "plugin",
+          "voice"
+        ],
+        "skillId": "pantry-meal",
+        "mcp": {
+          "serverId": "mybots-pepper-materials",
+          "tools": [
+            "pepper_list_materials",
+            "pepper_read_material"
+          ]
+        },
+        "pluginId": "mybots-pepper-tools",
+        "external": [],
+        "voice": {
+          "id": "quartz",
+          "style": "밝고 실용적으로, 재료와 조리 순서를 확인하세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "8c4d7c6c71b8c7e2699e15f4d17c3da7ac2a5308849d3c86b9c1baeb263c264c",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 26249,
+          "sha256": "37be1ceaba32abe3b9f566ef032f7231dd677fc2488a22e84d16d3a413822785"
+        },
+        {
+          "path": "mcp/data.json",
+          "component": "mcp",
+          "size": 1320,
+          "sha256": "5190b6115f03b45f5e2f7ead734b9a81abc751cc6fe8b3a1a217fb1599b86622"
+        },
+        {
+          "path": "mcp/server.py",
+          "component": "mcp",
+          "size": 159,
+          "sha256": "35cfd11078ce916230fffd8b960ef3c80f91661392ebe083236bd1b0aaba560f"
+        },
+        {
+          "path": "mcp/transport.py",
+          "component": "mcp",
+          "size": 6199,
+          "sha256": "4963caee2e01391e502a7caf0fb52b6e712ef0224b89d1aa1d135509c3d4935b"
+        },
+        {
+          "path": "plugins/mybots-pepper-tools/__init__.py",
+          "component": "plugin",
+          "size": 127,
+          "sha256": "4b821811fe8813ec3a75538c63853ac3849ac424129e80bad5b501d3b5e6d5ad"
+        },
+        {
+          "path": "plugins/mybots-pepper-tools/adapter.py",
+          "component": "plugin",
+          "size": 2726,
+          "sha256": "99db6b696a3516b84402bcd0fae15e56ec259bb0d20bb4bda2bb9bb31d358997"
+        },
+        {
+          "path": "plugins/mybots-pepper-tools/logic.py",
+          "component": "plugin",
+          "size": 1970,
+          "sha256": "95a548ea2e4442777052c29a59621119fdff03f1a85f4f506f6ec543ee269ae7"
+        },
+        {
+          "path": "plugins/mybots-pepper-tools/plugin.yaml",
+          "component": "plugin",
+          "size": 179,
+          "sha256": "284bfb435607bcfc58e619deca5ecc67738289507fd951d7ff0363dc3c321354"
+        },
+        {
+          "path": "skills/pantry-meal/example.md",
+          "component": "skills",
+          "size": 767,
+          "sha256": "c63271e03f6feab646a6b43a99751f8f80d5cca3a557e8986a5677fb3fca0572"
+        },
+        {
+          "path": "skills/pantry-meal/SKILL.md",
+          "component": "skills",
+          "size": 2042,
+          "sha256": "dfb475c13656890f06024a89367bbf9b6e4bba43495b152f0f668fe7a1149f62"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2250,
+          "sha256": "1de579ffb62241e085018a445ff9c5a82fafeb2cce8a4915fb8f06ae88ed0dc1"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 469,
+          "sha256": "cada2c1026b521c8b20013c389254ea0204a2ca7ea5d506c5a9226283ba6391f"
+        }
+      ],
+      "mcp": {
+        "serverId": "mybots-pepper-materials",
+        "tools": [
+          "pepper_list_materials",
+          "pepper_read_material"
+        ],
+        "entrypoint": "mcp/server.py"
+      },
+      "pluginId": "mybots-pepper-tools"
+    },
+    {
+      "metadata": {
+        "id": "mybots-atlas",
+        "version": "0.1.0",
+        "name": "아틀라스",
+        "englishName": "Atlas",
+        "role": "여행 플래너",
+        "personality": "많이 보는 것보다 잘 쉬는 동선을 만드는 동료",
+        "description": "취향·예산 → 하루 동선 → 이동 여유 → 확인할 예약·변수.",
+        "category": "daily",
+        "firstPrompt": "이동을 줄인 2박 3일 일정을 짜고 예산을 합산해 줘.",
+        "optional": [
+          "skills",
+          "mcp",
+          "plugin",
+          "voice"
+        ],
+        "skillId": "slow-travel",
+        "mcp": {
+          "serverId": "mybots-atlas-materials",
+          "tools": [
+            "atlas_list_materials",
+            "atlas_read_material"
+          ]
+        },
+        "pluginId": "mybots-atlas-tools",
+        "external": [
+          {
+            "service": "todoist",
+            "label": "Todoist",
+            "guide": "https://developer.todoist.com/",
+            "requirement": "Todoist 계정과 OAuth 연결 필요",
+            "status": "not-connected"
+          }
+        ],
+        "voice": {
+          "id": "stone",
+          "style": "차분하고 여유롭게, 동선과 비용을 구분하세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "9ae589322b0be9bbad12973b5c817a2f86b8239d756e52dbec26b1b586d99d23",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 30219,
+          "sha256": "ac44a64d51b3e61716bb0b498122ac4676c11e3c040914c084331bae57d4923d"
+        },
+        {
+          "path": "mcp/data.json",
+          "component": "mcp",
+          "size": 1204,
+          "sha256": "7117da30eb64f5bbd35e193a3c3b7bb402d3e3a9a156ac9207574b179afd3612"
+        },
+        {
+          "path": "mcp/server.py",
+          "component": "mcp",
+          "size": 158,
+          "sha256": "d67289177b1a49950d4c0e7d2ef6d7cc8e3e1a618cb09a7615d767e216974e67"
+        },
+        {
+          "path": "mcp/transport.py",
+          "component": "mcp",
+          "size": 6199,
+          "sha256": "4963caee2e01391e502a7caf0fb52b6e712ef0224b89d1aa1d135509c3d4935b"
+        },
+        {
+          "path": "plugins/mybots-atlas-tools/__init__.py",
+          "component": "plugin",
+          "size": 127,
+          "sha256": "4b821811fe8813ec3a75538c63853ac3849ac424129e80bad5b501d3b5e6d5ad"
+        },
+        {
+          "path": "plugins/mybots-atlas-tools/adapter.py",
+          "component": "plugin",
+          "size": 2726,
+          "sha256": "99db6b696a3516b84402bcd0fae15e56ec259bb0d20bb4bda2bb9bb31d358997"
+        },
+        {
+          "path": "plugins/mybots-atlas-tools/logic.py",
+          "component": "plugin",
+          "size": 2038,
+          "sha256": "7a1eba64409c75de7173154593aa7dae992ab671107a375c83913b83cdbc314c"
+        },
+        {
+          "path": "plugins/mybots-atlas-tools/plugin.yaml",
+          "component": "plugin",
+          "size": 174,
+          "sha256": "645bfbd1b7704ef16725a8038dc1cd29489860ccf4058c1d55e50c71d0082f39"
+        },
+        {
+          "path": "skills/slow-travel/example.md",
+          "component": "skills",
+          "size": 733,
+          "sha256": "73c5e5cc480e31e748f0b0e0270255cc39c07f3ec8cce64012f1623f1b182138"
+        },
+        {
+          "path": "skills/slow-travel/SKILL.md",
+          "component": "skills",
+          "size": 1970,
+          "sha256": "776925ac7974f8e32ead1657914dda1687c5af1fb71cbc4dc3d38e485f90b76f"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2193,
+          "sha256": "f96e3dd95d9d6d9b5f977a142774b96393b2eb53e45c7c2428a0b8bd8ea006d9"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 466,
+          "sha256": "0fabe72e3c11103f74db5bbe3df90790162a5015b4a71150ce191f9cacf24a04"
+        }
+      ],
+      "mcp": {
+        "serverId": "mybots-atlas-materials",
+        "tools": [
+          "atlas_list_materials",
+          "atlas_read_material"
+        ],
+        "entrypoint": "mcp/server.py"
+      },
+      "pluginId": "mybots-atlas-tools"
+    },
+    {
+      "metadata": {
+        "id": "mybots-clover",
+        "version": "0.1.0",
+        "name": "클로버",
+        "englishName": "Clover",
+        "role": "생활 예산 비서",
+        "personality": "자책 대신 선택지를 보여 주는 정리자",
+        "description": "입력 내역 분류 → 고정/변동 → 잔여 예산 → 작은 조정.",
+        "category": "daily",
+        "firstPrompt": "이번 달 남은 예산과 줄이기 쉬운 지출 항목을 보여 줘.",
+        "optional": [
+          "skills",
+          "mcp",
+          "plugin",
+          "voice"
+        ],
+        "skillId": "household-budget",
+        "mcp": {
+          "serverId": "mybots-clover-materials",
+          "tools": [
+            "clover_list_materials",
+            "clover_read_material",
+            "clover_summarize_csv"
+          ]
+        },
+        "pluginId": "mybots-clover-tools",
+        "external": [],
+        "voice": {
+          "id": "cedar",
+          "style": "정중하고 담담하게, 예산의 숫자를 천천히 확인하세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "8f5003a3b95a7feed48e3b02ea731776e88c759a3438d30bf310a4779f4411e8",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 29779,
+          "sha256": "a08c800269f8245a12cb703278503fe290e6e93e249f0bc3f6af64402bc2fbe9"
+        },
+        {
+          "path": "mcp/data.json",
+          "component": "mcp",
+          "size": 1215,
+          "sha256": "179a3c376fd866eeba1f27ecb04eca9eddd54299f87d3559da4c2f86ef007cfb"
+        },
+        {
+          "path": "mcp/server.py",
+          "component": "mcp",
+          "size": 158,
+          "sha256": "9921d586b2a483dc92014f0bf3d34236aaf340c8166c66d178ddeaf1075f0f36"
+        },
+        {
+          "path": "mcp/transport.py",
+          "component": "mcp",
+          "size": 6199,
+          "sha256": "4963caee2e01391e502a7caf0fb52b6e712ef0224b89d1aa1d135509c3d4935b"
+        },
+        {
+          "path": "plugins/mybots-clover-tools/__init__.py",
+          "component": "plugin",
+          "size": 127,
+          "sha256": "4b821811fe8813ec3a75538c63853ac3849ac424129e80bad5b501d3b5e6d5ad"
+        },
+        {
+          "path": "plugins/mybots-clover-tools/adapter.py",
+          "component": "plugin",
+          "size": 2726,
+          "sha256": "99db6b696a3516b84402bcd0fae15e56ec259bb0d20bb4bda2bb9bb31d358997"
+        },
+        {
+          "path": "plugins/mybots-clover-tools/logic.py",
+          "component": "plugin",
+          "size": 1401,
+          "sha256": "c642419fe696734182f66cb350eb8b8d3ce3bf5a1b044d49ff1ed6b1f41b2186"
+        },
+        {
+          "path": "plugins/mybots-clover-tools/plugin.yaml",
+          "component": "plugin",
+          "size": 163,
+          "sha256": "94c8434bf98e27f5a034c6c13dfef77d1be16683ee317e21ae30f236e0c1b40d"
+        },
+        {
+          "path": "skills/household-budget/example.md",
+          "component": "skills",
+          "size": 645,
+          "sha256": "7435771633dd19889ca7292d40215711442c47e4288426cc49b24142de86c1c1"
+        },
+        {
+          "path": "skills/household-budget/SKILL.md",
+          "component": "skills",
+          "size": 2056,
+          "sha256": "c987a61e28977e7765c8372976e71aaa57040e453d99a1b9a1d5d38ba0d1f86f"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2292,
+          "sha256": "ffb51b3b88c7e7261e8765e5d38ee6858c8dec3aca330e5885d9217fdd3f5d9b"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 477,
+          "sha256": "3cfce9c623d555f520975b9514f8c5110929bb06b8bd9c4039d5d9fc0f5d17e6"
+        }
+      ],
+      "mcp": {
+        "serverId": "mybots-clover-materials",
+        "tools": [
+          "clover_list_materials",
+          "clover_read_material",
+          "clover_summarize_csv"
+        ],
+        "entrypoint": "mcp/server.py"
+      },
+      "pluginId": "mybots-clover-tools"
+    },
+    {
+      "metadata": {
+        "id": "mybots-bloom",
+        "version": "0.1.0",
+        "name": "블룸",
+        "englishName": "Bloom",
+        "role": "습관 동료",
+        "personality": "끊긴 하루도 다시 시작으로 보는 응원자",
+        "description": "최소 행동 → 실행 단서 → 기록 → 주간 돌아보기.",
+        "category": "daily",
+        "firstPrompt": "끊긴 날을 비난하지 말고 다시 시작할 최소 습관과 기록을 정리해 줘.",
+        "optional": [
+          "skills",
+          "plugin",
+          "voice"
+        ],
+        "skillId": "habit-reset",
+        "mcp": null,
+        "pluginId": "mybots-bloom-tools",
+        "external": [
+          {
+            "service": "notion",
+            "label": "Notion",
+            "guide": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+            "requirement": "Notion 계정과 OAuth 연결 필요",
+            "status": "not-connected"
+          },
+          {
+            "service": "todoist",
+            "label": "Todoist",
+            "guide": "https://developer.todoist.com/",
+            "requirement": "Todoist 계정과 OAuth 연결 필요",
+            "status": "not-connected"
+          }
+        ],
+        "voice": {
+          "id": "willow",
+          "style": "따뜻하게 격려하며, 작은 재시작을 함께 정하세요.",
+          "audition": "not-tested"
+        }
+      },
+      "manifestSha256": "59af25c7f45bc8f4f9ad3795324f5f62f035bca4dc87f31cd733196895a0c51a",
+      "files": [
+        {
+          "path": "assets/avatar.png",
+          "component": "avatar",
+          "size": 28018,
+          "sha256": "77d99ee496f2e8dc284ac8d1ecf0ff479c959d8960248bc9b3e84a5b438415c4"
+        },
+        {
+          "path": "plugins/mybots-bloom-tools/__init__.py",
+          "component": "plugin",
+          "size": 127,
+          "sha256": "4b821811fe8813ec3a75538c63853ac3849ac424129e80bad5b501d3b5e6d5ad"
+        },
+        {
+          "path": "plugins/mybots-bloom-tools/adapter.py",
+          "component": "plugin",
+          "size": 2726,
+          "sha256": "99db6b696a3516b84402bcd0fae15e56ec259bb0d20bb4bda2bb9bb31d358997"
+        },
+        {
+          "path": "plugins/mybots-bloom-tools/logic.py",
+          "component": "plugin",
+          "size": 1621,
+          "sha256": "ee577869b49f00f3eabe385e10416e608b0d54a8305c72ef6f78022a4feb4790"
+        },
+        {
+          "path": "plugins/mybots-bloom-tools/plugin.yaml",
+          "component": "plugin",
+          "size": 171,
+          "sha256": "1cbfe9a920d595c2c32ad1043bc112e0c3bb68071c333ad4e7ddcbe68f41eb67"
+        },
+        {
+          "path": "skills/habit-reset/example.md",
+          "component": "skills",
+          "size": 659,
+          "sha256": "042cec202967473735ad628deb9d630a6f02939cb8ad577578c8e1053182e9c5"
+        },
+        {
+          "path": "skills/habit-reset/SKILL.md",
+          "component": "skills",
+          "size": 1922,
+          "sha256": "3655857f0d5ceea89e34abd8744fb796f387e20d7c598df3e8781638eb723ce8"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 2178,
+          "sha256": "7ef300ed202869d639b0824313c0b2c7479482716a7e7cec8d8d2410501c6bac"
+        },
+        {
+          "path": "voice/preset.json",
+          "component": "voice",
+          "size": 462,
+          "sha256": "5b644f3811ce43367440c6ecd294069ded29ed0e4368e92ec5b9fab36bdd2283"
+        }
+      ],
+      "mcp": null,
+      "pluginId": "mybots-bloom-tools"
+    },
+    {
+      "metadata": {
+        "id": "lumi",
+        "version": "0.1.0",
+        "name": "루미",
+        "englishName": "Lumi",
+        "role": "자료 요약 파트너",
+        "personality": "핵심을 차분하게 정리하는 다정한 동료",
+        "description": "예시 자료의 핵심과 다음 할 일을 정리하는 다정한 요약 파트너",
+        "category": "business",
+        "firstPrompt": "이 자료의 핵심 세 가지와 다음에 할 일을 정리해 줘.",
+        "optional": [
+          "skills",
+          "mcp",
+          "plugin"
+        ],
+        "skillId": "lumi-summary",
+        "mcp": {
+          "serverId": "lumi-examples",
+          "tools": [
+            "list_examples",
+            "read_example"
+          ]
+        },
+        "pluginId": "lumi-helper",
+        "external": [],
+        "voice": null
+      },
+      "manifestSha256": "4518f2bbaf6ed569daf5f55e1e560e47993ec9d4dd9e0c4a04a40fd7e1f4aede",
+      "files": [
+        {
+          "path": "assets/avatar.jpg",
+          "component": "avatar",
+          "size": 472574,
+          "sha256": "5a736b557d06a1d226489597dd112b5fe06431c82d1a101a902d8a018503674e"
+        },
+        {
+          "path": "mcp/example.md",
+          "component": "mcp",
+          "size": 472,
+          "sha256": "9b5d83223c237753377341b6481b6087d269b79258e94a610d4a636199e77a50"
+        },
+        {
+          "path": "mcp/examples.py",
+          "component": "mcp",
+          "size": 2188,
+          "sha256": "da66ccaac35bfd7f3fc87100db04970b4ea018aa964b8e69ef43b2fb99a4a257"
+        },
+        {
+          "path": "plugins/lumi-helper/__init__.py",
+          "component": "plugin",
+          "size": 524,
+          "sha256": "e0f224762aa8c8ed7b111ba03fc3ea666a56c50d80bc864c86a6e3ca20fbe0b4"
+        },
+        {
+          "path": "plugins/lumi-helper/plugin.yaml",
+          "component": "plugin",
+          "size": 163,
+          "sha256": "ae18ead7833c22e4371075047632c9de00082fa1d27f2c217fa0f362409233d5"
+        },
+        {
+          "path": "skills/lumi-summary/example.md",
+          "component": "skills",
+          "size": 472,
+          "sha256": "9b5d83223c237753377341b6481b6087d269b79258e94a610d4a636199e77a50"
+        },
+        {
+          "path": "skills/lumi-summary/SKILL.md",
+          "component": "skills",
+          "size": 647,
+          "sha256": "96fb32e33ed027262aee3bd04430e54fa47147b9e8386dcc18146b28d485df3d"
+        },
+        {
+          "path": "SOUL.md",
+          "component": "soul",
+          "size": 900,
+          "sha256": "ebe90482b02b46d0cdf1ded5ff583fc5ac7f68a5b7ed53a3c9c525b6ed2a863b"
+        }
+      ],
+      "mcp": {
+        "serverId": "lumi-examples",
+        "tools": [
+          "list_examples",
+          "read_example"
+        ],
+        "entrypoint": "mcp/examples.py"
+      },
+      "pluginId": "lumi-helper"
+    }
+  ]
+}

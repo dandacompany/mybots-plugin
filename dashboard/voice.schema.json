@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "engine",
+    "provider",
+    "model",
+    "voice",
+    "language",
+    "instructions"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "engine": {
+      "const": "gpt-live"
+    },
+    "provider": {
+      "const": "openai"
+    },
+    "model": {
+      "const": "gpt-live-1"
+    },
+    "voice": {
+      "enum": [
+        "marin",
+        "cedar",
+        "quartz",
+        "ripple",
+        "vesper",
+        "willow",
+        "stone",
+        "gleam",
+        "meridian",
+        "bossa",
+        "tempo",
+        "beacon",
+        "delta",
+        "cinder"
+      ]
+    },
+    "language": {
+      "enum": [
+        "ko-KR",
+        "en-US"
+      ]
+    },
+    "instructions": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "\\S"
+    }
+  }
+}

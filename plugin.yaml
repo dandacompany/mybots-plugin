@@ -1,0 +1,9 @@
+name: mybots
+version: 0.4.0
+description: Review and install MyBots profiles from a signed server catalog.
+author: Dante Labs
+pip_dependencies:
+  - cryptography==50.0.1
+  - requests==2.33.0
+  - PyYAML==6.0.3
+  - jsonschema==4.26.0

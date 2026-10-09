@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+dashboard/settings.json
+.mybots-build.json
