@@ -2,7 +2,7 @@
 import copy,json,re
 from pathlib import Path
 from urllib.parse import urlsplit
-INSTALLER_VERSION='0.4.0'
+INSTALLER_VERSION='0.4.1'
 META={'id','version','name','englishName','role','personality','description','category','firstPrompt','optional','skillId','mcp','pluginId','external','voice'}
 OPTIONAL=('skills','mcp','plugin','voice')
 _voice_schema=Path(__file__).with_name('voice.schema.json')

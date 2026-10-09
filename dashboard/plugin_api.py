@@ -20,6 +20,14 @@ router=APIRouter()
 _engine=None
 _credentials=None
 
+@router.get('/presentations/{locale}')
+def presentations(locale:str):
+    if locale not in ('en','ko'):raise HTTPException(400,'Unsupported presentation locale')
+    inst=engine()
+    if not inst.authority:raise HTTPException(503,'Signed catalog required')
+    try:return _module._sibling('remote_catalog').fetch_presentations(inst.origin,locale,_module.fetch_bytes)
+    except Exception as exc:raise HTTPException(503,'Display translations unavailable')from exc
+
 def credentials():
     global _credentials
     if _credentials is None:
@@ -82,7 +90,7 @@ def install(request:InstallRequest):
 @router.get('/capabilities')
 def capabilities():
     inst=engine()
-    return {'installerVersion':'0.4.0','marketProtocol':1 if inst.authority else 0,'registration':bool(inst.authority),'credentialProviders':credentials().providers() if inst.authority else [],'bots':[dict(id=b,version=v)for b,v in inst.trusted]}
+    return {'installerVersion':'0.4.1','marketProtocol':1 if inst.authority else 0,'registration':bool(inst.authority),'credentialProviders':credentials().providers() if inst.authority else [],'bots':[dict(id=b,version=v)for b,v in inst.trusted]}
 
 @router.get('/bots/{bot}/{version}')
 def metadata(bot:str,version:str):

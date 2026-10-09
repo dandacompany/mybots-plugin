@@ -38,7 +38,7 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 def fetch_bytes(url, limit):
     try:
-        request=urllib.request.Request(url,headers={"User-Agent":"MyBots/0.4.0"})
+        request=urllib.request.Request(url,headers={"User-Agent":"MyBots/0.4.1"})
         with urllib.request.build_opener(NoRedirect).open(request, timeout=15) as response:
             blob=response.read(limit+1)
         if len(blob)>limit:raise InstallError('File exceeds size limit')

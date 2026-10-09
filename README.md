@@ -44,6 +44,12 @@ personality, tone, background and working preferences.
 Creator submissions require an issued MyBots creator API key. Connect it in the
 plugin's connection settings; it is not bundled with this repository.
 
+## Languages
+
+MyBots follows the Hermes Desktop language setting automatically. Its interface supports English, Korean, Simplified Chinese, Traditional Chinese, Japanese, Arabic, Russian, French, German and Spanish, with right-to-left layout for Arabic. Other language packs use English. Switching languages preserves open forms, selected files and installation options.
+
+Bot introductions are available in English and Korean; other interface languages show English introductions. Display translations do not change the signed installation package, Soul or voice instructions. Hermes core changes are not required. If localized bot text is unavailable, the authored description remains visible.
+
 ## Security and permissions
 
 - The initial catalog is `https://mybots.work`. Catalog snapshots are verified

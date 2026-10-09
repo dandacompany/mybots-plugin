@@ -13,6 +13,25 @@ def unique_object(pairs):
         result[key]=value
     return result
 def strict_json(raw):return json.loads(raw.decode('utf-8')if isinstance(raw,bytes)else raw,object_pairs_hook=unique_object,parse_constant=lambda _:(_ for _ in()).throw(ValueError('Invalid JSON number')))
+def fetch_presentations(origin_value,locale,fetch):
+    """Read bounded display text only; signed catalogs remain install authority."""
+    if locale not in ('en','ko'):raise ValueError('Unsupported presentation locale')
+    raw=fetch(origin(origin_value)+'/api/web/bots/'+locale,2_000_000)
+    if not isinstance(raw,bytes)or len(raw)>2_000_000:raise ValueError('Presentation response limit')
+    data=contract.record(strict_json(raw),('schemaVersion','locale','bots'))
+    if type(data['schemaVersion'])is not int or data['schemaVersion']!=1 or data['locale']!=locale or not isinstance(data['bots'],list)or len(data['bots'])>200:raise ValueError('Invalid presentation catalog')
+    bots=[];seen=set()
+    for item in data['bots']:
+        if not isinstance(item,dict):raise ValueError('Invalid presentation bot')
+        bot=contract.parse_metadata({key:item.get(key)for key in contract.META})
+        identity=(bot['id'],bot['version'])
+        if identity in seen:raise ValueError('Duplicate presentation bot')
+        seen.add(identity)
+        fields={key:bot[key]for key in ('id','version','name','role','personality','description','firstPrompt')}
+        fields['voiceStyle']=bot['voice']['style']if bot['voice']else None
+        fields['external']=[{key:link[key]for key in ('label','requirement')}for link in bot['external']]
+        bots.append(fields)
+    return dict(locale=locale,bots=bots)
 def origin(value):
     if not isinstance(value,str):raise ValueError('Invalid catalog origin')
     u=urlsplit(value)
