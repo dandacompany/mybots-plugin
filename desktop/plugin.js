@@ -153,7 +153,16 @@ var locales_default = {
     "Validation issue at {0}. Check the package format and required fields.": "Validation issue at {0}. Check the package format and required fields.",
     Avatar: "Avatar",
     "Revision {0}": "Revision {0}",
-    "{0} bytes": "{0} bytes"
+    "{0} bytes": "{0} bytes",
+    "A bot named {0} already exists. The existing bot was not changed.": "A bot named {0} already exists. The existing bot was not changed.",
+    "The {0} profile has manual changes, so installation stopped. The existing bot was not changed.": "The {0} profile has manual changes, so installation stopped. The existing bot was not changed.",
+    "The review expired, so nothing was installed. Review the configuration again.": "The review expired, so nothing was installed. Review the configuration again.",
+    "A profile named {0} already exists, so this bot cannot be installed. The existing bot will not be changed. Rename the existing profile and try again.": "A profile named {0} already exists, so this bot cannot be installed. The existing bot will not be changed. Rename the existing profile and try again.",
+    "Model: {0} (same as the default profile)": "Model: {0} (same as the default profile)",
+    "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "Model: the default profile has no model, so this stays empty. Choose a model first after installing.",
+    "Choose a model first. This bot has no model yet.": "Choose a model first. This bot has no model yet.",
+    "You can chat right away with the same model as the default profile ({0}).": "You can chat right away with the same model as the default profile ({0}).",
+    "Language packs: {0} (copied from the default profile)": "Language packs: {0} (copied from the default profile)"
   },
   ko: {
     "Could not load installed bots. Please retry.": "\uC124\uCE58\uB41C \uBD07\uC744 \uD655\uC778\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. \uB2E4\uC2DC \uC2DC\uB3C4\uD574 \uC8FC\uC138\uC694.",
@@ -302,7 +311,16 @@ var locales_default = {
     "Validation issue at {0}. Check the package format and required fields.": "{0} \uAC80\uC99D \uBB38\uC81C \xB7 \uD328\uD0A4\uC9C0 \uD615\uC2DD\uACFC \uD544\uC218 \uD56D\uBAA9\uC744 \uD655\uC778\uD574 \uC8FC\uC138\uC694.",
     Avatar: "\uC544\uBC14\uD0C0",
     "Revision {0}": "\uB9AC\uBE44\uC804 {0}",
-    "{0} bytes": "{0}\uBC14\uC774\uD2B8"
+    "{0} bytes": "{0}\uBC14\uC774\uD2B8",
+    "A bot named {0} already exists. The existing bot was not changed.": "\uAC19\uC740 \uC774\uB984({0})\uC758 \uBD07\uC774 \uC774\uBBF8 \uC788\uC5B4\uC694. \uAE30\uC874 \uBD07\uC740 \uBC14\uAFB8\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4.",
+    "The {0} profile has manual changes, so installation stopped. The existing bot was not changed.": "{0} \uD504\uB85C\uD544\uC5D0 \uC9C1\uC811 \uBC14\uAFBC \uB0B4\uC6A9\uC774 \uC788\uC5B4 \uC124\uCE58\uB97C \uBA48\uCDC4\uC5B4\uC694. \uAE30\uC874 \uBD07\uC740 \uBC14\uAFB8\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4.",
+    "The review expired, so nothing was installed. Review the configuration again.": "\uD655\uC778\uD55C \uC9C0 \uC624\uB798\uB418\uC5B4 \uC124\uCE58\uD558\uC9C0 \uC54A\uC558\uC5B4\uC694. \uAD6C\uC131\uC744 \uB2E4\uC2DC \uD655\uC778\uD574 \uC8FC\uC138\uC694.",
+    "A profile named {0} already exists, so this bot cannot be installed. The existing bot will not be changed. Rename the existing profile and try again.": "\uAC19\uC740 \uC774\uB984({0})\uC758 \uD504\uB85C\uD544\uC774 \uC774\uBBF8 \uC788\uC5B4 \uC124\uCE58\uD560 \uC218 \uC5C6\uC5B4\uC694. \uAE30\uC874 \uBD07\uC740 \uBC14\uAFB8\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uAE30\uC874 \uD504\uB85C\uD544 \uC774\uB984\uC744 \uBC14\uAFBC \uB4A4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574 \uC8FC\uC138\uC694.",
+    "Model: {0} (same as the default profile)": "\uBAA8\uB378: {0} (\uAE30\uBCF8 \uD504\uB85C\uD544\uACFC \uAC19\uC74C)",
+    "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "\uBAA8\uB378: \uAE30\uBCF8 \uD504\uB85C\uD544\uC5D0 \uBAA8\uB378\uC774 \uC5C6\uC5B4 \uBE44\uC6CC \uB461\uB2C8\uB2E4. \uC124\uCE58 \uD6C4 \uBA3C\uC800 \uBAA8\uB378\uC744 \uACE8\uB77C \uC8FC\uC138\uC694.",
+    "Choose a model first. This bot has no model yet.": "\uBA3C\uC800 \uBAA8\uB378\uC744 \uACE8\uB77C \uC8FC\uC138\uC694. \uC774 \uBD07\uC5D0\uB294 \uC544\uC9C1 \uBAA8\uB378\uC774 \uC5C6\uC5B4\uC694.",
+    "You can chat right away with the same model as the default profile ({0}).": "\uAE30\uBCF8 \uD504\uB85C\uD544\uACFC \uAC19\uC740 \uBAA8\uB378({0})\uB85C \uBC14\uB85C \uB300\uD654\uD560 \uC218 \uC788\uC5B4\uC694.",
+    "Language packs: {0} (copied from the default profile)": "\uC5B8\uC5B4\uD329: {0} (\uAE30\uBCF8 \uD504\uB85C\uD544\uC5D0\uC11C \uBCF5\uC0AC)"
   },
   zh: {
     "Could not load installed bots. Please retry.": "\u65E0\u6CD5\u52A0\u8F7D\u5DF2\u5B89\u88C5\u7684\u673A\u5668\u4EBA\u3002\u8BF7\u91CD\u8BD5\u3002",
@@ -451,7 +469,16 @@ var locales_default = {
     "Validation issue at {0}. Check the package format and required fields.": "{0} \u9A8C\u8BC1\u95EE\u9898\u3002\u8BF7\u68C0\u67E5\u5305\u683C\u5F0F\u53CA\u5FC5\u586B\u9879\u3002",
     Avatar: "\u5934\u50CF",
     "Revision {0}": "\u4FEE\u8BA2\u7248 {0}",
-    "{0} bytes": "{0} \u5B57\u8282"
+    "{0} bytes": "{0} \u5B57\u8282",
+    "A bot named {0} already exists. The existing bot was not changed.": "\u540D\u4E3A {0} \u7684\u673A\u5668\u4EBA\u5DF2\u5B58\u5728\u3002\u73B0\u6709\u673A\u5668\u4EBA\u672A\u88AB\u66F4\u6539\u3002",
+    "The {0} profile has manual changes, so installation stopped. The existing bot was not changed.": "{0} \u914D\u7F6E\u6587\u4EF6\u5305\u542B\u624B\u52A8\u66F4\u6539\uFF0C\u56E0\u6B64\u5DF2\u505C\u6B62\u5B89\u88C5\u3002\u73B0\u6709\u673A\u5668\u4EBA\u672A\u88AB\u66F4\u6539\u3002",
+    "The review expired, so nothing was installed. Review the configuration again.": "\u5BA1\u6838\u5DF2\u8FC7\u671F\uFF0C\u672A\u8FDB\u884C\u5B89\u88C5\u3002\u8BF7\u91CD\u65B0\u68C0\u67E5\u914D\u7F6E\u3002",
+    "A profile named {0} already exists, so this bot cannot be installed. The existing bot will not be changed. Rename the existing profile and try again.": "\u540D\u4E3A {0} \u7684\u914D\u7F6E\u6587\u4EF6\u5DF2\u5B58\u5728\uFF0C\u56E0\u6B64\u65E0\u6CD5\u5B89\u88C5\u6B64\u673A\u5668\u4EBA\u3002\u73B0\u6709\u673A\u5668\u4EBA\u4E0D\u4F1A\u88AB\u66F4\u6539\u3002\u8BF7\u91CD\u547D\u540D\u73B0\u6709\u914D\u7F6E\u6587\u4EF6\u540E\u91CD\u8BD5\u3002",
+    "Model: {0} (same as the default profile)": "\u6A21\u578B\uFF1A{0}\uFF08\u4E0E\u9ED8\u8BA4\u914D\u7F6E\u6587\u4EF6\u76F8\u540C\uFF09",
+    "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "\u6A21\u578B\uFF1A\u9ED8\u8BA4\u914D\u7F6E\u6587\u4EF6\u6CA1\u6709\u6A21\u578B\uFF0C\u56E0\u6B64\u4FDD\u6301\u4E3A\u7A7A\u3002\u5B89\u88C5\u540E\u8BF7\u5148\u9009\u62E9\u6A21\u578B\u3002",
+    "Choose a model first. This bot has no model yet.": "\u8BF7\u5148\u9009\u62E9\u6A21\u578B\u3002\u6B64\u673A\u5668\u4EBA\u8FD8\u6CA1\u6709\u6A21\u578B\u3002",
+    "You can chat right away with the same model as the default profile ({0}).": "\u53EF\u4EE5\u7ACB\u5373\u4F7F\u7528\u4E0E\u9ED8\u8BA4\u914D\u7F6E\u6587\u4EF6\u76F8\u540C\u7684\u6A21\u578B\uFF08{0}\uFF09\u804A\u5929\u3002",
+    "Language packs: {0} (copied from the default profile)": "\u8BED\u8A00\u5305\uFF1A{0}\uFF08\u4ECE\u9ED8\u8BA4\u914D\u7F6E\u6587\u4EF6\u590D\u5236\uFF09"
   },
   "zh-hant": {
     "Could not load installed bots. Please retry.": "\u7121\u6CD5\u8F09\u5165\u5DF2\u5B89\u88DD\u7684\u6A5F\u5668\u4EBA\u3002\u8ACB\u91CD\u8A66\u3002",
@@ -600,7 +627,16 @@ var locales_default = {
     "Validation issue at {0}. Check the package format and required fields.": "{0} \u9A57\u8B49\u554F\u984C\u3002\u8ACB\u6AA2\u67E5\u5957\u4EF6\u683C\u5F0F\u53CA\u5FC5\u586B\u9805\u3002",
     Avatar: "\u982D\u50CF",
     "Revision {0}": "\u4FEE\u8A02\u7248 {0}",
-    "{0} bytes": "{0} \u4F4D\u5143\u7D44"
+    "{0} bytes": "{0} \u4F4D\u5143\u7D44",
+    "A bot named {0} already exists. The existing bot was not changed.": "\u540D\u70BA {0} \u7684\u6A5F\u5668\u4EBA\u5DF2\u5B58\u5728\u3002\u73FE\u6709\u6A5F\u5668\u4EBA\u672A\u88AB\u8B8A\u66F4\u3002",
+    "The {0} profile has manual changes, so installation stopped. The existing bot was not changed.": "{0} \u8A2D\u5B9A\u6A94\u542B\u6709\u624B\u52D5\u8B8A\u66F4\uFF0C\u56E0\u6B64\u5DF2\u505C\u6B62\u5B89\u88DD\u3002\u73FE\u6709\u6A5F\u5668\u4EBA\u672A\u88AB\u8B8A\u66F4\u3002",
+    "The review expired, so nothing was installed. Review the configuration again.": "\u5BE9\u6838\u5DF2\u904E\u671F\uFF0C\u672A\u9032\u884C\u5B89\u88DD\u3002\u8ACB\u91CD\u65B0\u6AA2\u67E5\u8A2D\u5B9A\u3002",
+    "A profile named {0} already exists, so this bot cannot be installed. The existing bot will not be changed. Rename the existing profile and try again.": "\u540D\u70BA {0} \u7684\u8A2D\u5B9A\u6A94\u5DF2\u5B58\u5728\uFF0C\u56E0\u6B64\u7121\u6CD5\u5B89\u88DD\u6B64\u6A5F\u5668\u4EBA\u3002\u73FE\u6709\u6A5F\u5668\u4EBA\u4E0D\u6703\u88AB\u8B8A\u66F4\u3002\u8ACB\u91CD\u65B0\u547D\u540D\u73FE\u6709\u8A2D\u5B9A\u6A94\u5F8C\u518D\u8A66\u4E00\u6B21\u3002",
+    "Model: {0} (same as the default profile)": "\u6A21\u578B\uFF1A{0}\uFF08\u8207\u9810\u8A2D\u8A2D\u5B9A\u6A94\u76F8\u540C\uFF09",
+    "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "\u6A21\u578B\uFF1A\u9810\u8A2D\u8A2D\u5B9A\u6A94\u6C92\u6709\u6A21\u578B\uFF0C\u56E0\u6B64\u4FDD\u6301\u7A7A\u767D\u3002\u5B89\u88DD\u5F8C\u8ACB\u5148\u9078\u64C7\u6A21\u578B\u3002",
+    "Choose a model first. This bot has no model yet.": "\u8ACB\u5148\u9078\u64C7\u6A21\u578B\u3002\u6B64\u6A5F\u5668\u4EBA\u9084\u6C92\u6709\u6A21\u578B\u3002",
+    "You can chat right away with the same model as the default profile ({0}).": "\u53EF\u4EE5\u7ACB\u5373\u4F7F\u7528\u8207\u9810\u8A2D\u8A2D\u5B9A\u6A94\u76F8\u540C\u7684\u6A21\u578B\uFF08{0}\uFF09\u804A\u5929\u3002",
+    "Language packs: {0} (copied from the default profile)": "\u8A9E\u8A00\u5305\uFF1A{0}\uFF08\u5F9E\u9810\u8A2D\u8A2D\u5B9A\u6A94\u8907\u88FD\uFF09"
   },
   ja: {
     "Could not load installed bots. Please retry.": "\u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u6E08\u307F\u30DC\u30C3\u30C8\u3092\u8AAD\u307F\u8FBC\u3081\u307E\u305B\u3093\u3002\u518D\u8A66\u884C\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
@@ -749,7 +785,16 @@ var locales_default = {
     "Validation issue at {0}. Check the package format and required fields.": "{0} \u306E\u691C\u8A3C\u306B\u554F\u984C\u304C\u3042\u308A\u307E\u3059\u3002\u5F62\u5F0F\u3068\u5FC5\u9808\u9805\u76EE\u3092\u78BA\u8A8D\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
     Avatar: "\u30A2\u30D0\u30BF\u30FC",
     "Revision {0}": "\u30EA\u30D3\u30B8\u30E7\u30F3 {0}",
-    "{0} bytes": "{0} \u30D0\u30A4\u30C8"
+    "{0} bytes": "{0} \u30D0\u30A4\u30C8",
+    "A bot named {0} already exists. The existing bot was not changed.": "{0} \u3068\u3044\u3046\u540D\u524D\u306E\u30DC\u30C3\u30C8\u304C\u3059\u3067\u306B\u3042\u308A\u307E\u3059\u3002\u65E2\u5B58\u306E\u30DC\u30C3\u30C8\u306F\u5909\u66F4\u3057\u3066\u3044\u307E\u305B\u3093\u3002",
+    "The {0} profile has manual changes, so installation stopped. The existing bot was not changed.": "{0} \u30D7\u30ED\u30D5\u30A1\u30A4\u30EB\u306B\u624B\u52D5\u306E\u5909\u66F4\u304C\u3042\u308B\u305F\u3081\u3001\u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u3092\u4E2D\u6B62\u3057\u307E\u3057\u305F\u3002\u65E2\u5B58\u306E\u30DC\u30C3\u30C8\u306F\u5909\u66F4\u3057\u3066\u3044\u307E\u305B\u3093\u3002",
+    "The review expired, so nothing was installed. Review the configuration again.": "\u78BA\u8A8D\u306E\u6709\u52B9\u671F\u9650\u304C\u5207\u308C\u305F\u305F\u3081\u3001\u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u3057\u307E\u305B\u3093\u3067\u3057\u305F\u3002\u69CB\u6210\u3092\u3082\u3046\u4E00\u5EA6\u78BA\u8A8D\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
+    "A profile named {0} already exists, so this bot cannot be installed. The existing bot will not be changed. Rename the existing profile and try again.": "{0} \u3068\u3044\u3046\u540D\u524D\u306E\u30D7\u30ED\u30D5\u30A1\u30A4\u30EB\u304C\u3059\u3067\u306B\u3042\u308B\u305F\u3081\u3001\u3053\u306E\u30DC\u30C3\u30C8\u306F\u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u3067\u304D\u307E\u305B\u3093\u3002\u65E2\u5B58\u306E\u30DC\u30C3\u30C8\u306F\u5909\u66F4\u3055\u308C\u307E\u305B\u3093\u3002\u65E2\u5B58\u306E\u30D7\u30ED\u30D5\u30A1\u30A4\u30EB\u540D\u3092\u5909\u66F4\u3057\u3066\u304B\u3089\u3001\u3082\u3046\u4E00\u5EA6\u304A\u8A66\u3057\u304F\u3060\u3055\u3044\u3002",
+    "Model: {0} (same as the default profile)": "\u30E2\u30C7\u30EB\uFF1A{0}\uFF08\u30C7\u30D5\u30A9\u30EB\u30C8\u30D7\u30ED\u30D5\u30A1\u30A4\u30EB\u3068\u540C\u3058\uFF09",
+    "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "\u30E2\u30C7\u30EB\uFF1A\u30C7\u30D5\u30A9\u30EB\u30C8\u30D7\u30ED\u30D5\u30A1\u30A4\u30EB\u306B\u30E2\u30C7\u30EB\u304C\u306A\u3044\u305F\u3081\u3001\u7A7A\u306E\u307E\u307E\u306B\u3057\u307E\u3059\u3002\u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u5F8C\u3001\u307E\u305A\u30E2\u30C7\u30EB\u3092\u9078\u3093\u3067\u304F\u3060\u3055\u3044\u3002",
+    "Choose a model first. This bot has no model yet.": "\u307E\u305A\u30E2\u30C7\u30EB\u3092\u9078\u3093\u3067\u304F\u3060\u3055\u3044\u3002\u3053\u306E\u30DC\u30C3\u30C8\u306B\u306F\u307E\u3060\u30E2\u30C7\u30EB\u304C\u3042\u308A\u307E\u305B\u3093\u3002",
+    "You can chat right away with the same model as the default profile ({0}).": "\u30C7\u30D5\u30A9\u30EB\u30C8\u30D7\u30ED\u30D5\u30A1\u30A4\u30EB\u3068\u540C\u3058\u30E2\u30C7\u30EB\uFF08{0}\uFF09\u3067\u3059\u3050\u306B\u4F1A\u8A71\u3067\u304D\u307E\u3059\u3002",
+    "Language packs: {0} (copied from the default profile)": "\u8A00\u8A9E\u30D1\u30C3\u30AF\uFF1A{0}\uFF08\u30C7\u30D5\u30A9\u30EB\u30C8\u30D7\u30ED\u30D5\u30A1\u30A4\u30EB\u304B\u3089\u30B3\u30D4\u30FC\uFF09"
   },
   ar: {
     "Could not load installed bots. Please retry.": "\u062A\u0639\u0630\u0631 \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0628\u0648\u062A\u0627\u062A \u0627\u0644\u0645\u062B\u0628\u062A\u0629. \u062D\u0627\u0648\u0644 \u0645\u062C\u062F\u062F\u064B\u0627.",
@@ -898,7 +943,16 @@ var locales_default = {
     "Validation issue at {0}. Check the package format and required fields.": "\u0645\u0634\u0643\u0644\u0629 \u062A\u062D\u0642\u0642 \u0641\u064A {0}. \u0631\u0627\u062C\u0639 \u062A\u0646\u0633\u064A\u0642 \u0627\u0644\u062D\u0632\u0645\u0629 \u0648\u0627\u0644\u062D\u0642\u0648\u0644 \u0627\u0644\u0645\u0637\u0644\u0648\u0628\u0629.",
     Avatar: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0631\u0645\u0632\u064A\u0629",
     "Revision {0}": "\u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0629 {0}",
-    "{0} bytes": "{0} \u0628\u0627\u064A\u062A"
+    "{0} bytes": "{0} \u0628\u0627\u064A\u062A",
+    "A bot named {0} already exists. The existing bot was not changed.": "\u064A\u0648\u062C\u062F \u0628\u0627\u0644\u0641\u0639\u0644 \u0631\u0648\u0628\u0648\u062A \u0628\u0627\u0633\u0645 {0}. \u0644\u0645 \u064A\u062A\u0645 \u062A\u063A\u064A\u064A\u0631 \u0627\u0644\u0631\u0648\u0628\u0648\u062A \u0627\u0644\u062D\u0627\u0644\u064A.",
+    "The {0} profile has manual changes, so installation stopped. The existing bot was not changed.": "\u064A\u062D\u062A\u0648\u064A \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062E\u0635\u064A {0} \u0639\u0644\u0649 \u062A\u063A\u064A\u064A\u0631\u0627\u062A \u064A\u062F\u0648\u064A\u0629\u060C \u0644\u0630\u0644\u0643 \u062A\u0648\u0642\u0641 \u0627\u0644\u062A\u062B\u0628\u064A\u062A. \u0644\u0645 \u064A\u062A\u0645 \u062A\u063A\u064A\u064A\u0631 \u0627\u0644\u0631\u0648\u0628\u0648\u062A \u0627\u0644\u062D\u0627\u0644\u064A.",
+    "The review expired, so nothing was installed. Review the configuration again.": "\u0627\u0646\u062A\u0647\u062A \u0635\u0644\u0627\u062D\u064A\u0629 \u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0629\u060C \u0644\u0630\u0644\u0643 \u0644\u0645 \u064A\u062A\u0645 \u062A\u062B\u0628\u064A\u062A \u0623\u064A \u0634\u064A\u0621. \u0631\u0627\u062C\u0639 \u0627\u0644\u0625\u0639\u062F\u0627\u062F\u0627\u062A \u0645\u0631\u0629 \u0623\u062E\u0631\u0649.",
+    "A profile named {0} already exists, so this bot cannot be installed. The existing bot will not be changed. Rename the existing profile and try again.": "\u064A\u0648\u062C\u062F \u0628\u0627\u0644\u0641\u0639\u0644 \u0645\u0644\u0641 \u0634\u062E\u0635\u064A \u0628\u0627\u0633\u0645 {0}\u060C \u0644\u0630\u0644\u0643 \u0644\u0627 \u064A\u0645\u0643\u0646 \u062A\u062B\u0628\u064A\u062A \u0647\u0630\u0627 \u0627\u0644\u0631\u0648\u0628\u0648\u062A. \u0644\u0646 \u064A\u062A\u0645 \u062A\u063A\u064A\u064A\u0631 \u0627\u0644\u0631\u0648\u0628\u0648\u062A \u0627\u0644\u062D\u0627\u0644\u064A. \u0623\u0639\u062F \u062A\u0633\u0645\u064A\u0629 \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062E\u0635\u064A \u0627\u0644\u062D\u0627\u0644\u064A \u062B\u0645 \u062D\u0627\u0648\u0644 \u0645\u0631\u0629 \u0623\u062E\u0631\u0649.",
+    "Model: {0} (same as the default profile)": "\u0627\u0644\u0646\u0645\u0648\u0630\u062C: {0} (\u0645\u062B\u0644 \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062E\u0635\u064A \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A)",
+    "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "\u0627\u0644\u0646\u0645\u0648\u0630\u062C: \u0644\u0627 \u064A\u062D\u062A\u0648\u064A \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062E\u0635\u064A \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A \u0639\u0644\u0649 \u0646\u0645\u0648\u0630\u062C\u060C \u0644\u0630\u0644\u0643 \u064A\u0628\u0642\u0649 \u0641\u0627\u0631\u063A\u064B\u0627. \u0627\u062E\u062A\u0631 \u0646\u0645\u0648\u0630\u062C\u064B\u0627 \u0623\u0648\u0644\u064B\u0627 \u0628\u0639\u062F \u0627\u0644\u062A\u062B\u0628\u064A\u062A.",
+    "Choose a model first. This bot has no model yet.": "\u0627\u062E\u062A\u0631 \u0646\u0645\u0648\u0630\u062C\u064B\u0627 \u0623\u0648\u0644\u064B\u0627. \u0644\u0627 \u064A\u0648\u062C\u062F \u0646\u0645\u0648\u0630\u062C \u0644\u0647\u0630\u0627 \u0627\u0644\u0631\u0648\u0628\u0648\u062A \u0628\u0639\u062F.",
+    "You can chat right away with the same model as the default profile ({0}).": "\u064A\u0645\u0643\u0646\u0643 \u0627\u0644\u062F\u0631\u062F\u0634\u0629 \u0641\u0648\u0631\u064B\u0627 \u0628\u0627\u0633\u062A\u062E\u062F\u0627\u0645 \u0646\u0641\u0633 \u0646\u0645\u0648\u0630\u062C \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062E\u0635\u064A \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A ({0}).",
+    "Language packs: {0} (copied from the default profile)": "\u062D\u0632\u0645 \u0627\u0644\u0644\u063A\u0629: {0} (\u0645\u0646\u0633\u0648\u062E\u0629 \u0645\u0646 \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062E\u0635\u064A \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A)"
   },
   ru: {
     "Could not load installed bots. Please retry.": "\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u043D\u044B\u0445 \u0431\u043E\u0442\u043E\u0432. \u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u043E\u043F\u044B\u0442\u043A\u0443.",
@@ -1047,7 +1101,16 @@ var locales_default = {
     "Validation issue at {0}. Check the package format and required fields.": "\u041E\u0448\u0438\u0431\u043A\u0430 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438 \u0432 {0}. \u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u0444\u043E\u0440\u043C\u0430\u0442 \u0438 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0435 \u043F\u043E\u043B\u044F.",
     Avatar: "\u0410\u0432\u0430\u0442\u0430\u0440",
     "Revision {0}": "\u0420\u0435\u0434\u0430\u043A\u0446\u0438\u044F {0}",
-    "{0} bytes": "{0} \u0431\u0430\u0439\u0442"
+    "{0} bytes": "{0} \u0431\u0430\u0439\u0442",
+    "A bot named {0} already exists. The existing bot was not changed.": "\u0411\u043E\u0442 \u0441 \u0438\u043C\u0435\u043D\u0435\u043C {0} \u0443\u0436\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442. \u0421\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u044E\u0449\u0438\u0439 \u0431\u043E\u0442 \u043D\u0435 \u0438\u0437\u043C\u0435\u043D\u0451\u043D.",
+    "The {0} profile has manual changes, so installation stopped. The existing bot was not changed.": "\u0412 \u043F\u0440\u043E\u0444\u0438\u043B\u0435 {0} \u0435\u0441\u0442\u044C \u0440\u0443\u0447\u043D\u044B\u0435 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F, \u043F\u043E\u044D\u0442\u043E\u043C\u0443 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0430 \u043E\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u0430. \u0421\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u044E\u0449\u0438\u0439 \u0431\u043E\u0442 \u043D\u0435 \u0438\u0437\u043C\u0435\u043D\u0451\u043D.",
+    "The review expired, so nothing was installed. Review the configuration again.": "\u0421\u0440\u043E\u043A \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438 \u0438\u0441\u0442\u0451\u043A, \u043F\u043E\u044D\u0442\u043E\u043C\u0443 \u043D\u0438\u0447\u0435\u0433\u043E \u043D\u0435 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u043E. \u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u043A\u043E\u043D\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044E \u0435\u0449\u0451 \u0440\u0430\u0437.",
+    "A profile named {0} already exists, so this bot cannot be installed. The existing bot will not be changed. Rename the existing profile and try again.": "\u041F\u0440\u043E\u0444\u0438\u043B\u044C \u0441 \u0438\u043C\u0435\u043D\u0435\u043C {0} \u0443\u0436\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442, \u043F\u043E\u044D\u0442\u043E\u043C\u0443 \u044D\u0442\u043E\u0433\u043E \u0431\u043E\u0442\u0430 \u043D\u0435\u043B\u044C\u0437\u044F \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C. \u0421\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u044E\u0449\u0438\u0439 \u0431\u043E\u0442 \u043D\u0435 \u0431\u0443\u0434\u0435\u0442 \u0438\u0437\u043C\u0435\u043D\u0451\u043D. \u041F\u0435\u0440\u0435\u0438\u043C\u0435\u043D\u0443\u0439\u0442\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u044E\u0449\u0438\u0439 \u043F\u0440\u043E\u0444\u0438\u043B\u044C \u0438 \u043F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u043E\u043F\u044B\u0442\u043A\u0443.",
+    "Model: {0} (same as the default profile)": "\u041C\u043E\u0434\u0435\u043B\u044C: {0} (\u043A\u0430\u043A \u0432 \u043F\u0440\u043E\u0444\u0438\u043B\u0435 \u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E)",
+    "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "\u041C\u043E\u0434\u0435\u043B\u044C: \u0432 \u043F\u0440\u043E\u0444\u0438\u043B\u0435 \u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E \u043D\u0435\u0442 \u043C\u043E\u0434\u0435\u043B\u0438, \u043F\u043E\u044D\u0442\u043E\u043C\u0443 \u043F\u043E\u043B\u0435 \u043E\u0441\u0442\u0430\u0451\u0442\u0441\u044F \u043F\u0443\u0441\u0442\u044B\u043C. \u041F\u043E\u0441\u043B\u0435 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438 \u0441\u043D\u0430\u0447\u0430\u043B\u0430 \u0432\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043C\u043E\u0434\u0435\u043B\u044C.",
+    "Choose a model first. This bot has no model yet.": "\u0421\u043D\u0430\u0447\u0430\u043B\u0430 \u0432\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043C\u043E\u0434\u0435\u043B\u044C. \u0423 \u044D\u0442\u043E\u0433\u043E \u0431\u043E\u0442\u0430 \u0435\u0449\u0451 \u043D\u0435\u0442 \u043C\u043E\u0434\u0435\u043B\u0438.",
+    "You can chat right away with the same model as the default profile ({0}).": "\u041C\u043E\u0436\u043D\u043E \u0441\u0440\u0430\u0437\u0443 \u043E\u0431\u0449\u0430\u0442\u044C\u0441\u044F \u0441 \u0442\u043E\u0439 \u0436\u0435 \u043C\u043E\u0434\u0435\u043B\u044C\u044E, \u0447\u0442\u043E \u0438 \u0432 \u043F\u0440\u043E\u0444\u0438\u043B\u0435 \u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E ({0}).",
+    "Language packs: {0} (copied from the default profile)": "\u042F\u0437\u044B\u043A\u043E\u0432\u044B\u0435 \u043F\u0430\u043A\u0435\u0442\u044B: {0} (\u0441\u043A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u043D\u044B \u0438\u0437 \u043F\u0440\u043E\u0444\u0438\u043B\u044F \u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E)"
   },
   fr: {
     "Could not load installed bots. Please retry.": "Impossible de charger les bots install\xE9s. R\xE9essayez.",
@@ -1196,7 +1259,16 @@ var locales_default = {
     "Validation issue at {0}. Check the package format and required fields.": "Erreur de validation \xE0 {0}. V\xE9rifiez le format et les champs requis.",
     Avatar: "Avatar",
     "Revision {0}": "R\xE9vision {0}",
-    "{0} bytes": "{0} octets"
+    "{0} bytes": "{0} octets",
+    "A bot named {0} already exists. The existing bot was not changed.": "Un bot nomm\xE9 {0} existe d\xE9j\xE0. Le bot existant n\u2019a pas \xE9t\xE9 modifi\xE9.",
+    "The {0} profile has manual changes, so installation stopped. The existing bot was not changed.": "Le profil {0} contient des modifications manuelles, l\u2019installation a donc \xE9t\xE9 arr\xEAt\xE9e. Le bot existant n\u2019a pas \xE9t\xE9 modifi\xE9.",
+    "The review expired, so nothing was installed. Review the configuration again.": "La v\xE9rification a expir\xE9, rien n\u2019a \xE9t\xE9 install\xE9. V\xE9rifiez \xE0 nouveau la configuration.",
+    "A profile named {0} already exists, so this bot cannot be installed. The existing bot will not be changed. Rename the existing profile and try again.": "Un profil nomm\xE9 {0} existe d\xE9j\xE0, ce bot ne peut donc pas \xEAtre install\xE9. Le bot existant ne sera pas modifi\xE9. Renommez le profil existant puis r\xE9essayez.",
+    "Model: {0} (same as the default profile)": "Mod\xE8le : {0} (identique au profil par d\xE9faut)",
+    "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "Mod\xE8le : le profil par d\xE9faut n\u2019a pas de mod\xE8le, ce champ reste donc vide. Choisissez d\u2019abord un mod\xE8le apr\xE8s l\u2019installation.",
+    "Choose a model first. This bot has no model yet.": "Choisissez d\u2019abord un mod\xE8le. Ce bot n\u2019a pas encore de mod\xE8le.",
+    "You can chat right away with the same model as the default profile ({0}).": "Vous pouvez discuter imm\xE9diatement avec le m\xEAme mod\xE8le que le profil par d\xE9faut ({0}).",
+    "Language packs: {0} (copied from the default profile)": "Packs de langue : {0} (copi\xE9s depuis le profil par d\xE9faut)"
   },
   de: {
     "Could not load installed bots. Please retry.": "Installierte Bots konnten nicht geladen werden. Bitte erneut versuchen.",
@@ -1345,7 +1417,16 @@ var locales_default = {
     "Validation issue at {0}. Check the package format and required fields.": "Pr\xFCfproblem bei {0}. Paketformat und Pflichtfelder pr\xFCfen.",
     Avatar: "Avatar",
     "Revision {0}": "Revision {0}",
-    "{0} bytes": "{0} Bytes"
+    "{0} bytes": "{0} Bytes",
+    "A bot named {0} already exists. The existing bot was not changed.": "Ein Bot namens {0} existiert bereits. Der vorhandene Bot wurde nicht ge\xE4ndert.",
+    "The {0} profile has manual changes, so installation stopped. The existing bot was not changed.": "Das Profil {0} enth\xE4lt manuelle \xC4nderungen, daher wurde die Installation abgebrochen. Der vorhandene Bot wurde nicht ge\xE4ndert.",
+    "The review expired, so nothing was installed. Review the configuration again.": "Die Pr\xFCfung ist abgelaufen, daher wurde nichts installiert. Pr\xFCfen Sie die Konfiguration erneut.",
+    "A profile named {0} already exists, so this bot cannot be installed. The existing bot will not be changed. Rename the existing profile and try again.": "Ein Profil namens {0} existiert bereits, daher kann dieser Bot nicht installiert werden. Der vorhandene Bot wird nicht ge\xE4ndert. Benennen Sie das vorhandene Profil um und versuchen Sie es erneut.",
+    "Model: {0} (same as the default profile)": "Modell: {0} (wie im Standardprofil)",
+    "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "Modell: Das Standardprofil hat kein Modell, daher bleibt dies leer. W\xE4hlen Sie nach der Installation zuerst ein Modell.",
+    "Choose a model first. This bot has no model yet.": "W\xE4hlen Sie zuerst ein Modell. Dieser Bot hat noch kein Modell.",
+    "You can chat right away with the same model as the default profile ({0}).": "Sie k\xF6nnen sofort mit demselben Modell wie im Standardprofil ({0}) chatten.",
+    "Language packs: {0} (copied from the default profile)": "Sprachpakete: {0} (aus dem Standardprofil kopiert)"
   },
   es: {
     "Could not load installed bots. Please retry.": "No se pudieron cargar los bots instalados. Int\xE9ntalo de nuevo.",
@@ -1494,7 +1575,16 @@ var locales_default = {
     "Validation issue at {0}. Check the package format and required fields.": "Problema de validaci\xF3n en {0}. Revisa el formato y campos obligatorios.",
     Avatar: "Avatar",
     "Revision {0}": "Revisi\xF3n {0}",
-    "{0} bytes": "{0} bytes"
+    "{0} bytes": "{0} bytes",
+    "A bot named {0} already exists. The existing bot was not changed.": "Ya existe un bot llamado {0}. El bot existente no se modific\xF3.",
+    "The {0} profile has manual changes, so installation stopped. The existing bot was not changed.": "El perfil {0} tiene cambios manuales, as\xED que la instalaci\xF3n se detuvo. El bot existente no se modific\xF3.",
+    "The review expired, so nothing was installed. Review the configuration again.": "La revisi\xF3n caduc\xF3, as\xED que no se instal\xF3 nada. Revisa la configuraci\xF3n de nuevo.",
+    "A profile named {0} already exists, so this bot cannot be installed. The existing bot will not be changed. Rename the existing profile and try again.": "Ya existe un perfil llamado {0}, as\xED que no se puede instalar este bot. El bot existente no se modificar\xE1. Cambia el nombre del perfil existente e int\xE9ntalo de nuevo.",
+    "Model: {0} (same as the default profile)": "Modelo: {0} (igual que el perfil predeterminado)",
+    "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "Modelo: el perfil predeterminado no tiene modelo, as\xED que queda vac\xEDo. Elige un modelo primero despu\xE9s de instalar.",
+    "Choose a model first. This bot has no model yet.": "Elige un modelo primero. Este bot a\xFAn no tiene modelo.",
+    "You can chat right away with the same model as the default profile ({0}).": "Puedes chatear de inmediato con el mismo modelo que el perfil predeterminado ({0}).",
+    "Language packs: {0} (copied from the default profile)": "Paquetes de idioma: {0} (copiados del perfil predeterminado)"
   }
 };
 
@@ -2057,9 +2147,10 @@ import { useEffect as useEffect5, useRef as useRef4, useState as useState4 } fro
 import { host as host2 } from "@hermes/plugin-sdk";
 
 // packages/hermes-plugin/desktop/install-state.ts
+var format = (key, ...args) => key.replace(/\{(\d+)\}/g, (_, n) => String(args[Number(n)] ?? ""));
 var initialSelection = (bot) => [...bot.optional];
 var normalizeSelection = (bot, selected) => bot.optional.filter((c) => selected.includes(c));
-function voiceResultMessage(result, t = (key, ...args) => key.replace(/\{(\d+)\}/g, (_, n) => String(args[Number(n)] ?? ""))) {
+function voiceResultMessage(result, t = format) {
   if (result.voiceStatus === "existing-settings-preserved") return t("Existing voice settings were preserved. Check the profile\u2019s Voice settings.");
   return result.voiceConfigured ? t("Recommended voice {0} included. Check voice authentication.", result.voice?.voice ?? "") : t("Voice settings were not included.");
 }
@@ -2067,6 +2158,17 @@ function profileDestination(profile) {
   if (!BOT_ID.test(profile)) throw Error("Invalid profile");
   return { route: { connectionId: "local", mode: "local", profile, targetProfile: profile }, options: { workspaceMode: "bots", workspaceOwnerKey: `bot:local::${profile}` } };
 }
+function installErrorMessage(error, profile, t = format) {
+  const text2 = String(error?.message ?? error);
+  if (text2.includes("Profile name already exists")) return t("A bot named {0} already exists. The existing bot was not changed.", profile);
+  if (text2.includes("Existing MyBots profile has changes")) return t("The {0} profile has manual changes, so installation stopped. The existing bot was not changed.", profile);
+  if (text2.includes("Review expired")) return t("The review expired, so nothing was installed. Review the configuration again.");
+  return t("Could not install. Review the configuration and retry.");
+}
+var nameConflictMessage = (profile, t = format) => t("A profile named {0} already exists, so this bot cannot be installed. The existing bot will not be changed. Rename the existing profile and try again.", profile);
+var modelReviewMessage = (model, t = format) => model ? t("Model: {0} (same as the default profile)", model.name) : t("Model: the default profile has no model, so this stays empty. Choose a model first after installing.");
+var modelResultMessage = (result, t = format) => result.modelSetupRequired || !result.model ? t("Choose a model first. This bot has no model yet.") : t("You can chat right away with the same model as the default profile ({0}).", result.model.name);
+var languagePackMessage = (packs, t = format) => packs?.length ? t("Language packs: {0} (copied from the default profile)", packs.map((p) => p.name).join(", ")) : "";
 
 // packages/hermes-plugin/desktop/bot-avatar.tsx
 import { useEffect as useEffect4, useRef as useRef3 } from "react";
@@ -2692,12 +2794,13 @@ function BotAvatar({ bot, name, src, sha256, mood = "idle", size = 80 }) {
 // packages/hermes-plugin/desktop/install-confirmation.tsx
 import { Fragment as Fragment3, jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
 var labels = { skills: "Skills", mcp: "MCP \xB7 runs local Python", plugin: "Plugin \xB7 runs local Python", voice: "Recommended GPT Live voice" };
-function InstallConfirmation({ ctx, bot, onClose, onInstalled, mood = "idle" }) {
+function InstallConfirmation({ ctx, bot, onClose, onInstalled, mood = "idle", status }) {
   const { t, locale, dir } = useMyBots();
   const [selection, setSelection] = useState4(() => initialSelection(bot)), [review, setReview] = useState4(null), [result, setResult] = useState4(null), [busy, setBusy] = useState4(false), [error, setError] = useState4(""), [retry, setRetry] = useState4(0);
   const opener = useRef4(document.activeElement);
   const fence = useRef4(new ReviewFence()), posting = useRef4(false), local = useLocal();
   const identity = bot.id + "@" + bot.version;
+  const conflict = status?.state === "name-conflict";
   const owner = useRef4(identity);
   owner.current = identity;
   useEffect5(() => {
@@ -2740,9 +2843,9 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, mood = "idle" }) 
         setReview(null);
         onInstalled(value);
       }
-    } catch {
+    } catch (reason) {
       if (fence.current.isCurrent(ticket)) {
-        setError("Could not install. Review the configuration and retry.");
+        setError(installErrorMessage(reason, review.manifest.id, t));
         setReview(null);
       }
     } finally {
@@ -2798,13 +2901,15 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, mood = "idle" }) 
     ] }),
     busy && !posting.current && /* @__PURE__ */ jsx5(Loader, { label: t("Reviewing installation") }),
     review && /* @__PURE__ */ jsxs4(Fragment3, { children: [
-      /* @__PURE__ */ jsxs4("p", { className: "mb-muted", children: [
+      conflict ? /* @__PURE__ */ jsx5(Failure, { message: nameConflictMessage(review.manifest.id, t) }) : /* @__PURE__ */ jsxs4("p", { className: "mb-muted", children: [
         t("New profile:"),
         /* @__PURE__ */ jsx5("b", { children: review.manifest.id }),
         " ",
         t("Author:"),
         review.manifest.author
       ] }),
+      /* @__PURE__ */ jsx5("p", { children: modelReviewMessage(review.model, t) }),
+      languagePackMessage(review.languagePacks, t) && /* @__PURE__ */ jsx5("p", { children: languagePackMessage(review.languagePacks, t) }),
       review.components.some((c) => c === "mcp" || c === "plugin") && /* @__PURE__ */ jsx5("p", { children: t("Selected MCP and plugins execute Python on this device.") }),
       review.voice && /* @__PURE__ */ jsxs4("p", { children: [
         t("Recommended voice:"),
@@ -2827,12 +2932,12 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, mood = "idle" }) 
           t("{0} bytes", f.size)
         ] }, f.path)) })
       ] }),
-      /* @__PURE__ */ jsx5(DialogFooter, { children: /* @__PURE__ */ jsx5(Button2, { disabled: busy || !local, loading: posting.current && busy, onClick: install, children: t("Install {0}", bot.name) }) })
+      /* @__PURE__ */ jsx5(DialogFooter, { children: /* @__PURE__ */ jsx5(Button2, { disabled: busy || !local || conflict, loading: posting.current && busy, onClick: install, children: t("Install {0}", bot.name) }) })
     ] }),
     !review && !result && !busy && local && /* @__PURE__ */ jsx5(Button2, { variant: "secondary", onClick: () => setRetry((n) => n + 1), children: t("Review again") }),
     result && /* @__PURE__ */ jsxs4("section", { role: "status", className: "mb-section", children: [
       /* @__PURE__ */ jsx5("h3", { children: result.status === "already-installed" ? t("Already installed") : t("Installation complete") }),
-      /* @__PURE__ */ jsx5("p", { children: result.modelSetupRequired ? t("Configure a model and authentication in Hermes.") : t("Your profile is ready.") }),
+      /* @__PURE__ */ jsx5("p", { children: modelResultMessage(result, t) }),
       /* @__PURE__ */ jsx5("p", { children: voiceResultMessage(result, t) }),
       /* @__PURE__ */ jsxs4("p", { children: [
         t("First prompt:"),
@@ -3156,7 +3261,7 @@ function MarketPage({ ctx, renderTab }) {
       ] }),
       (tab === "connection" || tab === "submissions") && (renderTab ? renderTab(tab) : /* @__PURE__ */ jsx6(Loader, { label: t("Loading submissions") }))
     ] }),
-    selected && /* @__PURE__ */ jsx6(InstallConfirmation, { ctx, bot: shown(selected), mood: botMood(selected), onClose: close, onInstalled: done }, selected.id + "@" + selected.version)
+    selected && /* @__PURE__ */ jsx6(InstallConfirmation, { ctx, bot: shown(selected), mood: botMood(selected), status: installed.find((x) => x.bot === selected.id), onClose: close, onInstalled: done }, selected.id + "@" + selected.version)
   ] });
 }
 
@@ -3165,7 +3270,7 @@ import { jsx as jsx7 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.4.1",
+  version: "0.4.3",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {

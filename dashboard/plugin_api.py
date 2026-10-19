@@ -90,7 +90,7 @@ def install(request:InstallRequest):
 @router.get('/capabilities')
 def capabilities():
     inst=engine()
-    return {'installerVersion':'0.4.1','marketProtocol':1 if inst.authority else 0,'registration':bool(inst.authority),'credentialProviders':credentials().providers() if inst.authority else [],'bots':[dict(id=b,version=v)for b,v in inst.trusted]}
+    return {'installerVersion':'0.4.3','marketProtocol':1 if inst.authority else 0,'registration':bool(inst.authority),'credentialProviders':credentials().providers() if inst.authority else [],'bots':[dict(id=b,version=v)for b,v in inst.trusted]}
 
 @router.get('/bots/{bot}/{version}')
 def metadata(bot:str,version:str):

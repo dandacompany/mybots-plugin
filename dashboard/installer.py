@@ -38,7 +38,7 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 def fetch_bytes(url, limit):
     try:
-        request=urllib.request.Request(url,headers={"User-Agent":"MyBots/0.4.1"})
+        request=urllib.request.Request(url,headers={"User-Agent":"MyBots/0.4.3"})
         with urllib.request.build_opener(NoRedirect).open(request, timeout=15) as response:
             blob=response.read(limit+1)
         if len(blob)>limit:raise InstallError('File exceeds size limit')
@@ -65,6 +65,52 @@ def activate_profile(target):
         clear_named_profile_deleted(target)
         if not named_profile_is_live(target):raise InstallError('Installed profile is not available in Hermes')
     except OSError as exc:raise InstallError('Profile files are installed, but Hermes registration failed; review and retry') from exc
+
+# Only fields Hermes reads to reach a model travel; credentials (inline keys, key_cmd, headers)
+# never do, because MyBots profiles are distributions whose config.yaml can be exported.
+SAFE_MODEL={'default','model','provider','base_url','api_mode','transport','context_length','max_tokens','ollama_num_ctx','key_env','api_key_env'}
+SAFE_PROVIDER=SAFE_MODEL|{'name','api','url','default_model','models','timeout','supports_vision','modalities','extra_body'}
+SECRET_WORDS={'key','apikey','token','secret','password','passwd','pwd','passphrase','auth','authorization','bearer','jwt','session','cookie','cookies','credential','credentials','header','headers','signature'}
+def _secret_name(name):
+    words=re.sub(r'([a-z0-9])([A-Z])',r'\1_\2',str(name)).lower().replace('-','_').split('_')
+    return 'apikey'in ''.join(words) or any(w in SECRET_WORDS for w in words)
+def _scrub(value):
+    if isinstance(value,dict):return {k:_scrub(v)for k,v in value.items()if not _secret_name(k)}
+    if isinstance(value,list):return [_scrub(v)for v in value]
+    if isinstance(value,str)and re.match(r'\s*[a-z][a-z0-9+.-]*://',value,re.I):
+        parts=urlsplit(value.strip());host=parts.hostname or ''
+        if ':' in host:host='['+host+']'
+        return parts._replace(netloc=host+(f':{parts.port}'if parts.port else''),query='',fragment='').geturl()
+    return value
+def without_secrets(seed):
+    out={}
+    model=seed.get('model')
+    if isinstance(model,str):out['model']=_scrub(model)
+    elif isinstance(model,dict):out['model']={k:_scrub(v)for k,v in model.items()if k in SAFE_MODEL}
+    providers=seed.get('providers')
+    if isinstance(providers,dict):
+        out['providers']={n:{k:_scrub(v)for k,v in p.items()if k in SAFE_PROVIDER}for n,p in providers.items()if isinstance(p,dict)}
+    return out
+
+def model_seed(source):
+    """Hermes' own rule for a fresh profile (``hermes profile create``): copy the launch profile's
+    model block, plus its custom ``providers:`` entry when it names one, minus credentials."""
+    try:from hermes_cli.profiles import launch_model_seed
+    except ImportError:launch_model_seed=None
+    return without_secrets(launch_model_seed(source)if launch_model_seed else _launch_model_seed(source))
+
+def _launch_model_seed(source):
+    model=source.get('model')
+    if not model:return {}
+    seed={'model':model};providers=source.get('providers');name=model.get('provider')if isinstance(model,dict)else None
+    if isinstance(providers,dict)and name in providers:seed['providers']={name:providers[name]}
+    return seed
+
+def model_summary(model):
+    if isinstance(model,str)and model:return {'name':model,'provider':None}
+    if isinstance(model,dict)and isinstance(model.get('default'),str)and model['default']:
+        return {'name':model['default'],'provider':model.get('provider')if isinstance(model.get('provider'),str)else None}
+    return None
 
 class Installer:
     def __init__(self, home:Path, origin:str, *, fetch=fetch_bytes, trusted_path=None, authority=None):
@@ -156,8 +202,8 @@ class Installer:
             try:preset=_voice.read_preset(blobs['voice/preset.json'])
             except (ValueError,KeyError)as exc:raise InstallError('Invalid voice preset')from exc
             if preset['voice']!=metadata['voice']['id']:raise InstallError('Voice metadata mismatch')
-        digest=hashlib.sha256(raw).hexdigest()
-        preview={'manifest':manifest,'digest':digest,'components':sorted(components),'blobs':blobs,'expires':time.monotonic()+600,'entry':trusted_entry,'voice':preset}
+        digest=hashlib.sha256(raw).hexdigest();seed,packs=self._launch_seed()
+        preview={'manifest':manifest,'digest':digest,'components':sorted(components),'blobs':blobs,'expires':time.monotonic()+600,'entry':trusted_entry,'voice':preset,'seed':seed,'packs':packs}
         if self.authority:preview.update(origin=self.origin,publisherKeyId=self.authority.current.key_id)
         token=secrets.token_urlsafe(32)
         with self.mutex:
@@ -167,6 +213,7 @@ class Installer:
         return {'token':token,'manifest':manifest,'digest':digest,'components':preview['components'],
             'profile':bot,'expiresIn':600,'avatar':'data:'+avatar_mime+';base64,'+base64.b64encode(blobs[avatar_path]).decode(),
             'soul':soul,'catalog':self.origin,'metadata':metadata,'voice':preset if 'voice'in components else None,
+            'model':model_summary(seed.get('model')),'languagePacks':[dict(name=p['name'],locales=p['locales'])for p in packs],
             'permissions':['Writes a new local profile','Selected MCP and plugin run local Python code','No external service credentials included']}
 
     def install(self, token):
@@ -202,7 +249,13 @@ class Installer:
                         if entry['component'] not in ['soul','avatar',*preview['components']]:continue
                         file=source/entry['path'];file.parent.mkdir(parents=True,exist_ok=True)
                         file.write_bytes(preview['blobs'][entry['path']])
-                    config=_catalog.profile_config(preview['entry'],preview['components'],target,sys.executable)
+                    config={**preview['seed'],**_catalog.profile_config(preview['entry'],preview['components'],target,sys.executable)}
+                    packs=[p for p in preview['packs']if p['name']!=preview['entry']['metadata'].get('pluginId')]
+                    for pack in packs:
+                        for rel,blob in pack['files'].items():
+                            file=source/'plugins'/pack['name']/rel;file.parent.mkdir(parents=True,exist_ok=True);file.write_bytes(blob)
+                    if packs:
+                        plugins=dict(config.get('plugins')or{});plugins['enabled']=[*plugins.get('enabled',[]),*[p['name']for p in packs]];config['plugins']=plugins
                     if 'voice'in preview['components']:config['voice']=_voice.voice_config(preview['voice'])
                     (source/'config.yaml').write_text(yaml.safe_dump(config,allow_unicode=True))
                     profile_meta={'description':preview['manifest']['description'],'display_name':preview['manifest']['name']}
@@ -236,6 +289,35 @@ class Installer:
             except InstallError:raise
             except Exception as exc:raise InstallError('Installation failed; no existing profile was changed') from exc
         return self._result('installed',target.name,preview)
+
+    def _launch_seed(self):
+        """What a new profile inherits from the default profile: Hermes' model seed, and the
+        enabled language packs as manifest-only copies (plugin.yaml + locales, never code) so
+        the Desktop stays in the user's language. Unreadable sources simply inherit nothing."""
+        try:source=yaml.safe_load(self._profile_file(self.home,'config.yaml',1_000_000))
+        except (OSError,ValueError,yaml.YAMLError,RecursionError):return {},[]
+        if not isinstance(source,dict):return {},[]
+        seed=model_seed(source);packs=[];plugins=source.get('plugins')
+        enabled=plugins.get('enabled')if isinstance(plugins,dict)else None
+        for name in enabled if isinstance(enabled,list)else []:
+            if not isinstance(name,str)or not re.fullmatch(r'[a-z0-9][a-z0-9._-]{0,63}',name)or len(packs)>=4:continue
+            root=self.home/'plugins'/name
+            try:
+                manifest=yaml.safe_load(self._profile_file(root,'plugin.yaml',65536))
+                declared=manifest.get('provides_locales')if isinstance(manifest,dict)else None
+                locales=sorted({(l.get('id')if isinstance(l,dict)else l)for l in declared}if isinstance(declared,list)else set())
+                if not locales or not all(isinstance(l,str)and re.fullmatch(r'[a-z]{2,3}(-[a-z0-9]{2,8})?',l)for l in locales):continue
+                files={'plugin.yaml':self._profile_file(root,'plugin.yaml',65536)};total=0
+                for entry in sorted(os.listdir(root/'locales')):
+                    if not re.fullmatch(r'[a-z0-9-]+(\.[a-z0-9-]+)?\.yaml',entry):continue
+                    blob=self._profile_file(root,'locales/'+entry,4_000_000);total+=len(blob)
+                    if total>8_000_000:raise ValueError('Language pack too large')
+                    files['locales/'+entry]=blob
+                if len(files)>1:packs.append(dict(name=name,locales=locales,files=files))
+            except (OSError,ValueError,yaml.YAMLError,RecursionError):continue
+        display=source.get('display');language=display.get('language')if isinstance(display,dict)else None
+        if packs and isinstance(language,str)and any(language in p['locales']for p in packs):seed['display']={'language':language}
+        return seed,packs
 
     def _profile_file(self,target,rel,limit):
         _catalog.safe_path(rel);fd=os.open(target,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
@@ -311,4 +393,11 @@ class Installer:
                             configured=isinstance(live,dict)and actual.get('voice_chat_mode')==expected['voice_chat_mode']and all(live.get(k)==v for k,v in expected['gpt_live'].items())
             except (OSError,ValueError,yaml.YAMLError,RecursionError):pass
             if not configured:voice_status='existing-settings-preserved'
-        return dict(status=status,profile=profile,modelSetupRequired=True,voiceConfigured=configured,voice=preview['voice']if configured else None,voiceStatus=voice_status)
+        model=None
+        if status=='installed':model=preview['seed'].get('model')
+        else:
+            try:
+                config=yaml.safe_load(self._profile_file(self.home/'profiles'/profile,'config.yaml',1_000_000))
+                model=config.get('model')if isinstance(config,dict)else None
+            except (OSError,ValueError,yaml.YAMLError,RecursionError):pass
+        return dict(status=status,profile=profile,modelSetupRequired=model_summary(model)is None,model=model_summary(model),voiceConfigured=configured,voice=preview['voice']if configured else None,voiceStatus=voice_status)
