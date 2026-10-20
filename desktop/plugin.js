@@ -162,7 +162,49 @@ var locales_default = {
     "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "Model: the default profile has no model, so this stays empty. Choose a model first after installing.",
     "Choose a model first. This bot has no model yet.": "Choose a model first. This bot has no model yet.",
     "You can chat right away with the same model as the default profile ({0}).": "You can chat right away with the same model as the default profile ({0}).",
-    "Language packs: {0} (copied from the default profile)": "Language packs: {0} (copied from the default profile)"
+    "Language packs: {0} (copied from the default profile)": "Language packs: {0} (copied from the default profile)",
+    "Keys this bot needs are stored only in bot profiles on this computer": "Keys this bot needs are stored only in bot profiles on this computer",
+    "Could not save this key to the default profile; the bot profile has it": "Could not save this key to the default profile; the bot profile has it",
+    "The default profile key file could not be checked safely, so it was left unchanged; the bot profile has this key": "The default profile key file could not be checked safely, so it was left unchanged; the bot profile has this key",
+    "Keys apply from the next new chat (or after restarting Hermes)": "Keys apply from the next new chat (or after restarting Hermes)",
+    "The bot profile key file could not be checked safely, so nothing was changed": "The bot profile key file could not be checked safely, so nothing was changed",
+    "Service keys": "Service keys",
+    Required: "Required",
+    Optional: "Optional",
+    "Get a key": "Get a key",
+    "Imported from the default profile \u2713": "Imported from the default profile \u2713",
+    "Save to the default profile so other bots can use it": "Save to the default profile so other bots can use it",
+    "The default profile value stays as it is": "The default profile value stays as it is",
+    "Required keys left empty: {0}. You can add them after installing.": "Required keys left empty: {0}. You can add them after installing.",
+    "Required keys still empty: {0}.": "Required keys still empty: {0}.",
+    Set: "Set",
+    Empty: "Empty",
+    Skipped: "Skipped",
+    "Could not check": "Could not check",
+    "Keys needed": "Keys needed",
+    "Check keys": "Check keys",
+    "Taken from the default profile": "Taken from the default profile",
+    "Also saved to the default profile": "Also saved to the default profile",
+    "The default profile value was kept": "The default profile value was kept",
+    "Add keys": "Add keys",
+    "Add keys for {0}": "Add keys for {0}",
+    "Save keys": "Save keys",
+    "Loading keys": "Loading keys",
+    "Bot profile: {0}": "Bot profile: {0}",
+    "The request was not accepted, so nothing was changed. Update MyBots and retry.": "The request was not accepted, so nothing was changed. Update MyBots and retry.",
+    "A key value is empty. Enter it or leave the key out. Nothing was changed.": "A key value is empty. Enter it or leave the key out. Nothing was changed.",
+    "A key must be one line of at most 4,096 bytes without control characters. Nothing was changed.": "A key must be one line of at most 4,096 bytes without control characters. Nothing was changed.",
+    "The keys did not match this bot. Review again; nothing was changed.": "The keys did not match this bot. Review again; nothing was changed.",
+    "The bot profile config could not be read safely, so nothing was changed.": "The bot profile config could not be read safely, so nothing was changed.",
+    "Could not save the keys to the bot profile. Retry.": "Could not save the keys to the bot profile. Retry.",
+    "This bot was not installed by MyBots with keys, so add keys in Hermes settings.": "This bot was not installed by MyBots with keys, so add keys in Hermes settings.",
+    "The installed version changed. Refresh the bot list and retry.": "The installed version changed. Refresh the bot list and retry.",
+    "This bot needs a newer MyBots helper. Update MyBots and retry.": "This bot needs a newer MyBots helper. Update MyBots and retry.",
+    "Could not save the keys. Retry.": "Could not save the keys. Retry.",
+    "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.",
+    "Coming soon": "Coming soon",
+    "This bot is still being prepared. You can install it once it opens.": "This bot is still being prepared. You can install it once it opens.",
+    "This bot is not open yet.": "This bot is not open yet."
   },
   ko: {
     "Could not load installed bots. Please retry.": "\uC124\uCE58\uB41C \uBD07\uC744 \uD655\uC778\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. \uB2E4\uC2DC \uC2DC\uB3C4\uD574 \uC8FC\uC138\uC694.",
@@ -320,7 +362,49 @@ var locales_default = {
     "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "\uBAA8\uB378: \uAE30\uBCF8 \uD504\uB85C\uD544\uC5D0 \uBAA8\uB378\uC774 \uC5C6\uC5B4 \uBE44\uC6CC \uB461\uB2C8\uB2E4. \uC124\uCE58 \uD6C4 \uBA3C\uC800 \uBAA8\uB378\uC744 \uACE8\uB77C \uC8FC\uC138\uC694.",
     "Choose a model first. This bot has no model yet.": "\uBA3C\uC800 \uBAA8\uB378\uC744 \uACE8\uB77C \uC8FC\uC138\uC694. \uC774 \uBD07\uC5D0\uB294 \uC544\uC9C1 \uBAA8\uB378\uC774 \uC5C6\uC5B4\uC694.",
     "You can chat right away with the same model as the default profile ({0}).": "\uAE30\uBCF8 \uD504\uB85C\uD544\uACFC \uAC19\uC740 \uBAA8\uB378({0})\uB85C \uBC14\uB85C \uB300\uD654\uD560 \uC218 \uC788\uC5B4\uC694.",
-    "Language packs: {0} (copied from the default profile)": "\uC5B8\uC5B4\uD329: {0} (\uAE30\uBCF8 \uD504\uB85C\uD544\uC5D0\uC11C \uBCF5\uC0AC)"
+    "Language packs: {0} (copied from the default profile)": "\uC5B8\uC5B4\uD329: {0} (\uAE30\uBCF8 \uD504\uB85C\uD544\uC5D0\uC11C \uBCF5\uC0AC)",
+    "Keys this bot needs are stored only in bot profiles on this computer": "\uD544\uC694\uD55C \uD0A4\uB294 \uC774 \uCEF4\uD4E8\uD130\uC758 \uBD07 \uD504\uB85C\uD544\uC5D0\uB9CC \uC800\uC7A5\uB429\uB2C8\uB2E4",
+    "Could not save this key to the default profile; the bot profile has it": "\uAE30\uBCF8 \uD504\uB85C\uD544\uC5D0\uB294 \uC774 \uD0A4\uB97C \uC800\uC7A5\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. \uBD07 \uD504\uB85C\uD544\uC5D0\uB294 \uC800\uC7A5\uB418\uC5C8\uC2B5\uB2C8\uB2E4",
+    "The default profile key file could not be checked safely, so it was left unchanged; the bot profile has this key": "\uAE30\uBCF8 \uD504\uB85C\uD544\uC758 \uD0A4 \uD30C\uC77C\uC744 \uC548\uC804\uD558\uAC8C \uD655\uC778\uD560 \uC218 \uC5C6\uC5B4 \uADF8\uB300\uB85C \uB450\uC5C8\uC2B5\uB2C8\uB2E4. \uBD07 \uD504\uB85C\uD544\uC5D0\uB294 \uC774 \uD0A4\uAC00 \uC800\uC7A5\uB418\uC5C8\uC2B5\uB2C8\uB2E4",
+    "Keys apply from the next new chat (or after restarting Hermes)": "\uC0C8 \uB300\uD654(\uB610\uB294 Hermes \uC7AC\uC2DC\uC791)\uBD80\uD130 \uC801\uC6A9\uB429\uB2C8\uB2E4",
+    "The bot profile key file could not be checked safely, so nothing was changed": "\uBD07 \uD504\uB85C\uD544\uC758 \uD0A4 \uD30C\uC77C\uC744 \uC548\uC804\uD558\uAC8C \uD655\uC778\uD560 \uC218 \uC5C6\uC5B4 \uC544\uBB34\uAC83\uB3C4 \uBC14\uAFB8\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4",
+    "Service keys": "\uD544\uC694\uD55C \uD0A4",
+    Required: "\uD544\uC218",
+    Optional: "\uC120\uD0DD",
+    "Get a key": "\uD0A4 \uBC1C\uAE09\uBC1B\uAE30",
+    "Imported from the default profile \u2713": "\uAE30\uBCF8 \uD504\uB85C\uD544\uC5D0\uC11C \uAC00\uC838\uC634 \u2713",
+    "Save to the default profile so other bots can use it": "\uB2E4\uB978 \uBD07\uC5D0\uB3C4 \uC4F0\uB3C4\uB85D \uAE30\uBCF8 \uD504\uB85C\uD544\uC5D0 \uC800\uC7A5",
+    "The default profile value stays as it is": "\uAE30\uBCF8 \uD504\uB85C\uD544 \uAC12\uC740 \uADF8\uB300\uB85C \uB461\uB2C8\uB2E4",
+    "Required keys left empty: {0}. You can add them after installing.": "\uD544\uC218 \uD0A4 {0}\uAC1C\uAC00 \uBE44\uC5B4 \uC788\uC2B5\uB2C8\uB2E4. \uC124\uCE58 \uD6C4 \uB123\uC744 \uC218 \uC788\uC2B5\uB2C8\uB2E4",
+    "Required keys still empty: {0}.": "\uD544\uC218 \uD0A4 {0}\uAC1C\uAC00 \uC544\uC9C1 \uBE44\uC5B4 \uC788\uC2B5\uB2C8\uB2E4",
+    Set: "\uC124\uC815\uB428",
+    Empty: "\uBE44\uC5B4 \uC788\uC74C",
+    Skipped: "\uAC74\uB108\uB700",
+    "Could not check": "\uD655\uC778\uD560 \uC218 \uC5C6\uC74C",
+    "Keys needed": "\uD0A4 \uD544\uC694",
+    "Check keys": "\uD0A4 \uD655\uC778 \uD544\uC694",
+    "Taken from the default profile": "\uAE30\uBCF8 \uD504\uB85C\uD544\uC5D0\uC11C \uAC00\uC838\uC634",
+    "Also saved to the default profile": "\uAE30\uBCF8 \uD504\uB85C\uD544\uC5D0\uB3C4 \uC800\uC7A5\uB428",
+    "The default profile value was kept": "\uAE30\uBCF8 \uD504\uB85C\uD544 \uAC12\uC740 \uADF8\uB300\uB85C \uB450\uC5C8\uC2B5\uB2C8\uB2E4",
+    "Add keys": "\uD0A4 \uB123\uAE30",
+    "Add keys for {0}": "{0}\uC758 \uD0A4 \uB123\uAE30",
+    "Save keys": "\uD0A4 \uC800\uC7A5",
+    "Loading keys": "\uD0A4 \uC815\uBCF4\uB97C \uBD88\uB7EC\uC624\uB294 \uC911",
+    "Bot profile: {0}": "\uBD07 \uD504\uB85C\uD544: {0}",
+    "The request was not accepted, so nothing was changed. Update MyBots and retry.": "\uC694\uCCAD\uC774 \uBC1B\uC544\uB4E4\uC5EC\uC9C0\uC9C0 \uC54A\uC544 \uC544\uBB34\uAC83\uB3C4 \uBC14\uAFB8\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4. MyBots\uB97C \uC5C5\uB370\uC774\uD2B8\uD55C \uB4A4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574 \uC8FC\uC138\uC694.",
+    "A key value is empty. Enter it or leave the key out. Nothing was changed.": "\uBE44\uC5B4 \uC788\uB294 \uD0A4 \uAC12\uC774 \uC788\uC2B5\uB2C8\uB2E4. \uAC12\uC744 \uB123\uAC70\uB098 \uADF8 \uD0A4\uB97C \uBE44\uC6CC \uB450\uC138\uC694. \uC544\uBB34\uAC83\uB3C4 \uBC14\uAFB8\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4.",
+    "A key must be one line of at most 4,096 bytes without control characters. Nothing was changed.": "\uD0A4\uB294 \uC81C\uC5B4 \uBB38\uC790 \uC5C6\uC774 4,096\uBC14\uC774\uD2B8 \uC774\uD558\uC758 \uD55C \uC904\uC774\uC5B4\uC57C \uD569\uB2C8\uB2E4. \uC544\uBB34\uAC83\uB3C4 \uBC14\uAFB8\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4.",
+    "The keys did not match this bot. Review again; nothing was changed.": "\uD0A4\uAC00 \uC774 \uBD07\uACFC \uB9DE\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uB2E4\uC2DC \uD655\uC778\uD574 \uC8FC\uC138\uC694. \uC544\uBB34\uAC83\uB3C4 \uBC14\uAFB8\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4.",
+    "The bot profile config could not be read safely, so nothing was changed.": "\uBD07 \uD504\uB85C\uD544 \uC124\uC815\uC744 \uC548\uC804\uD558\uAC8C \uC77D\uC744 \uC218 \uC5C6\uC5B4 \uC544\uBB34\uAC83\uB3C4 \uBC14\uAFB8\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4.",
+    "Could not save the keys to the bot profile. Retry.": "\uBD07 \uD504\uB85C\uD544\uC5D0 \uD0A4\uB97C \uC800\uC7A5\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. \uB2E4\uC2DC \uC2DC\uB3C4\uD574 \uC8FC\uC138\uC694.",
+    "This bot was not installed by MyBots with keys, so add keys in Hermes settings.": "MyBots\uAC00 \uD0A4\uC640 \uD568\uAED8 \uC124\uCE58\uD55C \uBD07\uC774 \uC544\uB2D9\uB2C8\uB2E4. Hermes \uC124\uC815\uC5D0\uC11C \uD0A4\uB97C \uB123\uC5B4 \uC8FC\uC138\uC694.",
+    "The installed version changed. Refresh the bot list and retry.": "\uC124\uCE58\uB41C \uBC84\uC804\uC774 \uBC14\uB00C\uC5C8\uC2B5\uB2C8\uB2E4. \uBD07 \uBAA9\uB85D\uC744 \uC0C8\uB85C \uACE0\uCE5C \uB4A4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574 \uC8FC\uC138\uC694.",
+    "This bot needs a newer MyBots helper. Update MyBots and retry.": "\uC774 \uBD07\uC5D0\uB294 \uB354 \uC0C8\uB85C\uC6B4 MyBots \uC124\uCE58 \uB3C4\uC6B0\uBBF8\uAC00 \uD544\uC694\uD569\uB2C8\uB2E4. MyBots\uB97C \uC5C5\uB370\uC774\uD2B8\uD55C \uB4A4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574 \uC8FC\uC138\uC694.",
+    "Could not save the keys. Retry.": "\uD0A4\uB97C \uC800\uC7A5\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. \uB2E4\uC2DC \uC2DC\uB3C4\uD574 \uC8FC\uC138\uC694.",
+    "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "\uC774\uBBF8 \uC124\uCE58\uB41C \uBD07\uC774\uB77C \uC785\uB825\uD55C \uD0A4\uB294 \uC800\uC7A5\uD558\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4. \uC544\uB798 '\uD0A4 \uB123\uAE30'\uB85C \uB123\uC5B4 \uC8FC\uC138\uC694.",
+    "Coming soon": "\uC900\uBE44 \uC911",
+    "This bot is still being prepared. You can install it once it opens.": "\uC544\uC9C1 \uC900\uBE44 \uC911\uC778 \uBD07\uC785\uB2C8\uB2E4. \uACF5\uAC1C\uB418\uBA74 \uC124\uCE58\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.",
+    "This bot is not open yet.": "\uC544\uC9C1 \uACF5\uAC1C\uB418\uC9C0 \uC54A\uC740 \uBD07\uC785\uB2C8\uB2E4."
   },
   zh: {
     "Could not load installed bots. Please retry.": "\u65E0\u6CD5\u52A0\u8F7D\u5DF2\u5B89\u88C5\u7684\u673A\u5668\u4EBA\u3002\u8BF7\u91CD\u8BD5\u3002",
@@ -478,7 +562,49 @@ var locales_default = {
     "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "\u6A21\u578B\uFF1A\u9ED8\u8BA4\u914D\u7F6E\u6587\u4EF6\u6CA1\u6709\u6A21\u578B\uFF0C\u56E0\u6B64\u4FDD\u6301\u4E3A\u7A7A\u3002\u5B89\u88C5\u540E\u8BF7\u5148\u9009\u62E9\u6A21\u578B\u3002",
     "Choose a model first. This bot has no model yet.": "\u8BF7\u5148\u9009\u62E9\u6A21\u578B\u3002\u6B64\u673A\u5668\u4EBA\u8FD8\u6CA1\u6709\u6A21\u578B\u3002",
     "You can chat right away with the same model as the default profile ({0}).": "\u53EF\u4EE5\u7ACB\u5373\u4F7F\u7528\u4E0E\u9ED8\u8BA4\u914D\u7F6E\u6587\u4EF6\u76F8\u540C\u7684\u6A21\u578B\uFF08{0}\uFF09\u804A\u5929\u3002",
-    "Language packs: {0} (copied from the default profile)": "\u8BED\u8A00\u5305\uFF1A{0}\uFF08\u4ECE\u9ED8\u8BA4\u914D\u7F6E\u6587\u4EF6\u590D\u5236\uFF09"
+    "Language packs: {0} (copied from the default profile)": "\u8BED\u8A00\u5305\uFF1A{0}\uFF08\u4ECE\u9ED8\u8BA4\u914D\u7F6E\u6587\u4EF6\u590D\u5236\uFF09",
+    "Keys this bot needs are stored only in bot profiles on this computer": "\u6240\u9700\u7684\u5BC6\u94A5\u4EC5\u4FDD\u5B58\u5728\u8FD9\u53F0\u7535\u8111\u4E0A\u7684\u673A\u5668\u4EBA\u914D\u7F6E\u6587\u4EF6\u4E2D",
+    "Could not save this key to the default profile; the bot profile has it": "\u65E0\u6CD5\u5C06\u6B64\u5BC6\u94A5\u4FDD\u5B58\u5230\u9ED8\u8BA4\u914D\u7F6E\u6587\u4EF6\uFF1B\u673A\u5668\u4EBA\u914D\u7F6E\u6587\u4EF6\u4E2D\u5DF2\u4FDD\u5B58",
+    "The default profile key file could not be checked safely, so it was left unchanged; the bot profile has this key": "\u65E0\u6CD5\u5B89\u5168\u68C0\u67E5\u9ED8\u8BA4\u914D\u7F6E\u6587\u4EF6\u7684\u5BC6\u94A5\u6587\u4EF6\uFF0C\u56E0\u6B64\u672A\u4F5C\u66F4\u6539\uFF1B\u673A\u5668\u4EBA\u914D\u7F6E\u6587\u4EF6\u4E2D\u5DF2\u4FDD\u5B58\u6B64\u5BC6\u94A5",
+    "Keys apply from the next new chat (or after restarting Hermes)": "\u5BC6\u94A5\u5C06\u4ECE\u4E0B\u4E00\u6B21\u65B0\u5BF9\u8BDD\uFF08\u6216\u91CD\u542F Hermes \u540E\uFF09\u5F00\u59CB\u751F\u6548",
+    "The bot profile key file could not be checked safely, so nothing was changed": "\u65E0\u6CD5\u5B89\u5168\u68C0\u67E5\u673A\u5668\u4EBA\u914D\u7F6E\u6587\u4EF6\u7684\u5BC6\u94A5\u6587\u4EF6\uFF0C\u56E0\u6B64\u672A\u505A\u4EFB\u4F55\u66F4\u6539",
+    "Service keys": "\u6240\u9700\u5BC6\u94A5",
+    Required: "\u5FC5\u586B",
+    Optional: "\u53EF\u9009",
+    "Get a key": "\u83B7\u53D6\u5BC6\u94A5",
+    "Imported from the default profile \u2713": "\u5DF2\u4ECE\u9ED8\u8BA4\u914D\u7F6E\u6587\u4EF6\u5BFC\u5165 \u2713",
+    "Save to the default profile so other bots can use it": "\u4FDD\u5B58\u5230\u9ED8\u8BA4\u914D\u7F6E\u6587\u4EF6\uFF0C\u4F9B\u5176\u4ED6\u673A\u5668\u4EBA\u4F7F\u7528",
+    "The default profile value stays as it is": "\u9ED8\u8BA4\u914D\u7F6E\u6587\u4EF6\u4E2D\u7684\u503C\u4FDD\u6301\u4E0D\u53D8",
+    "Required keys left empty: {0}. You can add them after installing.": "\u6709 {0} \u4E2A\u5FC5\u586B\u5BC6\u94A5\u4E3A\u7A7A\u3002\u5B89\u88C5\u540E\u53EF\u4EE5\u518D\u6DFB\u52A0\u3002",
+    "Required keys still empty: {0}.": "\u4ECD\u6709 {0} \u4E2A\u5FC5\u586B\u5BC6\u94A5\u4E3A\u7A7A\u3002",
+    Set: "\u5DF2\u8BBE\u7F6E",
+    Empty: "\u4E3A\u7A7A",
+    Skipped: "\u5DF2\u8DF3\u8FC7",
+    "Could not check": "\u65E0\u6CD5\u68C0\u67E5",
+    "Keys needed": "\u9700\u8981\u5BC6\u94A5",
+    "Check keys": "\u68C0\u67E5\u5BC6\u94A5",
+    "Taken from the default profile": "\u53D6\u81EA\u9ED8\u8BA4\u914D\u7F6E\u6587\u4EF6",
+    "Also saved to the default profile": "\u4E5F\u5DF2\u4FDD\u5B58\u5230\u9ED8\u8BA4\u914D\u7F6E\u6587\u4EF6",
+    "The default profile value was kept": "\u9ED8\u8BA4\u914D\u7F6E\u6587\u4EF6\u4E2D\u7684\u503C\u5DF2\u4FDD\u7559",
+    "Add keys": "\u6DFB\u52A0\u5BC6\u94A5",
+    "Add keys for {0}": "\u4E3A {0} \u6DFB\u52A0\u5BC6\u94A5",
+    "Save keys": "\u4FDD\u5B58\u5BC6\u94A5",
+    "Loading keys": "\u6B63\u5728\u52A0\u8F7D\u5BC6\u94A5",
+    "Bot profile: {0}": "\u673A\u5668\u4EBA\u914D\u7F6E\u6587\u4EF6\uFF1A{0}",
+    "The request was not accepted, so nothing was changed. Update MyBots and retry.": "\u8BF7\u6C42\u672A\u88AB\u63A5\u53D7\uFF0C\u672A\u505A\u4EFB\u4F55\u66F4\u6539\u3002\u8BF7\u66F4\u65B0 MyBots \u540E\u91CD\u8BD5\u3002",
+    "A key value is empty. Enter it or leave the key out. Nothing was changed.": "\u6709\u5BC6\u94A5\u503C\u4E3A\u7A7A\u3002\u8BF7\u586B\u5199\u6216\u4E0D\u586B\u8BE5\u5BC6\u94A5\u3002\u672A\u505A\u4EFB\u4F55\u66F4\u6539\u3002",
+    "A key must be one line of at most 4,096 bytes without control characters. Nothing was changed.": "\u5BC6\u94A5\u5FC5\u987B\u662F\u4E00\u884C\uFF0C\u4E0D\u8D85\u8FC7 4,096 \u5B57\u8282\u4E14\u4E0D\u542B\u63A7\u5236\u5B57\u7B26\u3002\u672A\u505A\u4EFB\u4F55\u66F4\u6539\u3002",
+    "The keys did not match this bot. Review again; nothing was changed.": "\u5BC6\u94A5\u4E0E\u6B64\u673A\u5668\u4EBA\u4E0D\u5339\u914D\u3002\u8BF7\u91CD\u65B0\u68C0\u67E5\uFF1B\u672A\u505A\u4EFB\u4F55\u66F4\u6539\u3002",
+    "The bot profile config could not be read safely, so nothing was changed.": "\u65E0\u6CD5\u5B89\u5168\u8BFB\u53D6\u673A\u5668\u4EBA\u914D\u7F6E\u6587\u4EF6\u7684\u8BBE\u7F6E\uFF0C\u56E0\u6B64\u672A\u505A\u4EFB\u4F55\u66F4\u6539\u3002",
+    "Could not save the keys to the bot profile. Retry.": "\u65E0\u6CD5\u5C06\u5BC6\u94A5\u4FDD\u5B58\u5230\u673A\u5668\u4EBA\u914D\u7F6E\u6587\u4EF6\u3002\u8BF7\u91CD\u8BD5\u3002",
+    "This bot was not installed by MyBots with keys, so add keys in Hermes settings.": "\u6B64\u673A\u5668\u4EBA\u4E0D\u662F\u7531 MyBots \u5E26\u5BC6\u94A5\u5B89\u88C5\u7684\uFF0C\u8BF7\u5728 Hermes \u8BBE\u7F6E\u4E2D\u6DFB\u52A0\u5BC6\u94A5\u3002",
+    "The installed version changed. Refresh the bot list and retry.": "\u5DF2\u5B89\u88C5\u7684\u7248\u672C\u5DF2\u53D8\u5316\u3002\u8BF7\u5237\u65B0\u673A\u5668\u4EBA\u5217\u8868\u540E\u91CD\u8BD5\u3002",
+    "This bot needs a newer MyBots helper. Update MyBots and retry.": "\u6B64\u673A\u5668\u4EBA\u9700\u8981\u66F4\u65B0\u7248\u672C\u7684 MyBots \u5B89\u88C5\u52A9\u624B\u3002\u8BF7\u66F4\u65B0 MyBots \u540E\u91CD\u8BD5\u3002",
+    "Could not save the keys. Retry.": "\u65E0\u6CD5\u4FDD\u5B58\u5BC6\u94A5\u3002\u8BF7\u91CD\u8BD5\u3002",
+    "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "\u6B64\u673A\u5668\u4EBA\u5DF2\u5B89\u88C5\uFF0C\u56E0\u6B64\u672A\u4FDD\u5B58\u4F60\u8F93\u5165\u7684\u5BC6\u94A5\u3002\u8BF7\u5728\u4E0B\u65B9\u7528\u201C\u6DFB\u52A0\u5BC6\u94A5\u201D\u6DFB\u52A0\u3002",
+    "Coming soon": "\u5373\u5C06\u63A8\u51FA",
+    "This bot is still being prepared. You can install it once it opens.": "\u8FD9\u4E2A\u673A\u5668\u4EBA\u4ECD\u5728\u51C6\u5907\u4E2D\u3002\u516C\u5F00\u540E\u5373\u53EF\u5B89\u88C5\u3002",
+    "This bot is not open yet.": "\u8FD9\u4E2A\u673A\u5668\u4EBA\u5C1A\u672A\u516C\u5F00\u3002"
   },
   "zh-hant": {
     "Could not load installed bots. Please retry.": "\u7121\u6CD5\u8F09\u5165\u5DF2\u5B89\u88DD\u7684\u6A5F\u5668\u4EBA\u3002\u8ACB\u91CD\u8A66\u3002",
@@ -636,7 +762,49 @@ var locales_default = {
     "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "\u6A21\u578B\uFF1A\u9810\u8A2D\u8A2D\u5B9A\u6A94\u6C92\u6709\u6A21\u578B\uFF0C\u56E0\u6B64\u4FDD\u6301\u7A7A\u767D\u3002\u5B89\u88DD\u5F8C\u8ACB\u5148\u9078\u64C7\u6A21\u578B\u3002",
     "Choose a model first. This bot has no model yet.": "\u8ACB\u5148\u9078\u64C7\u6A21\u578B\u3002\u6B64\u6A5F\u5668\u4EBA\u9084\u6C92\u6709\u6A21\u578B\u3002",
     "You can chat right away with the same model as the default profile ({0}).": "\u53EF\u4EE5\u7ACB\u5373\u4F7F\u7528\u8207\u9810\u8A2D\u8A2D\u5B9A\u6A94\u76F8\u540C\u7684\u6A21\u578B\uFF08{0}\uFF09\u804A\u5929\u3002",
-    "Language packs: {0} (copied from the default profile)": "\u8A9E\u8A00\u5305\uFF1A{0}\uFF08\u5F9E\u9810\u8A2D\u8A2D\u5B9A\u6A94\u8907\u88FD\uFF09"
+    "Language packs: {0} (copied from the default profile)": "\u8A9E\u8A00\u5305\uFF1A{0}\uFF08\u5F9E\u9810\u8A2D\u8A2D\u5B9A\u6A94\u8907\u88FD\uFF09",
+    "Keys this bot needs are stored only in bot profiles on this computer": "\u6240\u9700\u7684\u91D1\u9470\u50C5\u5132\u5B58\u5728\u9019\u53F0\u96FB\u8166\u4E0A\u7684\u6A5F\u5668\u4EBA\u8A2D\u5B9A\u6A94\u4E2D",
+    "Could not save this key to the default profile; the bot profile has it": "\u7121\u6CD5\u5C07\u6B64\u91D1\u9470\u5132\u5B58\u5230\u9810\u8A2D\u8A2D\u5B9A\u6A94\uFF1B\u6A5F\u5668\u4EBA\u8A2D\u5B9A\u6A94\u4E2D\u5DF2\u5132\u5B58",
+    "The default profile key file could not be checked safely, so it was left unchanged; the bot profile has this key": "\u7121\u6CD5\u5B89\u5168\u6AA2\u67E5\u9810\u8A2D\u8A2D\u5B9A\u6A94\u7684\u91D1\u9470\u6A94\u6848\uFF0C\u56E0\u6B64\u672A\u4F5C\u8B8A\u66F4\uFF1B\u6A5F\u5668\u4EBA\u8A2D\u5B9A\u6A94\u4E2D\u5DF2\u5132\u5B58\u6B64\u91D1\u9470",
+    "Keys apply from the next new chat (or after restarting Hermes)": "\u91D1\u9470\u5C07\u5F9E\u4E0B\u4E00\u6B21\u65B0\u5C0D\u8A71\uFF08\u6216\u91CD\u65B0\u555F\u52D5 Hermes \u5F8C\uFF09\u958B\u59CB\u751F\u6548",
+    "The bot profile key file could not be checked safely, so nothing was changed": "\u7121\u6CD5\u5B89\u5168\u6AA2\u67E5\u6A5F\u5668\u4EBA\u8A2D\u5B9A\u6A94\u7684\u91D1\u9470\u6A94\u6848\uFF0C\u56E0\u6B64\u672A\u505A\u4EFB\u4F55\u8B8A\u66F4",
+    "Service keys": "\u6240\u9700\u91D1\u9470",
+    Required: "\u5FC5\u586B",
+    Optional: "\u9078\u586B",
+    "Get a key": "\u53D6\u5F97\u91D1\u9470",
+    "Imported from the default profile \u2713": "\u5DF2\u5F9E\u9810\u8A2D\u8A2D\u5B9A\u6A94\u532F\u5165 \u2713",
+    "Save to the default profile so other bots can use it": "\u5132\u5B58\u5230\u9810\u8A2D\u8A2D\u5B9A\u6A94\uFF0C\u4F9B\u5176\u4ED6\u6A5F\u5668\u4EBA\u4F7F\u7528",
+    "The default profile value stays as it is": "\u9810\u8A2D\u8A2D\u5B9A\u6A94\u4E2D\u7684\u503C\u4FDD\u6301\u4E0D\u8B8A",
+    "Required keys left empty: {0}. You can add them after installing.": "\u6709 {0} \u500B\u5FC5\u586B\u91D1\u9470\u70BA\u7A7A\u3002\u5B89\u88DD\u5F8C\u53EF\u4EE5\u518D\u65B0\u589E\u3002",
+    "Required keys still empty: {0}.": "\u4ECD\u6709 {0} \u500B\u5FC5\u586B\u91D1\u9470\u70BA\u7A7A\u3002",
+    Set: "\u5DF2\u8A2D\u5B9A",
+    Empty: "\u70BA\u7A7A",
+    Skipped: "\u5DF2\u7565\u904E",
+    "Could not check": "\u7121\u6CD5\u6AA2\u67E5",
+    "Keys needed": "\u9700\u8981\u91D1\u9470",
+    "Check keys": "\u6AA2\u67E5\u91D1\u9470",
+    "Taken from the default profile": "\u53D6\u81EA\u9810\u8A2D\u8A2D\u5B9A\u6A94",
+    "Also saved to the default profile": "\u4E5F\u5DF2\u5132\u5B58\u5230\u9810\u8A2D\u8A2D\u5B9A\u6A94",
+    "The default profile value was kept": "\u9810\u8A2D\u8A2D\u5B9A\u6A94\u4E2D\u7684\u503C\u5DF2\u4FDD\u7559",
+    "Add keys": "\u65B0\u589E\u91D1\u9470",
+    "Add keys for {0}": "\u70BA {0} \u65B0\u589E\u91D1\u9470",
+    "Save keys": "\u5132\u5B58\u91D1\u9470",
+    "Loading keys": "\u6B63\u5728\u8F09\u5165\u91D1\u9470",
+    "Bot profile: {0}": "\u6A5F\u5668\u4EBA\u8A2D\u5B9A\u6A94\uFF1A{0}",
+    "The request was not accepted, so nothing was changed. Update MyBots and retry.": "\u8ACB\u6C42\u672A\u88AB\u63A5\u53D7\uFF0C\u672A\u505A\u4EFB\u4F55\u8B8A\u66F4\u3002\u8ACB\u66F4\u65B0 MyBots \u5F8C\u91CD\u8A66\u3002",
+    "A key value is empty. Enter it or leave the key out. Nothing was changed.": "\u6709\u91D1\u9470\u503C\u70BA\u7A7A\u3002\u8ACB\u586B\u5BEB\u6216\u4E0D\u586B\u8A72\u91D1\u9470\u3002\u672A\u505A\u4EFB\u4F55\u8B8A\u66F4\u3002",
+    "A key must be one line of at most 4,096 bytes without control characters. Nothing was changed.": "\u91D1\u9470\u5FC5\u9808\u662F\u4E00\u884C\uFF0C\u4E0D\u8D85\u904E 4,096 \u4F4D\u5143\u7D44\u4E14\u4E0D\u542B\u63A7\u5236\u5B57\u5143\u3002\u672A\u505A\u4EFB\u4F55\u8B8A\u66F4\u3002",
+    "The keys did not match this bot. Review again; nothing was changed.": "\u91D1\u9470\u8207\u6B64\u6A5F\u5668\u4EBA\u4E0D\u76F8\u7B26\u3002\u8ACB\u91CD\u65B0\u6AA2\u67E5\uFF1B\u672A\u505A\u4EFB\u4F55\u8B8A\u66F4\u3002",
+    "The bot profile config could not be read safely, so nothing was changed.": "\u7121\u6CD5\u5B89\u5168\u8B80\u53D6\u6A5F\u5668\u4EBA\u8A2D\u5B9A\u6A94\u7684\u8A2D\u5B9A\uFF0C\u56E0\u6B64\u672A\u505A\u4EFB\u4F55\u8B8A\u66F4\u3002",
+    "Could not save the keys to the bot profile. Retry.": "\u7121\u6CD5\u5C07\u91D1\u9470\u5132\u5B58\u5230\u6A5F\u5668\u4EBA\u8A2D\u5B9A\u6A94\u3002\u8ACB\u91CD\u8A66\u3002",
+    "This bot was not installed by MyBots with keys, so add keys in Hermes settings.": "\u6B64\u6A5F\u5668\u4EBA\u4E0D\u662F\u7531 MyBots \u5E36\u91D1\u9470\u5B89\u88DD\u7684\uFF0C\u8ACB\u5728 Hermes \u8A2D\u5B9A\u4E2D\u65B0\u589E\u91D1\u9470\u3002",
+    "The installed version changed. Refresh the bot list and retry.": "\u5DF2\u5B89\u88DD\u7684\u7248\u672C\u5DF2\u8B8A\u66F4\u3002\u8ACB\u91CD\u65B0\u6574\u7406\u6A5F\u5668\u4EBA\u6E05\u55AE\u5F8C\u91CD\u8A66\u3002",
+    "This bot needs a newer MyBots helper. Update MyBots and retry.": "\u6B64\u6A5F\u5668\u4EBA\u9700\u8981\u8F03\u65B0\u7248\u672C\u7684 MyBots \u5B89\u88DD\u52A9\u624B\u3002\u8ACB\u66F4\u65B0 MyBots \u5F8C\u91CD\u8A66\u3002",
+    "Could not save the keys. Retry.": "\u7121\u6CD5\u5132\u5B58\u91D1\u9470\u3002\u8ACB\u91CD\u8A66\u3002",
+    "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "\u6B64\u6A5F\u5668\u4EBA\u5DF2\u5B89\u88DD\uFF0C\u56E0\u6B64\u672A\u5132\u5B58\u4F60\u8F38\u5165\u7684\u91D1\u9470\u3002\u8ACB\u5728\u4E0B\u65B9\u7528\u300C\u65B0\u589E\u91D1\u9470\u300D\u65B0\u589E\u3002",
+    "Coming soon": "\u5373\u5C07\u63A8\u51FA",
+    "This bot is still being prepared. You can install it once it opens.": "\u9019\u500B\u6A5F\u5668\u4EBA\u4ECD\u5728\u6E96\u5099\u4E2D\u3002\u516C\u958B\u5F8C\u5373\u53EF\u5B89\u88DD\u3002",
+    "This bot is not open yet.": "\u9019\u500B\u6A5F\u5668\u4EBA\u5C1A\u672A\u516C\u958B\u3002"
   },
   ja: {
     "Could not load installed bots. Please retry.": "\u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u6E08\u307F\u30DC\u30C3\u30C8\u3092\u8AAD\u307F\u8FBC\u3081\u307E\u305B\u3093\u3002\u518D\u8A66\u884C\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
@@ -794,7 +962,49 @@ var locales_default = {
     "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "\u30E2\u30C7\u30EB\uFF1A\u30C7\u30D5\u30A9\u30EB\u30C8\u30D7\u30ED\u30D5\u30A1\u30A4\u30EB\u306B\u30E2\u30C7\u30EB\u304C\u306A\u3044\u305F\u3081\u3001\u7A7A\u306E\u307E\u307E\u306B\u3057\u307E\u3059\u3002\u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u5F8C\u3001\u307E\u305A\u30E2\u30C7\u30EB\u3092\u9078\u3093\u3067\u304F\u3060\u3055\u3044\u3002",
     "Choose a model first. This bot has no model yet.": "\u307E\u305A\u30E2\u30C7\u30EB\u3092\u9078\u3093\u3067\u304F\u3060\u3055\u3044\u3002\u3053\u306E\u30DC\u30C3\u30C8\u306B\u306F\u307E\u3060\u30E2\u30C7\u30EB\u304C\u3042\u308A\u307E\u305B\u3093\u3002",
     "You can chat right away with the same model as the default profile ({0}).": "\u30C7\u30D5\u30A9\u30EB\u30C8\u30D7\u30ED\u30D5\u30A1\u30A4\u30EB\u3068\u540C\u3058\u30E2\u30C7\u30EB\uFF08{0}\uFF09\u3067\u3059\u3050\u306B\u4F1A\u8A71\u3067\u304D\u307E\u3059\u3002",
-    "Language packs: {0} (copied from the default profile)": "\u8A00\u8A9E\u30D1\u30C3\u30AF\uFF1A{0}\uFF08\u30C7\u30D5\u30A9\u30EB\u30C8\u30D7\u30ED\u30D5\u30A1\u30A4\u30EB\u304B\u3089\u30B3\u30D4\u30FC\uFF09"
+    "Language packs: {0} (copied from the default profile)": "\u8A00\u8A9E\u30D1\u30C3\u30AF\uFF1A{0}\uFF08\u30C7\u30D5\u30A9\u30EB\u30C8\u30D7\u30ED\u30D5\u30A1\u30A4\u30EB\u304B\u3089\u30B3\u30D4\u30FC\uFF09",
+    "Keys this bot needs are stored only in bot profiles on this computer": "\u5FC5\u8981\u306A\u30AD\u30FC\u306F\u3053\u306E\u30B3\u30F3\u30D4\u30E5\u30FC\u30BF\u30FC\u306E\u30DC\u30C3\u30C8\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u306B\u306E\u307F\u4FDD\u5B58\u3055\u308C\u307E\u3059",
+    "Could not save this key to the default profile; the bot profile has it": "\u3053\u306E\u30AD\u30FC\u3092\u30C7\u30D5\u30A9\u30EB\u30C8\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u306B\u4FDD\u5B58\u3067\u304D\u307E\u305B\u3093\u3067\u3057\u305F\u3002\u30DC\u30C3\u30C8\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u306B\u306F\u4FDD\u5B58\u3055\u308C\u3066\u3044\u307E\u3059",
+    "The default profile key file could not be checked safely, so it was left unchanged; the bot profile has this key": "\u30C7\u30D5\u30A9\u30EB\u30C8\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u306E\u30AD\u30FC\u30D5\u30A1\u30A4\u30EB\u3092\u5B89\u5168\u306B\u78BA\u8A8D\u3067\u304D\u306A\u304B\u3063\u305F\u305F\u3081\u3001\u5909\u66F4\u3057\u3066\u3044\u307E\u305B\u3093\u3002\u30DC\u30C3\u30C8\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u306B\u306F\u3053\u306E\u30AD\u30FC\u304C\u4FDD\u5B58\u3055\u308C\u3066\u3044\u307E\u3059",
+    "Keys apply from the next new chat (or after restarting Hermes)": "\u30AD\u30FC\u306F\u6B21\u306E\u65B0\u3057\u3044\u4F1A\u8A71\uFF08\u307E\u305F\u306F Hermes \u306E\u518D\u8D77\u52D5\u5F8C\uFF09\u304B\u3089\u9069\u7528\u3055\u308C\u307E\u3059",
+    "The bot profile key file could not be checked safely, so nothing was changed": "\u30DC\u30C3\u30C8\u30D7\u30ED\u30D5\u30A1\u30A4\u30EB\u306E\u30AD\u30FC\u30D5\u30A1\u30A4\u30EB\u3092\u5B89\u5168\u306B\u78BA\u8A8D\u3067\u304D\u306A\u304B\u3063\u305F\u305F\u3081\u3001\u4F55\u3082\u5909\u66F4\u3057\u3066\u3044\u307E\u305B\u3093",
+    "Service keys": "\u5FC5\u8981\u306A\u30AD\u30FC",
+    Required: "\u5FC5\u9808",
+    Optional: "\u4EFB\u610F",
+    "Get a key": "\u30AD\u30FC\u3092\u53D6\u5F97",
+    "Imported from the default profile \u2713": "\u30C7\u30D5\u30A9\u30EB\u30C8\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u304B\u3089\u53D6\u308A\u8FBC\u307F\u6E08\u307F \u2713",
+    "Save to the default profile so other bots can use it": "\u4ED6\u306E\u30DC\u30C3\u30C8\u3067\u3082\u4F7F\u3048\u308B\u3088\u3046\u30C7\u30D5\u30A9\u30EB\u30C8\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u306B\u4FDD\u5B58",
+    "The default profile value stays as it is": "\u30C7\u30D5\u30A9\u30EB\u30C8\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u306E\u5024\u306F\u305D\u306E\u307E\u307E\u306B\u3057\u307E\u3059",
+    "Required keys left empty: {0}. You can add them after installing.": "\u5FC5\u9808\u30AD\u30FC\u304C {0} \u500B\u7A7A\u3067\u3059\u3002\u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u5F8C\u306B\u8FFD\u52A0\u3067\u304D\u307E\u3059\u3002",
+    "Required keys still empty: {0}.": "\u5FC5\u9808\u30AD\u30FC\u304C\u307E\u3060 {0} \u500B\u7A7A\u3067\u3059\u3002",
+    Set: "\u8A2D\u5B9A\u6E08\u307F",
+    Empty: "\u7A7A",
+    Skipped: "\u30B9\u30AD\u30C3\u30D7",
+    "Could not check": "\u78BA\u8A8D\u3067\u304D\u307E\u305B\u3093",
+    "Keys needed": "\u30AD\u30FC\u304C\u5FC5\u8981",
+    "Check keys": "\u30AD\u30FC\u3092\u78BA\u8A8D",
+    "Taken from the default profile": "\u30C7\u30D5\u30A9\u30EB\u30C8\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u304B\u3089\u53D6\u5F97",
+    "Also saved to the default profile": "\u30C7\u30D5\u30A9\u30EB\u30C8\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u306B\u3082\u4FDD\u5B58\u3057\u307E\u3057\u305F",
+    "The default profile value was kept": "\u30C7\u30D5\u30A9\u30EB\u30C8\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u306E\u5024\u306F\u305D\u306E\u307E\u307E\u306B\u3057\u307E\u3057\u305F",
+    "Add keys": "\u30AD\u30FC\u3092\u8FFD\u52A0",
+    "Add keys for {0}": "{0} \u306E\u30AD\u30FC\u3092\u8FFD\u52A0",
+    "Save keys": "\u30AD\u30FC\u3092\u4FDD\u5B58",
+    "Loading keys": "\u30AD\u30FC\u3092\u8AAD\u307F\u8FBC\u307F\u4E2D",
+    "Bot profile: {0}": "\u30DC\u30C3\u30C8\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB: {0}",
+    "The request was not accepted, so nothing was changed. Update MyBots and retry.": "\u30EA\u30AF\u30A8\u30B9\u30C8\u304C\u53D7\u3051\u4ED8\u3051\u3089\u308C\u306A\u304B\u3063\u305F\u305F\u3081\u3001\u4F55\u3082\u5909\u66F4\u3057\u3066\u3044\u307E\u305B\u3093\u3002MyBots \u3092\u66F4\u65B0\u3057\u3066\u304B\u3089\u518D\u8A66\u884C\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
+    "A key value is empty. Enter it or leave the key out. Nothing was changed.": "\u7A7A\u306E\u30AD\u30FC\u5024\u304C\u3042\u308A\u307E\u3059\u3002\u5024\u3092\u5165\u529B\u3059\u308B\u304B\u3001\u305D\u306E\u30AD\u30FC\u3092\u7A7A\u6B04\u306E\u307E\u307E\u306B\u3057\u3066\u304F\u3060\u3055\u3044\u3002\u4F55\u3082\u5909\u66F4\u3057\u3066\u3044\u307E\u305B\u3093\u3002",
+    "A key must be one line of at most 4,096 bytes without control characters. Nothing was changed.": "\u30AD\u30FC\u306F\u5236\u5FA1\u6587\u5B57\u3092\u542B\u307E\u306A\u3044 4,096 \u30D0\u30A4\u30C8\u4EE5\u4E0B\u306E 1 \u884C\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\u4F55\u3082\u5909\u66F4\u3057\u3066\u3044\u307E\u305B\u3093\u3002",
+    "The keys did not match this bot. Review again; nothing was changed.": "\u30AD\u30FC\u304C\u3053\u306E\u30DC\u30C3\u30C8\u3068\u4E00\u81F4\u3057\u307E\u305B\u3093\u3002\u3082\u3046\u4E00\u5EA6\u78BA\u8A8D\u3057\u3066\u304F\u3060\u3055\u3044\u3002\u4F55\u3082\u5909\u66F4\u3057\u3066\u3044\u307E\u305B\u3093\u3002",
+    "The bot profile config could not be read safely, so nothing was changed.": "\u30DC\u30C3\u30C8\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u306E\u8A2D\u5B9A\u3092\u5B89\u5168\u306B\u8AAD\u307F\u8FBC\u3081\u306A\u304B\u3063\u305F\u305F\u3081\u3001\u4F55\u3082\u5909\u66F4\u3057\u3066\u3044\u307E\u305B\u3093\u3002",
+    "Could not save the keys to the bot profile. Retry.": "\u30DC\u30C3\u30C8\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u306B\u30AD\u30FC\u3092\u4FDD\u5B58\u3067\u304D\u307E\u305B\u3093\u3067\u3057\u305F\u3002\u518D\u8A66\u884C\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
+    "This bot was not installed by MyBots with keys, so add keys in Hermes settings.": "\u3053\u306E\u30DC\u30C3\u30C8\u306F MyBots \u304C\u30AD\u30FC\u4ED8\u304D\u3067\u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u3057\u305F\u3082\u306E\u3067\u306F\u3042\u308A\u307E\u305B\u3093\u3002Hermes \u306E\u8A2D\u5B9A\u3067\u30AD\u30FC\u3092\u8FFD\u52A0\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
+    "The installed version changed. Refresh the bot list and retry.": "\u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u6E08\u307F\u306E\u30D0\u30FC\u30B8\u30E7\u30F3\u304C\u5909\u308F\u308A\u307E\u3057\u305F\u3002\u30DC\u30C3\u30C8\u4E00\u89A7\u3092\u66F4\u65B0\u3057\u3066\u304B\u3089\u518D\u8A66\u884C\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
+    "This bot needs a newer MyBots helper. Update MyBots and retry.": "\u3053\u306E\u30DC\u30C3\u30C8\u306B\u306F\u65B0\u3057\u3044 MyBots \u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u30D8\u30EB\u30D1\u30FC\u304C\u5FC5\u8981\u3067\u3059\u3002MyBots \u3092\u66F4\u65B0\u3057\u3066\u304B\u3089\u518D\u8A66\u884C\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
+    "Could not save the keys. Retry.": "\u30AD\u30FC\u3092\u4FDD\u5B58\u3067\u304D\u307E\u305B\u3093\u3067\u3057\u305F\u3002\u518D\u8A66\u884C\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
+    "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "\u3053\u306E\u30DC\u30C3\u30C8\u306F\u3059\u3067\u306B\u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u6E08\u307F\u306E\u305F\u3081\u3001\u5165\u529B\u3057\u305F\u30AD\u30FC\u306F\u4FDD\u5B58\u3057\u3066\u3044\u307E\u305B\u3093\u3002\u4E0B\u306E\u300C\u30AD\u30FC\u3092\u8FFD\u52A0\u300D\u304B\u3089\u8FFD\u52A0\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
+    "Coming soon": "\u6E96\u5099\u4E2D",
+    "This bot is still being prepared. You can install it once it opens.": "\u3053\u306E\u30DC\u30C3\u30C8\u306F\u307E\u3060\u6E96\u5099\u4E2D\u3067\u3059\u3002\u516C\u958B\u3055\u308C\u308B\u3068\u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u3067\u304D\u307E\u3059\u3002",
+    "This bot is not open yet.": "\u3053\u306E\u30DC\u30C3\u30C8\u306F\u307E\u3060\u516C\u958B\u3055\u308C\u3066\u3044\u307E\u305B\u3093\u3002"
   },
   ar: {
     "Could not load installed bots. Please retry.": "\u062A\u0639\u0630\u0631 \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0628\u0648\u062A\u0627\u062A \u0627\u0644\u0645\u062B\u0628\u062A\u0629. \u062D\u0627\u0648\u0644 \u0645\u062C\u062F\u062F\u064B\u0627.",
@@ -952,7 +1162,49 @@ var locales_default = {
     "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "\u0627\u0644\u0646\u0645\u0648\u0630\u062C: \u0644\u0627 \u064A\u062D\u062A\u0648\u064A \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062E\u0635\u064A \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A \u0639\u0644\u0649 \u0646\u0645\u0648\u0630\u062C\u060C \u0644\u0630\u0644\u0643 \u064A\u0628\u0642\u0649 \u0641\u0627\u0631\u063A\u064B\u0627. \u0627\u062E\u062A\u0631 \u0646\u0645\u0648\u0630\u062C\u064B\u0627 \u0623\u0648\u0644\u064B\u0627 \u0628\u0639\u062F \u0627\u0644\u062A\u062B\u0628\u064A\u062A.",
     "Choose a model first. This bot has no model yet.": "\u0627\u062E\u062A\u0631 \u0646\u0645\u0648\u0630\u062C\u064B\u0627 \u0623\u0648\u0644\u064B\u0627. \u0644\u0627 \u064A\u0648\u062C\u062F \u0646\u0645\u0648\u0630\u062C \u0644\u0647\u0630\u0627 \u0627\u0644\u0631\u0648\u0628\u0648\u062A \u0628\u0639\u062F.",
     "You can chat right away with the same model as the default profile ({0}).": "\u064A\u0645\u0643\u0646\u0643 \u0627\u0644\u062F\u0631\u062F\u0634\u0629 \u0641\u0648\u0631\u064B\u0627 \u0628\u0627\u0633\u062A\u062E\u062F\u0627\u0645 \u0646\u0641\u0633 \u0646\u0645\u0648\u0630\u062C \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062E\u0635\u064A \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A ({0}).",
-    "Language packs: {0} (copied from the default profile)": "\u062D\u0632\u0645 \u0627\u0644\u0644\u063A\u0629: {0} (\u0645\u0646\u0633\u0648\u062E\u0629 \u0645\u0646 \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062E\u0635\u064A \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A)"
+    "Language packs: {0} (copied from the default profile)": "\u062D\u0632\u0645 \u0627\u0644\u0644\u063A\u0629: {0} (\u0645\u0646\u0633\u0648\u062E\u0629 \u0645\u0646 \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062E\u0635\u064A \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A)",
+    "Keys this bot needs are stored only in bot profiles on this computer": "\u062A\u064F\u062D\u0641\u0638 \u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D \u0627\u0644\u062A\u064A \u064A\u062D\u062A\u0627\u062C\u0647\u0627 \u0647\u0630\u0627 \u0627\u0644\u0628\u0648\u062A \u0641\u064A \u0645\u0644\u0641\u0627\u062A \u062A\u0639\u0631\u064A\u0641 \u0627\u0644\u0628\u0648\u062A\u0627\u062A \u0639\u0644\u0649 \u0647\u0630\u0627 \u0627\u0644\u0643\u0645\u0628\u064A\u0648\u062A\u0631 \u0641\u0642\u0637",
+    "Could not save this key to the default profile; the bot profile has it": "\u062A\u0639\u0630\u0651\u0631 \u062D\u0641\u0638 \u0647\u0630\u0627 \u0627\u0644\u0645\u0641\u062A\u0627\u062D \u0641\u064A \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u062A\u0639\u0631\u064A\u0641\u064A \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A\u061B \u0648\u0647\u0648 \u0645\u062D\u0641\u0648\u0638 \u0641\u064A \u0645\u0644\u0641 \u062A\u0639\u0631\u064A\u0641 \u0627\u0644\u0628\u0648\u062A",
+    "The default profile key file could not be checked safely, so it was left unchanged; the bot profile has this key": "\u062A\u0639\u0630\u0651\u0631 \u0627\u0644\u062A\u062D\u0642\u0642 \u0645\u0646 \u0645\u0644\u0641 \u0645\u0641\u0627\u062A\u064A\u062D \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u062A\u0639\u0631\u064A\u0641\u064A \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A \u0628\u0623\u0645\u0627\u0646\u060C \u0644\u0630\u0627 \u062A\u064F\u0631\u0643 \u062F\u0648\u0646 \u062A\u063A\u064A\u064A\u0631\u061B \u0648\u0647\u0630\u0627 \u0627\u0644\u0645\u0641\u062A\u0627\u062D \u0645\u062D\u0641\u0648\u0638 \u0641\u064A \u0645\u0644\u0641 \u062A\u0639\u0631\u064A\u0641 \u0627\u0644\u0628\u0648\u062A",
+    "Keys apply from the next new chat (or after restarting Hermes)": "\u062A\u064F\u0637\u0628\u064E\u0651\u0642 \u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D \u0628\u062F\u0621\u064B\u0627 \u0645\u0646 \u0627\u0644\u0645\u062D\u0627\u062F\u062B\u0629 \u0627\u0644\u062C\u062F\u064A\u062F\u0629 \u0627\u0644\u062A\u0627\u0644\u064A\u0629 (\u0623\u0648 \u0628\u0639\u062F \u0625\u0639\u0627\u062F\u0629 \u062A\u0634\u063A\u064A\u0644 Hermes)",
+    "The bot profile key file could not be checked safely, so nothing was changed": "\u062A\u0639\u0630\u0651\u0631 \u0627\u0644\u062A\u062D\u0642\u0642 \u0645\u0646 \u0645\u0644\u0641 \u0645\u0641\u0627\u062A\u064A\u062D \u0645\u0644\u0641 \u062A\u0639\u0631\u064A\u0641 \u0627\u0644\u0628\u0648\u062A \u0628\u0623\u0645\u0627\u0646\u060C \u0644\u0630\u0644\u0643 \u0644\u0645 \u064A\u062A\u0645 \u062A\u063A\u064A\u064A\u0631 \u0623\u064A \u0634\u064A\u0621",
+    "Service keys": "\u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D \u0627\u0644\u0645\u0637\u0644\u0648\u0628\u0629",
+    Required: "\u0645\u0637\u0644\u0648\u0628",
+    Optional: "\u0627\u062E\u062A\u064A\u0627\u0631\u064A",
+    "Get a key": "\u0627\u062D\u0635\u0644 \u0639\u0644\u0649 \u0645\u0641\u062A\u0627\u062D",
+    "Imported from the default profile \u2713": "\u062A\u0645 \u0627\u0644\u0627\u0633\u062A\u064A\u0631\u0627\u062F \u0645\u0646 \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u062A\u0639\u0631\u064A\u0641\u064A \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A \u2713",
+    "Save to the default profile so other bots can use it": "\u0627\u062D\u0641\u0638 \u0641\u064A \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u062A\u0639\u0631\u064A\u0641\u064A \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A \u0644\u062A\u0633\u062A\u062E\u062F\u0645\u0647 \u0627\u0644\u0628\u0648\u062A\u0627\u062A \u0627\u0644\u0623\u062E\u0631\u0649",
+    "The default profile value stays as it is": "\u062A\u0628\u0642\u0649 \u0642\u064A\u0645\u0629 \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u062A\u0639\u0631\u064A\u0641\u064A \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A \u0643\u0645\u0627 \u0647\u064A",
+    "Required keys left empty: {0}. You can add them after installing.": "{0} \u0645\u0646 \u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D \u0627\u0644\u0645\u0637\u0644\u0648\u0628\u0629 \u0641\u0627\u0631\u063A\u0629. \u064A\u0645\u0643\u0646\u0643 \u0625\u0636\u0627\u0641\u062A\u0647\u0627 \u0628\u0639\u062F \u0627\u0644\u062A\u062B\u0628\u064A\u062A.",
+    "Required keys still empty: {0}.": "\u0644\u0627 \u064A\u0632\u0627\u0644 {0} \u0645\u0646 \u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D \u0627\u0644\u0645\u0637\u0644\u0648\u0628\u0629 \u0641\u0627\u0631\u063A\u064B\u0627.",
+    Set: "\u0645\u064F\u0639\u064A\u064E\u0651\u0646",
+    Empty: "\u0641\u0627\u0631\u063A",
+    Skipped: "\u062A\u0645 \u0627\u0644\u062A\u062E\u0637\u064A",
+    "Could not check": "\u062A\u0639\u0630\u0651\u0631 \u0627\u0644\u062A\u062D\u0642\u0642",
+    "Keys needed": "\u0645\u0641\u0627\u062A\u064A\u062D \u0645\u0637\u0644\u0648\u0628\u0629",
+    "Check keys": "\u062A\u062D\u0642\u0642 \u0645\u0646 \u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D",
+    "Taken from the default profile": "\u0645\u0623\u062E\u0648\u0630 \u0645\u0646 \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u062A\u0639\u0631\u064A\u0641\u064A \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A",
+    "Also saved to the default profile": "\u062D\u064F\u0641\u0638 \u0623\u064A\u0636\u064B\u0627 \u0641\u064A \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u062A\u0639\u0631\u064A\u0641\u064A \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A",
+    "The default profile value was kept": "\u0628\u0642\u064A\u062A \u0642\u064A\u0645\u0629 \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u062A\u0639\u0631\u064A\u0641\u064A \u0627\u0644\u0627\u0641\u062A\u0631\u0627\u0636\u064A \u0643\u0645\u0627 \u0647\u064A",
+    "Add keys": "\u0625\u0636\u0627\u0641\u0629 \u0645\u0641\u0627\u062A\u064A\u062D",
+    "Add keys for {0}": "\u0625\u0636\u0627\u0641\u0629 \u0645\u0641\u0627\u062A\u064A\u062D \u0644\u0640 {0}",
+    "Save keys": "\u062D\u0641\u0638 \u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D",
+    "Loading keys": "\u062C\u0627\u0631\u064D \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D",
+    "Bot profile: {0}": "\u0645\u0644\u0641 \u062A\u0639\u0631\u064A\u0641 \u0627\u0644\u0628\u0648\u062A: {0}",
+    "The request was not accepted, so nothing was changed. Update MyBots and retry.": "\u0644\u0645 \u064A\u064F\u0642\u0628\u0644 \u0627\u0644\u0637\u0644\u0628\u060C \u0644\u0630\u0627 \u0644\u0645 \u064A\u062A\u063A\u064A\u0631 \u0634\u064A\u0621. \u062D\u062F\u0651\u062B MyBots \u062B\u0645 \u0623\u0639\u062F \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629.",
+    "A key value is empty. Enter it or leave the key out. Nothing was changed.": "\u0642\u064A\u0645\u0629 \u0623\u062D\u062F \u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D \u0641\u0627\u0631\u063A\u0629. \u0623\u062F\u062E\u0644\u0647\u0627 \u0623\u0648 \u0627\u062A\u0631\u0643 \u0627\u0644\u0645\u0641\u062A\u0627\u062D \u0641\u0627\u0631\u063A\u064B\u0627. \u0644\u0645 \u064A\u062A\u063A\u064A\u0631 \u0634\u064A\u0621.",
+    "A key must be one line of at most 4,096 bytes without control characters. Nothing was changed.": "\u064A\u062C\u0628 \u0623\u0646 \u064A\u0643\u0648\u0646 \u0627\u0644\u0645\u0641\u062A\u0627\u062D \u0633\u0637\u0631\u064B\u0627 \u0648\u0627\u062D\u062F\u064B\u0627 \u0644\u0627 \u064A\u062A\u062C\u0627\u0648\u0632 4,096 \u0628\u0627\u064A\u062A \u062F\u0648\u0646 \u0623\u062D\u0631\u0641 \u062A\u062D\u0643\u0645. \u0644\u0645 \u064A\u062A\u063A\u064A\u0631 \u0634\u064A\u0621.",
+    "The keys did not match this bot. Review again; nothing was changed.": "\u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D \u0644\u0627 \u062A\u0637\u0627\u0628\u0642 \u0647\u0630\u0627 \u0627\u0644\u0628\u0648\u062A. \u0631\u0627\u062C\u0639 \u0645\u0631\u0629 \u0623\u062E\u0631\u0649\u061B \u0644\u0645 \u064A\u062A\u063A\u064A\u0631 \u0634\u064A\u0621.",
+    "The bot profile config could not be read safely, so nothing was changed.": "\u062A\u0639\u0630\u0651\u0631 \u0642\u0631\u0627\u0621\u0629 \u0625\u0639\u062F\u0627\u062F\u0627\u062A \u0645\u0644\u0641 \u062A\u0639\u0631\u064A\u0641 \u0627\u0644\u0628\u0648\u062A \u0628\u0623\u0645\u0627\u0646\u060C \u0644\u0630\u0627 \u0644\u0645 \u064A\u062A\u063A\u064A\u0631 \u0634\u064A\u0621.",
+    "Could not save the keys to the bot profile. Retry.": "\u062A\u0639\u0630\u0651\u0631 \u062D\u0641\u0638 \u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D \u0641\u064A \u0645\u0644\u0641 \u062A\u0639\u0631\u064A\u0641 \u0627\u0644\u0628\u0648\u062A. \u0623\u0639\u062F \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629.",
+    "This bot was not installed by MyBots with keys, so add keys in Hermes settings.": "\u0644\u0645 \u064A\u062B\u0628\u0651\u062A MyBots \u0647\u0630\u0627 \u0627\u0644\u0628\u0648\u062A \u0645\u0639 \u0645\u0641\u0627\u062A\u064A\u062D\u060C \u0644\u0630\u0627 \u0623\u0636\u0641 \u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D \u0645\u0646 \u0625\u0639\u062F\u0627\u062F\u0627\u062A Hermes.",
+    "The installed version changed. Refresh the bot list and retry.": "\u062A\u063A\u064A\u0651\u0631 \u0627\u0644\u0625\u0635\u062F\u0627\u0631 \u0627\u0644\u0645\u062B\u0628\u0651\u062A. \u062D\u062F\u0651\u062B \u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0628\u0648\u062A\u0627\u062A \u062B\u0645 \u0623\u0639\u062F \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629.",
+    "This bot needs a newer MyBots helper. Update MyBots and retry.": "\u064A\u062D\u062A\u0627\u062C \u0647\u0630\u0627 \u0627\u0644\u0628\u0648\u062A \u0625\u0644\u0649 \u0645\u0633\u0627\u0639\u062F MyBots \u0623\u062D\u062F\u062B. \u062D\u062F\u0651\u062B MyBots \u062B\u0645 \u0623\u0639\u062F \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629.",
+    "Could not save the keys. Retry.": "\u062A\u0639\u0630\u0651\u0631 \u062D\u0641\u0638 \u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D. \u0623\u0639\u062F \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629.",
+    "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "\u0647\u0630\u0627 \u0627\u0644\u0628\u0648\u062A \u0645\u062B\u0628\u0651\u062A \u0628\u0627\u0644\u0641\u0639\u0644\u060C \u0644\u0630\u0627 \u0644\u0645 \u062A\u064F\u062D\u0641\u0638 \u0627\u0644\u0645\u0641\u0627\u062A\u064A\u062D \u0627\u0644\u062A\u064A \u0623\u062F\u062E\u0644\u062A\u0647\u0627. \u0623\u0636\u0641\u0647\u0627 \u0623\u062F\u0646\u0627\u0647 \u0639\u0628\u0631 \xAB\u0625\u0636\u0627\u0641\u0629 \u0645\u0641\u0627\u062A\u064A\u062D\xBB.",
+    "Coming soon": "\u0642\u0631\u064A\u0628\u064B\u0627",
+    "This bot is still being prepared. You can install it once it opens.": "\u0644\u0627 \u064A\u0632\u0627\u0644 \u0647\u0630\u0627 \u0627\u0644\u0628\u0648\u062A \u0642\u064A\u062F \u0627\u0644\u062A\u062D\u0636\u064A\u0631. \u064A\u0645\u0643\u0646\u0643 \u062A\u062B\u0628\u064A\u062A\u0647 \u0628\u0645\u062C\u0631\u062F \u0625\u062A\u0627\u062D\u062A\u0647.",
+    "This bot is not open yet.": "\u0647\u0630\u0627 \u0627\u0644\u0628\u0648\u062A \u063A\u064A\u0631 \u0645\u062A\u0627\u062D \u0628\u0639\u062F."
   },
   ru: {
     "Could not load installed bots. Please retry.": "\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u043D\u044B\u0445 \u0431\u043E\u0442\u043E\u0432. \u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u043E\u043F\u044B\u0442\u043A\u0443.",
@@ -1110,7 +1362,49 @@ var locales_default = {
     "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "\u041C\u043E\u0434\u0435\u043B\u044C: \u0432 \u043F\u0440\u043E\u0444\u0438\u043B\u0435 \u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E \u043D\u0435\u0442 \u043C\u043E\u0434\u0435\u043B\u0438, \u043F\u043E\u044D\u0442\u043E\u043C\u0443 \u043F\u043E\u043B\u0435 \u043E\u0441\u0442\u0430\u0451\u0442\u0441\u044F \u043F\u0443\u0441\u0442\u044B\u043C. \u041F\u043E\u0441\u043B\u0435 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438 \u0441\u043D\u0430\u0447\u0430\u043B\u0430 \u0432\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043C\u043E\u0434\u0435\u043B\u044C.",
     "Choose a model first. This bot has no model yet.": "\u0421\u043D\u0430\u0447\u0430\u043B\u0430 \u0432\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043C\u043E\u0434\u0435\u043B\u044C. \u0423 \u044D\u0442\u043E\u0433\u043E \u0431\u043E\u0442\u0430 \u0435\u0449\u0451 \u043D\u0435\u0442 \u043C\u043E\u0434\u0435\u043B\u0438.",
     "You can chat right away with the same model as the default profile ({0}).": "\u041C\u043E\u0436\u043D\u043E \u0441\u0440\u0430\u0437\u0443 \u043E\u0431\u0449\u0430\u0442\u044C\u0441\u044F \u0441 \u0442\u043E\u0439 \u0436\u0435 \u043C\u043E\u0434\u0435\u043B\u044C\u044E, \u0447\u0442\u043E \u0438 \u0432 \u043F\u0440\u043E\u0444\u0438\u043B\u0435 \u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E ({0}).",
-    "Language packs: {0} (copied from the default profile)": "\u042F\u0437\u044B\u043A\u043E\u0432\u044B\u0435 \u043F\u0430\u043A\u0435\u0442\u044B: {0} (\u0441\u043A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u043D\u044B \u0438\u0437 \u043F\u0440\u043E\u0444\u0438\u043B\u044F \u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E)"
+    "Language packs: {0} (copied from the default profile)": "\u042F\u0437\u044B\u043A\u043E\u0432\u044B\u0435 \u043F\u0430\u043A\u0435\u0442\u044B: {0} (\u0441\u043A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u043D\u044B \u0438\u0437 \u043F\u0440\u043E\u0444\u0438\u043B\u044F \u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E)",
+    "Keys this bot needs are stored only in bot profiles on this computer": "\u041D\u0443\u0436\u043D\u044B\u0435 \u0431\u043E\u0442\u0443 \u043A\u043B\u044E\u0447\u0438 \u0445\u0440\u0430\u043D\u044F\u0442\u0441\u044F \u0442\u043E\u043B\u044C\u043A\u043E \u0432 \u043F\u0440\u043E\u0444\u0438\u043B\u044F\u0445 \u0431\u043E\u0442\u043E\u0432 \u043D\u0430 \u044D\u0442\u043E\u043C \u043A\u043E\u043C\u043F\u044C\u044E\u0442\u0435\u0440\u0435",
+    "Could not save this key to the default profile; the bot profile has it": "\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u044D\u0442\u043E\u0442 \u043A\u043B\u044E\u0447 \u0432 \u043F\u0440\u043E\u0444\u0438\u043B\u044C \u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E; \u0432 \u043F\u0440\u043E\u0444\u0438\u043B\u0435 \u0431\u043E\u0442\u0430 \u043E\u043D \u0441\u043E\u0445\u0440\u0430\u043D\u0451\u043D",
+    "The default profile key file could not be checked safely, so it was left unchanged; the bot profile has this key": "\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u043E \u043F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C \u0444\u0430\u0439\u043B \u043A\u043B\u044E\u0447\u0435\u0439 \u043F\u0440\u043E\u0444\u0438\u043B\u044F \u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E, \u043F\u043E\u044D\u0442\u043E\u043C\u0443 \u043E\u043D \u043D\u0435 \u0438\u0437\u043C\u0435\u043D\u0451\u043D; \u0432 \u043F\u0440\u043E\u0444\u0438\u043B\u0435 \u0431\u043E\u0442\u0430 \u044D\u0442\u043E\u0442 \u043A\u043B\u044E\u0447 \u0441\u043E\u0445\u0440\u0430\u043D\u0451\u043D",
+    "Keys apply from the next new chat (or after restarting Hermes)": "\u041A\u043B\u044E\u0447\u0438 \u043D\u0430\u0447\u043D\u0443\u0442 \u0434\u0435\u0439\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C \u0441\u043E \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0435\u0433\u043E \u043D\u043E\u0432\u043E\u0433\u043E \u0447\u0430\u0442\u0430 (\u0438\u043B\u0438 \u043F\u043E\u0441\u043B\u0435 \u043F\u0435\u0440\u0435\u0437\u0430\u043F\u0443\u0441\u043A\u0430 Hermes)",
+    "The bot profile key file could not be checked safely, so nothing was changed": "\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u043E \u043F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C \u0444\u0430\u0439\u043B \u043A\u043B\u044E\u0447\u0435\u0439 \u043F\u0440\u043E\u0444\u0438\u043B\u044F \u0431\u043E\u0442\u0430, \u043F\u043E\u044D\u0442\u043E\u043C\u0443 \u043D\u0438\u0447\u0435\u0433\u043E \u043D\u0435 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u043E",
+    "Service keys": "\u041D\u0443\u0436\u043D\u044B\u0435 \u043A\u043B\u044E\u0447\u0438",
+    Required: "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0439",
+    Optional: "\u041D\u0435\u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0439",
+    "Get a key": "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u043A\u043B\u044E\u0447",
+    "Imported from the default profile \u2713": "\u0412\u0437\u044F\u0442 \u0438\u0437 \u043F\u0440\u043E\u0444\u0438\u043B\u044F \u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E \u2713",
+    "Save to the default profile so other bots can use it": "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0432 \u043F\u0440\u043E\u0444\u0438\u043B\u044C \u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E \u0434\u043B\u044F \u0434\u0440\u0443\u0433\u0438\u0445 \u0431\u043E\u0442\u043E\u0432",
+    "The default profile value stays as it is": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0432 \u043F\u0440\u043E\u0444\u0438\u043B\u0435 \u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E \u043E\u0441\u0442\u0430\u043D\u0435\u0442\u0441\u044F \u043F\u0440\u0435\u0436\u043D\u0438\u043C",
+    "Required keys left empty: {0}. You can add them after installing.": "\u041F\u0443\u0441\u0442\u044B\u0445 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0445 \u043A\u043B\u044E\u0447\u0435\u0439: {0}. \u0418\u0445 \u043C\u043E\u0436\u043D\u043E \u0434\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043F\u043E\u0441\u043B\u0435 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0438.",
+    "Required keys still empty: {0}.": "\u041F\u0443\u0441\u0442\u044B\u0445 \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0445 \u043A\u043B\u044E\u0447\u0435\u0439 \u0432\u0441\u0451 \u0435\u0449\u0451: {0}.",
+    Set: "\u0417\u0430\u0434\u0430\u043D",
+    Empty: "\u041F\u0443\u0441\u0442\u043E",
+    Skipped: "\u041F\u0440\u043E\u043F\u0443\u0449\u0435\u043D",
+    "Could not check": "\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u043F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C",
+    "Keys needed": "\u041D\u0443\u0436\u043D\u044B \u043A\u043B\u044E\u0447\u0438",
+    "Check keys": "\u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u043A\u043B\u044E\u0447\u0438",
+    "Taken from the default profile": "\u0412\u0437\u044F\u0442 \u0438\u0437 \u043F\u0440\u043E\u0444\u0438\u043B\u044F \u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E",
+    "Also saved to the default profile": "\u0422\u0430\u043A\u0436\u0435 \u0441\u043E\u0445\u0440\u0430\u043D\u0451\u043D \u0432 \u043F\u0440\u043E\u0444\u0438\u043B\u044C \u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E",
+    "The default profile value was kept": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0432 \u043F\u0440\u043E\u0444\u0438\u043B\u0435 \u043F\u043E \u0443\u043C\u043E\u043B\u0447\u0430\u043D\u0438\u044E \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u043E",
+    "Add keys": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043A\u043B\u044E\u0447\u0438",
+    "Add keys for {0}": "\u041A\u043B\u044E\u0447\u0438 \u0434\u043B\u044F {0}",
+    "Save keys": "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u043A\u043B\u044E\u0447\u0438",
+    "Loading keys": "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u043A\u043B\u044E\u0447\u0435\u0439",
+    "Bot profile: {0}": "\u041F\u0440\u043E\u0444\u0438\u043B\u044C \u0431\u043E\u0442\u0430: {0}",
+    "The request was not accepted, so nothing was changed. Update MyBots and retry.": "\u0417\u0430\u043F\u0440\u043E\u0441 \u043D\u0435 \u043F\u0440\u0438\u043D\u044F\u0442, \u043F\u043E\u044D\u0442\u043E\u043C\u0443 \u043D\u0438\u0447\u0435\u0433\u043E \u043D\u0435 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u043E. \u041E\u0431\u043D\u043E\u0432\u0438\u0442\u0435 MyBots \u0438 \u043F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u043E\u043F\u044B\u0442\u043A\u0443.",
+    "A key value is empty. Enter it or leave the key out. Nothing was changed.": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043A\u043B\u044E\u0447\u0430 \u043F\u0443\u0441\u0442\u043E\u0435. \u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0435\u0433\u043E \u0438\u043B\u0438 \u043E\u0441\u0442\u0430\u0432\u044C\u0442\u0435 \u043A\u043B\u044E\u0447 \u043D\u0435\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u043D\u044B\u043C. \u041D\u0438\u0447\u0435\u0433\u043E \u043D\u0435 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u043E.",
+    "A key must be one line of at most 4,096 bytes without control characters. Nothing was changed.": "\u041A\u043B\u044E\u0447 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043E\u0434\u043D\u043E\u0439 \u0441\u0442\u0440\u043E\u043A\u043E\u0439 \u043D\u0435 \u0434\u043B\u0438\u043D\u043D\u0435\u0435 4 096 \u0431\u0430\u0439\u0442 \u0431\u0435\u0437 \u0443\u043F\u0440\u0430\u0432\u043B\u044F\u044E\u0449\u0438\u0445 \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432. \u041D\u0438\u0447\u0435\u0433\u043E \u043D\u0435 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u043E.",
+    "The keys did not match this bot. Review again; nothing was changed.": "\u041A\u043B\u044E\u0447\u0438 \u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044E\u0442 \u044D\u0442\u043E\u043C\u0443 \u0431\u043E\u0442\u0443. \u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u0435\u0449\u0451 \u0440\u0430\u0437; \u043D\u0438\u0447\u0435\u0433\u043E \u043D\u0435 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u043E.",
+    "The bot profile config could not be read safely, so nothing was changed.": "\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u043E \u043F\u0440\u043E\u0447\u0438\u0442\u0430\u0442\u044C \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438 \u043F\u0440\u043E\u0444\u0438\u043B\u044F \u0431\u043E\u0442\u0430, \u043F\u043E\u044D\u0442\u043E\u043C\u0443 \u043D\u0438\u0447\u0435\u0433\u043E \u043D\u0435 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u043E.",
+    "Could not save the keys to the bot profile. Retry.": "\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u043A\u043B\u044E\u0447\u0438 \u0432 \u043F\u0440\u043E\u0444\u0438\u043B\u044C \u0431\u043E\u0442\u0430. \u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u043E\u043F\u044B\u0442\u043A\u0443.",
+    "This bot was not installed by MyBots with keys, so add keys in Hermes settings.": "\u042D\u0442\u043E\u0442 \u0431\u043E\u0442 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D \u043D\u0435 \u0447\u0435\u0440\u0435\u0437 MyBots \u0441 \u043A\u043B\u044E\u0447\u0430\u043C\u0438, \u043F\u043E\u044D\u0442\u043E\u043C\u0443 \u0434\u043E\u0431\u0430\u0432\u044C\u0442\u0435 \u043A\u043B\u044E\u0447\u0438 \u0432 \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0430\u0445 Hermes.",
+    "The installed version changed. Refresh the bot list and retry.": "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u043D\u0430\u044F \u0432\u0435\u0440\u0441\u0438\u044F \u0438\u0437\u043C\u0435\u043D\u0438\u043B\u0430\u0441\u044C. \u041E\u0431\u043D\u043E\u0432\u0438\u0442\u0435 \u0441\u043F\u0438\u0441\u043E\u043A \u0431\u043E\u0442\u043E\u0432 \u0438 \u043F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u043E\u043F\u044B\u0442\u043A\u0443.",
+    "This bot needs a newer MyBots helper. Update MyBots and retry.": "\u042D\u0442\u043E\u043C\u0443 \u0431\u043E\u0442\u0443 \u043D\u0443\u0436\u0435\u043D \u0431\u043E\u043B\u0435\u0435 \u043D\u043E\u0432\u044B\u0439 \u043F\u043E\u043C\u043E\u0449\u043D\u0438\u043A MyBots. \u041E\u0431\u043D\u043E\u0432\u0438\u0442\u0435 MyBots \u0438 \u043F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u043E\u043F\u044B\u0442\u043A\u0443.",
+    "Could not save the keys. Retry.": "\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u043A\u043B\u044E\u0447\u0438. \u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u043E\u043F\u044B\u0442\u043A\u0443.",
+    "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "\u042D\u0442\u043E\u0442 \u0431\u043E\u0442 \u0443\u0436\u0435 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D, \u043F\u043E\u044D\u0442\u043E\u043C\u0443 \u0432\u0432\u0435\u0434\u0451\u043D\u043D\u044B\u0435 \u043A\u043B\u044E\u0447\u0438 \u043D\u0435 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u044B. \u0414\u043E\u0431\u0430\u0432\u044C\u0442\u0435 \u0438\u0445 \u043D\u0438\u0436\u0435 \u0447\u0435\u0440\u0435\u0437 \xAB\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043A\u043B\u044E\u0447\u0438\xBB.",
+    "Coming soon": "\u0421\u043A\u043E\u0440\u043E",
+    "This bot is still being prepared. You can install it once it opens.": "\u042D\u0442\u043E\u0442 \u0431\u043E\u0442 \u0435\u0449\u0451 \u0433\u043E\u0442\u043E\u0432\u0438\u0442\u0441\u044F. \u0415\u0433\u043E \u043C\u043E\u0436\u043D\u043E \u0431\u0443\u0434\u0435\u0442 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C, \u043A\u043E\u0433\u0434\u0430 \u043E\u043D \u043E\u0442\u043A\u0440\u043E\u0435\u0442\u0441\u044F.",
+    "This bot is not open yet.": "\u042D\u0442\u043E\u0442 \u0431\u043E\u0442 \u0435\u0449\u0451 \u043D\u0435 \u043E\u0442\u043A\u0440\u044B\u0442."
   },
   fr: {
     "Could not load installed bots. Please retry.": "Impossible de charger les bots install\xE9s. R\xE9essayez.",
@@ -1268,7 +1562,49 @@ var locales_default = {
     "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "Mod\xE8le : le profil par d\xE9faut n\u2019a pas de mod\xE8le, ce champ reste donc vide. Choisissez d\u2019abord un mod\xE8le apr\xE8s l\u2019installation.",
     "Choose a model first. This bot has no model yet.": "Choisissez d\u2019abord un mod\xE8le. Ce bot n\u2019a pas encore de mod\xE8le.",
     "You can chat right away with the same model as the default profile ({0}).": "Vous pouvez discuter imm\xE9diatement avec le m\xEAme mod\xE8le que le profil par d\xE9faut ({0}).",
-    "Language packs: {0} (copied from the default profile)": "Packs de langue : {0} (copi\xE9s depuis le profil par d\xE9faut)"
+    "Language packs: {0} (copied from the default profile)": "Packs de langue : {0} (copi\xE9s depuis le profil par d\xE9faut)",
+    "Keys this bot needs are stored only in bot profiles on this computer": "Les cl\xE9s n\xE9cessaires \xE0 ce bot sont stock\xE9es uniquement dans les profils de bots de cet ordinateur",
+    "Could not save this key to the default profile; the bot profile has it": "Impossible d'enregistrer cette cl\xE9 dans le profil par d\xE9faut ; elle est enregistr\xE9e dans le profil du bot",
+    "The default profile key file could not be checked safely, so it was left unchanged; the bot profile has this key": "Le fichier de cl\xE9s du profil par d\xE9faut n'a pas pu \xEAtre v\xE9rifi\xE9 en toute s\xE9curit\xE9 ; il n'a pas \xE9t\xE9 modifi\xE9. Le profil du bot contient cette cl\xE9",
+    "Keys apply from the next new chat (or after restarting Hermes)": "Les cl\xE9s s\u2019appliquent \xE0 partir de la prochaine nouvelle conversation (ou apr\xE8s le red\xE9marrage de Hermes)",
+    "The bot profile key file could not be checked safely, so nothing was changed": "Le fichier de cl\xE9s du profil du bot n\u2019a pas pu \xEAtre v\xE9rifi\xE9 en toute s\xE9curit\xE9 ; rien n\u2019a \xE9t\xE9 modifi\xE9",
+    "Service keys": "Cl\xE9s n\xE9cessaires",
+    Required: "Obligatoire",
+    Optional: "Facultative",
+    "Get a key": "Obtenir une cl\xE9",
+    "Imported from the default profile \u2713": "Import\xE9e du profil par d\xE9faut \u2713",
+    "Save to the default profile so other bots can use it": "Enregistrer dans le profil par d\xE9faut pour les autres bots",
+    "The default profile value stays as it is": "La valeur du profil par d\xE9faut reste inchang\xE9e",
+    "Required keys left empty: {0}. You can add them after installing.": "{0} cl\xE9s obligatoires sont vides. Vous pourrez les ajouter apr\xE8s l\u2019installation.",
+    "Required keys still empty: {0}.": "{0} cl\xE9s obligatoires sont encore vides.",
+    Set: "D\xE9finie",
+    Empty: "Vide",
+    Skipped: "Ignor\xE9e",
+    "Could not check": "V\xE9rification impossible",
+    "Keys needed": "Cl\xE9s n\xE9cessaires",
+    "Check keys": "V\xE9rifier les cl\xE9s",
+    "Taken from the default profile": "Reprise du profil par d\xE9faut",
+    "Also saved to the default profile": "Aussi enregistr\xE9e dans le profil par d\xE9faut",
+    "The default profile value was kept": "La valeur du profil par d\xE9faut a \xE9t\xE9 conserv\xE9e",
+    "Add keys": "Ajouter des cl\xE9s",
+    "Add keys for {0}": "Ajouter des cl\xE9s pour {0}",
+    "Save keys": "Enregistrer les cl\xE9s",
+    "Loading keys": "Chargement des cl\xE9s",
+    "Bot profile: {0}": "Profil du bot : {0}",
+    "The request was not accepted, so nothing was changed. Update MyBots and retry.": "La requ\xEAte n\u2019a pas \xE9t\xE9 accept\xE9e ; rien n\u2019a \xE9t\xE9 modifi\xE9. Mettez \xE0 jour MyBots et r\xE9essayez.",
+    "A key value is empty. Enter it or leave the key out. Nothing was changed.": "Une valeur de cl\xE9 est vide. Saisissez-la ou laissez la cl\xE9 de c\xF4t\xE9. Rien n\u2019a \xE9t\xE9 modifi\xE9.",
+    "A key must be one line of at most 4,096 bytes without control characters. Nothing was changed.": "Une cl\xE9 doit tenir sur une ligne d\u2019au plus 4 096 octets sans caract\xE8res de contr\xF4le. Rien n\u2019a \xE9t\xE9 modifi\xE9.",
+    "The keys did not match this bot. Review again; nothing was changed.": "Les cl\xE9s ne correspondent pas \xE0 ce bot. V\xE9rifiez \xE0 nouveau ; rien n\u2019a \xE9t\xE9 modifi\xE9.",
+    "The bot profile config could not be read safely, so nothing was changed.": "La configuration du profil du bot n\u2019a pas pu \xEAtre lue en toute s\xE9curit\xE9 ; rien n\u2019a \xE9t\xE9 modifi\xE9.",
+    "Could not save the keys to the bot profile. Retry.": "Impossible d\u2019enregistrer les cl\xE9s dans le profil du bot. R\xE9essayez.",
+    "This bot was not installed by MyBots with keys, so add keys in Hermes settings.": "Ce bot n\u2019a pas \xE9t\xE9 install\xE9 par MyBots avec des cl\xE9s ; ajoutez les cl\xE9s dans les r\xE9glages de Hermes.",
+    "The installed version changed. Refresh the bot list and retry.": "La version install\xE9e a chang\xE9. Actualisez la liste des bots et r\xE9essayez.",
+    "This bot needs a newer MyBots helper. Update MyBots and retry.": "Ce bot n\xE9cessite un assistant MyBots plus r\xE9cent. Mettez \xE0 jour MyBots et r\xE9essayez.",
+    "Could not save the keys. Retry.": "Impossible d\u2019enregistrer les cl\xE9s. R\xE9essayez.",
+    "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "Ce bot \xE9tait d\xE9j\xE0 install\xE9 ; les cl\xE9s saisies n\u2019ont donc pas \xE9t\xE9 enregistr\xE9es. Ajoutez-les ci-dessous avec \xAB Ajouter des cl\xE9s \xBB.",
+    "Coming soon": "Bient\xF4t disponible",
+    "This bot is still being prepared. You can install it once it opens.": "Ce bot est encore en pr\xE9paration. Vous pourrez l\u2019installer d\xE8s son ouverture.",
+    "This bot is not open yet.": "Ce bot n\u2019est pas encore ouvert."
   },
   de: {
     "Could not load installed bots. Please retry.": "Installierte Bots konnten nicht geladen werden. Bitte erneut versuchen.",
@@ -1426,7 +1762,49 @@ var locales_default = {
     "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "Modell: Das Standardprofil hat kein Modell, daher bleibt dies leer. W\xE4hlen Sie nach der Installation zuerst ein Modell.",
     "Choose a model first. This bot has no model yet.": "W\xE4hlen Sie zuerst ein Modell. Dieser Bot hat noch kein Modell.",
     "You can chat right away with the same model as the default profile ({0}).": "Sie k\xF6nnen sofort mit demselben Modell wie im Standardprofil ({0}) chatten.",
-    "Language packs: {0} (copied from the default profile)": "Sprachpakete: {0} (aus dem Standardprofil kopiert)"
+    "Language packs: {0} (copied from the default profile)": "Sprachpakete: {0} (aus dem Standardprofil kopiert)",
+    "Keys this bot needs are stored only in bot profiles on this computer": "Die ben\xF6tigten Schl\xFCssel werden nur in Bot-Profilen auf diesem Computer gespeichert",
+    "Could not save this key to the default profile; the bot profile has it": "Dieser Schl\xFCssel konnte nicht im Standardprofil gespeichert werden; im Bot-Profil ist er gespeichert",
+    "The default profile key file could not be checked safely, so it was left unchanged; the bot profile has this key": "Die Schl\xFCsseldatei des Standardprofils konnte nicht sicher gepr\xFCft werden und blieb unver\xE4ndert; das Bot-Profil enth\xE4lt diesen Schl\xFCssel",
+    "Keys apply from the next new chat (or after restarting Hermes)": "Schl\xFCssel gelten ab dem n\xE4chsten neuen Chat (oder nach einem Neustart von Hermes)",
+    "The bot profile key file could not be checked safely, so nothing was changed": "Die Schl\xFCsseldatei des Bot-Profils konnte nicht sicher gepr\xFCft werden, daher wurde nichts ge\xE4ndert",
+    "Service keys": "Ben\xF6tigte Schl\xFCssel",
+    Required: "Erforderlich",
+    Optional: "Optional",
+    "Get a key": "Schl\xFCssel anfordern",
+    "Imported from the default profile \u2713": "Aus dem Standardprofil \xFCbernommen \u2713",
+    "Save to the default profile so other bots can use it": "Im Standardprofil speichern, damit andere Bots ihn nutzen k\xF6nnen",
+    "The default profile value stays as it is": "Der Wert im Standardprofil bleibt unver\xE4ndert",
+    "Required keys left empty: {0}. You can add them after installing.": "{0} erforderliche Schl\xFCssel sind leer. Sie k\xF6nnen sie nach der Installation hinzuf\xFCgen.",
+    "Required keys still empty: {0}.": "{0} erforderliche Schl\xFCssel sind noch leer.",
+    Set: "Gesetzt",
+    Empty: "Leer",
+    Skipped: "\xDCbersprungen",
+    "Could not check": "Pr\xFCfung nicht m\xF6glich",
+    "Keys needed": "Schl\xFCssel fehlen",
+    "Check keys": "Schl\xFCssel pr\xFCfen",
+    "Taken from the default profile": "Aus dem Standardprofil \xFCbernommen",
+    "Also saved to the default profile": "Auch im Standardprofil gespeichert",
+    "The default profile value was kept": "Der Wert im Standardprofil wurde beibehalten",
+    "Add keys": "Schl\xFCssel hinzuf\xFCgen",
+    "Add keys for {0}": "Schl\xFCssel f\xFCr {0} hinzuf\xFCgen",
+    "Save keys": "Schl\xFCssel speichern",
+    "Loading keys": "Schl\xFCssel werden geladen",
+    "Bot profile: {0}": "Bot-Profil: {0}",
+    "The request was not accepted, so nothing was changed. Update MyBots and retry.": "Die Anfrage wurde nicht angenommen, daher wurde nichts ge\xE4ndert. Aktualisieren Sie MyBots und versuchen Sie es erneut.",
+    "A key value is empty. Enter it or leave the key out. Nothing was changed.": "Ein Schl\xFCsselwert ist leer. Geben Sie ihn ein oder lassen Sie den Schl\xFCssel weg. Es wurde nichts ge\xE4ndert.",
+    "A key must be one line of at most 4,096 bytes without control characters. Nothing was changed.": "Ein Schl\xFCssel muss eine Zeile mit h\xF6chstens 4.096 Byte ohne Steuerzeichen sein. Es wurde nichts ge\xE4ndert.",
+    "The keys did not match this bot. Review again; nothing was changed.": "Die Schl\xFCssel passen nicht zu diesem Bot. Pr\xFCfen Sie erneut; es wurde nichts ge\xE4ndert.",
+    "The bot profile config could not be read safely, so nothing was changed.": "Die Konfiguration des Bot-Profils konnte nicht sicher gelesen werden, daher wurde nichts ge\xE4ndert.",
+    "Could not save the keys to the bot profile. Retry.": "Die Schl\xFCssel konnten nicht im Bot-Profil gespeichert werden. Versuchen Sie es erneut.",
+    "This bot was not installed by MyBots with keys, so add keys in Hermes settings.": "Dieser Bot wurde nicht von MyBots mit Schl\xFCsseln installiert; f\xFCgen Sie die Schl\xFCssel in den Hermes-Einstellungen hinzu.",
+    "The installed version changed. Refresh the bot list and retry.": "Die installierte Version hat sich ge\xE4ndert. Aktualisieren Sie die Bot-Liste und versuchen Sie es erneut.",
+    "This bot needs a newer MyBots helper. Update MyBots and retry.": "Dieser Bot ben\xF6tigt einen neueren MyBots-Installationshelfer. Aktualisieren Sie MyBots und versuchen Sie es erneut.",
+    "Could not save the keys. Retry.": "Die Schl\xFCssel konnten nicht gespeichert werden. Versuchen Sie es erneut.",
+    "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "Dieser Bot war bereits installiert, daher wurden die eingegebenen Schl\xFCssel nicht gespeichert. F\xFCgen Sie sie unten mit \u201ESchl\xFCssel hinzuf\xFCgen\u201C hinzu.",
+    "Coming soon": "Demn\xE4chst",
+    "This bot is still being prepared. You can install it once it opens.": "Dieser Bot wird noch vorbereitet. Sie k\xF6nnen ihn installieren, sobald er freigegeben ist.",
+    "This bot is not open yet.": "Dieser Bot ist noch nicht freigegeben."
   },
   es: {
     "Could not load installed bots. Please retry.": "No se pudieron cargar los bots instalados. Int\xE9ntalo de nuevo.",
@@ -1584,7 +1962,49 @@ var locales_default = {
     "Model: the default profile has no model, so this stays empty. Choose a model first after installing.": "Modelo: el perfil predeterminado no tiene modelo, as\xED que queda vac\xEDo. Elige un modelo primero despu\xE9s de instalar.",
     "Choose a model first. This bot has no model yet.": "Elige un modelo primero. Este bot a\xFAn no tiene modelo.",
     "You can chat right away with the same model as the default profile ({0}).": "Puedes chatear de inmediato con el mismo modelo que el perfil predeterminado ({0}).",
-    "Language packs: {0} (copied from the default profile)": "Paquetes de idioma: {0} (copiados del perfil predeterminado)"
+    "Language packs: {0} (copied from the default profile)": "Paquetes de idioma: {0} (copiados del perfil predeterminado)",
+    "Keys this bot needs are stored only in bot profiles on this computer": "Las claves que necesita este bot se guardan solo en los perfiles de bots de este equipo",
+    "Could not save this key to the default profile; the bot profile has it": "No se pudo guardar esta clave en el perfil predeterminado; el perfil del bot s\xED la tiene",
+    "The default profile key file could not be checked safely, so it was left unchanged; the bot profile has this key": "No se pudo comprobar de forma segura el archivo de claves del perfil predeterminado, as\xED que no se modific\xF3; el perfil del bot tiene esta clave",
+    "Keys apply from the next new chat (or after restarting Hermes)": "Las claves se aplican a partir del pr\xF3ximo chat nuevo (o tras reiniciar Hermes)",
+    "The bot profile key file could not be checked safely, so nothing was changed": "No se pudo comprobar de forma segura el archivo de claves del perfil del bot, as\xED que no se cambi\xF3 nada",
+    "Service keys": "Claves necesarias",
+    Required: "Obligatoria",
+    Optional: "Opcional",
+    "Get a key": "Obtener una clave",
+    "Imported from the default profile \u2713": "Importada del perfil predeterminado \u2713",
+    "Save to the default profile so other bots can use it": "Guardar en el perfil predeterminado para otros bots",
+    "The default profile value stays as it is": "El valor del perfil predeterminado se mantiene",
+    "Required keys left empty: {0}. You can add them after installing.": "Hay {0} claves obligatorias vac\xEDas. Puedes a\xF1adirlas despu\xE9s de instalar.",
+    "Required keys still empty: {0}.": "Todav\xEDa hay {0} claves obligatorias vac\xEDas.",
+    Set: "Configurada",
+    Empty: "Vac\xEDa",
+    Skipped: "Omitida",
+    "Could not check": "No se pudo comprobar",
+    "Keys needed": "Faltan claves",
+    "Check keys": "Revisar claves",
+    "Taken from the default profile": "Tomada del perfil predeterminado",
+    "Also saved to the default profile": "Tambi\xE9n guardada en el perfil predeterminado",
+    "The default profile value was kept": "Se mantuvo el valor del perfil predeterminado",
+    "Add keys": "A\xF1adir claves",
+    "Add keys for {0}": "A\xF1adir claves para {0}",
+    "Save keys": "Guardar claves",
+    "Loading keys": "Cargando claves",
+    "Bot profile: {0}": "Perfil del bot: {0}",
+    "The request was not accepted, so nothing was changed. Update MyBots and retry.": "No se acept\xF3 la solicitud, as\xED que no se cambi\xF3 nada. Actualiza MyBots y vuelve a intentarlo.",
+    "A key value is empty. Enter it or leave the key out. Nothing was changed.": "Hay un valor de clave vac\xEDo. Escr\xEDbelo o deja esa clave sin rellenar. No se cambi\xF3 nada.",
+    "A key must be one line of at most 4,096 bytes without control characters. Nothing was changed.": "Una clave debe ser una sola l\xEDnea de 4.096 bytes como m\xE1ximo, sin caracteres de control. No se cambi\xF3 nada.",
+    "The keys did not match this bot. Review again; nothing was changed.": "Las claves no coinciden con este bot. Revisa de nuevo; no se cambi\xF3 nada.",
+    "The bot profile config could not be read safely, so nothing was changed.": "No se pudo leer de forma segura la configuraci\xF3n del perfil del bot, as\xED que no se cambi\xF3 nada.",
+    "Could not save the keys to the bot profile. Retry.": "No se pudieron guardar las claves en el perfil del bot. Vuelve a intentarlo.",
+    "This bot was not installed by MyBots with keys, so add keys in Hermes settings.": "MyBots no instal\xF3 este bot con claves; a\xF1ade las claves en los ajustes de Hermes.",
+    "The installed version changed. Refresh the bot list and retry.": "La versi\xF3n instalada cambi\xF3. Actualiza la lista de bots y vuelve a intentarlo.",
+    "This bot needs a newer MyBots helper. Update MyBots and retry.": "Este bot necesita un asistente de MyBots m\xE1s reciente. Actualiza MyBots y vuelve a intentarlo.",
+    "Could not save the keys. Retry.": "No se pudieron guardar las claves. Vuelve a intentarlo.",
+    "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "Este bot ya estaba instalado, as\xED que no se guardaron las claves que escribiste. A\xF1\xE1delas abajo con \xABA\xF1adir claves\xBB.",
+    "Coming soon": "Pr\xF3ximamente",
+    "This bot is still being prepared. You can install it once it opens.": "Este bot a\xFAn se est\xE1 preparando. Podr\xE1s instalarlo cuando se abra.",
+    "This bot is not open yet.": "Este bot a\xFAn no est\xE1 abierto."
   }
 };
 
@@ -1617,9 +2037,99 @@ import { useEffect as useEffect2, useRef, useState as useState2 } from "react";
 // packages/contracts/src/voice.ts
 var VOICE_IDS = ["marin", "cedar", "quartz", "ripple", "vesper", "willow", "stone", "gleam", "meridian", "bossa", "tempo", "beacon", "delta", "cinder"];
 
+// packages/contracts/env-denylist.json
+var env_denylist_default = {
+  source: "hermes-agent hermes_cli/config.py _ENV_VAR_NAME_DENY_PREFIXES and _ENV_VAR_NAME_DENYLIST (lines 94-131)",
+  prefixes: [
+    "LD_",
+    "DYLD_",
+    "GIT_CONFIG_"
+  ],
+  names: [
+    "BASH_ENV",
+    "BROWSER",
+    "CLASSPATH",
+    "DYLD_FALLBACK_FRAMEWORK_PATH",
+    "DYLD_FALLBACK_LIBRARY_PATH",
+    "DYLD_FRAMEWORK_PATH",
+    "DYLD_INSERT_LIBRARIES",
+    "DYLD_LIBRARY_PATH",
+    "EDITOR",
+    "ENV",
+    "EXINIT",
+    "GIT_ASKPASS",
+    "GIT_DIR",
+    "GIT_EDITOR",
+    "GIT_EXEC_PATH",
+    "GIT_EXTERNAL_DIFF",
+    "GIT_PAGER",
+    "GIT_PROXY_COMMAND",
+    "GIT_SEQUENCE_EDITOR",
+    "GIT_SHELL",
+    "GIT_SSH",
+    "GIT_SSH_COMMAND",
+    "GIT_TEMPLATE_DIR",
+    "GOFLAGS",
+    "HERMES_ACCEPT_HOOKS",
+    "HERMES_CONFIG",
+    "HERMES_CONFIG_PATH",
+    "HERMES_COPILOT_ACP_ARGS",
+    "HERMES_COPILOT_ACP_COMMAND",
+    "HERMES_CRON_SESSION",
+    "HERMES_ENV",
+    "HERMES_ENV_PATH",
+    "HERMES_EXEC_ASK",
+    "HERMES_GATEWAY_SESSION",
+    "HERMES_HOME",
+    "HERMES_INTERACTIVE",
+    "HERMES_OPTIONAL_MCPS",
+    "HERMES_PROFILE",
+    "HERMES_REDACT_SECRETS",
+    "HERMES_SESSION_KEY",
+    "HERMES_SESSION_PLATFORM",
+    "HERMES_SINGLE_QUERY_SESSION",
+    "HERMES_YOLO_MODE",
+    "JAVA_TOOL_OPTIONS",
+    "JDK_JAVA_OPTIONS",
+    "LD_AUDIT",
+    "LD_DEBUG",
+    "LD_LIBRARY_PATH",
+    "LD_PRELOAD",
+    "MANPAGER",
+    "NODE_OPTIONS",
+    "NODE_PATH",
+    "PAGER",
+    "PATH",
+    "PERL5LIB",
+    "PERL5OPT",
+    "PERLLIB",
+    "PROMPT_COMMAND",
+    "PYTHONBREAKPOINT",
+    "PYTHONCASEOK",
+    "PYTHONEXECUTABLE",
+    "PYTHONHOME",
+    "PYTHONNOUSERSITE",
+    "PYTHONPATH",
+    "PYTHONSTARTUP",
+    "PYTHONUSERBASE",
+    "RUBYLIB",
+    "RUBYOPT",
+    "RUSTFLAGS",
+    "SHELL",
+    "SSH_ASKPASS",
+    "SUDO_ASKPASS",
+    "VIMINIT",
+    "VISUAL",
+    "ZDOTDIR",
+    "_JAVA_OPTIONS"
+  ]
+};
+
 // packages/contracts/src/index.ts
 var BOT_ID = /^[a-z][a-z0-9-]{0,39}$/;
 var VERSION = /^\d+\.\d+\.\d+$/;
+var DENY_NAMES = new Set(env_denylist_default.names);
+var DENY_PREFIXES = env_denylist_default.prefixes;
 function parseInstallLink(input) {
   const u = new URL(input);
   if (u.protocol !== "hermes:" || u.hostname !== "mybots" || u.pathname !== "/install" || u.hash || u.username || u.password || u.port) throw new Error("Invalid install link");
@@ -1699,6 +2209,9 @@ function filterBots(bots, query, category) {
 }
 
 // packages/contracts/src/market.ts
+var SUBMISSION_SCOPES = ["submissions:read", "submissions:write"];
+var CMS_SCOPES = ["bots:read", "bots:write", "bots:publish", "availability:write"];
+var SCOPES = [...SUBMISSION_SCOPES, ...CMS_SCOPES];
 function parseMetadata(input) {
   return structuredClone(parseAuthoredCatalog([input])[0]);
 }
@@ -1755,8 +2268,11 @@ var MarketApi = class {
   review(bot, version, components) {
     return this.ctx.rest("/review", { method: "POST", body: { bot, version, components }, timeoutMs: 12e4 });
   }
-  install(token) {
-    return this.ctx.rest("/install", { method: "POST", body: { token }, timeoutMs: 9e4 });
+  install(token, secrets) {
+    return this.ctx.rest("/install", { method: "POST", body: secrets && Object.keys(secrets).length ? { token, secrets } : { token }, timeoutMs: 9e4 });
+  }
+  updateSecrets(bot, version, secrets) {
+    return this.ctx.rest("/secrets", { method: "POST", body: { bot, version, secrets }, timeoutMs: 3e4 });
   }
 };
 
@@ -2139,12 +2655,15 @@ function registerLumiIcon() {
 }
 
 // packages/hermes-plugin/desktop/market-page.tsx
-import { useCallback, useEffect as useEffect7, useRef as useRef5, useState as useState6 } from "react";
+import { useCallback, useEffect as useEffect7, useRef as useRef6, useState as useState7 } from "react";
 import { host as host4 } from "@hermes/plugin-sdk";
 
 // packages/hermes-plugin/desktop/install-confirmation.tsx
-import { useEffect as useEffect5, useRef as useRef4, useState as useState4 } from "react";
+import { useEffect as useEffect5, useRef as useRef5, useState as useState5 } from "react";
 import { host as host2 } from "@hermes/plugin-sdk";
+
+// packages/hermes-plugin/desktop/secrets-fields.tsx
+import { useId, useRef as useRef3, useState as useState4 } from "react";
 
 // packages/hermes-plugin/desktop/install-state.ts
 var format = (key, ...args) => key.replace(/\{(\d+)\}/g, (_, n) => String(args[Number(n)] ?? ""));
@@ -2159,19 +2678,323 @@ function profileDestination(profile) {
   return { route: { connectionId: "local", mode: "local", profile, targetProfile: profile }, options: { workspaceMode: "bots", workspaceOwnerKey: `bot:local::${profile}` } };
 }
 function installErrorMessage(error, profile, t = format) {
-  const text2 = String(error?.message ?? error);
-  if (text2.includes("Profile name already exists")) return t("A bot named {0} already exists. The existing bot was not changed.", profile);
-  if (text2.includes("Existing MyBots profile has changes")) return t("The {0} profile has manual changes, so installation stopped. The existing bot was not changed.", profile);
-  if (text2.includes("Review expired")) return t("The review expired, so nothing was installed. Review the configuration again.");
-  return t("Could not install. Review the configuration and retry.");
+  const reason = detail(error);
+  if (reason.startsWith("Profile name already exists")) return t("A bot named {0} already exists. The existing bot was not changed.", profile);
+  if (reason.startsWith("Existing MyBots profile has changes")) return t("The {0} profile has manual changes, so installation stopped. The existing bot was not changed.", profile);
+  if (reason.startsWith("Review expired")) return t("The review expired, so nothing was installed. Review the configuration again.");
+  return keyRefusal(reason, t) ?? t("Could not install. Review the configuration and retry.");
 }
+var PROFILE_ENV_UNCHECKED = "The bot profile key file could not be checked safely, so nothing was changed";
+function detail(error) {
+  const text2 = String(error?.message ?? error), start = text2.indexOf("{");
+  if (start < 0) return "";
+  try {
+    const body = JSON.parse(text2.slice(start));
+    return typeof body?.detail === "string" ? body.detail : "";
+  } catch {
+    return "";
+  }
+}
+function keyRefusal(reason, t) {
+  if (!reason) return null;
+  if (["Invalid request", "Request is too large", "Content-Type must be application/json"].includes(reason)) return t("The request was not accepted, so nothing was changed. Update MyBots and retry.");
+  if (reason === "Key value is missing") return t("A key value is empty. Enter it or leave the key out. Nothing was changed.");
+  if (reason.startsWith("Key value must be one line")) return t("A key must be one line of at most 4,096 bytes without control characters. Nothing was changed.");
+  if (reason === "Key is not declared for the selected components" || reason === "Invalid key input") return t("The keys did not match this bot. Review again; nothing was changed.");
+  if (reason === PROFILE_ENV_UNCHECKED) return t(PROFILE_ENV_UNCHECKED);
+  if (reason.startsWith("The bot profile config could not be read safely")) return t("The bot profile config could not be read safely, so nothing was changed.");
+  if (reason.startsWith("Keys could not be saved")) return t("Could not save the keys to the bot profile. Retry.");
+  if (["This bot is not installed", "This bot was not installed by MyBots", "This bot was not installed with key declarations", "Invalid receipt key declarations"].includes(reason)) return t("This bot was not installed by MyBots with keys, so add keys in Hermes settings.");
+  if (reason.startsWith("The installed version differs") || reason === "Invalid bot or fixed version") return t("The installed version changed. Refresh the bot list and retry.");
+  return null;
+}
+function keyErrorMessage(error, t = format) {
+  return keyRefusal(detail(error), t) ?? t("Could not save the keys. Retry.");
+}
+var NOT_OPEN = "This bot is not open yet";
+function reviewErrorMessage(error) {
+  const reason = detail(error);
+  if (reason === NOT_OPEN) return "This bot is not open yet.";
+  if (reason === "Invalid manifest" || reason.startsWith("This bot/version requires a newer MyBots helper")) return "This bot needs a newer MyBots helper. Update MyBots and retry.";
+  return "Could not review the installation. Check connection and publication status.";
+}
+var startsDefault = (r) => r.prefill === "default" && r.startWithDefault !== false;
+var initialKeys = (rows) => Object.fromEntries(rows.map((r) => [r.name, { useDefault: startsDefault(r), value: "", save: true }]));
+var choice = (r, keys) => keys[r.name] ?? { useDefault: startsDefault(r), value: "", save: true };
+var usesDefault = (r, keys) => r.prefill === "default" && choice(r, keys).useDefault;
+function keyRequest(rows, keys) {
+  return Object.fromEntries(rows.map((r) => {
+    const c = choice(r, keys), value = c.value.trim();
+    if (usesDefault(r, keys)) return [r.name, { source: "default" }];
+    return [r.name, value ? { source: "input", value, saveToDefault: c.save && !r.defaultHasValue } : { source: "skip" }];
+  }));
+}
+var missingRequired = (rows, keys) => rows.filter((r) => r.required && !usesDefault(r, keys) && !choice(r, keys).value.trim()).length;
 var nameConflictMessage = (profile, t = format) => t("A profile named {0} already exists, so this bot cannot be installed. The existing bot will not be changed. Rename the existing profile and try again.", profile);
 var modelReviewMessage = (model, t = format) => model ? t("Model: {0} (same as the default profile)", model.name) : t("Model: the default profile has no model, so this stays empty. Choose a model first after installing.");
 var modelResultMessage = (result, t = format) => result.modelSetupRequired || !result.model ? t("Choose a model first. This bot has no model yet.") : t("You can chat right away with the same model as the default profile ({0}).", result.model.name);
 var languagePackMessage = (packs, t = format) => packs?.length ? t("Language packs: {0} (copied from the default profile)", packs.map((p) => p.name).join(", ")) : "";
 
+// packages/hermes-plugin/desktop/secrets-fields.tsx
+import { Fragment as Fragment3, jsx as jsx4, jsxs as jsxs4 } from "react/jsx-runtime";
+var STORAGE_NOTICE = "Keys this bot needs are stored only in bot profiles on this computer";
+var APPLY_NOTICE = "Keys apply from the next new chat (or after restarting Hermes)";
+var DEFAULT_ERRORS = [
+  "Could not save this key to the default profile; the bot profile has it",
+  "The default profile key file could not be checked safely, so it was left unchanged; the bot profile has this key"
+];
+var FROM_DEFAULT = "Imported from the default profile \u2713";
+var SAVE_DEFAULT = "Save to the default profile so other bots can use it";
+function SecretsFields({
+  secrets,
+  value,
+  onChange,
+  disabled = false,
+  missingMessage = "Required keys left empty: {0}. You can add them after installing."
+}) {
+  const { t } = useMyBots();
+  const id = useId();
+  if (!secrets.length) return null;
+  const current = (r) => value[r.name] ?? initialKeys([r])[r.name];
+  const set = (r, patch) => onChange({ ...value, [r.name]: { ...current(r), ...patch } });
+  const missing = missingRequired(secrets, value);
+  return /* @__PURE__ */ jsxs4("fieldset", { disabled, className: "mb-keys", children: [
+    /* @__PURE__ */ jsx4("legend", { children: t("Service keys") }),
+    /* @__PURE__ */ jsx4("p", { className: "mb-muted", children: t(STORAGE_NOTICE) }),
+    secrets.map((r, i) => {
+      const c = current(r), fromDefault = usesDefault(r, value), purpose = `${id}-${i}-purpose`, note = `${id}-${i}-note`;
+      return /* @__PURE__ */ jsxs4("div", { className: "mb-key", children: [
+        /* @__PURE__ */ jsxs4("div", { className: "mb-key-head", children: [
+          /* @__PURE__ */ jsx4("b", { children: r.label }),
+          /* @__PURE__ */ jsx4(Badge, { variant: "muted", children: r.required ? t("Required") : t("Optional") })
+        ] }),
+        (r.purpose || r.url) && /* @__PURE__ */ jsxs4("p", { id: purpose, className: "mb-muted", children: [
+          r.purpose,
+          r.purpose && r.url && " \xB7 ",
+          r.url && /* @__PURE__ */ jsx4("a", { href: r.url, target: "_blank", rel: "noopener noreferrer", children: t("Get a key") })
+        ] }),
+        r.prefill === "default" && /* @__PURE__ */ jsxs4("label", { className: "mb-option", children: [
+          /* @__PURE__ */ jsx4(
+            Checkbox,
+            {
+              "aria-label": `${r.label}: ${t(FROM_DEFAULT)}`,
+              checked: fromDefault,
+              onCheckedChange: (checked) => set(r, { useDefault: checked === true, value: "" })
+            }
+          ),
+          /* @__PURE__ */ jsx4("span", { children: t(FROM_DEFAULT) })
+        ] }),
+        !fromDefault && /* @__PURE__ */ jsxs4(Fragment3, { children: [
+          /* @__PURE__ */ jsx4(
+            Input,
+            {
+              type: "password",
+              autoComplete: "off",
+              spellCheck: false,
+              maxLength: 4096,
+              "aria-label": r.label,
+              "aria-required": r.required,
+              "aria-describedby": [
+                r.purpose || r.url ? purpose : "",
+                r.defaultHasValue ? note : ""
+              ].filter(Boolean).join(" ") || void 0,
+              value: c.value,
+              onChange: (e) => set(r, { value: e.target.value })
+            }
+          ),
+          r.defaultHasValue ? /* @__PURE__ */ jsx4("small", { id: note, className: "mb-muted", children: t("The default profile value stays as it is") }) : /* @__PURE__ */ jsxs4("label", { className: "mb-option", children: [
+            /* @__PURE__ */ jsx4(
+              Checkbox,
+              {
+                "aria-label": `${r.label}: ${t(SAVE_DEFAULT)}`,
+                checked: c.save,
+                onCheckedChange: (checked) => set(r, { save: checked === true })
+              }
+            ),
+            /* @__PURE__ */ jsx4("span", { children: t(SAVE_DEFAULT) })
+          ] })
+        ] })
+      ] }, r.name);
+    }),
+    /* @__PURE__ */ jsx4("p", { role: "status", className: "mb-muted", children: missing > 0 ? t(missingMessage, missing) : "" })
+  ] });
+}
+var STATE_LABELS = {
+  set: "Set",
+  missing: "Empty",
+  skipped: "Skipped",
+  unknown: "Could not check"
+};
+function keyBadge(states2) {
+  if (states2?.some((s) => s.required && s.state === "missing"))
+    return { label: "Keys needed", variant: "warn" };
+  if (states2?.some((s) => s.state === "unknown"))
+    return { label: "Check keys", variant: "muted" };
+  return null;
+}
+function KeyResults({
+  rows,
+  labels: labels2
+}) {
+  const { t } = useMyBots();
+  return /* @__PURE__ */ jsx4("ul", { className: "mb-key-results", children: rows.map((r) => /* @__PURE__ */ jsxs4("li", { children: [
+    /* @__PURE__ */ jsx4("b", { children: labels2[r.name] || r.name }),
+    " \xB7",
+    " ",
+    t(STATE_LABELS[r.state] ?? "Could not check"),
+    r.fromDefault && /* @__PURE__ */ jsxs4(Fragment3, { children: [
+      " \xB7 ",
+      t("Taken from the default profile")
+    ] }),
+    r.savedToDefault && /* @__PURE__ */ jsxs4(Fragment3, { children: [
+      " \xB7 ",
+      t("Also saved to the default profile")
+    ] }),
+    r.defaultKept && /* @__PURE__ */ jsxs4(Fragment3, { children: [
+      " \xB7 ",
+      t("The default profile value was kept")
+    ] }),
+    r.defaultError && /* @__PURE__ */ jsxs4(Fragment3, { children: [
+      " ",
+      "\xB7",
+      " ",
+      t(
+        DEFAULT_ERRORS.includes(r.defaultError) ? r.defaultError : DEFAULT_ERRORS[0]
+      )
+    ] })
+  ] }, r.name)) });
+}
+function AddKeysForm({
+  ctx,
+  bot,
+  version,
+  secrets,
+  states: states2,
+  onSaved
+}) {
+  const { t } = useMyBots();
+  const [keys, setKeys] = useState4(
+    () => initialKeys(secrets)
+  ), [busy, setBusy] = useState4(false), [error, setError] = useState4(""), [result, setResult] = useState4(null);
+  const posting = useRef3(false), local = useLocal();
+  const labels2 = Object.fromEntries(secrets.map((r) => [r.name, r.label]));
+  const request = keyRequest(secrets, keys), empty2 = Object.values(request).every((x) => x.source === "skip");
+  async function save() {
+    if (posting.current || !isLocal() || empty2) return;
+    posting.current = true;
+    setBusy(true);
+    setError("");
+    setKeys(initialKeys(secrets));
+    try {
+      const value = await new MarketApi(ctx).updateSecrets(
+        bot,
+        version,
+        request
+      );
+      setResult(value);
+      onSaved?.(value);
+    } catch (reason) {
+      setError(keyErrorMessage(reason, t));
+    } finally {
+      posting.current = false;
+      setBusy(false);
+    }
+  }
+  if (result)
+    return /* @__PURE__ */ jsxs4("section", { role: "status", className: "mb-section", children: [
+      /* @__PURE__ */ jsx4(KeyResults, { rows: result.secrets, labels: labels2 }),
+      /* @__PURE__ */ jsx4("p", { children: t(APPLY_NOTICE) })
+    ] });
+  return /* @__PURE__ */ jsxs4("div", { className: "mb-section", children: [
+    error && /* @__PURE__ */ jsx4(Failure, { message: error }),
+    states2 && /* @__PURE__ */ jsx4(KeyResults, { rows: states2, labels: labels2 }),
+    /* @__PURE__ */ jsx4(
+      SecretsFields,
+      {
+        secrets,
+        value: keys,
+        onChange: setKeys,
+        disabled: busy || !local,
+        missingMessage: "Required keys still empty: {0}."
+      }
+    ),
+    /* @__PURE__ */ jsx4(DialogFooter, { children: /* @__PURE__ */ jsx4(
+      Button2,
+      {
+        disabled: busy || !local || empty2,
+        loading: busy,
+        onClick: save,
+        children: t("Save keys")
+      }
+    ) })
+  ] });
+}
+var installedFields = (states2) => states2.map((s) => ({
+  name: s.name,
+  required: s.required,
+  label: s.label || s.name,
+  purpose: s.purpose || "",
+  url: s.url || "",
+  prefill: s.defaultHasValue ? "default" : null,
+  defaultHasValue: !!s.defaultHasValue,
+  // A key the bot already has is never replaced by the default unless the user ticks it.
+  startWithDefault: s.state !== "set"
+}));
+function AddKeysDialog({
+  ctx,
+  status,
+  label,
+  onClose,
+  onSaved
+}) {
+  const { t, locale, dir } = useMyBots();
+  const opener = useRef3(document.activeElement);
+  const [fields2] = useState4(() => installedFields(status.secrets));
+  return /* @__PURE__ */ jsx4(
+    Dialog,
+    {
+      open: true,
+      onOpenChange: (open) => {
+        if (!open) onClose();
+      },
+      children: /* @__PURE__ */ jsxs4(
+        DialogContent,
+        {
+          "aria-label": t("Add keys for {0}", label),
+          lang: locale,
+          dir,
+          className: "mb-install",
+          onCloseAutoFocus: (event) => {
+            if (opener.current?.isConnected) {
+              event.preventDefault();
+              opener.current.focus();
+            }
+          },
+          children: [
+            /* @__PURE__ */ jsxs4(DialogHeader, { children: [
+              /* @__PURE__ */ jsx4(DialogTitle, { children: t("Add keys for {0}", label) }),
+              /* @__PURE__ */ jsx4(DialogDescription, { children: t("Bot profile: {0}", status.profile) })
+            ] }),
+            /* @__PURE__ */ jsx4(
+              AddKeysForm,
+              {
+                ctx,
+                bot: status.bot,
+                version: status.version,
+                secrets: fields2,
+                states: status.secrets,
+                onSaved
+              }
+            )
+          ]
+        }
+      )
+    }
+  );
+}
+
 // packages/hermes-plugin/desktop/bot-avatar.tsx
-import { useEffect as useEffect4, useRef as useRef3 } from "react";
+import { useEffect as useEffect4, useRef as useRef4 } from "react";
 import * as sdk2 from "@hermes/plugin-sdk";
 
 // packages/hermes-plugin/desktop/avatar-presets.ts
@@ -2747,7 +3570,7 @@ function mountAvatarScene(svg, src, calibration, loopFactory) {
 }
 
 // packages/hermes-plugin/desktop/bot-avatar.tsx
-import { jsx as jsx4 } from "react/jsx-runtime";
+import { jsx as jsx5 } from "react/jsx-runtime";
 var targets = /* @__PURE__ */ new Set();
 var clock;
 var sharedLoop = (draw, options) => {
@@ -2770,7 +3593,7 @@ var sharedLoop = (draw, options) => {
 function BotAvatar({ bot, name, src, sha256, mood = "idle", size = 80 }) {
   const { t } = useMyBots();
   const accessibleLabel = t("{0} avatar", name);
-  const ref = useRef3(null), scene = useRef3(null);
+  const ref = useRef4(null), scene = useRef4(null);
   const calibration = sha256 ? avatarPreset(bot, sha256) : null;
   const animate = !!calibration && mood !== "unavailable";
   useEffect4(() => {
@@ -2788,20 +3611,21 @@ function BotAvatar({ bot, name, src, sha256, mood = "idle", size = 80 }) {
   useEffect4(() => {
     if (mood !== "unavailable") scene.current?.setMood(mood);
   }, [mood, src, animate]);
-  return animate ? /* @__PURE__ */ jsx4("svg", { ref, width: size, height: size, className: "mb-avatar" }) : /* @__PURE__ */ jsx4("img", { src, alt: accessibleLabel, width: size, height: size, className: "mb-avatar" });
+  return animate ? /* @__PURE__ */ jsx5("svg", { ref, width: size, height: size, className: "mb-avatar" }) : /* @__PURE__ */ jsx5("img", { src, alt: accessibleLabel, width: size, height: size, className: "mb-avatar" });
 }
 
 // packages/hermes-plugin/desktop/install-confirmation.tsx
-import { Fragment as Fragment3, jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
+import { Fragment as Fragment4, jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
 var labels = { skills: "Skills", mcp: "MCP \xB7 runs local Python", plugin: "Plugin \xB7 runs local Python", voice: "Recommended GPT Live voice" };
-function InstallConfirmation({ ctx, bot, onClose, onInstalled, mood = "idle", status }) {
+function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood = "idle", status, comingSoon: comingSoon2 = false }) {
   const { t, locale, dir } = useMyBots();
-  const [selection, setSelection] = useState4(() => initialSelection(bot)), [review, setReview] = useState4(null), [result, setResult] = useState4(null), [busy, setBusy] = useState4(false), [error, setError] = useState4(""), [retry, setRetry] = useState4(0);
-  const opener = useRef4(document.activeElement);
-  const fence = useRef4(new ReviewFence()), posting = useRef4(false), local = useLocal();
+  const [selection, setSelection] = useState5(() => initialSelection(bot)), [review, setReview] = useState5(null), [result, setResult] = useState5(null), [busy, setBusy] = useState5(false), [error, setError] = useState5(""), [retry, setRetry] = useState5(0);
+  const [keys, setKeys] = useState5({}), [decls, setDecls] = useState5([]), [addKeys, setAddKeys] = useState5(null), [typed, setTyped] = useState5(false), [existing, setExisting] = useState5(null);
+  const opener = useRef5(document.activeElement);
+  const fence = useRef5(new ReviewFence()), posting = useRef5(false), local = useLocal();
   const identity = bot.id + "@" + bot.version;
   const conflict = status?.state === "name-conflict";
-  const owner = useRef4(identity);
+  const owner = useRef5(identity);
   owner.current = identity;
   useEffect5(() => {
     setSelection(initialSelection(bot));
@@ -2815,20 +3639,24 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, mood = "idle", st
     setReview(null);
     setResult(null);
     setError("");
-    if (!local) {
+    setKeys({});
+    if (!local || comingSoon2) {
       setBusy(false);
       return;
     }
     setBusy(true);
     new MarketApi(ctx).review(bot.id, bot.version, normalizeSelection(bot, selection)).then((value) => {
-      if (fence.current.isCurrent(ticket) && isLocal()) setReview(value);
-    }, () => {
-      if (fence.current.isCurrent(ticket)) setError("Could not review the installation. Check connection and publication status.");
+      if (fence.current.isCurrent(ticket) && isLocal()) {
+        setKeys(initialKeys(value.secrets ?? []));
+        setReview(value);
+      }
+    }, (reason) => {
+      if (fence.current.isCurrent(ticket)) setError(reviewErrorMessage(reason));
     }).finally(() => {
       if (fence.current.isCurrent(ticket)) setBusy(false);
     });
     return () => fence.current.invalidate();
-  }, [ctx, identity, selection, local, retry]);
+  }, [ctx, identity, selection, local, retry, comingSoon2]);
   async function install() {
     if (posting.current || !review || !isLocal()) return;
     posting.current = true;
@@ -2836,12 +3664,23 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, mood = "idle", st
     const expected = owner.current;
     setBusy(true);
     setError("");
+    const rows = review.secrets ?? [], request = keyRequest(rows, keys);
+    setKeys({});
+    setDecls(rows);
+    setAddKeys(null);
+    setExisting(null);
+    setTyped(Object.values(request).some((x) => x.source === "input"));
     try {
-      const value = await new MarketApi(ctx).install(review.token);
+      const value = await new MarketApi(ctx).install(review.token, request);
       if (fence.current.isCurrent(ticket) && isLocal() && owner.current === expected) {
         setResult(value);
         setReview(null);
         onInstalled(value);
+        if (value.status === "already-installed") new MarketApi(ctx).installed().then((rows2) => {
+          const row = rows2.find((r) => r.bot === bot.id && r.version === bot.version && r.secrets?.length);
+          if (fence.current.isCurrent(ticket) && owner.current === expected && row) setExisting(row);
+        }, () => {
+        });
       }
     } catch (reason) {
       if (fence.current.isCurrent(ticket)) {
@@ -2853,98 +3692,127 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, mood = "idle", st
       if (fence.current.isCurrent(ticket)) setBusy(false);
     }
   }
-  return /* @__PURE__ */ jsx5(Dialog, { open: true, onOpenChange: (open) => {
+  return /* @__PURE__ */ jsx6(Dialog, { open: true, onOpenChange: (open) => {
     if (!open) onClose();
-  }, children: /* @__PURE__ */ jsxs4(DialogContent, { "aria-label": t("Confirm installation of {0}", bot.name), "aria-busy": busy, lang: locale, dir, className: "mb-install", onCloseAutoFocus: (event) => {
+  }, children: /* @__PURE__ */ jsxs5(DialogContent, { "aria-label": t("Confirm installation of {0}", bot.name), "aria-busy": busy, lang: locale, dir, className: "mb-install", onCloseAutoFocus: (event) => {
     if (opener.current?.isConnected) {
       event.preventDefault();
       opener.current.focus();
     }
   }, children: [
-    /* @__PURE__ */ jsxs4(DialogHeader, { children: [
-      /* @__PURE__ */ jsx5(DialogTitle, { children: t("Meet {0}", bot.name) }),
-      /* @__PURE__ */ jsxs4(DialogDescription, { children: [
+    /* @__PURE__ */ jsxs5(DialogHeader, { children: [
+      /* @__PURE__ */ jsx6(DialogTitle, { children: t("Meet {0}", bot.name) }),
+      /* @__PURE__ */ jsxs5(DialogDescription, { children: [
         bot.role,
         " \xB7 ",
         bot.personality
       ] })
     ] }),
-    /* @__PURE__ */ jsxs4("div", { className: "mb-install-hero", children: [
-      review && /* @__PURE__ */ jsx5(BotAvatar, { bot: bot.id, name: bot.name, src: review.avatar, sha256: review.manifest.files.find((f) => f.component === "avatar")?.sha256, mood, size: 96 }),
-      /* @__PURE__ */ jsxs4("div", { children: [
-        /* @__PURE__ */ jsx5("p", { children: bot.description }),
-        /* @__PURE__ */ jsxs4("div", { className: "mb-badges", children: [
-          /* @__PURE__ */ jsxs4(Badge, { variant: "muted", children: [
+    /* @__PURE__ */ jsxs5("div", { className: "mb-install-hero", children: [
+      review && /* @__PURE__ */ jsx6(BotAvatar, { bot: bot.id, name: bot.name, src: review.avatar, sha256: review.manifest.files.find((f) => f.component === "avatar")?.sha256, mood, size: 96 }),
+      /* @__PURE__ */ jsxs5("div", { children: [
+        /* @__PURE__ */ jsx6("p", { children: bot.description }),
+        /* @__PURE__ */ jsxs5("div", { className: "mb-badges", children: [
+          /* @__PURE__ */ jsxs5(Badge, { variant: "muted", children: [
             "v",
             bot.version
           ] }),
-          /* @__PURE__ */ jsx5(Badge, { variant: "muted", children: t("Soul and avatar required") })
+          /* @__PURE__ */ jsx6(Badge, { variant: "muted", children: t("Soul and avatar required") }),
+          comingSoon2 && /* @__PURE__ */ jsx6(Badge, { variant: "muted", children: t("Coming soon") })
         ] })
       ] })
     ] }),
-    !local && /* @__PURE__ */ jsx5(LocalNotice, {}),
-    error && /* @__PURE__ */ jsx5(Failure, { message: t(error) }),
-    !result && /* @__PURE__ */ jsxs4("fieldset", { disabled: busy && posting.current, className: "mb-options", children: [
-      /* @__PURE__ */ jsx5("legend", { children: t("Include these features") }),
-      bot.optional.length === 0 && /* @__PURE__ */ jsx5("p", { className: "mb-muted", children: t("Start with a Soul and avatar.") }),
-      bot.optional.map((c) => /* @__PURE__ */ jsxs4("label", { className: "mb-option", children: [
-        /* @__PURE__ */ jsx5(Checkbox, { "aria-label": t(labels[c]), checked: selection.includes(c), onCheckedChange: (checked) => {
+    comingSoon2 ? /* @__PURE__ */ jsx6("section", { role: "status", className: "mb-notice", children: /* @__PURE__ */ jsx6("p", { children: t("This bot is still being prepared. You can install it once it opens.") }) }) : /* @__PURE__ */ jsxs5(Fragment4, { children: [
+      !local && /* @__PURE__ */ jsx6(LocalNotice, {}),
+      error && /* @__PURE__ */ jsx6(Failure, { message: t(error) })
+    ] }),
+    !result && !comingSoon2 && /* @__PURE__ */ jsxs5("fieldset", { disabled: busy && posting.current, className: "mb-options", children: [
+      /* @__PURE__ */ jsx6("legend", { children: t("Include these features") }),
+      bot.optional.length === 0 && /* @__PURE__ */ jsx6("p", { className: "mb-muted", children: t("Start with a Soul and avatar.") }),
+      bot.optional.map((c) => /* @__PURE__ */ jsxs5("label", { className: "mb-option", children: [
+        /* @__PURE__ */ jsx6(Checkbox, { "aria-label": t(labels[c]), checked: selection.includes(c), onCheckedChange: (checked) => {
           fence.current.invalidate();
           setReview(null);
           setSelection((s) => normalizeSelection(bot, checked === true ? [...s, c] : s.filter((x) => x !== c)));
         } }),
-        /* @__PURE__ */ jsxs4("span", { children: [
+        /* @__PURE__ */ jsxs5("span", { children: [
           t(labels[c]),
           c === "voice" && bot.voice && ` \xB7 ${bot.voice.id} (${t("Not auditioned")})`
         ] })
       ] }, c))
     ] }),
-    busy && !posting.current && /* @__PURE__ */ jsx5(Loader, { label: t("Reviewing installation") }),
-    review && /* @__PURE__ */ jsxs4(Fragment3, { children: [
-      conflict ? /* @__PURE__ */ jsx5(Failure, { message: nameConflictMessage(review.manifest.id, t) }) : /* @__PURE__ */ jsxs4("p", { className: "mb-muted", children: [
+    busy && !posting.current && /* @__PURE__ */ jsx6(Loader, { label: t("Reviewing installation") }),
+    review && /* @__PURE__ */ jsxs5(Fragment4, { children: [
+      conflict ? /* @__PURE__ */ jsx6(Failure, { message: nameConflictMessage(review.manifest.id, t) }) : /* @__PURE__ */ jsxs5("p", { className: "mb-muted", children: [
         t("New profile:"),
-        /* @__PURE__ */ jsx5("b", { children: review.manifest.id }),
+        /* @__PURE__ */ jsx6("b", { children: review.manifest.id }),
         " ",
         t("Author:"),
         review.manifest.author
       ] }),
-      /* @__PURE__ */ jsx5("p", { children: modelReviewMessage(review.model, t) }),
-      languagePackMessage(review.languagePacks, t) && /* @__PURE__ */ jsx5("p", { children: languagePackMessage(review.languagePacks, t) }),
-      review.components.some((c) => c === "mcp" || c === "plugin") && /* @__PURE__ */ jsx5("p", { children: t("Selected MCP and plugins execute Python on this device.") }),
-      review.voice && /* @__PURE__ */ jsxs4("p", { children: [
+      /* @__PURE__ */ jsx6("p", { children: modelReviewMessage(review.model, t) }),
+      languagePackMessage(review.languagePacks, t) && /* @__PURE__ */ jsx6("p", { children: languagePackMessage(review.languagePacks, t) }),
+      review.components.some((c) => c === "mcp" || c === "plugin") && /* @__PURE__ */ jsx6("p", { children: t("Selected MCP and plugins execute Python on this device.") }),
+      review.voice && /* @__PURE__ */ jsxs5("p", { children: [
         t("Recommended voice:"),
         review.voice.voice,
         " \xB7 ",
         review.voice.instructions,
-        /* @__PURE__ */ jsx5("br", {}),
+        /* @__PURE__ */ jsx6("br", {}),
         t("Configure voice authentication in Hermes.")
       ] }),
-      /* @__PURE__ */ jsxs4("details", { children: [
-        /* @__PURE__ */ jsx5("summary", { children: t("Soul and file verification") }),
-        /* @__PURE__ */ jsx5("pre", { className: "mb-source", children: review.soul }),
-        /* @__PURE__ */ jsxs4("small", { children: [
+      /* @__PURE__ */ jsx6(SecretsFields, { secrets: review.secrets ?? [], value: keys, onChange: setKeys, disabled: busy }),
+      /* @__PURE__ */ jsxs5("details", { children: [
+        /* @__PURE__ */ jsx6("summary", { children: t("Soul and file verification") }),
+        /* @__PURE__ */ jsx6("pre", { className: "mb-source", children: review.soul }),
+        /* @__PURE__ */ jsxs5("small", { children: [
           "SHA-256: ",
           review.digest
         ] }),
-        /* @__PURE__ */ jsx5("ul", { children: review.manifest.files.filter((f) => ["soul", "avatar", ...review.components].includes(f.component)).map((f) => /* @__PURE__ */ jsxs4("li", { children: [
+        /* @__PURE__ */ jsx6("ul", { children: review.manifest.files.filter((f) => ["soul", "avatar", ...review.components].includes(f.component)).map((f) => /* @__PURE__ */ jsxs5("li", { children: [
           f.path,
           " \xB7 ",
           t("{0} bytes", f.size)
         ] }, f.path)) })
       ] }),
-      /* @__PURE__ */ jsx5(DialogFooter, { children: /* @__PURE__ */ jsx5(Button2, { disabled: busy || !local || conflict, loading: posting.current && busy, onClick: install, children: t("Install {0}", bot.name) }) })
+      /* @__PURE__ */ jsx6(DialogFooter, { children: /* @__PURE__ */ jsx6(Button2, { disabled: busy || !local || conflict, loading: posting.current && busy, onClick: install, children: t("Install {0}", bot.name) }) })
     ] }),
-    !review && !result && !busy && local && /* @__PURE__ */ jsx5(Button2, { variant: "secondary", onClick: () => setRetry((n) => n + 1), children: t("Review again") }),
-    result && /* @__PURE__ */ jsxs4("section", { role: "status", className: "mb-section", children: [
-      /* @__PURE__ */ jsx5("h3", { children: result.status === "already-installed" ? t("Already installed") : t("Installation complete") }),
-      /* @__PURE__ */ jsx5("p", { children: modelResultMessage(result, t) }),
-      /* @__PURE__ */ jsx5("p", { children: voiceResultMessage(result, t) }),
-      /* @__PURE__ */ jsxs4("p", { children: [
+    !review && !result && !busy && local && !comingSoon2 && /* @__PURE__ */ jsx6(Button2, { variant: "secondary", onClick: () => setRetry((n) => n + 1), children: t("Review again") }),
+    result && /* @__PURE__ */ jsxs5("section", { role: "status", className: "mb-section", children: [
+      /* @__PURE__ */ jsx6("h3", { children: result.status === "already-installed" ? t("Already installed") : t("Installation complete") }),
+      /* @__PURE__ */ jsx6("p", { children: modelResultMessage(result, t) }),
+      /* @__PURE__ */ jsx6("p", { children: voiceResultMessage(result, t) }),
+      result.status === "already-installed" && typed && /* @__PURE__ */ jsx6("p", { children: t("This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.") }),
+      result.status === "already-installed" && existing?.secrets && (addKeys ? /* @__PURE__ */ jsx6(AddKeysForm, { ctx, bot: bot.id, version: bot.version, secrets: addKeys, states: existing.secrets, onSaved: () => onKeysSaved?.() }) : /* @__PURE__ */ jsx6(Button2, { variant: "secondary", onClick: () => setAddKeys(installedFields(existing.secrets)), children: t("Add keys") })),
+      !!result.secrets?.length && (() => {
+        const labels2 = Object.fromEntries(decls.map((d) => [d.name, d.label])), badge = keyBadge(result.secrets.map((r) => ({ required: decls.find((d) => d.name === r.name)?.required ?? false, state: r.state })));
+        const open = () => decls.filter((d) => result.secrets.find((r) => r.name === d.name)?.state !== "set").map((d) => {
+          const r = result.secrets.find((x) => x.name === d.name);
+          const has = d.defaultHasValue || !!r?.savedToDefault || !!r?.defaultKept;
+          return { ...d, prefill: has ? "default" : null, defaultHasValue: has };
+        });
+        const saved = (value) => {
+          setResult((current) => current && { ...current, secrets: current.secrets?.map((row) => {
+            const u = value.secrets.find((x) => x.name === row.name);
+            return u?.updated ? { ...row, state: u.state === "set" ? "set" : row.state, fromDefault: u.fromDefault, savedToDefault: row.savedToDefault || u.savedToDefault, defaultKept: row.defaultKept || u.defaultKept, defaultError: u.defaultError ?? null } : row;
+          }) });
+          onKeysSaved?.();
+        };
+        return /* @__PURE__ */ jsxs5("div", { className: "mb-section", children: [
+          /* @__PURE__ */ jsxs5("div", { className: "mb-key-head", children: [
+            /* @__PURE__ */ jsx6("b", { children: t("Service keys") }),
+            badge && /* @__PURE__ */ jsx6(Badge, { variant: badge.variant, children: t(badge.label) })
+          ] }),
+          /* @__PURE__ */ jsx6(KeyResults, { rows: result.secrets, labels: labels2 }),
+          addKeys ? /* @__PURE__ */ jsx6(AddKeysForm, { ctx, bot: bot.id, version: bot.version, secrets: addKeys, onSaved: saved }) : open().length > 0 && /* @__PURE__ */ jsx6(Button2, { variant: "secondary", onClick: () => setAddKeys(open()), children: t("Add keys") })
+        ] });
+      })(),
+      /* @__PURE__ */ jsxs5("p", { children: [
         t("First prompt:"),
         bot.firstPrompt
       ] }),
-      bot.external.map((e) => /* @__PURE__ */ jsxs4("p", { children: [
-        /* @__PURE__ */ jsxs4("a", { href: e.guide, target: "_blank", rel: "noopener noreferrer", children: [
+      bot.external.map((e) => /* @__PURE__ */ jsxs5("p", { children: [
+        /* @__PURE__ */ jsxs5("a", { href: e.guide, target: "_blank", rel: "noopener noreferrer", children: [
           e.label,
           " \xB7 ",
           t("Setup guide")
@@ -2952,7 +3820,7 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, mood = "idle", st
         " \xB7 ",
         e.requirement
       ] }, e.service)),
-      /* @__PURE__ */ jsx5(DialogFooter, { children: /* @__PURE__ */ jsx5(Button2, { onClick: () => {
+      /* @__PURE__ */ jsx6(DialogFooter, { children: /* @__PURE__ */ jsx6(Button2, { onClick: () => {
         const d = profileDestination(result.profile);
         onClose();
         host2.newChat(d.route, d.options);
@@ -2963,11 +3831,11 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, mood = "idle", st
 }
 
 // packages/hermes-plugin/desktop/bot-status.ts
-import { useEffect as useEffect6, useState as useState5 } from "react";
+import { useEffect as useEffect6, useState as useState6 } from "react";
 import { host as host3 } from "@hermes/plugin-sdk";
 var isLocalSource = () => host3.state.connectionId.get() === "local";
 function useBotStatuses(enabled) {
-  const [moods, setMoods] = useState5({});
+  const [moods, setMoods] = useState6({});
   useEffect6(() => {
     let disposed = false, inflight = false, generation = 0;
     setMoods({});
@@ -3057,6 +3925,8 @@ var marketStyles = `
 .mb-install{font-size:.75rem;line-height:1.5}.mb-install-hero{display:flex;align-items:center;gap:1rem}.mb-install-hero>div{min-width:0;display:grid;gap:.375rem}
 .mb-options{border:0;margin:0;padding:0;display:grid;gap:.75rem}.mb-options legend{font-weight:600;margin-bottom:.75rem}
 .mb-option{display:flex;align-items:center;gap:.5rem}.mb-source{white-space:pre-wrap;font:inherit;max-height:12rem;overflow:auto;color:var(--ui-text-secondary)}
+.mb-keys{border:0;margin:0;padding:0;min-width:0;display:grid;gap:.75rem}.mb-keys legend{font-weight:600;margin-bottom:.5rem}
+.mb-key{display:grid;gap:.375rem;min-width:0}.mb-key-head{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}.mb-key-results{margin:0;padding-inline-start:1rem;display:grid;gap:.25rem}
 .mb-install small{overflow-wrap:anywhere}.mb-install details{display:grid;gap:.5rem}.mb-install summary{cursor:pointer;color:var(--ui-text-secondary)}
 @container(max-width:32rem){.mb-fields{grid-template-columns:1fr}.mb-summary{grid-template-columns:1fr;gap:.25rem}.mb-header{align-items:flex-start}.mb-grid{grid-template-columns:repeat(auto-fill,minmax(10rem,1fr))}}
 @media(prefers-reduced-motion:reduce){.mb-avatar{animation:none;transition:none}}
@@ -3075,14 +3945,16 @@ function presentBot(bot, display) {
   });
   return next;
 }
+var comingSoon = (bot, display) => display?.bots.some((p) => p.id === bot.id && p.availability === "coming-soon") === true;
 
 // packages/hermes-plugin/desktop/market-page.tsx
-import { Fragment as Fragment4, jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
+import { Fragment as Fragment5, jsx as jsx7, jsxs as jsxs6 } from "react/jsx-runtime";
 function MarketPage({ ctx, renderTab }) {
   const { t, locale, dir, contentLocale } = useMyBots();
-  const [display, setDisplay] = useState6(null);
-  const [tab, setTab] = useState6("browse"), [view, setView] = useState6(null), [installed, setInstalled] = useState6([]), [query, setQuery] = useState6(""), [category, setCategory] = useState6("all"), [selected, setSelected] = useState6(null), [error, setError] = useState6(""), [busy, setBusy] = useState6(false), [reload, setReload] = useState6(0), [hash, setHash] = useState6(location.hash), [linkSequence, setLinkSequence] = useState6(0);
-  const fence = useRef5(new ReviewFence()), local = useLocal();
+  const [display, setDisplay] = useState7(null);
+  const [displayDone, setDisplayDone] = useState7("");
+  const [tab, setTab] = useState7("browse"), [view, setView] = useState7(null), [installed, setInstalled] = useState7([]), [query, setQuery] = useState7(""), [category, setCategory] = useState7("all"), [selected, setSelected] = useState7(null), [error, setError] = useState7(""), [busy, setBusy] = useState7(false), [reload, setReload] = useState7(0), [hash, setHash] = useState7(location.hash), [linkSequence, setLinkSequence] = useState7(0), [keysFor, setKeysFor] = useState7(null);
+  const fence = useRef6(new ReviewFence()), local = useLocal();
   useEffect7(() => {
     const update = () => {
       setSelected(null);
@@ -3132,7 +4004,7 @@ function MarketPage({ ctx, renderTab }) {
     return () => fence.current.invalidate();
   }, [ctx, reload, local]);
   useEffect7(() => {
-    if (!view || view.cached) return;
+    if (!view || view.cached || displayDone !== view.origin + "|" + contentLocale) return;
     try {
       const link = parseInstallLink("hermes://" + hash.replace(/^#\/?/, ""));
       const latest = view.catalog.bots.find((b) => b.id === link.bot && b.version === link.version);
@@ -3143,7 +4015,7 @@ function MarketPage({ ctx, renderTab }) {
       else setError("This bot version is no longer published.");
     } catch {
     }
-  }, [hash, view, linkSequence]);
+  }, [hash, view, linkSequence, displayDone, contentLocale]);
   const close = useCallback(() => {
     setSelected(null);
     try {
@@ -3165,14 +4037,30 @@ function MarketPage({ ctx, renderTab }) {
   useEffect7(() => {
     let active = true;
     if (!view) return;
+    const key = view.origin + "|" + contentLocale, settle = () => {
+      if (active) setDisplayDone(key);
+    };
+    const timer = setTimeout(settle, 3e3);
     new MarketApi(ctx).presentations(contentLocale).then((catalog) => {
       if (active && catalog?.locale === contentLocale && Array.isArray(catalog.bots)) setDisplay({ origin: view.origin, catalog });
     }, () => {
+    }).finally(() => {
+      clearTimeout(timer);
+      settle();
     });
     return () => {
       active = false;
+      clearTimeout(timer);
     };
   }, [ctx, view, contentLocale]);
+  const linkWaiting = !!view && !view.cached && !selected && displayDone !== view.origin + "|" + contentLocale && (() => {
+    try {
+      parseInstallLink("hermes://" + hash.replace(/^#\/?/, ""));
+      return true;
+    } catch {
+      return false;
+    }
+  })();
   const presentation = display?.origin === view?.origin && display?.catalog.locale === contentLocale ? display.catalog : null;
   const shown = (bot) => presentBot(bot, presentation ?? { locale: contentLocale, bots: [] });
   const installedLabel = (x) => {
@@ -3186,72 +4074,79 @@ function MarketPage({ ctx, renderTab }) {
     const f = b?.files.find((f2) => f2.component === "avatar");
     return f ? { sha256: f.sha256, src: new URL(`/api/bots/${id}/${version}/files/${f.path.split("/").map(encodeURIComponent).join("/")}`, view.origin).href } : null;
   };
-  return /* @__PURE__ */ jsxs5("main", { lang: locale, dir, className: "mybots px-[clamp(1.25rem,4vw,4rem)]", children: [
-    /* @__PURE__ */ jsx6("style", { children: marketStyles }),
-    /* @__PURE__ */ jsxs5("header", { className: "mb-header", children: [
-      /* @__PURE__ */ jsxs5("div", { children: [
-        /* @__PURE__ */ jsx6("h1", { children: "MyBots" }),
-        /* @__PURE__ */ jsx6("p", { children: t("Find your next AI colleague.") })
+  return /* @__PURE__ */ jsxs6("main", { lang: locale, dir, className: "mybots px-[clamp(1.25rem,4vw,4rem)]", children: [
+    /* @__PURE__ */ jsx7("style", { children: marketStyles }),
+    /* @__PURE__ */ jsxs6("header", { className: "mb-header", children: [
+      /* @__PURE__ */ jsxs6("div", { children: [
+        /* @__PURE__ */ jsx7("h1", { children: "MyBots" }),
+        /* @__PURE__ */ jsx7("p", { children: t("Find your next AI colleague.") })
       ] }),
-      (tab === "browse" || tab === "installed") && /* @__PURE__ */ jsx6(Button2, { variant: "ghost", disabled: busy, loading: busy, onClick: () => setReload((n) => n + 1), children: t("Refresh") })
+      (tab === "browse" || tab === "installed") && /* @__PURE__ */ jsx7(Button2, { variant: "ghost", disabled: busy, loading: busy, onClick: () => setReload((n) => n + 1), children: t("Refresh") })
     ] }),
-    /* @__PURE__ */ jsx6(Tabs, { dir, value: tab, onValueChange: (v) => setTab(v), children: /* @__PURE__ */ jsx6(TabsList, { className: "self-start", "aria-label": t("MyBots menu"), children: [["browse", t("Browse bots")], ["installed", t("Installed bots")], ["submissions", t("My submissions")], ["connection", t("Connection settings")]].map(([value, label]) => /* @__PURE__ */ jsx6(TabsTrigger, { value, children: label }, value)) }) }),
-    error && /* @__PURE__ */ jsx6(Failure, { message: t(error) }),
-    /* @__PURE__ */ jsxs5("div", { className: "mb-content", children: [
-      tab === "browse" && /* @__PURE__ */ jsxs5(Fragment4, { children: [
-        !local && /* @__PURE__ */ jsx6(LocalNotice, {}),
-        view?.cached && /* @__PURE__ */ jsxs5("section", { className: "mb-notice", role: "status", children: [
-          /* @__PURE__ */ jsx6("p", { children: t("Showing the saved catalog while offline. Reconnect to install.") }),
-          /* @__PURE__ */ jsxs5("small", { children: [
+    /* @__PURE__ */ jsx7(Tabs, { dir, value: tab, onValueChange: (v) => setTab(v), children: /* @__PURE__ */ jsx7(TabsList, { className: "self-start", "aria-label": t("MyBots menu"), children: [["browse", t("Browse bots")], ["installed", t("Installed bots")], ["submissions", t("My submissions")], ["connection", t("Connection settings")]].map(([value, label]) => /* @__PURE__ */ jsx7(TabsTrigger, { value, children: label }, value)) }) }),
+    error && /* @__PURE__ */ jsx7(Failure, { message: t(error) }),
+    /* @__PURE__ */ jsxs6("div", { className: "mb-content", children: [
+      linkWaiting && /* @__PURE__ */ jsx7(Loader, { label: t("Loading colleagues") }),
+      tab === "browse" && /* @__PURE__ */ jsxs6(Fragment5, { children: [
+        !local && /* @__PURE__ */ jsx7(LocalNotice, {}),
+        view?.cached && /* @__PURE__ */ jsxs6("section", { className: "mb-notice", role: "status", children: [
+          /* @__PURE__ */ jsx7("p", { children: t("Showing the saved catalog while offline. Reconnect to install.") }),
+          /* @__PURE__ */ jsxs6("small", { children: [
             t("Last checked:"),
             new Date(view.checkedAt).toLocaleString(locale === "zh-hant" ? "zh-TW" : locale)
           ] })
         ] }),
-        !!view?.catalog.bots.length && /* @__PURE__ */ jsxs5("div", { className: "mb-toolbar", children: [
-          /* @__PURE__ */ jsx6(SearchField, { "aria-label": t("Search bots"), placeholder: t("Search by name or role"), value: query, onChange: setQuery }),
-          /* @__PURE__ */ jsx6("div", { className: "mb-filter", children: /* @__PURE__ */ jsx6(Choice, { label: t("Bot category"), value: category, onChange: (v) => setCategory(v), options: [["all", t("All categories")], ["business", t("Business")], ["learning", t("Learning")], ["daily", t("Daily life")]] }) })
+        !!view?.catalog.bots.length && /* @__PURE__ */ jsxs6("div", { className: "mb-toolbar", children: [
+          /* @__PURE__ */ jsx7(SearchField, { "aria-label": t("Search bots"), placeholder: t("Search by name or role"), value: query, onChange: setQuery }),
+          /* @__PURE__ */ jsx7("div", { className: "mb-filter", children: /* @__PURE__ */ jsx7(Choice, { label: t("Bot category"), value: category, onChange: (v) => setCategory(v), options: [["all", t("All categories")], ["business", t("Business")], ["learning", t("Learning")], ["daily", t("Daily life")]] }) })
         ] }),
-        busy && !view && /* @__PURE__ */ jsx6(Loader, { label: t("Loading colleagues") }),
-        view && /* @__PURE__ */ jsx6("p", { className: "mb-count", children: t("{0} colleagues", visible.length) }),
-        /* @__PURE__ */ jsx6("div", { className: "mb-grid", children: visible.map((bot) => {
-          const asset = portrait(bot.id, bot.version), owned = !!installedProfile(bot);
+        busy && !view && /* @__PURE__ */ jsx7(Loader, { label: t("Loading colleagues") }),
+        view && /* @__PURE__ */ jsx7("p", { className: "mb-count", children: t("{0} colleagues", visible.length) }),
+        /* @__PURE__ */ jsx7("div", { className: "mb-grid", children: visible.map((bot) => {
+          const asset = portrait(bot.id, bot.version), owned = !!installedProfile(bot), soon = comingSoon(bot, presentation);
           const mood = botMood(bot);
-          return /* @__PURE__ */ jsxs5("article", { className: "mb-bot", children: [
-            /* @__PURE__ */ jsx6(BotAvatar, { bot: bot.id, name: bot.name, src: new URL(bot.avatarUrl, view.origin).href, sha256: asset?.sha256, mood, size: 112 }),
-            /* @__PURE__ */ jsx6("h2", { children: bot.name }),
-            /* @__PURE__ */ jsx6("p", { children: bot.role }),
-            /* @__PURE__ */ jsx6("p", { className: "mb-description", children: bot.description }),
-            /* @__PURE__ */ jsxs5("div", { className: "mb-badges", children: [
-              /* @__PURE__ */ jsx6(Badge, { variant: "muted", children: t("Soul") }),
-              bot.optional.map((c) => /* @__PURE__ */ jsx6(Badge, { variant: "muted", children: { skills: t("Skills"), mcp: "MCP", plugin: t("Plugins"), voice: t("Voice") }[c] }, c))
+          return /* @__PURE__ */ jsxs6("article", { className: "mb-bot", children: [
+            /* @__PURE__ */ jsx7(BotAvatar, { bot: bot.id, name: bot.name, src: new URL(bot.avatarUrl, view.origin).href, sha256: asset?.sha256, mood, size: 112 }),
+            /* @__PURE__ */ jsx7("h2", { children: bot.name }),
+            /* @__PURE__ */ jsx7("p", { children: bot.role }),
+            /* @__PURE__ */ jsx7("p", { className: "mb-description", children: bot.description }),
+            /* @__PURE__ */ jsxs6("div", { className: "mb-badges", children: [
+              soon && /* @__PURE__ */ jsx7(Badge, { id: "mb-soon-" + bot.id, variant: "muted", children: t("Coming soon") }),
+              /* @__PURE__ */ jsx7(Badge, { variant: "muted", children: t("Soul") }),
+              bot.optional.map((c) => /* @__PURE__ */ jsx7(Badge, { variant: "muted", children: { skills: t("Skills"), mcp: "MCP", plugin: t("Plugins"), voice: t("Voice") }[c] }, c))
             ] }),
-            /* @__PURE__ */ jsxs5("div", { className: "mb-actions", children: [
-              /* @__PURE__ */ jsx6(Button2, { variant: "secondary", disabled: view.cached || !local, onClick: () => setSelected(view.catalog.bots.find((b) => b.id === bot.id && b.version === bot.version) ?? bot), children: t("Meet") }),
-              /* @__PURE__ */ jsx6("small", { className: "mb-muted", children: owned ? t(moodLabels[mood]) : t("Motion preview") })
+            /* @__PURE__ */ jsxs6("div", { className: "mb-actions", children: [
+              /* @__PURE__ */ jsx7(Button2, { variant: "secondary", disabled: view.cached || !local || soon, "aria-describedby": soon ? "mb-soon-" + bot.id : void 0, onClick: () => setSelected(view.catalog.bots.find((b) => b.id === bot.id && b.version === bot.version) ?? bot), children: t("Meet") }),
+              /* @__PURE__ */ jsx7("small", { className: "mb-muted", children: owned ? t(moodLabels[mood]) : t("Motion preview") })
             ] })
           ] }, bot.id);
         }) }),
-        view && visible.length === 0 && /* @__PURE__ */ jsx6(EmptyState, { title: t("No matching bots"), description: t("Try another search or category.") })
+        view && visible.length === 0 && /* @__PURE__ */ jsx7(EmptyState, { title: t("No matching bots"), description: t("Try another search or category.") })
       ] }),
-      tab === "installed" && /* @__PURE__ */ jsxs5("section", { className: "mb-section", children: [
-        /* @__PURE__ */ jsx6("h2", { children: t("Installed bots") }),
-        installed.filter((x) => x.state !== "available").length === 0 && /* @__PURE__ */ jsx6(EmptyState, { title: t("No bots installed yet"), description: t("Find your first colleague in Browse bots.") }),
+      tab === "installed" && /* @__PURE__ */ jsxs6("section", { className: "mb-section", children: [
+        /* @__PURE__ */ jsx7("h2", { children: t("Installed bots") }),
+        installed.filter((x) => x.state !== "available").length === 0 && /* @__PURE__ */ jsx7(EmptyState, { title: t("No bots installed yet"), description: t("Find your first colleague in Browse bots.") }),
         installed.filter((x) => x.state !== "available").map((x) => {
           const asset = portrait(x.bot, x.version);
           const mood = moods[x.profile] || "unavailable", label = installedLabel(x);
-          return /* @__PURE__ */ jsxs5("article", { className: "mb-row", children: [
-            asset && /* @__PURE__ */ jsx6(BotAvatar, { bot: x.bot, name: label, src: asset.src, sha256: asset.sha256, mood, size: 56 }),
-            /* @__PURE__ */ jsxs5("div", { children: [
-              /* @__PURE__ */ jsx6("h3", { children: label }),
-              /* @__PURE__ */ jsxs5("p", { children: [
+          return /* @__PURE__ */ jsxs6("article", { className: "mb-row", children: [
+            asset && /* @__PURE__ */ jsx7(BotAvatar, { bot: x.bot, name: label, src: asset.src, sha256: asset.sha256, mood, size: 56 }),
+            /* @__PURE__ */ jsxs6("div", { children: [
+              /* @__PURE__ */ jsx7("h3", { children: label }),
+              /* @__PURE__ */ jsxs6("p", { children: [
                 x.profile,
                 " \xB7 ",
                 x.version || t("Check version")
               ] }),
-              /* @__PURE__ */ jsx6("small", { className: "mb-muted", children: t(moodLabels[mood]) })
+              /* @__PURE__ */ jsx7("small", { className: "mb-muted", children: t(moodLabels[mood]) })
             ] }),
-            /* @__PURE__ */ jsx6(Badge, { variant: x.state === "name-conflict" ? "warn" : "muted", children: x.state === "installed" ? t("Installed") : x.state === "other-version" ? t("Other version") : t("Check files") }),
-            (x.state === "installed" || x.state === "other-version") && /* @__PURE__ */ jsx6(Button2, { variant: "secondary", onClick: () => {
+            /* @__PURE__ */ jsx7(Badge, { variant: x.state === "name-conflict" ? "warn" : "muted", children: x.state === "installed" ? t("Installed") : x.state === "other-version" ? t("Other version") : t("Check files") }),
+            (() => {
+              const badge = keyBadge(x.secrets);
+              return badge && /* @__PURE__ */ jsx7(Badge, { variant: badge.variant, children: t(badge.label) });
+            })(),
+            !!x.secrets?.length && x.version && (x.state === "installed" || x.state === "other-version") && /* @__PURE__ */ jsx7(Button2, { variant: "secondary", disabled: !local, onClick: () => setKeysFor(x), children: t("Add keys") }),
+            (x.state === "installed" || x.state === "other-version") && /* @__PURE__ */ jsx7(Button2, { variant: "secondary", onClick: () => {
               const d = profileDestination(x.profile);
               host4.newChat(d.route, d.options);
               location.hash = "#/";
@@ -3259,18 +4154,19 @@ function MarketPage({ ctx, renderTab }) {
           ] }, x.profile);
         })
       ] }),
-      (tab === "connection" || tab === "submissions") && (renderTab ? renderTab(tab) : /* @__PURE__ */ jsx6(Loader, { label: t("Loading submissions") }))
+      (tab === "connection" || tab === "submissions") && (renderTab ? renderTab(tab) : /* @__PURE__ */ jsx7(Loader, { label: t("Loading submissions") }))
     ] }),
-    selected && /* @__PURE__ */ jsx6(InstallConfirmation, { ctx, bot: shown(selected), mood: botMood(selected), status: installed.find((x) => x.bot === selected.id), onClose: close, onInstalled: done }, selected.id + "@" + selected.version)
+    keysFor?.version && keysFor.secrets && /* @__PURE__ */ jsx7(AddKeysDialog, { ctx, status: { ...keysFor, version: keysFor.version, secrets: keysFor.secrets }, label: installedLabel(keysFor), onClose: () => setKeysFor(null), onSaved: done }, keysFor.profile),
+    selected && /* @__PURE__ */ jsx7(InstallConfirmation, { ctx, bot: shown(selected), mood: botMood(selected), status: installed.find((x) => x.bot === selected.id), onClose: close, onInstalled: done, onKeysSaved: done, comingSoon: comingSoon(selected, presentation) }, selected.id + "@" + selected.version)
   ] });
 }
 
 // packages/hermes-plugin/desktop/plugin.tsx
-import { jsx as jsx7 } from "react/jsx-runtime";
+import { jsx as jsx8 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.4.3",
+  version: "0.5.0",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {
@@ -3278,8 +4174,8 @@ var plugin_default = {
     const disposeIcon = registerLumiIcon();
     ctx.onDispose?.(disposeIcon);
     ctx.registerMany([
-      { id: "market", area: ROUTES_AREA, data: { path: "/mybots" }, render: () => /* @__PURE__ */ jsx7(MarketPage, { ctx, renderTab: (tab) => tab === "connection" ? /* @__PURE__ */ jsx7(ConnectionPage, { ctx }) : /* @__PURE__ */ jsx7(SubmissionsPage, { ctx }) }) },
-      { id: "install", area: ROUTES_AREA, data: { path: "/mybots/install" }, render: () => /* @__PURE__ */ jsx7(MarketPage, { ctx, renderTab: (tab) => tab === "connection" ? /* @__PURE__ */ jsx7(ConnectionPage, { ctx }) : /* @__PURE__ */ jsx7(SubmissionsPage, { ctx }) }) },
+      { id: "market", area: ROUTES_AREA, data: { path: "/mybots" }, render: () => /* @__PURE__ */ jsx8(MarketPage, { ctx, renderTab: (tab) => tab === "connection" ? /* @__PURE__ */ jsx8(ConnectionPage, { ctx }) : /* @__PURE__ */ jsx8(SubmissionsPage, { ctx }) }) },
+      { id: "install", area: ROUTES_AREA, data: { path: "/mybots/install" }, render: () => /* @__PURE__ */ jsx8(MarketPage, { ctx, renderTab: (tab) => tab === "connection" ? /* @__PURE__ */ jsx8(ConnectionPage, { ctx }) : /* @__PURE__ */ jsx8(SubmissionsPage, { ctx }) }) },
       { id: "nav", area: SIDEBAR_NAV_AREA, data: { path: "/mybots", label: "MyBots", codicon: "mybots-lumi" } }
     ]);
   }

@@ -325,34 +325,28 @@
     {
       "metadata": {
         "id": "mybots-sage",
-        "version": "0.1.0",
+        "version": "0.3.0",
         "name": "세이지",
         "englishName": "Sage",
-        "role": "리서처",
+        "role": "데스크 리서처",
         "personality": "추측보다 출처를 먼저 찾는 탐정",
-        "description": "질문 분해 → 근거 표 → 반론·빈칸 → 판단.",
+        "description": "질문·조건 고정 → 출처 장부 → 비교표 → 차이·한계 → 보고서(md·csv·docx). 최근 30일 트렌드 조사까지.",
         "category": "business",
-        "firstPrompt": "이 자료만으로 확실히 말할 수 있는 것과 아직 모르는 것을 나눠 줘.",
+        "firstPrompt": "우리 매장 주변 카페 5곳의 아메리카노·카페라테·바닐라라테 가격을 출처와 함께 비교한 보고서로 만들어 줘.",
         "optional": [
           "skills",
-          "mcp",
+          "plugin",
           "voice"
         ],
-        "skillId": "evidence-brief",
-        "mcp": {
-          "serverId": "mybots-sage-materials",
-          "tools": [
-            "sage_list_materials",
-            "sage_read_material"
-          ]
-        },
-        "pluginId": null,
+        "skillId": "desk-research",
+        "mcp": null,
+        "pluginId": "mybots-sage-tools",
         "external": [
           {
             "service": "web-search",
-            "label": "Hermes 웹 검색",
+            "label": "웹 검색 · 선택 연결",
             "guide": "https://hermes-agent.nousresearch.com/docs/user-guide/features/tools",
-            "requirement": "Hermes에 설정한 검색 제공자 필요",
+            "requirement": "기본 검색으로 바로 동작 · 선택: Bright Data(막히는 사이트 수집 강화, 무료 월 5,000 크레딧) · 선택: Google Docs 공유(세이지에서 Google 동의 1회)",
             "status": "not-connected"
           }
         ],
@@ -362,7 +356,7 @@
           "audition": "not-tested"
         }
       },
-      "manifestSha256": "fb49c479c442ca8ad17b3e85a966626d8f39eea8e1a41e9c890715082a16e337",
+      "manifestSha256": "0a6ee98434df605b09fc86d90ba55f80ef5a53e92a098bb34576b26d908c3eb5",
       "files": [
         {
           "path": "assets/avatar.png",
@@ -371,40 +365,106 @@
           "sha256": "4e9de8f24b0938502bc2204a0c7bea6842dd291f90d0442f2b73493724b2fb9d"
         },
         {
-          "path": "mcp/data.json",
-          "component": "mcp",
-          "size": 478,
-          "sha256": "5495dcea455fd7a6d56ea5071e7ec45ebdf84a600684bb6032244dcf491557b8"
+          "path": "plugins/mybots-sage-tools/__init__.py",
+          "component": "plugin",
+          "size": 1170,
+          "sha256": "ceb3bd8719eabf65ca8aa5cce3977295f0d6fecb248b3fa5f1cbd93bd9a3802c"
         },
         {
-          "path": "mcp/server.py",
-          "component": "mcp",
-          "size": 157,
-          "sha256": "fd4e78ceb0d97c583b74836fe8f8ab5f1ace83bc44772b04d562979dd1fa45e0"
+          "path": "plugins/mybots-sage-tools/adapter.py",
+          "component": "plugin",
+          "size": 3097,
+          "sha256": "4696e382b8343912d993c4cc813ae41aacd3e94cf94b18d59da94def0b6ec24d"
         },
         {
-          "path": "mcp/transport.py",
-          "component": "mcp",
-          "size": 6199,
-          "sha256": "4963caee2e01391e502a7caf0fb52b6e712ef0224b89d1aa1d135509c3d4935b"
+          "path": "plugins/mybots-sage-tools/brightdata.py",
+          "component": "plugin",
+          "size": 5130,
+          "sha256": "64d7acb7e4a38c2540dc5d06e83aeae8575f7828d5757f98ebc36af570cd5474"
         },
         {
-          "path": "skills/evidence-brief/example.md",
+          "path": "plugins/mybots-sage-tools/consent.py",
+          "component": "plugin",
+          "size": 17268,
+          "sha256": "1f1afa7bdaa6f2b6e60273716b58becfe0fcc1bb7b2b1e5d8984e221f144863b"
+        },
+        {
+          "path": "plugins/mybots-sage-tools/data.json",
+          "component": "plugin",
+          "size": 2623,
+          "sha256": "a0addd49cf2e7c51f765399108422a88db1b105b03e2a6e5d84d47cc0aa604b4"
+        },
+        {
+          "path": "plugins/mybots-sage-tools/docx_writer.py",
+          "component": "plugin",
+          "size": 5787,
+          "sha256": "4cd081f0193f5c3411b79ab1ce7f2de4efc0f8f7cd28226ea01e26dcbe3b22c0"
+        },
+        {
+          "path": "plugins/mybots-sage-tools/errors.py",
+          "component": "plugin",
+          "size": 127,
+          "sha256": "bb33be750075b9f94f39709a7ea403da85d38fb207aad7e3c270dcf628bfef10"
+        },
+        {
+          "path": "plugins/mybots-sage-tools/gdocs.py",
+          "component": "plugin",
+          "size": 22944,
+          "sha256": "296aeace9b35590ec7e6c9ee377402c5f6defb897ff9ecee1df4988c0868f018"
+        },
+        {
+          "path": "plugins/mybots-sage-tools/ledger.py",
+          "component": "plugin",
+          "size": 14517,
+          "sha256": "54e09e6f31d9e514e862a3cf604733f064ca94e9f551777069a34699ad2bcab5"
+        },
+        {
+          "path": "plugins/mybots-sage-tools/plugin.yaml",
+          "component": "plugin",
+          "size": 462,
+          "sha256": "e2b2add7d45c925bebd7f8da56d9b343788d6ce7657b07b22289b1371960d841"
+        },
+        {
+          "path": "plugins/mybots-sage-tools/report.py",
+          "component": "plugin",
+          "size": 15633,
+          "sha256": "17dea7b3bfddd3eebcb4c0b3795c78fe880475be7820152a49935de14eea14d4"
+        },
+        {
+          "path": "plugins/mybots-sage-tools/runtime.py",
+          "component": "plugin",
+          "size": 19324,
+          "sha256": "ef50aaac3985a75e8793ad6cbb6551b6dd97bc998678aded31bddab5e05377ab"
+        },
+        {
+          "path": "plugins/mybots-sage-tools/trend.py",
+          "component": "plugin",
+          "size": 38160,
+          "sha256": "f9d299ee996f50fdc3725c274d082b89f6aec9e570bf5d48e90ae7c4c989024e"
+        },
+        {
+          "path": "skills/desk-research/example.md",
           "component": "skills",
-          "size": 722,
-          "sha256": "70ae963baae3796cd6bddd82b9d53459772c275481b9fbf0db820e6688da325c"
+          "size": 2299,
+          "sha256": "f689c64c0294cef2fd65fc62b8c23e9836d99455d0a532ec0a7cfc3441416de0"
         },
         {
-          "path": "skills/evidence-brief/SKILL.md",
+          "path": "skills/desk-research/SKILL.md",
           "component": "skills",
-          "size": 1964,
-          "sha256": "d8765b0039153bb62739d5594b004edd5cfb947db206458d4ba4a8c2eb065493"
+          "size": 19788,
+          "sha256": "d226040e66daa742930ed4846c921c244e0af5a67d2c4e403958f72c62aec8fb"
+        },
+        {
+          "path": "skills/desk-research/trend.md",
+          "component": "skills",
+          "size": 21164,
+          "sha256": "6d4c5b2ac079778131e4582b9c29e146c16e4ba8f6ac9f861a0fec067f681171"
         },
         {
           "path": "SOUL.md",
           "component": "soul",
-          "size": 2195,
-          "sha256": "03384475265ed93c623af014ff9cfd6d1c8699c7d5124beaba5308bef5f340ca"
+          "size": 7390,
+          "sha256": "7dff42da854b4ae7748751b83b007ddbb90666a91ec5c16c70fb56b9000617ee"
         },
         {
           "path": "voice/preset.json",
@@ -413,15 +473,8 @@
           "sha256": "cdd41e8f345a4596274b46d6ca499eeb4154e84e2a7f108174f5bfec363ae7ba"
         }
       ],
-      "mcp": {
-        "serverId": "mybots-sage-materials",
-        "tools": [
-          "sage_list_materials",
-          "sage_read_material"
-        ],
-        "entrypoint": "mcp/server.py"
-      },
-      "pluginId": null
+      "mcp": null,
+      "pluginId": "mybots-sage-tools"
     },
     {
       "metadata": {

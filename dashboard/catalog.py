@@ -2,7 +2,7 @@
 import copy,json,re
 from pathlib import Path
 from urllib.parse import urlsplit
-INSTALLER_VERSION='0.4.3'
+INSTALLER_VERSION='0.5.0'
 META={'id','version','name','englishName','role','personality','description','category','firstPrompt','optional','skillId','mcp','pluginId','external','voice'}
 OPTIONAL=('skills','mcp','plugin','voice')
 _voice_schema=Path(__file__).with_name('voice.schema.json')
@@ -81,9 +81,14 @@ def load_trusted(path):
         return parse_entries(data['bots'])
     except (OSError,ValueError,TypeError,KeyError)as exc:raise ValueError('Installer registry is invalid; update the helper')from exc
 
-def profile_config(entry,selected,target,executable):
+def profile_config(entry,selected,target,executable,mcp_env=None):
+    """``mcp_env`` maps a server id to the key names it gets as ``${NAME}`` references (values
+    stay in the profile .env; Hermes expands them when it connects). Skipped keys are left out."""
     config={}
     if 'mcp'in selected:
-        m=entry['mcp'];config['mcp_servers']={m['serverId']:dict(command=executable,args=[str(target/m['entrypoint'])],tools=dict(include=m['tools']))}
+        m=entry['mcp'];server=dict(command=executable,args=[str(target/m['entrypoint'])],tools=dict(include=m['tools']))
+        names=(mcp_env or {}).get(m['serverId'])or []
+        if names:server['env']={n:'${'+n+'}'for n in names}
+        config['mcp_servers']={m['serverId']:server}
     if 'plugin'in selected:config['plugins']=dict(enabled=[entry['pluginId']])
     return config

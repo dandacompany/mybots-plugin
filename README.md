@@ -41,6 +41,13 @@ installing. You can also start from a bot's recruit button on the website.
 Existing profiles are preserved. Modify the installed soul to personalize
 personality, tone, background and working preferences.
 
+When a bot uses external service keys, you can enter them in the install
+dialog. Keys already in your default profile are prefilled, and a new key can
+optionally be saved to the default profile too. Keys are written only to that
+bot profile's `.env` and are never sent to the MyBots server. After installing,
+use **Add keys** in the installed list. Bots that are not open yet show
+**Coming soon** and cannot be installed.
+
 Creator submissions require an issued MyBots creator API key. Connect it in the
 plugin's connection settings; it is not bundled with this repository.
 

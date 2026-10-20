@@ -30,6 +30,8 @@ def fetch_presentations(origin_value,locale,fetch):
         fields={key:bot[key]for key in ('id','version','name','role','personality','description','firstPrompt')}
         fields['voiceStyle']=bot['voice']['style']if bot['voice']else None
         fields['external']=[{key:link[key]for key in ('label','requirement')}for link in bot['external']]
+        # Display hint only: the server's 403 stays the authority. Anything unexpected reads as open.
+        fields['availability']='coming-soon'if item.get('availability')=='coming-soon'else 'available'
         bots.append(fields)
     return dict(locale=locale,bots=bots)
 def origin(value):

@@ -17,6 +17,7 @@ import sys
 import tempfile
 import threading
 import time
+import urllib.error
 import urllib.request
 from urllib.parse import urlsplit, quote
 
@@ -27,7 +28,7 @@ import yaml
 import importlib.util
 def _sibling(name):
     spec=importlib.util.spec_from_file_location("mybots_"+name,Path(__file__).with_name(name+".py"));module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);return module
-_catalog=_sibling("catalog");_voice=_sibling("voice");_roster_motion=_sibling("roster_motion")
+_catalog=_sibling("catalog");_voice=_sibling("voice");_roster_motion=_sibling("roster_motion");_secret_decls=_sibling("secret_decls")
 
 class InstallError(Exception):
     pass
@@ -38,13 +39,23 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 def fetch_bytes(url, limit):
     try:
-        request=urllib.request.Request(url,headers={"User-Agent":"MyBots/0.4.3"})
+        request=urllib.request.Request(url,headers={"User-Agent":"MyBots/0.5.0"})
         with urllib.request.build_opener(NoRedirect).open(request, timeout=15) as response:
             blob=response.read(limit+1)
         if len(blob)>limit:raise InstallError('File exceeds size limit')
         return blob
     except InstallError:raise
+    except urllib.error.HTTPError as exc:
+        if exc.code==403 and _not_open(exc):raise InstallError(NOT_OPEN) from exc
+        raise InstallError('Catalog unavailable; retry after checking the connection') from exc
     except Exception as exc:raise InstallError('Catalog unavailable; retry after checking the connection') from exc
+
+# The market refuses packages of a coming-soon bot with exactly 403 {"detail": NOT_OPEN}.
+# Only that body (read to 1KB) names the reason; every other refusal keeps the generic text.
+NOT_OPEN='This bot is not open yet'
+def _not_open(error):
+    try:return json.loads(error.read(1024).decode('utf-8'))=={'detail':NOT_OPEN}
+    except Exception:return False
 
 def rename_exclusive(source, target):
     libc=ctypes.CDLL(None, use_errno=True)
@@ -112,6 +123,8 @@ def model_summary(model):
         return {'name':model['default'],'provider':model.get('provider')if isinstance(model.get('provider'),str)else None}
     return None
 
+STAGING_ENV=frozenset(('PATH','HOME','TMPDIR','LANG'))
+
 class Installer:
     def __init__(self, home:Path, origin:str, *, fetch=fetch_bytes, trusted_path=None, authority=None):
         u=urlsplit(origin)
@@ -124,11 +137,16 @@ class Installer:
         self.authority=authority
         self.previews={}
         self.mutex=threading.Lock()
+        # Seams (Ruling B): failure-path tests replace these; production uses the real writers.
         self.commit=rename_exclusive
+        self.write_env=_secret_decls.write_profile_env
+        self.save_default=_secret_decls.save_default_env
+        self.run_staging=subprocess.run
         schema_path=Path(__file__).with_name('bot.schema.json')
         if not schema_path.exists():schema_path=Path(__file__).resolve().parents[2]/'contracts/bot.schema.json'
         self.schema=json.loads(schema_path.read_text())
         new_path=schema_path.with_name('bot-v2.schema.json');self.schema_v2=json.loads(new_path.read_text())
+        self.schema_v3=json.loads(schema_path.with_name('bot-v3.schema.json').read_text())
         try:self.trusted=authority.cached().trusted if authority and authority.cached() else {} if authority else _catalog.load_trusted(trusted_path or Path(__file__).with_name('trusted-catalog.json'))
         except ValueError as exc:raise InstallError(str(exc))from exc
 
@@ -155,7 +173,7 @@ class Installer:
             raise InstallError('This version is no longer published; review again')
 
     def review(self, bot, version, components):
-        if not isinstance(bot,str) or not re.fullmatch(r'[a-z][a-z0-9-]{0,39}',bot) or not isinstance(version,str) or not re.fullmatch(r'\d+\.\d+\.\d+',version):
+        if not isinstance(bot,str) or not re.fullmatch(r'[a-z][a-z0-9-]{0,39}',bot) or not isinstance(version,str) or not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+',version):
             raise InstallError('Invalid bot or fixed version')
         if not isinstance(components,list) or any(c not in ('skills','mcp','plugin','voice') for c in components) or len(set(components))!=len(components):
             raise InstallError('Unknown component selection')
@@ -167,7 +185,9 @@ class Installer:
         if hashlib.sha256(raw).hexdigest()!=trusted_entry['manifestSha256']:raise InstallError('Manifest is not trusted by this helper version')
         try:
             manifest=json.loads(raw)
-            jsonschema.validate(manifest,self.schema_v2 if manifest.get("schemaVersion")==2 else self.schema)
+            schema_version=manifest.get("schemaVersion")
+            jsonschema.validate(manifest,self.schema_v2 if schema_version==2 else self.schema_v3 if schema_version==3 else self.schema)
+            declared=_secret_decls.manifest_secrets(manifest,trusted_entry['metadata'])
         except Exception as exc:raise InstallError('Invalid manifest') from exc
         if manifest['id']!=bot or manifest['version']!=version:raise InstallError('Catalog identity mismatch')
         from hermes_cli.profile_distribution import check_hermes_requires, DistributionError
@@ -203,7 +223,16 @@ class Installer:
             except (ValueError,KeyError)as exc:raise InstallError('Invalid voice preset')from exc
             if preset['voice']!=metadata['voice']['id']:raise InstallError('Voice metadata mismatch')
         digest=hashlib.sha256(raw).hexdigest();seed,packs=self._launch_seed()
-        preview={'manifest':manifest,'digest':digest,'components':sorted(components),'blobs':blobs,'expires':time.monotonic()+600,'entry':trusted_entry,'voice':preset,'seed':seed,'packs':packs}
+        # Declarations only: the token store and the response learn whether the default profile
+        # has a value for a name, never the value itself.
+        needed=_secret_decls.applicable(declared,components)
+        default_env=_secret_decls.read_default_env(self.home)if needed else {}
+        listed=[]
+        for decl in needed:
+            present=_secret_decls.has_value(default_env,decl['name'])
+            listed.append({**decl,'targets':list(decl['targets']),'prefill':'default'if present else None,'defaultHasValue':present})
+        del default_env
+        preview={'manifest':manifest,'digest':digest,'components':sorted(components),'blobs':blobs,'expires':time.monotonic()+600,'entry':trusted_entry,'voice':preset,'seed':seed,'packs':packs,'secrets':needed}
         if self.authority:preview.update(origin=self.origin,publisherKeyId=self.authority.current.key_id)
         token=secrets.token_urlsafe(32)
         with self.mutex:
@@ -214,12 +243,19 @@ class Installer:
             'profile':bot,'expiresIn':600,'avatar':'data:'+avatar_mime+';base64,'+base64.b64encode(blobs[avatar_path]).decode(),
             'soul':soul,'catalog':self.origin,'metadata':metadata,'voice':preset if 'voice'in components else None,
             'model':model_summary(seed.get('model')),'languagePacks':[dict(name=p['name'],locales=p['locales'])for p in packs],
-            'permissions':['Writes a new local profile','Selected MCP and plugin run local Python code','No external service credentials included']}
+            'secrets':listed,'permissions':['Writes a new local profile','Selected MCP and plugin run local Python code',_secret_decls.STORAGE_NOTICE]}
 
-    def install(self, token):
+    def install(self, token, secrets=None):
         with self.mutex:
-            preview=self.previews.pop(token,None)
-        if not preview or preview['expires']<=time.monotonic():raise InstallError('Review expired or already used; review again')
+            preview=self.previews.get(token)
+            live=preview is not None and preview['expires']>time.monotonic()
+            if live:
+                # A malformed key request keeps the review, so the user can correct it and retry.
+                try:plan=_secret_decls.install_plan(preview['secrets'],secrets)
+                except ValueError as exc:raise InstallError(str(exc))from None
+            self.previews.pop(token,None)
+        if not live:raise InstallError('Review expired or already used; review again')
+        values=self._key_values(plan)
         self._check_live(preview)
         if self.home.is_symlink():raise InstallError('Symlinked Hermes home is not supported')
         profiles=self.home/'profiles'
@@ -232,6 +268,11 @@ class Installer:
             fcntl.flock(lock,fcntl.LOCK_EX)
             receipt={'bot':preview['manifest']['id'],'version':preview['manifest']['version'],'digest':preview['digest'],'components':preview['components']}
             if self.authority:receipt.update(origin=self.origin,publisherKeyId=preview['publisherKeyId'],name=preview['manifest']['name'],files=[f for f in preview['manifest']['files']if f['component']in ('soul','avatar',*preview['components'])])
+            # v3 receipts carry the whole declarations (never values) so 「키 넣기」 can label keys
+            # without a review.
+            # v1/v2 receipts stay byte-identical, so their already-installed check still matches.
+            if preview['manifest'].get('schemaVersion')==3:
+                receipt['secrets']=[{k:(list(d[k])if k=='targets'else d[k])for k in _secret_decls.KEYS}for d in preview['secrets']]
             if target.exists() or target.is_symlink():
                 marker=target/'mybots-receipt.json'
                 if not target.is_symlink() and marker.is_file():
@@ -239,8 +280,9 @@ class Installer:
                         if json.loads(self._profile_file(target,'mybots-receipt.json',32768))==receipt:
                             if self.authority and not self._profile_matches(target,receipt):raise InstallError('Existing MyBots profile has changes; nothing was overwritten')
                             activate_profile(target)
-                            return self._result('already-installed',target.name,preview)
-                    except (ValueError,OSError):pass
+                            # Nothing is written to an existing profile, so no key was set here.
+                            return self._result('already-installed',target.name,preview,[])
+                    except (ValueError,OSError,RecursionError):pass
                 raise InstallError('Profile name already exists; nothing was overwritten')
             try:
                 with tempfile.TemporaryDirectory(prefix='.mybots-stage-',dir=self.home.parent) as work:
@@ -249,7 +291,11 @@ class Installer:
                         if entry['component'] not in ['soul','avatar',*preview['components']]:continue
                         file=source/entry['path'];file.parent.mkdir(parents=True,exist_ok=True)
                         file.write_bytes(preview['blobs'][entry['path']])
-                    config={**preview['seed'],**_catalog.profile_config(preview['entry'],preview['components'],target,sys.executable)}
+                    mcp_env={}
+                    for item in plan:
+                        target_id=item['decl']['targets'][0]
+                        if item['decl']['name']in values and target_id.startswith('mcp:'):mcp_env.setdefault(target_id[4:],[]).append(item['decl']['name'])
+                    config={**preview['seed'],**_catalog.profile_config(preview['entry'],preview['components'],target,sys.executable,mcp_env)}
                     packs=[p for p in preview['packs']if p['name']!=preview['entry']['metadata'].get('pluginId')]
                     for pack in packs:
                         for rel,blob in pack['files'].items():
@@ -266,13 +312,16 @@ class Installer:
                     (source/'distribution.yaml').write_text(yaml.safe_dump({'name':target.name,'version':receipt['version'],'hermes_requires':preview['manifest']['hermesRequires'],
                         'distribution_owned':['SOUL.md','config.yaml','profile.yaml','assets','skills','mcp','plugins','voice','distribution.yaml']}))
                     isolated=work/'home';isolated.mkdir()
-                    env=dict(os.environ,HERMES_HOME=str(isolated))
+                    # Minimal environment: the parent may hold credentials (Hermes publishes saved
+                    # keys into os.environ), and staging needs none of them.
+                    env={k:v for k,v in os.environ.items()if k in STAGING_ENV or k.startswith('LC_')}
+                    env['HERMES_HOME']=str(isolated)
                     # Core distribution installer executes in an isolated root, without changing parent process scope.
                     import hermes_cli
                     hermes_source=str(Path(hermes_cli.__file__).resolve().parent.parent)
                     import_paths=json.dumps([hermes_source,*[p for p in sys.path if p and Path(p).is_absolute()]])
                     code='import sys,json; from pathlib import Path; sys.path[:0]=json.loads(sys.argv[1]); from hermes_constants import get_default_hermes_root; assert get_default_hermes_root().resolve()==Path(sys.argv[3]).resolve(), "Unsafe staging root"; from hermes_cli.profile_distribution import install_distribution; plan=install_distribution(sys.argv[2],create_alias=False); assert plan.target_dir.resolve().is_relative_to(Path(sys.argv[3]).resolve())'
-                    result=subprocess.run([sys.executable,'-I','-c',code,import_paths,str(source),str(isolated)],env=env,capture_output=True,timeout=60)
+                    result=self.run_staging([sys.executable,'-I','-c',code,import_paths,str(source),str(isolated)],env=env,capture_output=True,timeout=60)
                     if result.returncode:raise InstallError('Hermes distribution staging failed')
                     staged=isolated/'profiles'/target.name
                     for entry in preview['manifest']['files']:
@@ -283,12 +332,54 @@ class Installer:
                     dist=yaml.safe_load((staged/'distribution.yaml').read_text());dist['source']=f'{self.origin}/api/bots/{target.name}/{receipt["version"]}'
                     (staged/'distribution.yaml').write_text(yaml.safe_dump(dist))
                     (staged/'mybots-receipt.json').write_text(json.dumps(receipt,sort_keys=True))
+                    # .env is a Hermes credential path, so distribution staging never writes it; it
+                    # goes in now and is published by the same atomic commit as the profile.
+                    if values:self.write_env(staged,values)
                     self._check_live(preview)
                     self.commit(staged,target)
                     activate_profile(target)
             except InstallError:raise
             except Exception as exc:raise InstallError('Installation failed; no existing profile was changed') from exc
-        return self._result('installed',target.name,preview)
+            report=self._save_defaults(plan,values)
+        return self._result('installed',target.name,preview,report)
+
+    def _key_values(self,plan):
+        """Values to write, by name: request input as is, ``default`` reread from the default
+        profile's .env now (the client's copy is never used). Unusable defaults count as absent."""
+        values={item['decl']['name']:item['value']for item in plan if item['source']=='input'}
+        if any(item['source']=='default'for item in plan):
+            env=_secret_decls.read_default_env(self.home)
+            for item in plan:
+                name=item['decl']['name']
+                if item['source']=='default'and _secret_decls.has_value(env,name)and _secret_decls.value_ok(env[name]):values[name]=env[name]
+            del env
+        return values
+
+    def _save_defaults(self,plan,values):
+        """After a committed install: the per-key report, saving ticked new keys to the default
+        profile. An existing default value is never replaced, and a failed save never fails the
+        install (the profile already has the key); the reason is not logged, it could hold a value."""
+        report=[]
+        for item in plan:
+            decl=item['decl'];name=decl['name'];value=values.get(name)
+            row=dict(name=name,state='set'if value is not None else 'missing'if decl['required']else 'skipped',
+                fromDefault=item['source']=='default'and value is not None,savedToDefault=False,defaultKept=False,defaultError=None)
+            if item['save']and value is not None:
+                current=_secret_decls.default_env_state(self.home)
+                # A .env we cannot read safely (symlink, oversized, foreign owner, unparsable) may
+                # still hold this name, and Hermes' writer would follow it and replace that value.
+                if current is None:row['defaultError']=_secret_decls.DEFAULT_UNCHECKED
+                # A blank ``NAME=`` line is not a value (same rule as prefill), so it gets filled.
+                elif _secret_decls.has_value(current,name):row['defaultKept']=True
+                else:
+                    try:
+                        self.save_default(self.home,name,value)
+                        row['savedToDefault']=(_secret_decls.default_env_state(self.home)or {}).get(name)==value
+                    except Exception:pass
+                    if not row['savedToDefault']:row['defaultError']=_secret_decls.DEFAULT_SAVE_FAILED
+                del current
+            report.append(row)
+        return report
 
     def _launch_seed(self):
         """What a new profile inherits from the default profile: Hermes' model seed, and the
@@ -320,19 +411,7 @@ class Installer:
         return seed,packs
 
     def _profile_file(self,target,rel,limit):
-        _catalog.safe_path(rel);fd=os.open(target,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
-        try:
-            parts=rel.split('/')
-            for part in parts[:-1]:
-                child=os.open(part,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW,dir_fd=fd);os.close(fd);fd=child
-            child=os.open(parts[-1],os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK,dir_fd=fd)
-            with os.fdopen(child,'rb')as stream:
-                info=os.fstat(stream.fileno())
-                if not stat.S_ISREG(info.st_mode)or info.st_uid!=os.getuid()or info.st_size>limit:raise ValueError('Invalid installed file')
-                data=stream.read(limit+1)
-                if len(data)>limit:raise ValueError('Installed file size limit')
-                return data
-        finally:os.close(fd)
+        _catalog.safe_path(rel);return _secret_decls.read_owned_file(target,rel,limit)
 
     def _profile_matches(self,target,receipt):
         try:
@@ -359,7 +438,7 @@ class Installer:
         if profiles.is_symlink()or self.home.is_symlink():raise InstallError('Symlinked profile root is unsupported')
         if profiles.is_dir():
             names.update(p.name for p in profiles.iterdir()if re.fullmatch(r'[a-z][a-z0-9-]{0,39}',p.name)and not p.is_symlink()and(p/'mybots-receipt.json').is_file())
-        result=[]
+        result=[];default_env=None
         for bot in sorted(names):
             target=profiles/bot;entry=latest.get(bot);version=None;state='available';name=entry['metadata']['name']if entry else bot
             if target.exists()or target.is_symlink():
@@ -368,11 +447,90 @@ class Installer:
                     receipt=json.loads(self._profile_file(target,'mybots-receipt.json',32768))
                     if receipt['bot']!=bot or not isinstance(receipt['version'],str)or not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+',receipt['version'])or not re.fullmatch('[a-f0-9]{64}',receipt['digest']):raise ValueError('Invalid receipt')
                     version=receipt['version'];label=receipt.get('name',name);name=label if isinstance(label,str)and len(label)<=80 else name;state='installed'if self._profile_matches(target,receipt)and(not entry or entry['metadata']['version']==version and entry['manifestSha256']==receipt['digest'])else'other-version'
-                except (OSError,ValueError,KeyError,TypeError):pass
-            result.append(dict(bot=bot,version=version,profile=bot,state=state,name=name))
+                except (OSError,ValueError,KeyError,TypeError,RecursionError):pass
+            row=dict(bot=bot,version=version,profile=bot,state=state,name=name)
+            if version is not None:
+                # Only v3 receipts carry declarations; v1/v2 bots and broken receipts get no field.
+                try:
+                    needed=_secret_decls.receipt_secrets(receipt)
+                    # Presence only: the default profile's values never leave this method.
+                    if default_env is None:default_env=_secret_decls.read_default_env(self.home)
+                    row['secrets']=[{**{k:d[k]for k in ('name','required','label','purpose','url')},'state':s['state'],'defaultHasValue':_secret_decls.has_value(default_env,d['name'])}
+                        for d,s in zip(needed,_secret_decls.key_states(needed,_secret_decls.env_state(target)))]
+                except ValueError:pass
+            result.append(row)
+        del default_env
         return result
 
-    def _result(self,status,profile,preview):
+    def update_secrets(self,bot,version,secrets):
+        """「키 넣기」: set declared keys in an installed bot's own ``.env``.
+
+        Only a bot whose receipt (same bot and version) records v3 declarations is accepted, and
+        only those names, for the components it was installed with. Request rules, ``default``
+        rereads and save-to-default are the install's. MCP keys get a ``${NAME}`` reference in that
+        profile's config.yaml when it has none. Hermes' ``_profile_scope`` is not used: it would
+        switch on multi-profile hosting. Errors never name or carry a value.
+        """
+        if type(bot) is not str or not re.fullmatch(r'[a-z][a-z0-9-]{0,39}',bot) or type(version) is not str or not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+',version):
+            raise InstallError('Invalid bot or fixed version')
+        profiles=self.home/'profiles';target=profiles/bot
+        if self.home.is_symlink()or profiles.is_symlink()or target.is_symlink()or not target.is_dir():raise InstallError('This bot is not installed')
+        lock_path=profiles/'.mybots-install.lock'
+        fd=os.open(lock_path,os.O_CREAT|os.O_RDWR|os.O_NOFOLLOW,0o600)
+        with os.fdopen(fd,'w') as lock:
+            fcntl.flock(lock,fcntl.LOCK_EX)
+            try:
+                receipt=json.loads(self._profile_file(target,'mybots-receipt.json',32768))
+                if type(receipt) is not dict or receipt.get('bot')!=bot:raise ValueError('Invalid receipt')
+            except (OSError,ValueError,RecursionError):raise InstallError('This bot was not installed by MyBots')from None
+            if receipt.get('version')!=version:raise InstallError('The installed version differs; reload the bot list')
+            try:
+                needed=_secret_decls.receipt_secrets(receipt)
+                plan=_secret_decls.install_plan(needed,secrets)
+            except ValueError as exc:raise InstallError(str(exc))from None
+            values=self._key_values(plan)
+            if values:
+                refs={}
+                for item in plan:
+                    name=item['decl']['name'];where=item['decl']['targets'][0]
+                    if name in values and where.startswith('mcp:'):refs.setdefault(where[4:],[]).append(name)
+                # Every predictable refusal happens here, before either file is written.
+                try:env_blob=_secret_decls.prepare_profile_env(target,values)
+                except ValueError as exc:
+                    raise InstallError(_secret_decls.PROFILE_ENV_UNCHECKED if str(exc)==_secret_decls.PROFILE_ENV_UNCHECKED else 'Keys could not be saved; nothing was changed')from None
+                config=self._config_with_refs(target,refs)if refs else None
+                try:
+                    if config is not None:_secret_decls.write_file_atomic(target,'config.yaml',config[0],config[1])
+                    _secret_decls.write_file_atomic(target,'.env',env_blob,0o600)
+                except OSError:raise InstallError('Keys could not be saved to the bot profile')from None
+                del env_blob
+            report={row['name']:row for row in self._save_defaults(plan,values)}
+            states=_secret_decls.key_states(needed,_secret_decls.env_state(target))
+        rows=[{**state,'updated':state['name']in values,**{k:report[state['name']][k]for k in ('fromDefault','savedToDefault','defaultKept','defaultError')}}for state in states]
+        return dict(bot=bot,profile=bot,secrets=rows,notice=_secret_decls.APPLY_NOTICE)
+
+    def _config_with_refs(self,target,refs):
+        """``(bytes, mode)`` of the profile's config.yaml with missing ``${NAME}`` references added
+        under ``mcp_servers.<id>.env``, or ``None`` when nothing is missing. A server the user
+        removed is not recreated. Everything else round-trips through ``yaml.safe_dump`` in its
+        current order (comments are not kept). An unreadable config refuses the whole update."""
+        try:
+            config=yaml.safe_load(self._profile_file(target,'config.yaml',1_000_000))
+            mode=stat.S_IMODE(os.lstat(target/'config.yaml').st_mode)
+        except (OSError,ValueError,yaml.YAMLError,RecursionError):raise InstallError('The bot profile config could not be read safely; nothing was changed')from None
+        if not isinstance(config,dict):raise InstallError('The bot profile config could not be read safely; nothing was changed')
+        servers=config.get('mcp_servers');changed=False
+        for server_id,names in refs.items():
+            server=servers.get(server_id)if isinstance(servers,dict)else None
+            if not isinstance(server,dict):continue
+            if server.get('env')is None:server['env']={}
+            env=server['env']
+            if not isinstance(env,dict):continue
+            for name in names:
+                if name not in env:env[name]='${'+name+'}';changed=True
+        return (yaml.safe_dump(config,allow_unicode=True,sort_keys=False).encode('utf-8'),mode)if changed else None
+
+    def _result(self,status,profile,preview,secrets):
         configured='voice'in preview['components']
         voice_status='authentication-check-required'if configured else 'not-selected'
         if configured and status=='already-installed':
@@ -400,4 +558,4 @@ class Installer:
                 config=yaml.safe_load(self._profile_file(self.home/'profiles'/profile,'config.yaml',1_000_000))
                 model=config.get('model')if isinstance(config,dict)else None
             except (OSError,ValueError,yaml.YAMLError,RecursionError):pass
-        return dict(status=status,profile=profile,modelSetupRequired=model_summary(model)is None,model=model_summary(model),voiceConfigured=configured,voice=preview['voice']if configured else None,voiceStatus=voice_status)
+        return dict(status=status,profile=profile,modelSetupRequired=model_summary(model)is None,model=model_summary(model),voiceConfigured=configured,voice=preview['voice']if configured else None,voiceStatus=voice_status,secrets=secrets)

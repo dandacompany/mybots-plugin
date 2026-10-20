@@ -1,0 +1,143 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "version",
+    "name",
+    "description",
+    "author",
+    "hermesRequires",
+    "files",
+    "secrets"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 3
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{0,39}$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000
+    },
+    "author": {
+      "type": "string",
+      "maxLength": 80
+    },
+    "hermesRequires": {
+      "const": ">=0.21.5"
+    },
+    "files": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "component",
+          "size",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "maxLength": 160
+          },
+          "component": {
+            "enum": [
+              "soul",
+              "avatar",
+              "skills",
+              "mcp",
+              "plugin",
+              "voice"
+            ]
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000000
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "secrets": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "required",
+          "label",
+          "purpose",
+          "url",
+          "component",
+          "targets"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]{2,63}$"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 300,
+            "pattern": "^https://[A-Za-z0-9.-]+(:[0-9]{1,5})?(/[!-~]*)?$"
+          },
+          "component": {
+            "enum": [
+              "skills",
+              "plugin",
+              "mcp"
+            ]
+          },
+          "targets": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^(env|mcp:[a-z][a-z0-9-]{0,39})$"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$id": "https://mybots.work/schemas/bot-v3.schema.json"
+}

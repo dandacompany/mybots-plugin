@@ -4,11 +4,11 @@ import importlib.util
 import json
 from pathlib import Path
 import platform
+import re
 import sys
 
 from fastapi import APIRouter, HTTPException, Request
 from starlette.concurrency import run_in_threadpool
-from pydantic import BaseModel, ConfigDict, Field
 from hermes_constants import get_hermes_home
 
 _spec=importlib.util.spec_from_file_location('mybots_installer',Path(__file__).with_name('installer.py'))
@@ -67,30 +67,78 @@ def engine(write=False):
         except (ValueError,InstallError)as exc:raise HTTPException(503,'MyBots의 서버 출처와 공개키 연결 설정을 확인해 주세요.')from exc
     return _engine
 
-class ReviewRequest(BaseModel):
-    model_config=ConfigDict(extra='forbid')
-    bot:str=Field(pattern=r'^[a-z][a-z0-9-]{0,39}$')
-    version:str=Field(pattern=r'^\d+\.\d+\.\d+$')
-    components:list[str]=Field(default_factory=list,max_length=4)
+# Request bodies are parsed here, not by pydantic models: a pydantic v2 422 carries the offending
+# ``input``, and for a missing field that is the whole body, which for /install and /secrets holds
+# key values. Hermes mounts this router into its own app, so an app-wide validation handler would
+# change other routes; the rule stays local. Every error below is a fixed text without input.
+BOT_RE=re.compile(r'[a-z][a-z0-9-]{0,39}');VERSION_RE=re.compile(r'[0-9]+\.[0-9]+\.[0-9]+')
+INVALID_REQUEST='Invalid request'
 
-class InstallRequest(BaseModel):
-    model_config=ConfigDict(extra='forbid')
-    token:str=Field(min_length=30,max_length=80)
+JSON_TYPE=re.compile(r'application/([a-z0-9.!#$&^_-]+\+)?json',re.I)
+CHARSET_PARAM=re.compile(r'charset\s*=\s*("?)utf-8\1',re.I)
+
+def require_json(request):
+    """415 unless Content-Type is application/json or */*+json, optionally with charset=utf-8.
+
+    Every body route needs this: a cross-origin form or text/plain POST is a CORS "simple"
+    request with no preflight, so without it a web page could reach these routes. The Desktop's
+    Electron transport always sends application/json for object bodies (fetchJson)."""
+    media,*params=(request.headers.get('content-type')or'').split(';')
+    if not JSON_TYPE.fullmatch(media.strip())or any(not CHARSET_PARAM.fullmatch(p.strip())for p in params):
+        raise HTTPException(415,'Content-Type must be application/json')
+
+async def json_body(request,limit,required,optional=()):
+    """The body as a dict holding all ``required`` and only ``required``/``optional`` fields.
+    A non-JSON media type gets 415, oversized bodies 413, anything else malformed 422; none
+    echoes the body."""
+    require_json(request);size=0;chunks=[]
+    async for chunk in request.stream():
+        size+=len(chunk)
+        if size>limit:raise HTTPException(413,'Request is too large')
+        chunks.append(chunk)
+    try:body=_module._sibling('remote_catalog').strict_json(b''.join(chunks))
+    except Exception:raise HTTPException(422,INVALID_REQUEST)from None
+    if type(body) is not dict or not set(required)<=set(body)<=set(required)|set(optional):raise HTTPException(422,INVALID_REQUEST)
+    return body
+
+def bot_version(body):
+    bot,version=body['bot'],body['version']
+    if type(bot) is not str or not BOT_RE.fullmatch(bot) or type(version) is not str or not VERSION_RE.fullmatch(version):raise HTTPException(422,INVALID_REQUEST)
+    return bot,version
 
 @router.post('/review')
-def review(request:ReviewRequest):
-    try:return engine(write=True).review(request.bot,request.version,request.components)
-    except InstallError as exc:raise HTTPException(400,str(exc)) from exc
+async def review(request:Request):
+    body=await json_body(request,4096,('bot','version'),('components',));bot,version=bot_version(body)
+    components=body.get('components',[])
+    if type(components) is not list or len(components)>4 or any(type(c) is not str for c in components):raise HTTPException(422,INVALID_REQUEST)
+    def run():
+        try:return engine(write=True).review(bot,version,components)
+        except InstallError as exc:raise HTTPException(400,str(exc)) from exc
+    return await run_in_threadpool(run)
 
 @router.post('/install')
-def install(request:InstallRequest):
-    try:return engine(write=True).install(request.token)
-    except InstallError as exc:raise HTTPException(409,str(exc)) from exc
+async def install(request:Request):
+    # ``secrets`` is {NAME: {source, value?, saveToDefault?}}; the installer checks it against the
+    # reviewed declarations and its errors never name the input.
+    body=await json_body(request,100_000,('token',),('secrets',));token=body['token']
+    if type(token) is not str or not 30<=len(token)<=80:raise HTTPException(422,INVALID_REQUEST)
+    def run():
+        try:return engine(write=True).install(token,body.get('secrets'))
+        except InstallError as exc:raise HTTPException(409,str(exc)) from exc
+    return await run_in_threadpool(run)
+
+@router.post('/secrets')
+async def update_secrets(request:Request):
+    body=await json_body(request,100_000,('bot','version'),('secrets',));bot,version=bot_version(body)
+    def run():
+        try:return engine(write=True).update_secrets(bot,version,body.get('secrets'))
+        except InstallError as exc:raise HTTPException(409,str(exc)) from exc
+    return await run_in_threadpool(run)
 
 @router.get('/capabilities')
 def capabilities():
     inst=engine()
-    return {'installerVersion':'0.4.3','marketProtocol':1 if inst.authority else 0,'registration':bool(inst.authority),'credentialProviders':credentials().providers() if inst.authority else [],'bots':[dict(id=b,version=v)for b,v in inst.trusted]}
+    return {'installerVersion':'0.5.0','marketProtocol':1 if inst.authority else 0,'registration':bool(inst.authority),'credentialProviders':credentials().providers() if inst.authority else [],'bots':[dict(id=b,version=v)for b,v in inst.trusted]}
 
 @router.get('/bots/{bot}/{version}')
 def metadata(bot:str,version:str):
@@ -123,7 +171,7 @@ def connection():
 
 @router.post('/connection')
 async def connect(request:Request):
-    inst=engine(write=True);size=0;chunks=[]
+    require_json(request);inst=engine(write=True);size=0;chunks=[]
     async for chunk in request.stream():
         size+=len(chunk)
         if size>2048:raise HTTPException(413,'키 연결 요청이 너무 큽니다.')
@@ -146,7 +194,9 @@ def disconnect():
     except ValueError as exc:raise HTTPException(400,'로컬 키 연결을 해제하지 못했습니다. 공급자 상태를 확인해 주세요.')from exc
 
 async def registration_body(request,fields):
-    size=0;chunks=[]
+    """``(client, body)`` for a registration write. The media type is checked before the creator
+    is built, so a cross-origin simple request gets 415 without any creator or profile work."""
+    require_json(request);client=creator(write=True);size=0;chunks=[]
     async for chunk in request.stream():
         size+=len(chunk)
         if size>100000:raise HTTPException(413,'등록 요청이 너무 큽니다.')
@@ -155,7 +205,7 @@ async def registration_body(request,fields):
         body=_module._sibling('remote_catalog').strict_json(b''.join(chunks))
         if not isinstance(body,dict)or set(body)!=set(fields):raise ValueError('Invalid fields')
         if 'revision'in body and(type(body['revision'])is not int or not 1<=body['revision']<=2147483647):raise ValueError('Invalid revision')
-        return body
+        return client,body
     except Exception as exc:raise HTTPException(400,'등록 입력을 확인해 주세요.')from exc
 
 async def registration_call(method,*args):
@@ -171,12 +221,12 @@ async def submissions():return await registration_call(creator().list_submission
 
 @router.post('/submissions')
 async def create_submission(request:Request):
-    client=creator(write=True);body=await registration_body(request,['requestId','metadata'])
+    client,body=await registration_body(request,['requestId','metadata'])
     return await registration_call(client.create_submission,body['requestId'],body['metadata'])
 
 @router.post('/package-metadata')
 async def package_metadata(request:Request):
-    client=creator(write=True);body=await registration_body(request,['path'])
+    client,body=await registration_body(request,['path'])
     return await registration_call(client.package_metadata,body['path'])
 
 @router.get('/submissions/{draft_id}')
@@ -184,20 +234,20 @@ async def submission(draft_id:str):return await registration_call(creator().get_
 
 @router.patch('/submissions/{draft_id}')
 async def patch_submission(draft_id:str,request:Request):
-    client=creator(write=True);body=await registration_body(request,['revision','metadata'])
+    client,body=await registration_body(request,['revision','metadata'])
     return await registration_call(client.patch_submission,draft_id,body['revision'],body['metadata'])
 
 @router.post('/submissions/{draft_id}/upload')
 async def upload_submission(draft_id:str,request:Request):
-    client=creator(write=True);body=await registration_body(request,['revision','path'])
+    client,body=await registration_body(request,['revision','path'])
     return await registration_call(client.upload,draft_id,body['revision'],body['path'])
 
 @router.post('/submissions/{draft_id}/minimal')
 async def minimal_submission(draft_id:str,request:Request):
-    client=creator(write=True);body=await registration_body(request,['revision','soul','avatarPath'])
+    client,body=await registration_body(request,['revision','soul','avatarPath'])
     return await registration_call(client.minimal,draft_id,body['revision'],body['soul'],body['avatarPath'])
 
 @router.post('/submissions/{draft_id}/validate')
 async def validate_submission(draft_id:str,request:Request):
-    client=creator(write=True);body=await registration_body(request,['revision'])
+    client,body=await registration_body(request,['revision'])
     return await registration_call(client.validate,draft_id,body['revision'])
