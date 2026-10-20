@@ -132,7 +132,7 @@
             "maxItems": 1,
             "items": {
               "type": "string",
-              "pattern": "^(env|mcp:[a-z][a-z0-9-]{0,39})$"
+              "pattern": "^(mcp:[a-z][a-z0-9-]{0,39}|env)$"
             }
           }
         }

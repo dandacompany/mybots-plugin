@@ -21,7 +21,7 @@ from pathlib import Path
 
 NAME_RE=re.compile(r'[A-Z][A-Z0-9_]{2,63}')
 URL_RE=re.compile(r'https://[A-Za-z0-9.-]+(:[0-9]{1,5})?(/[!-~]*)?')
-TARGET_RE=re.compile(r'(env|mcp:[a-z][a-z0-9-]{0,39})')
+TARGET_RE=re.compile(r'(mcp:[a-z][a-z0-9-]{0,39}|env)')
 BLANK_RE=re.compile(r'[ \t\n\r]*')
 CONTROL_RE=re.compile(r'[\x00-\x1f\x7f]')
 KEYS=('name','required','label','purpose','url','component','targets')
