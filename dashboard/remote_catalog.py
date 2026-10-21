@@ -1,10 +1,11 @@
 """Verify signed snapshots with pinned publisher keys. No executable policy is downloaded."""
-import base64,fcntl,hashlib,importlib.util,json,os,re,stat,tempfile,threading,time
+import base64,hashlib,importlib.util,json,os,re,stat,tempfile,threading,time
 from contextlib import contextmanager
 from datetime import datetime,timezone,timedelta
 from pathlib import Path
 from urllib.parse import urlsplit,quote
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
+_pspec=importlib.util.spec_from_file_location('mybots_portable',Path(__file__).with_name('portable.py'));portable=importlib.util.module_from_spec(_pspec);_pspec.loader.exec_module(portable)
 _spec=importlib.util.spec_from_file_location('mybots_catalog_contract',Path(__file__).with_name('catalog.py'));contract=importlib.util.module_from_spec(_spec);_spec.loader.exec_module(contract)
 def unique_object(pairs):
     result={}
@@ -43,7 +44,7 @@ def origin(value):
     return value.rstrip('/')
 def no_links(path):
     for p in(Path(path),*Path(path).parents):
-        if p.is_symlink():raise ValueError('Symlinked catalog state is unsupported')
+        if portable.is_link(p):raise ValueError('Symlinked catalog state is unsupported')
 def timestamp(value):
     if not isinstance(value,str)or not re.fullmatch(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?Z',value):raise ValueError('Invalid catalog timestamp')
     return datetime.fromisoformat(value.replace('Z','+00:00'))
@@ -64,7 +65,7 @@ class CatalogAuthority:
                 if not re.fullmatch(r'[a-zA-Z0-9_-]{1,64}',key_id)or len(base64.b64decode(key,validate=True))!=32:raise ValueError('Invalid publisher key')
         except (OSError,TypeError,KeyError)as exc:raise ValueError('Publisher keys unavailable')from exc
         self.state_dir=Path(state_dir).absolute();no_links(self.state_dir);self.state_dir.mkdir(mode=0o700,parents=True,exist_ok=True)
-        if self.state_dir.stat().st_uid!=os.getuid()or self.state_dir.stat().st_mode&0o077:raise ValueError('Catalog state must be owner-only')
+        if not portable.owner_only(self.state_dir.stat(),self.state_dir):raise ValueError('Catalog state must be owner-only')
         self.states={key_id:self.state_dir/(hashlib.sha256((self.origin+'\0'+key_id).encode()).hexdigest()+'.json')for key_id in self.keys}
         self.high_water={}
         for key_id,state in self.states.items():
@@ -74,20 +75,17 @@ class CatalogAuthority:
                 if verified.key_id!=key_id:raise ValueError('Invalid saved catalog key')
                 self.high_water[key_id]=envelope
     def _read_state(self,key_id):
-        fd=os.open(self.states[key_id],os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)
+        fd=portable.open_nofollow(self.states[key_id],os.O_RDONLY|portable.NONBLOCK)
         with os.fdopen(fd,'rb')as f:
             info=os.fstat(f.fileno())
-            if not stat.S_ISREG(info.st_mode)or info.st_uid!=os.getuid()or info.st_mode&0o077:raise ValueError('Invalid saved catalog state')
+            if not stat.S_ISREG(info.st_mode)or not portable.owner_only(info,self.states[key_id]):raise ValueError('Invalid saved catalog state')
             raw=f.read(2_000_001)
             if len(raw)>2_000_000:raise ValueError('Saved catalog size limit')
             return raw
     @contextmanager
     def _state_lock(self,key_id):
         no_links(self.state_dir);file=self.states[key_id].with_suffix('.lock');no_links(file)
-        fd=os.open(file,os.O_CREAT|os.O_RDWR|os.O_NOFOLLOW,0o600)
-        with os.fdopen(fd,'a')as lock:
-            if not stat.S_ISREG(os.fstat(lock.fileno()).st_mode):raise ValueError('Invalid catalog lock')
-            fcntl.flock(lock,fcntl.LOCK_EX);yield
+        with portable.file_lock(file):yield
     def _verify(self,raw,allow_expired=False):
         try:
             if not isinstance(raw,bytes)or len(raw)>2_000_000:raise ValueError('Catalog response size limit')
@@ -123,7 +121,7 @@ class CatalogAuthority:
         try:
             with os.fdopen(fd,'w')as f:json.dump(envelope,f,separators=(',',':'));f.flush();os.fsync(f.fileno())
             os.replace(name,self.states[key_id])
-            fd=os.open(self.state_dir,os.O_RDONLY);os.fsync(fd);os.close(fd)
+            portable.fsync_dir(self.state_dir)
         finally:
             if os.path.exists(name):os.unlink(name)
     def refresh(self):

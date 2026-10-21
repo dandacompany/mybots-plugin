@@ -13,10 +13,10 @@ def bws_secret(secret_id):
     client_module.uuid(secret_id)
     auth=Path.home()/'.claude/auth/bitwarden.env';remote.no_links(auth)
     try:
-        fd=os.open(auth,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)
+        fd=remote.portable.open_nofollow(auth,os.O_RDONLY|remote.portable.NONBLOCK)
         with os.fdopen(fd,'rb')as f:
             info=os.fstat(f.fileno())
-            if not stat.S_ISREG(info.st_mode)or info.st_uid!=os.getuid()or info.st_mode&0o077:raise ValueError('Invalid bws authentication file')
+            if not stat.S_ISREG(info.st_mode)or not remote.portable.owner_only(info,auth):raise ValueError('Invalid bws authentication file')
             raw=f.read(65537)
             if len(raw)>65536:raise ValueError('Invalid bws authentication file')
         access=None
@@ -40,7 +40,7 @@ class Credentials:
         keys=remote.contract.record(remote.strict_json(raw),('schemaVersion','origins'))
         if keys['schemaVersion']!=1 or not isinstance(keys['origins'],dict):raise ValueError('Invalid publisher keys')
         self.allowed={remote.origin(o)for o,k in keys['origins'].items()if isinstance(k,dict)and k};self.directory=Path(state_dir).absolute();remote.no_links(self.directory);self.directory.mkdir(parents=True,exist_ok=True,mode=0o700)
-        if self.directory.stat().st_uid!=os.getuid()or self.directory.stat().st_mode&0o077:raise ValueError('Credential state must be owner-only')
+        if not remote.portable.owner_only(self.directory.stat(),self.directory):raise ValueError('Credential state must be owner-only')
         self.file=self.directory/'connections.json';remote.no_links(self.file);self.session={};self.mutex=threading.RLock();self.bws_read=bws_read;self.backend=keyring_backend
         if self.backend is None:
             try:
@@ -50,7 +50,7 @@ class Credentials:
         self.verify=verify or(lambda origin,token:client_module.MarketClient(origin,lambda:token,allowed_origins=self.allowed).me())
         self.bindings={}
         if self.file.exists():
-            if self.file.stat().st_uid!=os.getuid()or self.file.stat().st_mode&0o077 or self.file.stat().st_size>65536:raise ValueError('Invalid credential references')
+            if not remote.portable.owner_only(self.file.stat(),self.file)or self.file.stat().st_size>65536:raise ValueError('Invalid credential references')
             data=remote.strict_json(self.file.read_bytes());remote.contract.record(data,('bindings',));self.bindings=data['bindings']
             if not isinstance(self.bindings,dict)or len(self.bindings)>20:raise ValueError('Invalid credential references')
             for o,b in self.bindings.items():
@@ -67,7 +67,7 @@ class Credentials:
         remote.no_links(self.directory);remote.no_links(self.file);fd,name=tempfile.mkstemp(prefix='.connection-',dir=self.directory)
         try:
             with os.fdopen(fd,'w')as f:json.dump({'bindings':bindings},f);f.flush();os.fsync(f.fileno())
-            os.replace(name,self.file);fd=os.open(self.directory,os.O_RDONLY);os.fsync(fd);os.close(fd)
+            os.replace(name,self.file);remote.portable.fsync_dir(self.directory)
         finally:
             if os.path.exists(name):os.unlink(name)
     def _verify(self,origin,token):

@@ -325,7 +325,7 @@
     {
       "metadata": {
         "id": "mybots-sage",
-        "version": "0.3.0",
+        "version": "0.4.1",
         "name": "세이지",
         "englishName": "Sage",
         "role": "데스크 리서처",
@@ -356,7 +356,7 @@
           "audition": "not-tested"
         }
       },
-      "manifestSha256": "0a6ee98434df605b09fc86d90ba55f80ef5a53e92a098bb34576b26d908c3eb5",
+      "manifestSha256": "ab1fed4354586628d633d1ea9fc886eac973cafd6198a0887ea10a9e00361fc1",
       "files": [
         {
           "path": "assets/avatar.png",
@@ -367,8 +367,8 @@
         {
           "path": "plugins/mybots-sage-tools/__init__.py",
           "component": "plugin",
-          "size": 1170,
-          "sha256": "ceb3bd8719eabf65ca8aa5cce3977295f0d6fecb248b3fa5f1cbd93bd9a3802c"
+          "size": 1375,
+          "sha256": "cca48423f0cd721d03d2fa95acc9da292a7a8158378da4a4e81d68ed12214172"
         },
         {
           "path": "plugins/mybots-sage-tools/adapter.py",
@@ -385,14 +385,14 @@
         {
           "path": "plugins/mybots-sage-tools/consent.py",
           "component": "plugin",
-          "size": 17268,
-          "sha256": "1f1afa7bdaa6f2b6e60273716b58becfe0fcc1bb7b2b1e5d8984e221f144863b"
+          "size": 21620,
+          "sha256": "4300e2e739f551c803cdf37671112ae401eea1bac2268a31152f3e9769cd5e2e"
         },
         {
           "path": "plugins/mybots-sage-tools/data.json",
           "component": "plugin",
-          "size": 2623,
-          "sha256": "a0addd49cf2e7c51f765399108422a88db1b105b03e2a6e5d84d47cc0aa604b4"
+          "size": 9489,
+          "sha256": "6216a2709614a48c20569ea35295161f55a3dee25cec91d689bd9355996193eb"
         },
         {
           "path": "plugins/mybots-sage-tools/docx_writer.py",
@@ -421,8 +421,8 @@
         {
           "path": "plugins/mybots-sage-tools/plugin.yaml",
           "component": "plugin",
-          "size": 462,
-          "sha256": "e2b2add7d45c925bebd7f8da56d9b343788d6ce7657b07b22289b1371960d841"
+          "size": 502,
+          "sha256": "8462ff2bdbf35f238ab5715ee518fc4428a63af755e390ee7cddcebc0e55f928"
         },
         {
           "path": "plugins/mybots-sage-tools/report.py",
@@ -431,16 +431,34 @@
           "sha256": "17dea7b3bfddd3eebcb4c0b3795c78fe880475be7820152a49935de14eea14d4"
         },
         {
+          "path": "plugins/mybots-sage-tools/review_report.py",
+          "component": "plugin",
+          "size": 42009,
+          "sha256": "01b40460ba46a1dcf8ac3d62a463cf663fa289f3da2ea100314be1e0727ba4be"
+        },
+        {
+          "path": "plugins/mybots-sage-tools/review_setup.py",
+          "component": "plugin",
+          "size": 26803,
+          "sha256": "2b1eeacd026c2bc2a1113ae668d9b7e5a74c3bdf5086ba41b05bac04aa83894e"
+        },
+        {
+          "path": "plugins/mybots-sage-tools/reviews.py",
+          "component": "plugin",
+          "size": 23927,
+          "sha256": "e17e78f5896974f5de24d99cb12cd85167dc88df60720b23dd4c11cadaafb891"
+        },
+        {
           "path": "plugins/mybots-sage-tools/runtime.py",
           "component": "plugin",
-          "size": 19324,
-          "sha256": "ef50aaac3985a75e8793ad6cbb6551b6dd97bc998678aded31bddab5e05377ab"
+          "size": 23622,
+          "sha256": "9a4c60309b1f9a9a7f73e6fce511e519bb6516410181b23d75b49f680aaf9d31"
         },
         {
           "path": "plugins/mybots-sage-tools/trend.py",
           "component": "plugin",
-          "size": 38160,
-          "sha256": "f9d299ee996f50fdc3725c274d082b89f6aec9e570bf5d48e90ae7c4c989024e"
+          "size": 42627,
+          "sha256": "ba067e236a6c3d8e63a49e3bd3cd84ea25a60a8a7647bc3d6487efb474dcd8c6"
         },
         {
           "path": "skills/desk-research/example.md",
@@ -449,22 +467,28 @@
           "sha256": "f689c64c0294cef2fd65fc62b8c23e9836d99455d0a532ec0a7cfc3441416de0"
         },
         {
+          "path": "skills/desk-research/review.md",
+          "component": "skills",
+          "size": 20823,
+          "sha256": "90599ab36f58f00765b44c9d0fbf3f42734a259bac94bb9218491bf51c6fd532"
+        },
+        {
           "path": "skills/desk-research/SKILL.md",
           "component": "skills",
-          "size": 19788,
-          "sha256": "d226040e66daa742930ed4846c921c244e0af5a67d2c4e403958f72c62aec8fb"
+          "size": 20696,
+          "sha256": "9d1f189fdc039f349bda7f0eaca909a9af4fa4ab3e371f2d321e6d173a799335"
         },
         {
           "path": "skills/desk-research/trend.md",
           "component": "skills",
-          "size": 21164,
-          "sha256": "6d4c5b2ac079778131e4582b9c29e146c16e4ba8f6ac9f861a0fec067f681171"
+          "size": 22445,
+          "sha256": "939e77053dbea310f0009268d8d8e21d1b1b61979168c7363607fcfa1489804a"
         },
         {
           "path": "SOUL.md",
           "component": "soul",
-          "size": 7390,
-          "sha256": "7dff42da854b4ae7748751b83b007ddbb90666a91ec5c16c70fb56b9000617ee"
+          "size": 7549,
+          "sha256": "0c157669b830c0310cc8113b44ccb341fbde7a58f734cfdd790fad3f5af679a4"
         },
         {
           "path": "voice/preset.json",

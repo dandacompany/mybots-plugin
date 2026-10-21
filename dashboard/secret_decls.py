@@ -12,12 +12,21 @@ raises with a value.
 """
 from __future__ import annotations
 import codecs
+import importlib.util
 import json
 import os
 import re
 import stat
 import tempfile
 from pathlib import Path
+WINDOWS=os.name=='nt' # self-contained on purpose: this module loads (and fails closed) on its own
+_portable_module=None
+def _portable():
+    """portable.py, loaded only on the Windows paths. A missing or broken copy raises, so Windows reads fail closed."""
+    global _portable_module
+    if _portable_module is None:
+        spec=importlib.util.spec_from_file_location('mybots_portable',Path(__file__).with_name('portable.py'));module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);_portable_module=module
+    return _portable_module
 
 NAME_RE=re.compile(r'[A-Z][A-Z0-9_]{2,63}')
 URL_RE=re.compile(r'https://[A-Za-z0-9.-]+(:[0-9]{1,5})?(/[!-~]*)?')
@@ -110,9 +119,25 @@ def read_owned_file(root,rel:str,limit:int)->bytes:
     symlink, and the file must be a regular file owned by this uid and at most ``limit`` bytes.
     ``rel`` is trusted here; callers that take it from a package check it first.
     """
+    parts=rel.split('/')
+    if WINDOWS: # no dir_fd walk: refuse a symlink at any component, then open the file without following
+        pt=_portable();walk=Path(root)
+        if pt.is_link(walk):raise OSError('Link in installed path')
+        for part in parts:
+            walk=walk/part
+            if pt.is_link(walk):raise OSError('Link in installed path')
+        child=os.open(walk,os.O_RDONLY|getattr(os,'O_BINARY',0))
+        try:stream=os.fdopen(child,'rb')
+        except BaseException:
+            os.close(child);raise
+        with stream:
+            info=os.fstat(stream.fileno())
+            if not stat.S_ISREG(info.st_mode)or not pt.win_owner_is_me(walk)or info.st_size>limit:raise ValueError('Invalid installed file')
+            data=stream.read(limit+1)
+            if len(data)>limit:raise ValueError('Installed file size limit')
+            return data
     fd=os.open(root,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
     try:
-        parts=rel.split('/')
         for part in parts[:-1]:
             child=os.open(part,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW,dir_fd=fd);os.close(fd);fd=child
         child=os.open(parts[-1],os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK,dir_fd=fd)
@@ -271,7 +296,7 @@ def write_profile_env(staged,values:dict[str,str])->None:
     fd,tmp=tempfile.mkstemp(dir=staged,prefix='.env_',suffix='.tmp')
     try:
         try:
-            os.fchmod(fd,0o600);stream=os.fdopen(fd,'w',encoding='utf-8')
+            (None if WINDOWS else os.fchmod(fd,0o600));stream=os.fdopen(fd,'w',encoding='utf-8')
         except BaseException:
             os.close(fd);raise
         with stream:
@@ -393,7 +418,7 @@ def write_file_atomic(directory,name:str,blob:bytes,mode:int)->None:
     fd,tmp=tempfile.mkstemp(dir=directory,prefix=name+'_',suffix='.tmp')
     try:
         try:
-            os.fchmod(fd,mode);stream=os.fdopen(fd,'wb')
+            (None if WINDOWS else os.fchmod(fd,mode));stream=os.fdopen(fd,'wb')
         except BaseException:
             os.close(fd);raise
         with stream:

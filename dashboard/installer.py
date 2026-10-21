@@ -1,9 +1,9 @@
 """Bounded catalog installer. Never executes package installation commands."""
 from __future__ import annotations
 import base64
+import copy
 import ctypes
 import errno
-import fcntl
 import hashlib
 import json
 import os
@@ -28,7 +28,7 @@ import yaml
 import importlib.util
 def _sibling(name):
     spec=importlib.util.spec_from_file_location("mybots_"+name,Path(__file__).with_name(name+".py"));module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);return module
-_catalog=_sibling("catalog");_voice=_sibling("voice");_roster_motion=_sibling("roster_motion");_secret_decls=_sibling("secret_decls")
+_catalog=_sibling("catalog");_voice=_sibling("voice");_roster_motion=_sibling("roster_motion");_secret_decls=_sibling("secret_decls");_portable=_sibling("portable")
 
 class InstallError(Exception):
     pass
@@ -39,7 +39,7 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 def fetch_bytes(url, limit):
     try:
-        request=urllib.request.Request(url,headers={"User-Agent":"MyBots/0.5.0"})
+        request=urllib.request.Request(url,headers={"User-Agent":"MyBots/0.6.0"})
         with urllib.request.build_opener(NoRedirect).open(request, timeout=15) as response:
             blob=response.read(limit+1)
         if len(blob)>limit:raise InstallError('File exceeds size limit')
@@ -58,6 +58,7 @@ def _not_open(error):
     except Exception:return False
 
 def rename_exclusive(source, target):
+    if _portable.WINDOWS:os.rename(source,target);return # Windows refuses an existing target (FileExistsError)
     libc=ctypes.CDLL(None, use_errno=True)
     if sys.platform=='darwin':
         result=libc.renamex_np(os.fsencode(source),os.fsencode(target),4) # RENAME_EXCL
@@ -124,6 +125,39 @@ def model_summary(model):
     return None
 
 STAGING_ENV=frozenset(('PATH','HOME','TMPDIR','LANG'))
+
+METADATA=('mybots-receipt.json','distribution.yaml','profile.yaml','config.yaml') # always in an update backup
+def _version(value):return tuple(map(int,value.split('.')))
+
+def _make_parents(root,rel,created):
+    """Parent folder of ``root/rel``, creating missing ones (appended to ``created``). A link or a
+    non-folder on the way raises ``OSError``, so nothing is written through it."""
+    folder=Path(root)
+    for part in rel.split('/')[:-1]:
+        folder=folder/part
+        if _portable.is_link(folder):raise OSError('Link in profile path')
+        if not os.path.lexists(folder):os.mkdir(folder,0o755);created.append(folder)
+        elif not folder.is_dir():raise OSError('Not a folder')
+    return folder
+
+def _write_new(root,rel,blob):
+    """``root/rel`` as a new 0600 file (never replacing or following anything), parents 0700."""
+    folder=Path(root)
+    for part in rel.split('/')[:-1]:
+        folder=folder/part
+        if not os.path.lexists(folder):os.mkdir(folder,0o700)
+        elif _portable.is_link(folder)or not folder.is_dir():raise OSError('Invalid backup path')
+    fd=_portable.open_nofollow(folder/rel.rsplit('/',1)[-1],os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
+    with os.fdopen(fd,'wb')as stream:stream.write(blob);stream.flush();os.fsync(stream.fileno())
+
+def _prune(root,rel):
+    """Remove folders left empty by deleting ``root/rel``, up to (not including) ``root``."""
+    folder=(Path(root)/rel).parent
+    while folder!=Path(root):
+        try:os.rmdir(folder)
+        except OSError:return
+        folder=folder.parent
+
 
 class Installer:
     def __init__(self, home:Path, origin:str, *, fetch=fetch_bytes, trusted_path=None, authority=None):
@@ -257,25 +291,17 @@ class Installer:
         if not live:raise InstallError('Review expired or already used; review again')
         values=self._key_values(plan)
         self._check_live(preview)
-        if self.home.is_symlink():raise InstallError('Symlinked Hermes home is not supported')
+        if _portable.is_link(self.home):raise InstallError('Symlinked Hermes home is not supported')
         profiles=self.home/'profiles'
-        if profiles.is_symlink():raise InstallError('Symlinked profiles directory is not supported')
+        if _portable.is_link(profiles):raise InstallError('Symlinked profiles directory is not supported')
         profiles.mkdir(mode=0o700,parents=True,exist_ok=True)
         target=profiles/preview['manifest']['id']
         lock_path=profiles/'.mybots-install.lock'
-        fd=os.open(lock_path,os.O_CREAT|os.O_RDWR|os.O_NOFOLLOW,0o600)
-        with os.fdopen(fd,'w') as lock:
-            fcntl.flock(lock,fcntl.LOCK_EX)
-            receipt={'bot':preview['manifest']['id'],'version':preview['manifest']['version'],'digest':preview['digest'],'components':preview['components']}
-            if self.authority:receipt.update(origin=self.origin,publisherKeyId=preview['publisherKeyId'],name=preview['manifest']['name'],files=[f for f in preview['manifest']['files']if f['component']in ('soul','avatar',*preview['components'])])
-            # v3 receipts carry the whole declarations (never values) so 「키 넣기」 can label keys
-            # without a review.
-            # v1/v2 receipts stay byte-identical, so their already-installed check still matches.
-            if preview['manifest'].get('schemaVersion')==3:
-                receipt['secrets']=[{k:(list(d[k])if k=='targets'else d[k])for k in _secret_decls.KEYS}for d in preview['secrets']]
-            if target.exists() or target.is_symlink():
+        with _portable.file_lock(lock_path):
+            receipt=self._new_receipt(preview)
+            if target.exists() or _portable.is_link(target):
                 marker=target/'mybots-receipt.json'
-                if not target.is_symlink() and marker.is_file():
+                if not _portable.is_link(target) and marker.is_file():
                     try:
                         if json.loads(self._profile_file(target,'mybots-receipt.json',32768))==receipt:
                             if self.authority and not self._profile_matches(target,receipt):raise InstallError('Existing MyBots profile has changes; nothing was overwritten')
@@ -342,6 +368,249 @@ class Installer:
             except Exception as exc:raise InstallError('Installation failed; no existing profile was changed') from exc
             report=self._save_defaults(plan,values)
         return self._result('installed',target.name,preview,report)
+
+    def _new_receipt(self,preview):
+        receipt={'bot':preview['manifest']['id'],'version':preview['manifest']['version'],'digest':preview['digest'],'components':preview['components']}
+        if self.authority:receipt.update(origin=self.origin,publisherKeyId=preview['publisherKeyId'],name=preview['manifest']['name'],files=[f for f in preview['manifest']['files']if f['component']in ('soul','avatar',*preview['components'])])
+        # v3 receipts carry the whole declarations (never values) so 「키 넣기」 can label keys
+        # without a review.
+        # v1/v2 receipts stay byte-identical, so their already-installed check still matches.
+        if preview['manifest'].get('schemaVersion')==3:
+            receipt['secrets']=[{k:(list(d[k])if k=='targets'else d[k])for k in _secret_decls.KEYS}for d in preview['secrets']]
+        return receipt
+
+    # --- update: a newer catalog version over an installed bot, in place -------------------------
+    # Hermes' update_distribution replaces every distribution-owned tree (all of skills/, plugins/),
+    # which would drop what the user or the bot added. Only files the installed version's receipt
+    # (or its trusted entry) names are replaced or removed; config.yaml keeps every user key.
+
+    def review_update(self,bot,version):
+        """``review()`` for a newer version with the installed components, plus ``update``:
+        ``{from, replace, remove, modified, newSecrets}``. ``secrets`` lists only declarations the
+        installed version did not have; keys the bot already has are kept."""
+        if not isinstance(bot,str) or not re.fullmatch(r'[a-z][a-z0-9-]{0,39}',bot) or not isinstance(version,str) or not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+',version):
+            raise InstallError('Invalid bot or fixed version')
+        target=self._update_target(bot);receipt=self._installed_receipt(target,bot)
+        if _version(version)<=_version(receipt['version']):raise InstallError('Only a newer version can be installed as an update')
+        self._same_origin(receipt)
+        result=self.review(bot,version,list(receipt['components']))
+        try:
+            with self.mutex:preview=self.previews[result['token']]
+            old=self._previous_files(receipt);changes=self._update_changes(target,preview,old)
+            try:known={d['name']for d in _secret_decls.receipt_secrets(receipt)}
+            except ValueError:known=set()
+            offer=[d for d in preview['secrets']if d['name']not in known]
+        except BaseException:
+            with self.mutex:self.previews.pop(result['token'],None)
+            raise
+        with self.mutex:preview.update(update=dict(receipt=receipt,old=old),offer=offer)
+        names=[d['name']for d in offer]
+        return {**result,'secrets':[s for s in result['secrets']if s['name']in names],
+            'permissions':['Updates files of the installed local profile; files you added are kept',*result['permissions'][1:]],
+            'update':{'from':receipt['version'],'replace':len(changes['replace']),'remove':len(changes['remove']),'modified':changes['modified'],'newSecrets':names}}
+
+    def update(self,token,secrets=None):
+        """Apply a ``review_update`` token. Keys go only to names the bot does not have yet. Files
+        are backed up to ``<profile>/.mybots-backup/<UTC time>/`` (never ``.env``), replaced one by
+        one (temp file + ``os.replace``) and all restored when anything fails."""
+        with self.mutex:
+            preview=self.previews.get(token)
+            live=preview is not None and preview['expires']>time.monotonic()and 'update'in preview
+            if live:
+                try:plan=_secret_decls.install_plan(preview['offer'],secrets)
+                except ValueError as exc:raise InstallError(str(exc))from None
+            self.previews.pop(token,None)
+        if not live:raise InstallError('Review expired or already used; review again')
+        values=self._key_values(plan)
+        self._check_live(preview)
+        bot=preview['manifest']['id'];target=self._update_target(bot)
+        with _portable.file_lock(target.parent/'.mybots-install.lock'):
+            receipt=self._installed_receipt(target,bot)
+            if receipt!=preview['update']['receipt']:raise InstallError('The installed bot changed after the review; review again')
+            self._same_origin(receipt)
+            changes=self._update_changes(target,preview,preview['update']['old'])
+            kept=set();env_blob=None
+            if values:
+                env=_secret_decls.env_state(target)
+                if env is None:raise InstallError(_secret_decls.PROFILE_ENV_UNCHECKED)
+                kept={n for n in values if _secret_decls.has_value(env,n)};del env
+                values={n:v for n,v in values.items()if n not in kept}
+            if values:
+                try:env_blob=_secret_decls.prepare_profile_env(target,values)
+                except ValueError as exc:
+                    raise InstallError(_secret_decls.PROFILE_ENV_UNCHECKED if str(exc)==_secret_decls.PROFILE_ENV_UNCHECKED else 'Keys could not be saved; nothing was changed')from None
+            refs={}
+            for item in plan:
+                name=item['decl']['name'];where=item['decl']['targets'][0]
+                if (name in values or name in kept)and where.startswith('mcp:'):refs.setdefault(where[4:],[]).append(name)
+            ops=[('write',rel,preview['blobs'][rel])for rel in changes['replace']]+[('remove',rel,None)for rel in changes['remove']]
+            ops+=[('write',name,blob)for name,blob in self._update_metadata(target,preview,refs)]
+            if env_blob is not None:ops.append(('write','.env',env_blob))
+            ops.append(('write','mybots-receipt.json',json.dumps(self._new_receipt(preview),sort_keys=True).encode()))
+            del env_blob
+            self._check_live(preview)
+            self._apply_update(target,ops,{f['path']:f['sha256']for f in preview['manifest']['files']})
+            report=self._save_defaults(plan,values)
+        for row in report:
+            if row['name']in kept:row['state']='set'
+        # Measured: a running Hermes does not pick up a changed profile plugin in new chats, and
+        # plugins_activation only reloads the caller's own profile scope (the default profile here),
+        # unloading every plugin of this process on the way. So the change applies after a restart.
+        return {**self._result('updated',bot,preview,report),'applies':'restart'}
+
+    def _update_target(self,bot):
+        profiles=self.home/'profiles';target=profiles/bot
+        if _portable.is_link(self.home)or _portable.is_link(profiles)or _portable.is_link(target)or not target.is_dir():raise InstallError('This bot is not installed')
+        return target
+
+    def _installed_receipt(self,target,bot):
+        try:
+            receipt=json.loads(self._profile_file(target,'mybots-receipt.json',32768))
+            if type(receipt)is not dict or receipt.get('bot')!=bot or type(receipt.get('version'))is not str or not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+',receipt['version'])\
+                    or type(receipt.get('digest'))is not str or not re.fullmatch('[a-f0-9]{64}',receipt['digest'])or type(receipt.get('components'))is not list:raise ValueError('Invalid receipt')
+        except (OSError,ValueError,RecursionError):raise InstallError('This bot was not installed by MyBots')from None
+        return receipt
+
+    def _same_origin(self,receipt):
+        """Only a bot installed from this catalog origin is updated in place: a same-id bot from another
+        catalog must not replace it. The publisher key may differ (rotation); the current authority
+        verifies the new version. A receipt without an origin predates the signed catalog."""
+        if receipt.get('origin')!=self.origin:raise InstallError('Update needs a reinstall for this version')
+
+    def _previous_files(self,receipt,trusted=None):
+        """``{path: sha256}`` of the installed version: the receipt's ``files``, else that version's
+        trusted entry (same digest). Paths are checked like a package path before anything uses them;
+        profile metadata names are never package files."""
+        self._same_origin(receipt)
+        files=receipt.get('files')
+        if files is None:
+            entry=(self.trusted if trusted is None else trusted).get((receipt['bot'],receipt['version']))
+            if not entry or entry['manifestSha256']!=receipt['digest']:raise InstallError('Update needs a reinstall for this version')
+            files=[f for f in entry['files']if f['component']in ('soul','avatar',*receipt['components'])]
+        try:
+            if type(files)is not list or not 2<=len(files)<=32:raise ValueError('Invalid files')
+            old={}
+            for f in files:
+                _catalog.record(f,('path','component','size','sha256'));_catalog.safe_path(f['path'])
+                if f['path']in old or f['path']in METADATA or type(f['sha256'])is not str or not re.fullmatch('[a-f0-9]{64}',f['sha256']):raise ValueError('Invalid files')
+                old[f['path']]=f['sha256']
+            return old
+        except (ValueError,KeyError,TypeError):raise InstallError('Update needs a reinstall for this version')from None
+
+    def _update_changes(self,target,preview,old):
+        """What the update does, from the files on disk now: ``replace`` (new files whose bytes
+        differ), ``remove`` (present files only the old version had), ``modified`` (files the user
+        changed that the update replaces or removes)."""
+        new={f['path']:f['sha256']for f in preview['manifest']['files']if f['component']in ('soul','avatar',*preview['components'])}
+        current={rel:self._current_sha(target,rel)for rel in {*new,*old}}
+        replace=[rel for rel in new if current[rel]!=new[rel]]
+        remove=sorted(rel for rel in old if rel not in new and current[rel]is not None)
+        modified=sorted(rel for rel in {*replace,*remove}if current[rel]is not None and current[rel]!=old.get(rel))
+        return dict(replace=replace,remove=remove,modified=modified)
+
+    def _current_sha(self,target,rel):
+        """sha256 of ``target/rel`` or ``None`` when absent. A link anywhere on the way, or a file the
+        guarded reader refuses, stops the update before anything is written."""
+        try:
+            walk=target
+            for part in rel.split('/'):
+                walk=walk/part
+                if _portable.is_link(walk):raise OSError('Link in installed path')
+                if not os.path.lexists(walk):return None
+            return hashlib.sha256(self._profile_file(target,rel,2_000_000)).hexdigest()
+        except (OSError,ValueError):raise InstallError('The installed bot has files that could not be checked safely; nothing was changed')from None
+
+    def _read_yaml(self,target,name):
+        if not os.path.lexists(target/name):return {}
+        try:data=yaml.safe_load(self._profile_file(target,name,1_000_000))
+        except (OSError,ValueError,yaml.YAMLError,RecursionError):data=False
+        if data is None:data={}
+        if not isinstance(data,dict):raise InstallError('The bot profile could not be read safely; nothing was changed')
+        return data
+
+    def _update_metadata(self,target,preview,refs):
+        """``[(name, bytes)]`` for config.yaml, profile.yaml and distribution.yaml, each only when it
+        changes. config.yaml: the bot's plugin and the seeded language packs stay enabled, its own MCP
+        entry is refreshed, ``voice`` is set only for the voice component; every other key is kept."""
+        manifest=preview['manifest'];entry=preview['entry'];components=preview['components'];out=[]
+        config=self._read_yaml(target,'config.yaml');before=copy.deepcopy(config)
+        plugin_id=entry['metadata'].get('pluginId')
+        ensure=[plugin_id]if 'plugin'in components else []
+        # Only packs this profile was seeded with (their manifest copy is still there).
+        ensure+=[p['name']for p in preview['packs']if p['name']!=plugin_id and os.path.lexists(target/'plugins'/p['name']/'plugin.yaml')]
+        if ensure:
+            plugins=config.get('plugins')if isinstance(config.get('plugins'),dict)else {}
+            enabled=list(plugins.get('enabled'))if isinstance(plugins.get('enabled'),list)else []
+            enabled+=[n for n in ensure if n not in enabled];config['plugins']={**plugins,'enabled':enabled}
+        if 'mcp'in components:
+            servers=config.get('mcp_servers')if isinstance(config.get('mcp_servers'),dict)else {}
+            for sid,server in _catalog.profile_config(entry,components,target,sys.executable,refs)['mcp_servers'].items():
+                old=servers.get(sid)if isinstance(servers.get(sid),dict)else {}
+                env={**(old.get('env')if isinstance(old.get('env'),dict)else {}),**server.get('env',{})}
+                servers[sid]={**old,**server,**({'env':env}if env else {})}
+            config['mcp_servers']=servers
+        if 'voice'in components:config['voice']=_voice.voice_config(preview['voice'])
+        if config!=before:out.append(('config.yaml',yaml.safe_dump(config,allow_unicode=True,sort_keys=False).encode('utf-8')))
+        meta=self._read_yaml(target,'profile.yaml');before=copy.deepcopy(meta)
+        meta.update(description=manifest['description'],display_name=manifest['name'])
+        avatar=next(f['path']for f in manifest['files']if f['component']=='avatar')
+        motion=_roster_motion.motion_for_avatar(target.name,preview['blobs'][avatar])
+        if motion is not None:
+            ui=meta.get('ui_meta')if isinstance(meta.get('ui_meta'),dict)else {};own=ui.get('hermes-bots')if isinstance(ui.get('hermes-bots'),dict)else {}
+            meta['ui_meta']={**ui,'hermes-bots':{**own,'avatarMotion':motion}}
+        if meta!=before:out.append(('profile.yaml',yaml.safe_dump(meta,allow_unicode=True).encode('utf-8')))
+        dist=self._read_yaml(target,'distribution.yaml');before=copy.deepcopy(dist)
+        dist.update(version=manifest['version'],hermes_requires=manifest['hermesRequires'],source=f'{self.origin}/api/bots/{target.name}/{manifest["version"]}')
+        if dist!=before:out.append(('distribution.yaml',yaml.safe_dump(dist).encode('utf-8')))
+        return out
+
+    def _apply_update(self,target,ops,expected):
+        """Back up, then run ``ops`` in order; on any failure put every touched path back."""
+        backup_root=target/'.mybots-backup'
+        try:
+            if _portable.is_link(backup_root):raise OSError('Linked backup folder')
+            backup_root.mkdir(mode=0o700,exist_ok=True)
+            stamp=time.strftime('%Y%m%dT%H%M%SZ',time.gmtime())
+            for n in range(100):
+                backup=backup_root/(stamp if n==0 else f'{stamp}-{n}')
+                try:backup.mkdir(mode=0o700);break
+                except FileExistsError:continue
+            else:raise OSError('No free backup name')
+            originals={}
+            # Package paths were checked in _previous_files/review; the rest are fixed names (.env too).
+            for rel in [*(rel for _,rel,_ in ops),*METADATA]:
+                if rel in originals:continue
+                if not os.path.lexists(target/rel):originals[rel]=None;continue
+                blob=_secret_decls.read_owned_file(target,rel,2_000_000);mode=stat.S_IMODE(os.lstat(target/rel).st_mode);originals[rel]=(blob,mode)
+                # Keys stay in memory only: a backup must not become a second copy of the .env.
+                if rel!='.env':_write_new(backup,rel,blob)
+        except (OSError,ValueError):raise InstallError('The current files could not be backed up; nothing was changed')from None
+        touched=[];created=[]
+        try:
+            for kind,rel,blob in ops:
+                touched.append(rel)
+                if kind=='remove':
+                    os.unlink(target/rel);_prune(target,rel);continue
+                parent=_make_parents(target,rel,created)
+                mode=originals[rel][1]if originals[rel]else 0o600 if rel=='.env'else 0o644
+                _secret_decls.write_file_atomic(parent,rel.rsplit('/',1)[-1],blob,mode)
+                if rel in expected and hashlib.sha256(_secret_decls.read_owned_file(target,rel,2_000_000)).hexdigest()!=expected[rel]:raise ValueError('Written file differs')
+        except Exception:
+            failed=False
+            for rel in reversed(touched):
+                try:
+                    original=originals[rel]
+                    if original is None:
+                        if os.path.lexists(target/rel):os.unlink(target/rel)
+                    else:_secret_decls.write_file_atomic(_make_parents(target,rel,[]),rel.rsplit('/',1)[-1],original[0],original[1])
+                except Exception:failed=True
+            for folder in reversed(created):
+                try:os.rmdir(folder)
+                except OSError:pass
+            del originals
+            if failed:raise InstallError('Update failed and some files could not be restored; the previous files are in .mybots-backup')from None
+            raise InstallError('Update failed; the previous version was restored')from None
+        del originals
 
     def _key_values(self,plan):
         """Values to write, by name: request input as is, ``default`` reread from the default
@@ -435,20 +704,24 @@ class Installer:
         for (bot,version),entry in entries.items():
             if bot not in latest or tuple(map(int,version.split('.')))>tuple(map(int,latest[bot]['metadata']['version'].split('.'))):latest[bot]=entry
         profiles=self.home/'profiles';names=set(latest)
-        if profiles.is_symlink()or self.home.is_symlink():raise InstallError('Symlinked profile root is unsupported')
+        if _portable.is_link(profiles)or _portable.is_link(self.home):raise InstallError('Symlinked profile root is unsupported')
         if profiles.is_dir():
-            names.update(p.name for p in profiles.iterdir()if re.fullmatch(r'[a-z][a-z0-9-]{0,39}',p.name)and not p.is_symlink()and(p/'mybots-receipt.json').is_file())
+            names.update(p.name for p in profiles.iterdir()if re.fullmatch(r'[a-z][a-z0-9-]{0,39}',p.name)and not _portable.is_link(p)and(p/'mybots-receipt.json').is_file())
         result=[];default_env=None
         for bot in sorted(names):
             target=profiles/bot;entry=latest.get(bot);version=None;state='available';name=entry['metadata']['name']if entry else bot
-            if target.exists()or target.is_symlink():
+            if target.exists()or _portable.is_link(target):
                 state='name-conflict'
                 try:
                     receipt=json.loads(self._profile_file(target,'mybots-receipt.json',32768))
                     if receipt['bot']!=bot or not isinstance(receipt['version'],str)or not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+',receipt['version'])or not re.fullmatch('[a-f0-9]{64}',receipt['digest']):raise ValueError('Invalid receipt')
                     version=receipt['version'];label=receipt.get('name',name);name=label if isinstance(label,str)and len(label)<=80 else name;state='installed'if self._profile_matches(target,receipt)and(not entry or entry['metadata']['version']==version and entry['manifestSha256']==receipt['digest'])else'other-version'
                 except (OSError,ValueError,KeyError,TypeError,RecursionError):pass
-            row=dict(bot=bot,version=version,profile=bot,state=state,name=name)
+            row=dict(bot=bot,version=version,profile=bot,state=state,name=name,latest=entry['metadata']['version']if entry else None,updatable=False)
+            if version is not None and entry and _version(version)<_version(row['latest']):
+                # Updatable only when the installed file list is known (receipt files or trusted entry).
+                try:self._previous_files(receipt,entries);row['updatable']=True
+                except InstallError:pass
             if version is not None:
                 # Only v3 receipts carry declarations; v1/v2 bots and broken receipts get no field.
                 try:
@@ -474,11 +747,9 @@ class Installer:
         if type(bot) is not str or not re.fullmatch(r'[a-z][a-z0-9-]{0,39}',bot) or type(version) is not str or not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+',version):
             raise InstallError('Invalid bot or fixed version')
         profiles=self.home/'profiles';target=profiles/bot
-        if self.home.is_symlink()or profiles.is_symlink()or target.is_symlink()or not target.is_dir():raise InstallError('This bot is not installed')
+        if _portable.is_link(self.home)or _portable.is_link(profiles)or _portable.is_link(target)or not target.is_dir():raise InstallError('This bot is not installed')
         lock_path=profiles/'.mybots-install.lock'
-        fd=os.open(lock_path,os.O_CREAT|os.O_RDWR|os.O_NOFOLLOW,0o600)
-        with os.fdopen(fd,'w') as lock:
-            fcntl.flock(lock,fcntl.LOCK_EX)
+        with _portable.file_lock(lock_path):
             try:
                 receipt=json.loads(self._profile_file(target,'mybots-receipt.json',32768))
                 if type(receipt) is not dict or receipt.get('bot')!=bot:raise ValueError('Invalid receipt')
@@ -539,7 +810,7 @@ class Installer:
             configured=False
             try:
                 path=self.home/'profiles'/profile/'config.yaml'
-                fd=os.open(path,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)
+                fd=_portable.open_nofollow(path,os.O_RDONLY|_portable.NONBLOCK)
                 with os.fdopen(fd,'rb')as stream:
                     if stat.S_ISREG(os.fstat(stream.fileno()).st_mode):
                         blob=stream.read(1_000_001)

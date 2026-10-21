@@ -127,6 +127,25 @@ async def install(request:Request):
         except InstallError as exc:raise HTTPException(409,str(exc)) from exc
     return await run_in_threadpool(run)
 
+@router.post('/review-update')
+async def review_update(request:Request):
+    body=await json_body(request,4096,('bot','version'));bot,version=bot_version(body)
+    def run():
+        try:return engine(write=True).review_update(bot,version)
+        except InstallError as exc:raise HTTPException(400,str(exc)) from exc
+    return await run_in_threadpool(run)
+
+@router.post('/update')
+async def update_bot(request:Request):
+    # Same shape and rules as /install: ``secrets`` holds only keys new to this version, and the
+    # installer's refusals are fixed texts that never name the input.
+    body=await json_body(request,100_000,('token',),('secrets',));token=body['token']
+    if type(token) is not str or not 30<=len(token)<=80:raise HTTPException(422,INVALID_REQUEST)
+    def run():
+        try:return engine(write=True).update(token,body.get('secrets'))
+        except InstallError as exc:raise HTTPException(409,str(exc)) from exc
+    return await run_in_threadpool(run)
+
 @router.post('/secrets')
 async def update_secrets(request:Request):
     body=await json_body(request,100_000,('bot','version'),('secrets',));bot,version=bot_version(body)
@@ -138,7 +157,7 @@ async def update_secrets(request:Request):
 @router.get('/capabilities')
 def capabilities():
     inst=engine()
-    return {'installerVersion':'0.5.0','marketProtocol':1 if inst.authority else 0,'registration':bool(inst.authority),'credentialProviders':credentials().providers() if inst.authority else [],'bots':[dict(id=b,version=v)for b,v in inst.trusted]}
+    return {'installerVersion':'0.6.0','marketProtocol':1 if inst.authority else 0,'registration':bool(inst.authority),'credentialProviders':credentials().providers() if inst.authority else [],'bots':[dict(id=b,version=v)for b,v in inst.trusted]}
 
 @router.get('/bots/{bot}/{version}')
 def metadata(bot:str,version:str):

@@ -17,7 +17,7 @@ def selected_file(value,extensions,limit):
     if not isinstance(value,str)or not value or len(value)>4096:raise ValueError('명시적으로 선택한 파일이 필요합니다.')
     p=Path(value).absolute();remote.no_links(p)
     if p.suffix.lower()not in extensions or p.name.startswith('.'):raise ValueError('허용된 파일을 선택해 주세요.')
-    fd=os.open(p,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)
+    fd=remote.portable.open_nofollow(p,os.O_RDONLY|remote.portable.NONBLOCK)
     with os.fdopen(fd,'rb')as f:
         info=os.fstat(f.fileno())
         if not stat.S_ISREG(info.st_mode)or not 1<=info.st_size<=limit:raise ValueError('파일 형식 또는 크기를 확인해 주세요.')

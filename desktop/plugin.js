@@ -204,7 +204,27 @@ var locales_default = {
     "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.",
     "Coming soon": "Coming soon",
     "This bot is still being prepared. You can install it once it opens.": "This bot is still being prepared. You can install it once it opens.",
-    "This bot is not open yet.": "This bot is not open yet."
+    "This bot is not open yet.": "This bot is not open yet.",
+    Update: "Update",
+    "Update available": "Update available",
+    "Update {0}": "Update {0}",
+    "Reviewing update": "Reviewing update",
+    "Version {0} → {1}": "Version {0} → {1}",
+    "{0} files will be replaced and {1} removed.": "{0} files will be replaced and {1} removed.",
+    "Updates files of the installed local profile; files you added are kept": "Updates files of the installed local profile; files you added are kept",
+    "{0} files you changed will be backed up, then replaced by the new version.": "{0} files you changed will be backed up, then replaced by the new version.",
+    "Keys new in this version. You can skip them and add them later with Add keys.": "Keys new in this version. You can skip them and add them later with Add keys.",
+    "Wait until the chat in progress ends, then try again.": "Wait until the chat in progress ends, then try again.",
+    "Update complete": "Update complete",
+    "Restart Hermes to apply.": "Restart Hermes to apply.",
+    "Only a newer version can be installed as an update. Refresh the bot list.": "Only a newer version can be installed as an update. Refresh the bot list.",
+    "This version cannot be updated in place. Reinstall the bot to get it.": "This version cannot be updated in place. Reinstall the bot to get it.",
+    "The installed bot changed after the review, so nothing was changed. Review the update again.": "The installed bot changed after the review, so nothing was changed. Review the update again.",
+    "The update failed, and the previous version was restored.": "The update failed, and the previous version was restored.",
+    "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.",
+    "The review expired, so nothing was updated. Review the update again.": "The review expired, so nothing was updated. Review the update again.",
+    "This bot was not installed by MyBots, so it cannot be updated here.": "This bot was not installed by MyBots, so it cannot be updated here.",
+    "Could not update. Review the update again and retry.": "Could not update. Review the update again and retry."
   },
   ko: {
     "Could not load installed bots. Please retry.": "설치된 봇을 확인하지 못했습니다. 다시 시도해 주세요.",
@@ -404,7 +424,27 @@ var locales_default = {
     "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "이미 설치된 봇이라 입력한 키는 저장하지 않았습니다. 아래 '키 넣기'로 넣어 주세요.",
     "Coming soon": "준비 중",
     "This bot is still being prepared. You can install it once it opens.": "아직 준비 중인 봇입니다. 공개되면 설치할 수 있습니다.",
-    "This bot is not open yet.": "아직 공개되지 않은 봇입니다."
+    "This bot is not open yet.": "아직 공개되지 않은 봇입니다.",
+    Update: "업데이트",
+    "Update available": "업데이트 가능",
+    "Update {0}": "{0} 업데이트",
+    "Reviewing update": "업데이트 내용을 확인하고 있어요",
+    "Version {0} → {1}": "버전 {0} → {1}",
+    "{0} files will be replaced and {1} removed.": "파일 {0}개를 바꾸고 {1}개를 지웁니다.",
+    "Updates files of the installed local profile; files you added are kept": "설치된 로컬 프로필의 파일을 업데이트합니다. 직접 추가한 파일은 그대로 둡니다.",
+    "{0} files you changed will be backed up, then replaced by the new version.": "직접 고친 파일 {0}개는 백업한 뒤 새 버전으로 바뀝니다.",
+    "Keys new in this version. You can skip them and add them later with Add keys.": "이 버전에서 새로 필요한 키입니다. 건너뛰고 나중에 키 넣기로 넣을 수 있습니다.",
+    "Wait until the chat in progress ends, then try again.": "진행 중인 대화가 끝난 뒤 다시 시도해 주세요.",
+    "Update complete": "업데이트 완료",
+    "Restart Hermes to apply.": "Hermes를 다시 시작하면 적용됩니다.",
+    "Only a newer version can be installed as an update. Refresh the bot list.": "더 새로운 버전만 업데이트로 설치할 수 있습니다. 봇 목록을 새로 고쳐 주세요.",
+    "This version cannot be updated in place. Reinstall the bot to get it.": "이 버전은 제자리 업데이트가 되지 않습니다. 봇을 다시 설치해 주세요.",
+    "The installed bot changed after the review, so nothing was changed. Review the update again.": "확인한 뒤 설치된 봇이 바뀌어 아무것도 바꾸지 않았습니다. 업데이트를 다시 확인해 주세요.",
+    "The update failed, and the previous version was restored.": "업데이트에 실패해 이전 버전으로 되돌렸습니다.",
+    "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "업데이트에 실패했고 일부 파일을 되돌리지 못했습니다. 이전 파일은 프로필의 .mybots-backup 폴더에 있습니다.",
+    "The review expired, so nothing was updated. Review the update again.": "확인 시간이 지나 아무것도 업데이트하지 않았습니다. 업데이트를 다시 확인해 주세요.",
+    "This bot was not installed by MyBots, so it cannot be updated here.": "MyBots가 설치한 봇이 아니어서 여기서 업데이트할 수 없습니다.",
+    "Could not update. Review the update again and retry.": "업데이트하지 못했습니다. 업데이트를 다시 확인한 뒤 시도해 주세요."
   },
   zh: {
     "Could not load installed bots. Please retry.": "无法加载已安装的机器人。请重试。",
@@ -604,7 +644,27 @@ var locales_default = {
     "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "此机器人已安装，因此未保存你输入的密钥。请在下方用“添加密钥”添加。",
     "Coming soon": "即将推出",
     "This bot is still being prepared. You can install it once it opens.": "这个机器人仍在准备中。公开后即可安装。",
-    "This bot is not open yet.": "这个机器人尚未公开。"
+    "This bot is not open yet.": "这个机器人尚未公开。",
+    Update: "更新",
+    "Update available": "可更新",
+    "Update {0}": "更新{0}",
+    "Reviewing update": "正在检查更新",
+    "Version {0} → {1}": "版本 {0} → {1}",
+    "{0} files will be replaced and {1} removed.": "将替换 {0} 个文件并删除 {1} 个。",
+    "Updates files of the installed local profile; files you added are kept": "更新已安装的本地配置文件中的文件；你添加的文件会保留",
+    "{0} files you changed will be backed up, then replaced by the new version.": "你修改过的 {0} 个文件会先备份，然后替换为新版本。",
+    "Keys new in this version. You can skip them and add them later with Add keys.": "这些是此版本新增的密钥。可以跳过，之后用“添加密钥”填写。",
+    "Wait until the chat in progress ends, then try again.": "请等待进行中的对话结束后再试。",
+    "Update complete": "更新完成",
+    "Restart Hermes to apply.": "重新启动 Hermes 后生效。",
+    "Only a newer version can be installed as an update. Refresh the bot list.": "只能将更新的版本作为更新安装。请刷新机器人列表。",
+    "This version cannot be updated in place. Reinstall the bot to get it.": "此版本无法原地更新。请重新安装该机器人。",
+    "The installed bot changed after the review, so nothing was changed. Review the update again.": "检查后已安装的机器人发生了变化，因此未做任何更改。请重新检查更新。",
+    "The update failed, and the previous version was restored.": "更新失败，已恢复到之前的版本。",
+    "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "更新失败，部分文件未能恢复。之前的文件在配置文件的 .mybots-backup 文件夹中。",
+    "The review expired, so nothing was updated. Review the update again.": "检查已过期，因此未更新任何内容。请重新检查更新。",
+    "This bot was not installed by MyBots, so it cannot be updated here.": "此机器人不是由 MyBots 安装的，无法在此更新。",
+    "Could not update. Review the update again and retry.": "无法更新。请重新检查更新后再试。"
   },
   "zh-hant": {
     "Could not load installed bots. Please retry.": "無法載入已安裝的機器人。請重試。",
@@ -804,7 +864,27 @@ var locales_default = {
     "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "此機器人已安裝，因此未儲存你輸入的金鑰。請在下方用「新增金鑰」新增。",
     "Coming soon": "即將推出",
     "This bot is still being prepared. You can install it once it opens.": "這個機器人仍在準備中。公開後即可安裝。",
-    "This bot is not open yet.": "這個機器人尚未公開。"
+    "This bot is not open yet.": "這個機器人尚未公開。",
+    Update: "更新",
+    "Update available": "可更新",
+    "Update {0}": "更新{0}",
+    "Reviewing update": "正在檢查更新",
+    "Version {0} → {1}": "版本 {0} → {1}",
+    "{0} files will be replaced and {1} removed.": "將取代 {0} 個檔案並刪除 {1} 個。",
+    "Updates files of the installed local profile; files you added are kept": "更新已安裝的本機設定檔中的檔案；你新增的檔案會保留",
+    "{0} files you changed will be backed up, then replaced by the new version.": "你修改過的 {0} 個檔案會先備份，然後取代為新版本。",
+    "Keys new in this version. You can skip them and add them later with Add keys.": "這些是此版本新增的金鑰。可以略過，之後用「新增金鑰」填寫。",
+    "Wait until the chat in progress ends, then try again.": "請等待進行中的對話結束後再試。",
+    "Update complete": "更新完成",
+    "Restart Hermes to apply.": "重新啟動 Hermes 後生效。",
+    "Only a newer version can be installed as an update. Refresh the bot list.": "只能將較新的版本作為更新安裝。請重新整理機器人清單。",
+    "This version cannot be updated in place. Reinstall the bot to get it.": "此版本無法就地更新。請重新安裝該機器人。",
+    "The installed bot changed after the review, so nothing was changed. Review the update again.": "檢查後已安裝的機器人發生變化，因此未做任何變更。請重新檢查更新。",
+    "The update failed, and the previous version was restored.": "更新失敗，已還原至先前的版本。",
+    "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "更新失敗，部分檔案未能還原。先前的檔案在設定檔的 .mybots-backup 資料夾中。",
+    "The review expired, so nothing was updated. Review the update again.": "檢查已逾時，因此未更新任何內容。請重新檢查更新。",
+    "This bot was not installed by MyBots, so it cannot be updated here.": "此機器人不是由 MyBots 安裝的，無法在此更新。",
+    "Could not update. Review the update again and retry.": "無法更新。請重新檢查更新後再試。"
   },
   ja: {
     "Could not load installed bots. Please retry.": "インストール済みボットを読み込めません。再試行してください。",
@@ -1004,7 +1084,27 @@ var locales_default = {
     "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "このボットはすでにインストール済みのため、入力したキーは保存していません。下の「キーを追加」から追加してください。",
     "Coming soon": "準備中",
     "This bot is still being prepared. You can install it once it opens.": "このボットはまだ準備中です。公開されるとインストールできます。",
-    "This bot is not open yet.": "このボットはまだ公開されていません。"
+    "This bot is not open yet.": "このボットはまだ公開されていません。",
+    Update: "アップデート",
+    "Update available": "アップデートあり",
+    "Update {0}": "{0}をアップデート",
+    "Reviewing update": "アップデート内容を確認しています",
+    "Version {0} → {1}": "バージョン {0} → {1}",
+    "{0} files will be replaced and {1} removed.": "{0} 個のファイルを置き換え、{1} 個を削除します。",
+    "Updates files of the installed local profile; files you added are kept": "インストール済みのローカルプロファイルのファイルを更新します。追加したファイルはそのまま残ります",
+    "{0} files you changed will be backed up, then replaced by the new version.": "変更した {0} 個のファイルはバックアップしてから新しいバージョンに置き換えます。",
+    "Keys new in this version. You can skip them and add them later with Add keys.": "このバージョンで新しく必要なキーです。スキップして、後で「キーを追加」から入力できます。",
+    "Wait until the chat in progress ends, then try again.": "進行中の会話が終わってからもう一度お試しください。",
+    "Update complete": "アップデート完了",
+    "Restart Hermes to apply.": "Hermes を再起動すると反映されます。",
+    "Only a newer version can be installed as an update. Refresh the bot list.": "アップデートとしてインストールできるのは新しいバージョンだけです。ボット一覧を更新してください。",
+    "This version cannot be updated in place. Reinstall the bot to get it.": "このバージョンはその場でアップデートできません。ボットを再インストールしてください。",
+    "The installed bot changed after the review, so nothing was changed. Review the update again.": "確認後にインストール済みのボットが変わったため、何も変更していません。アップデートをもう一度確認してください。",
+    "The update failed, and the previous version was restored.": "アップデートに失敗したため、以前のバージョンに戻しました。",
+    "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "アップデートに失敗し、一部のファイルを元に戻せませんでした。以前のファイルはプロファイルの .mybots-backup フォルダーにあります。",
+    "The review expired, so nothing was updated. Review the update again.": "確認の有効期限が切れたため、何もアップデートしていません。アップデートをもう一度確認してください。",
+    "This bot was not installed by MyBots, so it cannot be updated here.": "MyBots でインストールしたボットではないため、ここではアップデートできません。",
+    "Could not update. Review the update again and retry.": "アップデートできませんでした。アップデートをもう一度確認してからお試しください。"
   },
   ar: {
     "Could not load installed bots. Please retry.": "تعذر تحميل البوتات المثبتة. حاول مجددًا.",
@@ -1204,7 +1304,27 @@ var locales_default = {
     "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "هذا البوت مثبّت بالفعل، لذا لم تُحفظ المفاتيح التي أدخلتها. أضفها أدناه عبر «إضافة مفاتيح».",
     "Coming soon": "قريبًا",
     "This bot is still being prepared. You can install it once it opens.": "لا يزال هذا البوت قيد التحضير. يمكنك تثبيته بمجرد إتاحته.",
-    "This bot is not open yet.": "هذا البوت غير متاح بعد."
+    "This bot is not open yet.": "هذا البوت غير متاح بعد.",
+    Update: "تحديث",
+    "Update available": "تحديث متاح",
+    "Update {0}": "تحديث {0}",
+    "Reviewing update": "جارٍ مراجعة التحديث",
+    "Version {0} → {1}": "الإصدار {0} → {1}",
+    "{0} files will be replaced and {1} removed.": "سيتم استبدال {0} من الملفات وحذف {1}.",
+    "Updates files of the installed local profile; files you added are kept": "يحدّث ملفات الملف الشخصي المحلي المثبّت؛ وتبقى الملفات التي أضفتها",
+    "{0} files you changed will be backed up, then replaced by the new version.": "سيتم نسخ {0} من الملفات التي عدّلتها احتياطيًا ثم استبدالها بالإصدار الجديد.",
+    "Keys new in this version. You can skip them and add them later with Add keys.": "مفاتيح جديدة في هذا الإصدار. يمكنك تخطيها وإضافتها لاحقًا عبر إضافة مفاتيح.",
+    "Wait until the chat in progress ends, then try again.": "انتظر حتى تنتهي المحادثة الجارية، ثم حاول مرة أخرى.",
+    "Update complete": "اكتمل التحديث",
+    "Restart Hermes to apply.": "أعد تشغيل Hermes لتطبيق التحديث.",
+    "Only a newer version can be installed as an update. Refresh the bot list.": "لا يمكن تثبيت إلا إصدار أحدث كتحديث. حدّث قائمة البوتات.",
+    "This version cannot be updated in place. Reinstall the bot to get it.": "لا يمكن تحديث هذا الإصدار في مكانه. أعد تثبيت البوت.",
+    "The installed bot changed after the review, so nothing was changed. Review the update again.": "تغيّر البوت المثبّت بعد المراجعة، لذلك لم يتغير شيء. راجع التحديث مرة أخرى.",
+    "The update failed, and the previous version was restored.": "فشل التحديث، وتمت استعادة الإصدار السابق.",
+    "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "فشل التحديث وتعذّرت استعادة بعض الملفات. الملفات السابقة موجودة في مجلد .mybots-backup في الملف الشخصي.",
+    "The review expired, so nothing was updated. Review the update again.": "انتهت صلاحية المراجعة، لذلك لم يُحدَّث شيء. راجع التحديث مرة أخرى.",
+    "This bot was not installed by MyBots, so it cannot be updated here.": "لم يثبّت MyBots هذا البوت، لذلك لا يمكن تحديثه هنا.",
+    "Could not update. Review the update again and retry.": "تعذّر التحديث. راجع التحديث مرة أخرى ثم أعد المحاولة."
   },
   ru: {
     "Could not load installed bots. Please retry.": "Не удалось загрузить установленных ботов. Повторите попытку.",
@@ -1404,7 +1524,27 @@ var locales_default = {
     "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "Этот бот уже установлен, поэтому введённые ключи не сохранены. Добавьте их ниже через «Добавить ключи».",
     "Coming soon": "Скоро",
     "This bot is still being prepared. You can install it once it opens.": "Этот бот ещё готовится. Его можно будет установить, когда он откроется.",
-    "This bot is not open yet.": "Этот бот ещё не открыт."
+    "This bot is not open yet.": "Этот бот ещё не открыт.",
+    Update: "Обновить",
+    "Update available": "Доступно обновление",
+    "Update {0}": "Обновить {0}",
+    "Reviewing update": "Проверяем обновление",
+    "Version {0} → {1}": "Версия {0} → {1}",
+    "{0} files will be replaced and {1} removed.": "Будет заменено файлов: {0}, удалено: {1}.",
+    "Updates files of the installed local profile; files you added are kept": "Обновляет файлы установленного локального профиля; добавленные вами файлы сохраняются",
+    "{0} files you changed will be backed up, then replaced by the new version.": "Изменённые вами файлы ({0}) будут сохранены в резервную копию, а затем заменены новой версией.",
+    "Keys new in this version. You can skip them and add them later with Add keys.": "Новые ключи этой версии. Их можно пропустить и добавить позже через «Добавить ключи».",
+    "Wait until the chat in progress ends, then try again.": "Дождитесь окончания текущего чата и повторите попытку.",
+    "Update complete": "Обновление завершено",
+    "Restart Hermes to apply.": "Перезапустите Hermes, чтобы применить изменения.",
+    "Only a newer version can be installed as an update. Refresh the bot list.": "Обновлением можно установить только более новую версию. Обновите список ботов.",
+    "This version cannot be updated in place. Reinstall the bot to get it.": "Эту версию нельзя обновить на месте. Переустановите бота.",
+    "The installed bot changed after the review, so nothing was changed. Review the update again.": "Установленный бот изменился после проверки, поэтому ничего не изменено. Проверьте обновление ещё раз.",
+    "The update failed, and the previous version was restored.": "Обновление не удалось, предыдущая версия восстановлена.",
+    "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "Обновление не удалось, и некоторые файлы не удалось восстановить. Предыдущие файлы находятся в папке .mybots-backup профиля.",
+    "The review expired, so nothing was updated. Review the update again.": "Срок проверки истёк, поэтому ничего не обновлено. Проверьте обновление ещё раз.",
+    "This bot was not installed by MyBots, so it cannot be updated here.": "Этот бот установлен не через MyBots, поэтому обновить его здесь нельзя.",
+    "Could not update. Review the update again and retry.": "Не удалось обновить. Проверьте обновление ещё раз и повторите попытку."
   },
   fr: {
     "Could not load installed bots. Please retry.": "Impossible de charger les bots installés. Réessayez.",
@@ -1604,7 +1744,27 @@ var locales_default = {
     "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "Ce bot était déjà installé ; les clés saisies n’ont donc pas été enregistrées. Ajoutez-les ci-dessous avec « Ajouter des clés ».",
     "Coming soon": "Bientôt disponible",
     "This bot is still being prepared. You can install it once it opens.": "Ce bot est encore en préparation. Vous pourrez l’installer dès son ouverture.",
-    "This bot is not open yet.": "Ce bot n’est pas encore ouvert."
+    "This bot is not open yet.": "Ce bot n’est pas encore ouvert.",
+    Update: "Mettre à jour",
+    "Update available": "Mise à jour disponible",
+    "Update {0}": "Mettre à jour {0}",
+    "Reviewing update": "Vérification de la mise à jour",
+    "Version {0} → {1}": "Version {0} → {1}",
+    "{0} files will be replaced and {1} removed.": "{0} fichiers seront remplacés et {1} supprimés.",
+    "Updates files of the installed local profile; files you added are kept": "Met à jour les fichiers du profil local installé ; les fichiers que vous avez ajoutés sont conservés",
+    "{0} files you changed will be backed up, then replaced by the new version.": "{0} fichiers que vous avez modifiés seront sauvegardés, puis remplacés par la nouvelle version.",
+    "Keys new in this version. You can skip them and add them later with Add keys.": "Clés nouvelles dans cette version. Vous pouvez les ignorer et les ajouter plus tard avec Ajouter des clés.",
+    "Wait until the chat in progress ends, then try again.": "Attendez la fin de la conversation en cours, puis réessayez.",
+    "Update complete": "Mise à jour terminée",
+    "Restart Hermes to apply.": "Redémarrez Hermes pour l’appliquer.",
+    "Only a newer version can be installed as an update. Refresh the bot list.": "Seule une version plus récente peut être installée comme mise à jour. Actualisez la liste des bots.",
+    "This version cannot be updated in place. Reinstall the bot to get it.": "Cette version ne peut pas être mise à jour sur place. Réinstallez le bot.",
+    "The installed bot changed after the review, so nothing was changed. Review the update again.": "Le bot installé a changé après la vérification, donc rien n’a été modifié. Vérifiez de nouveau la mise à jour.",
+    "The update failed, and the previous version was restored.": "La mise à jour a échoué et la version précédente a été restaurée.",
+    "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "La mise à jour a échoué et certains fichiers n’ont pas pu être restaurés. Les fichiers précédents se trouvent dans le dossier .mybots-backup du profil.",
+    "The review expired, so nothing was updated. Review the update again.": "La vérification a expiré, donc rien n’a été mis à jour. Vérifiez de nouveau la mise à jour.",
+    "This bot was not installed by MyBots, so it cannot be updated here.": "Ce bot n’a pas été installé par MyBots, il ne peut donc pas être mis à jour ici.",
+    "Could not update. Review the update again and retry.": "Impossible de mettre à jour. Vérifiez de nouveau la mise à jour et réessayez."
   },
   de: {
     "Could not load installed bots. Please retry.": "Installierte Bots konnten nicht geladen werden. Bitte erneut versuchen.",
@@ -1804,7 +1964,27 @@ var locales_default = {
     "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "Dieser Bot war bereits installiert, daher wurden die eingegebenen Schlüssel nicht gespeichert. Fügen Sie sie unten mit „Schlüssel hinzufügen“ hinzu.",
     "Coming soon": "Demnächst",
     "This bot is still being prepared. You can install it once it opens.": "Dieser Bot wird noch vorbereitet. Sie können ihn installieren, sobald er freigegeben ist.",
-    "This bot is not open yet.": "Dieser Bot ist noch nicht freigegeben."
+    "This bot is not open yet.": "Dieser Bot ist noch nicht freigegeben.",
+    Update: "Aktualisieren",
+    "Update available": "Update verfügbar",
+    "Update {0}": "{0} aktualisieren",
+    "Reviewing update": "Update wird geprüft",
+    "Version {0} → {1}": "Version {0} → {1}",
+    "{0} files will be replaced and {1} removed.": "{0} Dateien werden ersetzt und {1} entfernt.",
+    "Updates files of the installed local profile; files you added are kept": "Aktualisiert Dateien des installierten lokalen Profils; von Ihnen hinzugefügte Dateien bleiben erhalten",
+    "{0} files you changed will be backed up, then replaced by the new version.": "{0} von Ihnen geänderte Dateien werden gesichert und dann durch die neue Version ersetzt.",
+    "Keys new in this version. You can skip them and add them later with Add keys.": "Neue Schlüssel in dieser Version. Sie können sie überspringen und später mit Schlüssel hinzufügen eintragen.",
+    "Wait until the chat in progress ends, then try again.": "Warten Sie, bis der laufende Chat beendet ist, und versuchen Sie es dann erneut.",
+    "Update complete": "Update abgeschlossen",
+    "Restart Hermes to apply.": "Starten Sie Hermes neu, um es anzuwenden.",
+    "Only a newer version can be installed as an update. Refresh the bot list.": "Als Update kann nur eine neuere Version installiert werden. Aktualisieren Sie die Bot-Liste.",
+    "This version cannot be updated in place. Reinstall the bot to get it.": "Diese Version kann nicht direkt aktualisiert werden. Installieren Sie den Bot neu.",
+    "The installed bot changed after the review, so nothing was changed. Review the update again.": "Der installierte Bot hat sich nach der Prüfung geändert, daher wurde nichts geändert. Prüfen Sie das Update erneut.",
+    "The update failed, and the previous version was restored.": "Das Update ist fehlgeschlagen, die vorherige Version wurde wiederhergestellt.",
+    "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "Das Update ist fehlgeschlagen und einige Dateien konnten nicht wiederhergestellt werden. Die vorherigen Dateien liegen im Ordner .mybots-backup des Profils.",
+    "The review expired, so nothing was updated. Review the update again.": "Die Prüfung ist abgelaufen, daher wurde nichts aktualisiert. Prüfen Sie das Update erneut.",
+    "This bot was not installed by MyBots, so it cannot be updated here.": "Dieser Bot wurde nicht von MyBots installiert und kann hier nicht aktualisiert werden.",
+    "Could not update. Review the update again and retry.": "Aktualisierung nicht möglich. Prüfen Sie das Update erneut und versuchen Sie es noch einmal."
   },
   es: {
     "Could not load installed bots. Please retry.": "No se pudieron cargar los bots instalados. Inténtalo de nuevo.",
@@ -2004,7 +2184,27 @@ var locales_default = {
     "This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.": "Este bot ya estaba instalado, así que no se guardaron las claves que escribiste. Añádelas abajo con «Añadir claves».",
     "Coming soon": "Próximamente",
     "This bot is still being prepared. You can install it once it opens.": "Este bot aún se está preparando. Podrás instalarlo cuando se abra.",
-    "This bot is not open yet.": "Este bot aún no está abierto."
+    "This bot is not open yet.": "Este bot aún no está abierto.",
+    Update: "Actualizar",
+    "Update available": "Actualización disponible",
+    "Update {0}": "Actualizar {0}",
+    "Reviewing update": "Revisando la actualización",
+    "Version {0} → {1}": "Versión {0} → {1}",
+    "{0} files will be replaced and {1} removed.": "Se reemplazarán {0} archivos y se eliminarán {1}.",
+    "Updates files of the installed local profile; files you added are kept": "Actualiza los archivos del perfil local instalado; los archivos que añadiste se conservan",
+    "{0} files you changed will be backed up, then replaced by the new version.": "{0} archivos que modificaste se guardarán como copia de seguridad y luego se reemplazarán por la nueva versión.",
+    "Keys new in this version. You can skip them and add them later with Add keys.": "Claves nuevas en esta versión. Puedes omitirlas y añadirlas más tarde con Añadir claves.",
+    "Wait until the chat in progress ends, then try again.": "Espera a que termine la conversación en curso y vuelve a intentarlo.",
+    "Update complete": "Actualización completada",
+    "Restart Hermes to apply.": "Reinicia Hermes para aplicarla.",
+    "Only a newer version can be installed as an update. Refresh the bot list.": "Solo se puede instalar una versión más reciente como actualización. Actualiza la lista de bots.",
+    "This version cannot be updated in place. Reinstall the bot to get it.": "Esta versión no se puede actualizar en el sitio. Reinstala el bot.",
+    "The installed bot changed after the review, so nothing was changed. Review the update again.": "El bot instalado cambió después de la revisión, así que no se cambió nada. Revisa la actualización de nuevo.",
+    "The update failed, and the previous version was restored.": "La actualización falló y se restauró la versión anterior.",
+    "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "La actualización falló y algunos archivos no se pudieron restaurar. Los archivos anteriores están en la carpeta .mybots-backup del perfil.",
+    "The review expired, so nothing was updated. Review the update again.": "La revisión caducó, así que no se actualizó nada. Revisa la actualización de nuevo.",
+    "This bot was not installed by MyBots, so it cannot be updated here.": "MyBots no instaló este bot, así que no se puede actualizar aquí.",
+    "Could not update. Review the update again and retry.": "No se pudo actualizar. Revisa la actualización de nuevo y vuelve a intentarlo."
   }
 };
 
@@ -2270,6 +2470,12 @@ var MarketApi = class {
   }
   install(token, secrets) {
     return this.ctx.rest("/install", { method: "POST", body: secrets && Object.keys(secrets).length ? { token, secrets } : { token }, timeoutMs: 9e4 });
+  }
+  reviewUpdate(bot, version) {
+    return this.ctx.rest("/review-update", { method: "POST", body: { bot, version }, timeoutMs: 12e4 });
+  }
+  update(token, secrets) {
+    return this.ctx.rest("/update", { method: "POST", body: secrets && Object.keys(secrets).length ? { token, secrets } : { token }, timeoutMs: 9e4 });
   }
   updateSecrets(bot, version, secrets) {
     return this.ctx.rest("/secrets", { method: "POST", body: { bot, version, secrets }, timeoutMs: 3e4 });
@@ -2717,6 +2923,22 @@ function reviewErrorMessage(error) {
   if (reason === NOT_OPEN) return "This bot is not open yet.";
   if (reason === "Invalid manifest" || reason.startsWith("This bot/version requires a newer MyBots helper")) return "This bot needs a newer MyBots helper. Update MyBots and retry.";
   return "Could not review the installation. Check connection and publication status.";
+}
+var UPDATE_REFUSALS = {
+  "Only a newer version can be installed as an update": "Only a newer version can be installed as an update. Refresh the bot list.",
+  "Update needs a reinstall for this version": "This version cannot be updated in place. Reinstall the bot to get it.",
+  "The installed bot changed after the review; review again": "The installed bot changed after the review, so nothing was changed. Review the update again.",
+  "Update failed; the previous version was restored": "The update failed, and the previous version was restored.",
+  "Update failed and some files could not be restored; the previous files are in .mybots-backup": "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.",
+  "Review expired or already used; review again": "The review expired, so nothing was updated. Review the update again.",
+  "This bot is not installed": "This bot was not installed by MyBots, so it cannot be updated here.",
+  "This bot was not installed by MyBots": "This bot was not installed by MyBots, so it cannot be updated here."
+};
+function updateErrorMessage(error, stage) {
+  const reason = detail(error);
+  if (Object.hasOwn(UPDATE_REFUSALS, reason)) return UPDATE_REFUSALS[reason];
+  if (stage === "review") return reviewErrorMessage(error);
+  return keyRefusal(reason, format) ?? "Could not update. Review the update again and retry.";
 }
 var startsDefault = (r) => r.prefill === "default" && r.startWithDefault !== false;
 var initialKeys = (rows) => Object.fromEntries(rows.map((r) => [r.name, { useDefault: startsDefault(r), value: "", save: true }]));
@@ -3617,14 +3839,16 @@ function BotAvatar({ bot, name, src, sha256, mood = "idle", size = 80 }) {
 // packages/hermes-plugin/desktop/install-confirmation.tsx
 import { Fragment as Fragment4, jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
 var labels = { skills: "Skills", mcp: "MCP · runs local Python", plugin: "Plugin · runs local Python", voice: "Recommended GPT Live voice" };
-function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood = "idle", status, comingSoon: comingSoon2 = false }) {
+var CHAT_NOTE = "Wait until the chat in progress ends, then try again.";
+function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood = "idle", status, comingSoon: comingSoon2 = false, mode = "install" }) {
   const { t, locale, dir } = useMyBots();
+  const updating = mode === "update";
   const [selection, setSelection] = useState5(() => initialSelection(bot)), [review, setReview] = useState5(null), [result, setResult] = useState5(null), [busy, setBusy] = useState5(false), [error, setError] = useState5(""), [retry, setRetry] = useState5(0);
   const [keys, setKeys] = useState5({}), [decls, setDecls] = useState5([]), [addKeys, setAddKeys] = useState5(null), [typed, setTyped] = useState5(false), [existing, setExisting] = useState5(null);
   const opener = useRef5(document.activeElement);
   const fence = useRef5(new ReviewFence()), posting = useRef5(false), local = useLocal();
   const identity = bot.id + "@" + bot.version;
-  const conflict = status?.state === "name-conflict";
+  const conflict = !updating && status?.state === "name-conflict", chatBusy = updating && mood === "think";
   const owner = useRef5(identity);
   owner.current = identity;
   useEffect5(() => {
@@ -3645,20 +3869,21 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
       return;
     }
     setBusy(true);
-    new MarketApi(ctx).review(bot.id, bot.version, normalizeSelection(bot, selection)).then((value) => {
+    const api = new MarketApi(ctx);
+    (updating ? api.reviewUpdate(bot.id, bot.version) : api.review(bot.id, bot.version, normalizeSelection(bot, selection))).then((value) => {
       if (fence.current.isCurrent(ticket) && isLocal()) {
         setKeys(initialKeys(value.secrets ?? []));
         setReview(value);
       }
     }, (reason) => {
-      if (fence.current.isCurrent(ticket)) setError(reviewErrorMessage(reason));
+      if (fence.current.isCurrent(ticket)) setError(updating ? updateErrorMessage(reason, "review") : reviewErrorMessage(reason));
     }).finally(() => {
       if (fence.current.isCurrent(ticket)) setBusy(false);
     });
     return () => fence.current.invalidate();
-  }, [ctx, identity, selection, local, retry, comingSoon2]);
+  }, [ctx, identity, selection, local, retry, comingSoon2, updating]);
   async function install() {
-    if (posting.current || !review || !isLocal()) return;
+    if (posting.current || !review || !isLocal() || chatBusy) return;
     posting.current = true;
     const ticket = fence.current.begin();
     const expected = owner.current;
@@ -3671,7 +3896,7 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
     setExisting(null);
     setTyped(Object.values(request).some((x) => x.source === "input"));
     try {
-      const value = await new MarketApi(ctx).install(review.token, request);
+      const api = new MarketApi(ctx), value = await (updating ? api.update(review.token, request) : api.install(review.token, request));
       if (fence.current.isCurrent(ticket) && isLocal() && owner.current === expected) {
         setResult(value);
         setReview(null);
@@ -3684,7 +3909,7 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
       }
     } catch (reason) {
       if (fence.current.isCurrent(ticket)) {
-        setError(installErrorMessage(reason, review.manifest.id, t));
+        setError(updating ? updateErrorMessage(reason, "update") : installErrorMessage(reason, review.manifest.id, t));
         setReview(null);
       }
     } finally {
@@ -3694,14 +3919,14 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
   }
   return /* @__PURE__ */ jsx6(Dialog, { open: true, onOpenChange: (open) => {
     if (!open) onClose();
-  }, children: /* @__PURE__ */ jsxs5(DialogContent, { "aria-label": t("Confirm installation of {0}", bot.name), "aria-busy": busy, lang: locale, dir, className: "mb-install", onCloseAutoFocus: (event) => {
+  }, children: /* @__PURE__ */ jsxs5(DialogContent, { "aria-label": updating ? t("Update {0}", bot.name) : t("Confirm installation of {0}", bot.name), "aria-busy": busy, lang: locale, dir, className: "mb-install", onCloseAutoFocus: (event) => {
     if (opener.current?.isConnected) {
       event.preventDefault();
       opener.current.focus();
     }
   }, children: [
     /* @__PURE__ */ jsxs5(DialogHeader, { children: [
-      /* @__PURE__ */ jsx6(DialogTitle, { children: t("Meet {0}", bot.name) }),
+      /* @__PURE__ */ jsx6(DialogTitle, { children: updating ? t("Update {0}", bot.name) : t("Meet {0}", bot.name) }),
       /* @__PURE__ */ jsxs5(DialogDescription, { children: [
         bot.role,
         " · ",
@@ -3726,7 +3951,7 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
       !local && /* @__PURE__ */ jsx6(LocalNotice, {}),
       error && /* @__PURE__ */ jsx6(Failure, { message: t(error) })
     ] }),
-    !result && !comingSoon2 && /* @__PURE__ */ jsxs5("fieldset", { disabled: busy && posting.current, className: "mb-options", children: [
+    !result && !comingSoon2 && !updating && /* @__PURE__ */ jsxs5("fieldset", { disabled: busy && posting.current, className: "mb-options", children: [
       /* @__PURE__ */ jsx6("legend", { children: t("Include these features") }),
       bot.optional.length === 0 && /* @__PURE__ */ jsx6("p", { className: "mb-muted", children: t("Start with a Soul and avatar.") }),
       bot.optional.map((c) => /* @__PURE__ */ jsxs5("label", { className: "mb-option", children: [
@@ -3741,17 +3966,19 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
         ] })
       ] }, c))
     ] }),
-    busy && !posting.current && /* @__PURE__ */ jsx6(Loader, { label: t("Reviewing installation") }),
+    busy && !posting.current && /* @__PURE__ */ jsx6(Loader, { label: updating ? t("Reviewing update") : t("Reviewing installation") }),
     review && /* @__PURE__ */ jsxs5(Fragment4, { children: [
-      conflict ? /* @__PURE__ */ jsx6(Failure, { message: nameConflictMessage(review.manifest.id, t) }) : /* @__PURE__ */ jsxs5("p", { className: "mb-muted", children: [
-        t("New profile:"),
-        /* @__PURE__ */ jsx6("b", { children: review.manifest.id }),
-        " ",
-        t("Author:"),
-        review.manifest.author
+      updating && review.update ? /* @__PURE__ */ jsx6(UpdateSummary, { plan: review.update, to: review.manifest.version }) : /* @__PURE__ */ jsxs5(Fragment4, { children: [
+        conflict ? /* @__PURE__ */ jsx6(Failure, { message: nameConflictMessage(review.manifest.id, t) }) : /* @__PURE__ */ jsxs5("p", { className: "mb-muted", children: [
+          t("New profile:"),
+          /* @__PURE__ */ jsx6("b", { children: review.manifest.id }),
+          " ",
+          t("Author:"),
+          review.manifest.author
+        ] }),
+        /* @__PURE__ */ jsx6("p", { children: modelReviewMessage(review.model, t) }),
+        languagePackMessage(review.languagePacks, t) && /* @__PURE__ */ jsx6("p", { children: languagePackMessage(review.languagePacks, t) })
       ] }),
-      /* @__PURE__ */ jsx6("p", { children: modelReviewMessage(review.model, t) }),
-      languagePackMessage(review.languagePacks, t) && /* @__PURE__ */ jsx6("p", { children: languagePackMessage(review.languagePacks, t) }),
       review.components.some((c) => c === "mcp" || c === "plugin") && /* @__PURE__ */ jsx6("p", { children: t("Selected MCP and plugins execute Python on this device.") }),
       review.voice && /* @__PURE__ */ jsxs5("p", { children: [
         t("Recommended voice:"),
@@ -3761,6 +3988,7 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
         /* @__PURE__ */ jsx6("br", {}),
         t("Configure voice authentication in Hermes.")
       ] }),
+      updating && !!review.secrets?.length && /* @__PURE__ */ jsx6("p", { children: t("Keys new in this version. You can skip them and add them later with Add keys.") }),
       /* @__PURE__ */ jsx6(SecretsFields, { secrets: review.secrets ?? [], value: keys, onChange: setKeys, disabled: busy }),
       /* @__PURE__ */ jsxs5("details", { children: [
         /* @__PURE__ */ jsx6("summary", { children: t("Soul and file verification") }),
@@ -3775,13 +4003,16 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
           t("{0} bytes", f.size)
         ] }, f.path)) })
       ] }),
-      /* @__PURE__ */ jsx6(DialogFooter, { children: /* @__PURE__ */ jsx6(Button2, { disabled: busy || !local || conflict, loading: posting.current && busy, onClick: install, children: t("Install {0}", bot.name) }) })
+      updating && /* @__PURE__ */ jsx6("p", { role: "status", className: "mb-notice", children: t(CHAT_NOTE) }),
+      /* @__PURE__ */ jsx6(DialogFooter, { children: /* @__PURE__ */ jsx6(Button2, { disabled: busy || !local || conflict || chatBusy, loading: posting.current && busy, onClick: install, children: updating ? t("Update {0}", bot.name) : t("Install {0}", bot.name) }) })
     ] }),
     !review && !result && !busy && local && !comingSoon2 && /* @__PURE__ */ jsx6(Button2, { variant: "secondary", onClick: () => setRetry((n) => n + 1), children: t("Review again") }),
     result && /* @__PURE__ */ jsxs5("section", { role: "status", className: "mb-section", children: [
-      /* @__PURE__ */ jsx6("h3", { children: result.status === "already-installed" ? t("Already installed") : t("Installation complete") }),
-      /* @__PURE__ */ jsx6("p", { children: modelResultMessage(result, t) }),
-      /* @__PURE__ */ jsx6("p", { children: voiceResultMessage(result, t) }),
+      /* @__PURE__ */ jsx6("h3", { children: updating ? t("Update complete") : result.status === "already-installed" ? t("Already installed") : t("Installation complete") }),
+      updating ? /* @__PURE__ */ jsx6("p", { children: t("Restart Hermes to apply.") }) : /* @__PURE__ */ jsxs5(Fragment4, { children: [
+        /* @__PURE__ */ jsx6("p", { children: modelResultMessage(result, t) }),
+        /* @__PURE__ */ jsx6("p", { children: voiceResultMessage(result, t) })
+      ] }),
       result.status === "already-installed" && typed && /* @__PURE__ */ jsx6("p", { children: t("This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.") }),
       result.status === "already-installed" && existing?.secrets && (addKeys ? /* @__PURE__ */ jsx6(AddKeysForm, { ctx, bot: bot.id, version: bot.version, secrets: addKeys, states: existing.secrets, onSaved: () => onKeysSaved?.() }) : /* @__PURE__ */ jsx6(Button2, { variant: "secondary", onClick: () => setAddKeys(installedFields(existing.secrets)), children: t("Add keys") })),
       !!result.secrets?.length && (() => {
@@ -3807,27 +4038,41 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
           addKeys ? /* @__PURE__ */ jsx6(AddKeysForm, { ctx, bot: bot.id, version: bot.version, secrets: addKeys, onSaved: saved }) : open().length > 0 && /* @__PURE__ */ jsx6(Button2, { variant: "secondary", onClick: () => setAddKeys(open()), children: t("Add keys") })
         ] });
       })(),
-      /* @__PURE__ */ jsxs5("p", { children: [
-        t("First prompt:"),
-        bot.firstPrompt
-      ] }),
-      bot.external.map((e) => /* @__PURE__ */ jsxs5("p", { children: [
-        /* @__PURE__ */ jsxs5("a", { href: e.guide, target: "_blank", rel: "noopener noreferrer", children: [
-          e.label,
-          " · ",
-          t("Setup guide")
+      !updating && /* @__PURE__ */ jsxs5(Fragment4, { children: [
+        /* @__PURE__ */ jsxs5("p", { children: [
+          t("First prompt:"),
+          bot.firstPrompt
         ] }),
-        " · ",
-        e.requirement
-      ] }, e.service)),
-      /* @__PURE__ */ jsx6(DialogFooter, { children: /* @__PURE__ */ jsx6(Button2, { onClick: () => {
-        const d = profileDestination(result.profile);
-        onClose();
-        host2.newChat(d.route, d.options);
-        location.hash = "#/";
-      }, children: t("Open bot chat") }) })
+        bot.external.map((e) => /* @__PURE__ */ jsxs5("p", { children: [
+          /* @__PURE__ */ jsxs5("a", { href: e.guide, target: "_blank", rel: "noopener noreferrer", children: [
+            e.label,
+            " · ",
+            t("Setup guide")
+          ] }),
+          " · ",
+          e.requirement
+        ] }, e.service)),
+        /* @__PURE__ */ jsx6(DialogFooter, { children: /* @__PURE__ */ jsx6(Button2, { onClick: () => {
+          const d = profileDestination(result.profile);
+          onClose();
+          host2.newChat(d.route, d.options);
+          location.hash = "#/";
+        }, children: t("Open bot chat") }) })
+      ] })
     ] })
   ] }) });
+}
+function UpdateSummary({ plan, to }) {
+  const { t } = useMyBots();
+  return /* @__PURE__ */ jsxs5("section", { className: "mb-section", children: [
+    /* @__PURE__ */ jsx6("p", { children: /* @__PURE__ */ jsx6("b", { children: t("Version {0} → {1}", plan.from, to) }) }),
+    /* @__PURE__ */ jsx6("p", { children: t("{0} files will be replaced and {1} removed.", plan.replace, plan.remove) }),
+    /* @__PURE__ */ jsx6("p", { className: "mb-muted", children: t("Updates files of the installed local profile; files you added are kept") }),
+    plan.modified.length > 0 && /* @__PURE__ */ jsxs5("div", { role: "note", className: "mb-notice", children: [
+      /* @__PURE__ */ jsx6("p", { children: t("{0} files you changed will be backed up, then replaced by the new version.", plan.modified.length) }),
+      /* @__PURE__ */ jsx6("ul", { children: plan.modified.map((path) => /* @__PURE__ */ jsx6("li", { children: path }, path)) })
+    ] })
+  ] });
 }
 
 // packages/hermes-plugin/desktop/bot-status.ts
@@ -3953,7 +4198,7 @@ function MarketPage({ ctx, renderTab }) {
   const { t, locale, dir, contentLocale } = useMyBots();
   const [display, setDisplay] = useState7(null);
   const [displayDone, setDisplayDone] = useState7("");
-  const [tab, setTab] = useState7("browse"), [view, setView] = useState7(null), [installed, setInstalled] = useState7([]), [query, setQuery] = useState7(""), [category, setCategory] = useState7("all"), [selected, setSelected] = useState7(null), [error, setError] = useState7(""), [busy, setBusy] = useState7(false), [reload, setReload] = useState7(0), [hash, setHash] = useState7(location.hash), [linkSequence, setLinkSequence] = useState7(0), [keysFor, setKeysFor] = useState7(null);
+  const [tab, setTab] = useState7("browse"), [view, setView] = useState7(null), [installed, setInstalled] = useState7([]), [query, setQuery] = useState7(""), [category, setCategory] = useState7("all"), [selected, setSelected] = useState7(null), [error, setError] = useState7(""), [busy, setBusy] = useState7(false), [reload, setReload] = useState7(0), [hash, setHash] = useState7(location.hash), [linkSequence, setLinkSequence] = useState7(0), [keysFor, setKeysFor] = useState7(null), [updateFor, setUpdateFor] = useState7(null);
   const fence = useRef6(new ReviewFence()), local = useLocal();
   useEffect7(() => {
     const update = () => {
@@ -4068,6 +4313,7 @@ function MarketPage({ ctx, renderTab }) {
     if (!original || x.name && x.name !== original.name && x.name !== original.englishName) return x.name || x.bot;
     return presentBot(original, presentation ?? { locale: contentLocale, bots: [] }).name;
   };
+  const latestBot = (x) => x.updatable && x.latest ? view?.catalog.bots.find((b) => b.id === x.bot && b.version === x.latest) ?? null : null;
   const visible = filterBots((view?.catalog.bots || []).map(shown), query, category);
   const portrait = (id, version) => {
     const b = view?.catalog.trusted.find((b2) => b2.metadata.id === id && b2.metadata.version === version);
@@ -4140,12 +4386,16 @@ function MarketPage({ ctx, renderTab }) {
               ] }),
               /* @__PURE__ */ jsx7("small", { className: "mb-muted", children: t(moodLabels[mood]) })
             ] }),
-            /* @__PURE__ */ jsx7(Badge, { variant: x.state === "name-conflict" ? "warn" : "muted", children: x.state === "installed" ? t("Installed") : x.state === "other-version" ? t("Other version") : t("Check files") }),
+            /* @__PURE__ */ jsx7(Badge, { variant: x.state === "name-conflict" ? "warn" : "muted", children: x.updatable ? t("Update available") : x.state === "installed" ? t("Installed") : x.state === "other-version" ? t("Other version") : t("Check files") }),
             (() => {
               const badge = keyBadge(x.secrets);
               return badge && /* @__PURE__ */ jsx7(Badge, { variant: badge.variant, children: t(badge.label) });
             })(),
             !!x.secrets?.length && x.version && (x.state === "installed" || x.state === "other-version") && /* @__PURE__ */ jsx7(Button2, { variant: "secondary", disabled: !local, onClick: () => setKeysFor(x), children: t("Add keys") }),
+            (() => {
+              const latest = latestBot(x);
+              return latest && /* @__PURE__ */ jsx7(Button2, { variant: "secondary", disabled: !local || view.cached || comingSoon(latest, presentation), onClick: () => setUpdateFor(x), children: t("Update") });
+            })(),
             (x.state === "installed" || x.state === "other-version") && /* @__PURE__ */ jsx7(Button2, { variant: "secondary", onClick: () => {
               const d = profileDestination(x.profile);
               host4.newChat(d.route, d.options);
@@ -4157,6 +4407,10 @@ function MarketPage({ ctx, renderTab }) {
       (tab === "connection" || tab === "submissions") && (renderTab ? renderTab(tab) : /* @__PURE__ */ jsx7(Loader, { label: t("Loading submissions") }))
     ] }),
     keysFor?.version && keysFor.secrets && /* @__PURE__ */ jsx7(AddKeysDialog, { ctx, status: { ...keysFor, version: keysFor.version, secrets: keysFor.secrets }, label: installedLabel(keysFor), onClose: () => setKeysFor(null), onSaved: done }, keysFor.profile),
+    updateFor && (() => {
+      const latest = latestBot(updateFor);
+      return latest && /* @__PURE__ */ jsx7(InstallConfirmation, { mode: "update", ctx, bot: shown(latest), mood: moods[updateFor.profile] || "unavailable", status: updateFor, onClose: () => setUpdateFor(null), onInstalled: done, onKeysSaved: done, comingSoon: comingSoon(latest, presentation) }, "update:" + updateFor.profile);
+    })(),
     selected && /* @__PURE__ */ jsx7(InstallConfirmation, { ctx, bot: shown(selected), mood: botMood(selected), status: installed.find((x) => x.bot === selected.id), onClose: close, onInstalled: done, onKeysSaved: done, comingSoon: comingSoon(selected, presentation) }, selected.id + "@" + selected.version)
   ] });
 }
@@ -4166,7 +4420,7 @@ import { jsx as jsx8 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.5.0",
+  version: "0.6.0",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {
