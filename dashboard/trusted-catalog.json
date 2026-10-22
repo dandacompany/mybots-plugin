@@ -325,12 +325,12 @@
     {
       "metadata": {
         "id": "mybots-sage",
-        "version": "0.4.1",
+        "version": "0.4.3",
         "name": "세이지",
         "englishName": "Sage",
         "role": "데스크 리서처",
         "personality": "추측보다 출처를 먼저 찾는 탐정",
-        "description": "질문·조건 고정 → 출처 장부 → 비교표 → 차이·한계 → 보고서(md·csv·docx). 최근 30일 트렌드 조사까지.",
+        "description": "질문·조건 고정 → 출처 장부 → 비교표 → 차이·한계 → 보고서(md·csv·docx). 최근 30일 트렌드 조사와 국내 쇼핑몰 리뷰 수집·분석까지.",
         "category": "business",
         "firstPrompt": "우리 매장 주변 카페 5곳의 아메리카노·카페라테·바닐라라테 가격을 출처와 함께 비교한 보고서로 만들어 줘.",
         "optional": [
@@ -356,7 +356,7 @@
           "audition": "not-tested"
         }
       },
-      "manifestSha256": "ab1fed4354586628d633d1ea9fc886eac973cafd6198a0887ea10a9e00361fc1",
+      "manifestSha256": "9f75a1524e3fb9e5ccd8d00e68a7688b9fdedcc1f953fcf62c2f2ffffcc5ff74",
       "files": [
         {
           "path": "assets/avatar.png",
@@ -391,8 +391,8 @@
         {
           "path": "plugins/mybots-sage-tools/data.json",
           "component": "plugin",
-          "size": 9489,
-          "sha256": "6216a2709614a48c20569ea35295161f55a3dee25cec91d689bd9355996193eb"
+          "size": 10446,
+          "sha256": "1824a77f95aa3a84db5418dc9d9140ceb8b70fa4d715912d8ea395d53ecb9855"
         },
         {
           "path": "plugins/mybots-sage-tools/docx_writer.py",
@@ -422,7 +422,7 @@
           "path": "plugins/mybots-sage-tools/plugin.yaml",
           "component": "plugin",
           "size": 502,
-          "sha256": "8462ff2bdbf35f238ab5715ee518fc4428a63af755e390ee7cddcebc0e55f928"
+          "sha256": "a810a4437d41e8a6ff9c38b1d43d59bcb1e795bf8da23ef2dcbabd8eda36a15f"
         },
         {
           "path": "plugins/mybots-sage-tools/report.py",
@@ -433,20 +433,20 @@
         {
           "path": "plugins/mybots-sage-tools/review_report.py",
           "component": "plugin",
-          "size": 42009,
-          "sha256": "01b40460ba46a1dcf8ac3d62a463cf663fa289f3da2ea100314be1e0727ba4be"
+          "size": 43313,
+          "sha256": "19b8adbea95e255d251e3ff0ca8a788fcbca1f502608a2f474ab7cd7f9d91e3c"
         },
         {
           "path": "plugins/mybots-sage-tools/review_setup.py",
           "component": "plugin",
-          "size": 26803,
-          "sha256": "2b1eeacd026c2bc2a1113ae668d9b7e5a74c3bdf5086ba41b05bac04aa83894e"
+          "size": 28133,
+          "sha256": "4441747336ca7f383b39249044b779c7a87f76fdc42bd2eefd597d18acc27088"
         },
         {
           "path": "plugins/mybots-sage-tools/reviews.py",
           "component": "plugin",
-          "size": 23927,
-          "sha256": "e17e78f5896974f5de24d99cb12cd85167dc88df60720b23dd4c11cadaafb891"
+          "size": 25266,
+          "sha256": "4e5f1f38d50c4d1cef00e0672bb5055094d6b98a3861469d29fe7abf4d78d1bd"
         },
         {
           "path": "plugins/mybots-sage-tools/runtime.py",
@@ -469,8 +469,8 @@
         {
           "path": "skills/desk-research/review.md",
           "component": "skills",
-          "size": 20823,
-          "sha256": "90599ab36f58f00765b44c9d0fbf3f42734a259bac94bb9218491bf51c6fd532"
+          "size": 22602,
+          "sha256": "e6e5ab8ae3ac9d7e7b02978e9cc0f20adb02c2122b5ca53d91956a3705895bb1"
         },
         {
           "path": "skills/desk-research/SKILL.md",
@@ -487,8 +487,8 @@
         {
           "path": "SOUL.md",
           "component": "soul",
-          "size": 7549,
-          "sha256": "0c157669b830c0310cc8113b44ccb341fbde7a58f734cfdd790fad3f5af679a4"
+          "size": 7742,
+          "sha256": "18450bd72984f733461f2be70126a64a5f22ff4584f7b14391f6093a62162596"
         },
         {
           "path": "voice/preset.json",

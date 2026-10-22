@@ -2952,6 +2952,7 @@ function keyRequest(rows, keys) {
   }));
 }
 var missingRequired = (rows, keys) => rows.filter((r) => r.required && !usesDefault(r, keys) && !choice(r, keys).value.trim()).length;
+var listedInstalled = (rows) => rows.filter((x) => x.state !== "available" && !(x.state === "name-conflict" && !x.receipt));
 var nameConflictMessage = (profile, t = format) => t("A profile named {0} already exists, so this bot cannot be installed. The existing bot will not be changed. Rename the existing profile and try again.", profile);
 var modelReviewMessage = (model, t = format) => model ? t("Model: {0} (same as the default profile)", model.name) : t("Model: the default profile has no model, so this stays empty. Choose a model first after installing.");
 var modelResultMessage = (result, t = format) => result.modelSetupRequired || !result.model ? t("Choose a model first. This bot has no model yet.") : t("You can chat right away with the same model as the default profile ({0}).", result.model.name);
@@ -4194,6 +4195,7 @@ var comingSoon = (bot, display) => display?.bots.some((p) => p.id === bot.id && 
 
 // packages/hermes-plugin/desktop/market-page.tsx
 import { Fragment as Fragment5, jsx as jsx7, jsxs as jsxs6 } from "react/jsx-runtime";
+var INSTALLED_FAILED = "Could not load installed bots. Please retry.";
 function MarketPage({ ctx, renderTab }) {
   const { t, locale, dir, contentLocale } = useMyBots();
   const [display, setDisplay] = useState7(null);
@@ -4228,16 +4230,24 @@ function MarketPage({ ctx, renderTab }) {
   }, []);
   useEffect7(() => {
     const ticket = fence.current.begin();
+    let fresh = false;
     setBusy(true);
     setError("");
     const api = new MarketApi(ctx);
     api.installed().then((x) => {
-      if (fence.current.isCurrent(ticket)) setInstalled(x);
+      if (fence.current.isCurrent(ticket) && !fresh) setInstalled(x);
     }).catch(() => {
-      if (fence.current.isCurrent(ticket)) setError("Could not load installed bots. Please retry.");
+      if (fence.current.isCurrent(ticket) && !fresh) setError(INSTALLED_FAILED);
     });
     api.load().then((x) => {
-      if (fence.current.isCurrent(ticket)) setView(x);
+      if (fence.current.isCurrent(ticket)) {
+        setView(x);
+        if (Array.isArray(x.statuses)) {
+          fresh = true;
+          setInstalled(x.statuses);
+          setError((e) => e === INSTALLED_FAILED ? "" : e);
+        }
+      }
     }, () => {
       if (fence.current.isCurrent(ticket)) {
         setView(null);
@@ -4271,7 +4281,8 @@ function MarketPage({ ctx, renderTab }) {
     }
   }, []);
   const done = useCallback(() => {
-    new MarketApi(ctx).installed().then(setInstalled).catch(() => setError("Refresh to check installation status."));
+    const api = new MarketApi(ctx), fallback = () => api.installed().then(setInstalled);
+    api.load().then((v) => Array.isArray(v?.statuses) ? setInstalled(v.statuses) : fallback(), fallback).catch(() => setError("Refresh to check installation status."));
   }, [ctx]);
   const moods = useBotStatuses(tab === "browse" || tab === "installed" || !!selected);
   const installedProfile = (bot) => installed.find((x) => x.bot === bot.id && x.version === bot.version && x.state === "installed");
@@ -4371,8 +4382,8 @@ function MarketPage({ ctx, renderTab }) {
       ] }),
       tab === "installed" && /* @__PURE__ */ jsxs6("section", { className: "mb-section", children: [
         /* @__PURE__ */ jsx7("h2", { children: t("Installed bots") }),
-        installed.filter((x) => x.state !== "available").length === 0 && /* @__PURE__ */ jsx7(EmptyState, { title: t("No bots installed yet"), description: t("Find your first colleague in Browse bots.") }),
-        installed.filter((x) => x.state !== "available").map((x) => {
+        listedInstalled(installed).length === 0 && /* @__PURE__ */ jsx7(EmptyState, { title: t("No bots installed yet"), description: t("Find your first colleague in Browse bots.") }),
+        listedInstalled(installed).map((x) => {
           const asset = portrait(x.bot, x.version);
           const mood = moods[x.profile] || "unavailable", label = installedLabel(x);
           return /* @__PURE__ */ jsxs6("article", { className: "mb-row", children: [

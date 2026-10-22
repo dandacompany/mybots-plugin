@@ -92,3 +92,12 @@ def profile_config(entry,selected,target,executable,mcp_env=None):
         config['mcp_servers']={m['serverId']:server}
     if 'plugin'in selected:config['plugins']=dict(enabled=[entry['pluginId']])
     return config
+
+def ensure_skill_approval(config):
+    """MyBots profiles stage the bot's own skill edits for approval (``skills.write_approval``,
+    Dante 2026-10-22). Set at install and on every update; a ``write_approval`` the user already
+    wrote (true or false) or a non-mapping ``skills`` value is left as it is. True when it changed."""
+    skills=config.get('skills')
+    if skills is None:config['skills']={'write_approval':True};return True
+    if isinstance(skills,dict)and 'write_approval'not in skills:config['skills']={**skills,'write_approval':True};return True
+    return False

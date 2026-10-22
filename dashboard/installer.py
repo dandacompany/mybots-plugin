@@ -329,6 +329,7 @@ class Installer:
                     if packs:
                         plugins=dict(config.get('plugins')or{});plugins['enabled']=[*plugins.get('enabled',[]),*[p['name']for p in packs]];config['plugins']=plugins
                     if 'voice'in preview['components']:config['voice']=_voice.voice_config(preview['voice'])
+                    _catalog.ensure_skill_approval(config)
                     (source/'config.yaml').write_text(yaml.safe_dump(config,allow_unicode=True))
                     profile_meta={'description':preview['manifest']['description'],'display_name':preview['manifest']['name']}
                     avatar_file=next(f for f in preview['manifest']['files']if f['component']=='avatar')
@@ -531,7 +532,8 @@ class Installer:
     def _update_metadata(self,target,preview,refs):
         """``[(name, bytes)]`` for config.yaml, profile.yaml and distribution.yaml, each only when it
         changes. config.yaml: the bot's plugin and the seeded language packs stay enabled, its own MCP
-        entry is refreshed, ``voice`` is set only for the voice component; every other key is kept."""
+        entry is refreshed, ``voice`` is set only for the voice component, ``skills.write_approval`` is
+        added when missing; every other key is kept."""
         manifest=preview['manifest'];entry=preview['entry'];components=preview['components'];out=[]
         config=self._read_yaml(target,'config.yaml');before=copy.deepcopy(config)
         plugin_id=entry['metadata'].get('pluginId')
@@ -550,6 +552,7 @@ class Installer:
                 servers[sid]={**old,**server,**({'env':env}if env else {})}
             config['mcp_servers']=servers
         if 'voice'in components:config['voice']=_voice.voice_config(preview['voice'])
+        _catalog.ensure_skill_approval(config)
         if config!=before:out.append(('config.yaml',yaml.safe_dump(config,allow_unicode=True,sort_keys=False).encode('utf-8')))
         meta=self._read_yaml(target,'profile.yaml');before=copy.deepcopy(meta)
         meta.update(description=manifest['description'],display_name=manifest['name'])
@@ -709,15 +712,16 @@ class Installer:
             names.update(p.name for p in profiles.iterdir()if re.fullmatch(r'[a-z][a-z0-9-]{0,39}',p.name)and not _portable.is_link(p)and(p/'mybots-receipt.json').is_file())
         result=[];default_env=None
         for bot in sorted(names):
-            target=profiles/bot;entry=latest.get(bot);version=None;state='available';name=entry['metadata']['name']if entry else bot
+            target=profiles/bot;entry=latest.get(bot);version=None;state='available';name=entry['metadata']['name']if entry else bot;has_receipt=False
             if target.exists()or _portable.is_link(target):
-                state='name-conflict'
+                # ``receipt``: the file exists, valid or not. A profile without one is the user's own (hidden from 설치된 봇).
+                state='name-conflict';has_receipt=os.path.lexists(target/'mybots-receipt.json')
                 try:
                     receipt=json.loads(self._profile_file(target,'mybots-receipt.json',32768))
                     if receipt['bot']!=bot or not isinstance(receipt['version'],str)or not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+',receipt['version'])or not re.fullmatch('[a-f0-9]{64}',receipt['digest']):raise ValueError('Invalid receipt')
                     version=receipt['version'];label=receipt.get('name',name);name=label if isinstance(label,str)and len(label)<=80 else name;state='installed'if self._profile_matches(target,receipt)and(not entry or entry['metadata']['version']==version and entry['manifestSha256']==receipt['digest'])else'other-version'
                 except (OSError,ValueError,KeyError,TypeError,RecursionError):pass
-            row=dict(bot=bot,version=version,profile=bot,state=state,name=name,latest=entry['metadata']['version']if entry else None,updatable=False)
+            row=dict(bot=bot,version=version,profile=bot,state=state,name=name,latest=entry['metadata']['version']if entry else None,updatable=False,receipt=has_receipt)
             if version is not None and entry and _version(version)<_version(row['latest']):
                 # Updatable only when the installed file list is known (receipt files or trusted entry).
                 try:self._previous_files(receipt,entries);row['updatable']=True
