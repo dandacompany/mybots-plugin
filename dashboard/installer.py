@@ -124,7 +124,11 @@ def model_summary(model):
         return {'name':model['default'],'provider':model.get('provider')if isinstance(model.get('provider'),str)else None}
     return None
 
-STAGING_ENV=frozenset(('PATH','HOME','TMPDIR','LANG'))
+# Names only (upper case: Windows' os.environ reports keys upper-cased). The Windows ones let the
+# staging child find its home (Path.home(), %LOCALAPPDATA%) and start; none of them is a credential.
+STAGING_ENV=frozenset(('PATH','HOME','TMPDIR','LANG','USERPROFILE','LOCALAPPDATA','APPDATA','SYSTEMROOT','SYSTEMDRIVE',
+    'WINDIR','TEMP','TMP','HOMEDRIVE','HOMEPATH','PATHEXT','COMSPEC'))
+STAGING_FAILED='Hermes distribution staging failed; Hermes could not prepare the bot in a temporary home on this computer. Nothing was changed. Restart Hermes and try again.'
 
 METADATA=('mybots-receipt.json','distribution.yaml','profile.yaml','config.yaml') # always in an update backup
 def _version(value):return tuple(map(int,value.split('.')))
@@ -178,9 +182,9 @@ class Installer:
         self.run_staging=subprocess.run
         schema_path=Path(__file__).with_name('bot.schema.json')
         if not schema_path.exists():schema_path=Path(__file__).resolve().parents[2]/'contracts/bot.schema.json'
-        self.schema=json.loads(schema_path.read_text())
-        new_path=schema_path.with_name('bot-v2.schema.json');self.schema_v2=json.loads(new_path.read_text())
-        self.schema_v3=json.loads(schema_path.with_name('bot-v3.schema.json').read_text())
+        self.schema=json.loads(schema_path.read_text(encoding='utf-8'))
+        new_path=schema_path.with_name('bot-v2.schema.json');self.schema_v2=json.loads(new_path.read_text(encoding='utf-8'))
+        self.schema_v3=json.loads(schema_path.with_name('bot-v3.schema.json').read_text(encoding='utf-8'))
         try:self.trusted=authority.cached().trusted if authority and authority.cached() else {} if authority else _catalog.load_trusted(trusted_path or Path(__file__).with_name('trusted-catalog.json'))
         except ValueError as exc:raise InstallError(str(exc))from exc
 
@@ -329,19 +333,19 @@ class Installer:
                     if packs:
                         plugins=dict(config.get('plugins')or{});plugins['enabled']=[*plugins.get('enabled',[]),*[p['name']for p in packs]];config['plugins']=plugins
                     if 'voice'in preview['components']:config['voice']=_voice.voice_config(preview['voice'])
-                    _catalog.ensure_skill_approval(config)
-                    (source/'config.yaml').write_text(yaml.safe_dump(config,allow_unicode=True))
+                    _catalog.ensure_profile_defaults(config)
+                    (source/'config.yaml').write_text(yaml.safe_dump(config,allow_unicode=True),encoding='utf-8')
                     profile_meta={'description':preview['manifest']['description'],'display_name':preview['manifest']['name']}
                     avatar_file=next(f for f in preview['manifest']['files']if f['component']=='avatar')
                     motion=_roster_motion.motion_for_avatar(target.name,preview['blobs'][avatar_file['path']])
                     if motion is not None:profile_meta['ui_meta']={'hermes-bots':{'avatarMotion':motion}}
-                    (source/'profile.yaml').write_text(yaml.safe_dump(profile_meta,allow_unicode=True))
+                    (source/'profile.yaml').write_text(yaml.safe_dump(profile_meta,allow_unicode=True),encoding='utf-8')
                     (source/'distribution.yaml').write_text(yaml.safe_dump({'name':target.name,'version':receipt['version'],'hermes_requires':preview['manifest']['hermesRequires'],
-                        'distribution_owned':['SOUL.md','config.yaml','profile.yaml','assets','skills','mcp','plugins','voice','distribution.yaml']}))
+                        'distribution_owned':['SOUL.md','config.yaml','profile.yaml','assets','skills','mcp','plugins','voice','distribution.yaml']}),encoding='utf-8')
                     isolated=work/'home';isolated.mkdir()
                     # Minimal environment: the parent may hold credentials (Hermes publishes saved
                     # keys into os.environ), and staging needs none of them.
-                    env={k:v for k,v in os.environ.items()if k in STAGING_ENV or k.startswith('LC_')}
+                    env={k:v for k,v in os.environ.items()if k.upper()in STAGING_ENV or k.startswith('LC_')}
                     env['HERMES_HOME']=str(isolated)
                     # Core distribution installer executes in an isolated root, without changing parent process scope.
                     import hermes_cli
@@ -349,16 +353,16 @@ class Installer:
                     import_paths=json.dumps([hermes_source,*[p for p in sys.path if p and Path(p).is_absolute()]])
                     code='import sys,json; from pathlib import Path; sys.path[:0]=json.loads(sys.argv[1]); from hermes_constants import get_default_hermes_root; assert get_default_hermes_root().resolve()==Path(sys.argv[3]).resolve(), "Unsafe staging root"; from hermes_cli.profile_distribution import install_distribution; plan=install_distribution(sys.argv[2],create_alias=False); assert plan.target_dir.resolve().is_relative_to(Path(sys.argv[3]).resolve())'
                     result=self.run_staging([sys.executable,'-I','-c',code,import_paths,str(source),str(isolated)],env=env,capture_output=True,timeout=60)
-                    if result.returncode:raise InstallError('Hermes distribution staging failed')
+                    if result.returncode:raise InstallError(STAGING_FAILED)
                     staged=isolated/'profiles'/target.name
                     for entry in preview['manifest']['files']:
                         if entry['component'] in ['soul','avatar',*preview['components']]:
                             if hashlib.sha256((staged/entry['path']).read_bytes()).hexdigest()!=entry['sha256']:
                                 raise InstallError('Installed file verification failed')
                     # Distribution staging provenance is temporary; record the real fixed catalog source.
-                    dist=yaml.safe_load((staged/'distribution.yaml').read_text());dist['source']=f'{self.origin}/api/bots/{target.name}/{receipt["version"]}'
-                    (staged/'distribution.yaml').write_text(yaml.safe_dump(dist))
-                    (staged/'mybots-receipt.json').write_text(json.dumps(receipt,sort_keys=True))
+                    dist=yaml.safe_load((staged/'distribution.yaml').read_text(encoding='utf-8'));dist['source']=f'{self.origin}/api/bots/{target.name}/{receipt["version"]}'
+                    (staged/'distribution.yaml').write_text(yaml.safe_dump(dist),encoding='utf-8')
+                    (staged/'mybots-receipt.json').write_text(json.dumps(receipt,sort_keys=True),encoding='utf-8')
                     # .env is a Hermes credential path, so distribution staging never writes it; it
                     # goes in now and is published by the same atomic commit as the profile.
                     if values:self.write_env(staged,values)
@@ -532,8 +536,8 @@ class Installer:
     def _update_metadata(self,target,preview,refs):
         """``[(name, bytes)]`` for config.yaml, profile.yaml and distribution.yaml, each only when it
         changes. config.yaml: the bot's plugin and the seeded language packs stay enabled, its own MCP
-        entry is refreshed, ``voice`` is set only for the voice component, ``skills.write_approval`` is
-        added when missing; every other key is kept."""
+        entry is refreshed, ``voice`` is set only for the voice component, ``skills.write_approval`` and
+        ``cron.wrap_response`` are added when missing; every other key is kept."""
         manifest=preview['manifest'];entry=preview['entry'];components=preview['components'];out=[]
         config=self._read_yaml(target,'config.yaml');before=copy.deepcopy(config)
         plugin_id=entry['metadata'].get('pluginId')
@@ -552,7 +556,7 @@ class Installer:
                 servers[sid]={**old,**server,**({'env':env}if env else {})}
             config['mcp_servers']=servers
         if 'voice'in components:config['voice']=_voice.voice_config(preview['voice'])
-        _catalog.ensure_skill_approval(config)
+        _catalog.ensure_profile_defaults(config)
         if config!=before:out.append(('config.yaml',yaml.safe_dump(config,allow_unicode=True,sort_keys=False).encode('utf-8')))
         meta=self._read_yaml(target,'profile.yaml');before=copy.deepcopy(meta)
         meta.update(description=manifest['description'],display_name=manifest['name'])

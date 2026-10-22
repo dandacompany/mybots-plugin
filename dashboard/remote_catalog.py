@@ -119,7 +119,7 @@ class CatalogAuthority:
     def _persist(self,envelope,key_id):
         no_links(self.state_dir);no_links(self.states[key_id]);fd,name=tempfile.mkstemp(prefix='.catalog-',dir=self.state_dir)
         try:
-            with os.fdopen(fd,'w')as f:json.dump(envelope,f,separators=(',',':'));f.flush();os.fsync(f.fileno())
+            with os.fdopen(fd,'w',encoding='utf-8')as f:json.dump(envelope,f,separators=(',',':'));f.flush();os.fsync(f.fileno())
             os.replace(name,self.states[key_id])
             portable.fsync_dir(self.state_dir)
         finally:

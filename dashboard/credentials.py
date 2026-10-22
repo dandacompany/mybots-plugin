@@ -66,7 +66,7 @@ class Credentials:
     def _save(self,bindings):
         remote.no_links(self.directory);remote.no_links(self.file);fd,name=tempfile.mkstemp(prefix='.connection-',dir=self.directory)
         try:
-            with os.fdopen(fd,'w')as f:json.dump({'bindings':bindings},f);f.flush();os.fsync(f.fileno())
+            with os.fdopen(fd,'w',encoding='utf-8')as f:json.dump({'bindings':bindings},f);f.flush();os.fsync(f.fileno())
             os.replace(name,self.file);remote.portable.fsync_dir(self.directory)
         finally:
             if os.path.exists(name):os.unlink(name)

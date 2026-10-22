@@ -7,7 +7,7 @@ META={'id','version','name','englishName','role','personality','description','ca
 OPTIONAL=('skills','mcp','plugin','voice')
 _voice_schema=Path(__file__).with_name('voice.schema.json')
 if not _voice_schema.exists():_voice_schema=Path(__file__).resolve().parents[2]/'contracts/voice.schema.json'
-VOICE_IDS=json.loads(_voice_schema.read_text())['properties']['voice']['enum']
+VOICE_IDS=json.loads(_voice_schema.read_text(encoding='utf-8'))['properties']['voice']['enum']
 def record(value,keys):
     if not isinstance(value,dict)or set(value)!=set(keys):raise ValueError('Unexpected catalog fields')
     return value
@@ -93,11 +93,18 @@ def profile_config(entry,selected,target,executable,mcp_env=None):
     if 'plugin'in selected:config['plugins']=dict(enabled=[entry['pluginId']])
     return config
 
-def ensure_skill_approval(config):
-    """MyBots profiles stage the bot's own skill edits for approval (``skills.write_approval``,
-    Dante 2026-10-22). Set at install and on every update; a ``write_approval`` the user already
-    wrote (true or false) or a non-mapping ``skills`` value is left as it is. True when it changed."""
-    skills=config.get('skills')
-    if skills is None:config['skills']={'write_approval':True};return True
-    if isinstance(skills,dict)and 'write_approval'not in skills:config['skills']={**skills,'write_approval':True};return True
+def _ensure_key(config,section,key,value):
+    """Add ``section.key: value`` when missing; a value the user already wrote or a non-mapping
+    ``section`` is left as it is, other keys are kept. True when it changed."""
+    part=config.get(section)
+    if part is None:config[section]={key:value};return True
+    if isinstance(part,dict)and key not in part:config[section]={**part,key:value};return True
     return False
+
+def ensure_profile_defaults(config):
+    """MyBots profile defaults, set at install and on every update (Dante 2026-10-22), each only when
+    the user has not written it: ``skills.write_approval: true`` stages the bot's own skill edits for
+    approval; ``cron.wrap_response: false`` delivers cron results without Hermes' header/footer (read
+    per profile: cron/scheduler_delivery.py:2011-2016 via load_config() = get_hermes_home()/config.yaml).
+    True when anything changed."""
+    return _ensure_key(config,'skills','write_approval',True)|_ensure_key(config,'cron','wrap_response',False)

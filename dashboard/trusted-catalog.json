@@ -325,12 +325,12 @@
     {
       "metadata": {
         "id": "mybots-sage",
-        "version": "0.4.3",
+        "version": "0.4.4",
         "name": "세이지",
         "englishName": "Sage",
         "role": "데스크 리서처",
         "personality": "추측보다 출처를 먼저 찾는 탐정",
-        "description": "질문·조건 고정 → 출처 장부 → 비교표 → 차이·한계 → 보고서(md·csv·docx). 최근 30일 트렌드 조사와 국내 쇼핑몰 리뷰 수집·분석까지.",
+        "description": "질문·조건 고정 → 출처 장부 → 비교표 → 차이·한계 → 보고서(md·csv·docx). 최근 30일 트렌드 조사, 국내 쇼핑몰 리뷰 수집·분석, 항공권 최저가 감시까지.",
         "category": "business",
         "firstPrompt": "우리 매장 주변 카페 5곳의 아메리카노·카페라테·바닐라라테 가격을 출처와 함께 비교한 보고서로 만들어 줘.",
         "optional": [
@@ -356,7 +356,7 @@
           "audition": "not-tested"
         }
       },
-      "manifestSha256": "9f75a1524e3fb9e5ccd8d00e68a7688b9fdedcc1f953fcf62c2f2ffffcc5ff74",
+      "manifestSha256": "7ebbf9724bc1f1a181080555668f54adf3e9fcb18c0dcb3fd9361c554d6022ea",
       "files": [
         {
           "path": "assets/avatar.png",
@@ -367,8 +367,8 @@
         {
           "path": "plugins/mybots-sage-tools/__init__.py",
           "component": "plugin",
-          "size": 1375,
-          "sha256": "cca48423f0cd721d03d2fa95acc9da292a7a8158378da4a4e81d68ed12214172"
+          "size": 1518,
+          "sha256": "556d36c54ad467723946a3991da836785c51b7b09542dc2c2f83c5ab06faaaca"
         },
         {
           "path": "plugins/mybots-sage-tools/adapter.py",
@@ -391,8 +391,8 @@
         {
           "path": "plugins/mybots-sage-tools/data.json",
           "component": "plugin",
-          "size": 10446,
-          "sha256": "1824a77f95aa3a84db5418dc9d9140ceb8b70fa4d715912d8ea395d53ecb9855"
+          "size": 15508,
+          "sha256": "1c622eefc9b4405b3beaf6bd537d8b679de808d90d0bdd1afcbb779d0d48e3af"
         },
         {
           "path": "plugins/mybots-sage-tools/docx_writer.py",
@@ -405,6 +405,18 @@
           "component": "plugin",
           "size": 127,
           "sha256": "bb33be750075b9f94f39709a7ea403da85d38fb207aad7e3c270dcf628bfef10"
+        },
+        {
+          "path": "plugins/mybots-sage-tools/flight_skill.py",
+          "component": "plugin",
+          "size": 7464,
+          "sha256": "4798201ce333e30c209f99a05c990916f924d2812802a3fb0067f525884e1319"
+        },
+        {
+          "path": "plugins/mybots-sage-tools/flight_watch.py",
+          "component": "plugin",
+          "size": 14167,
+          "sha256": "db999488c972c2123171acd4cd9571400c0ba221e8264ecd28277812ac7788d4"
         },
         {
           "path": "plugins/mybots-sage-tools/gdocs.py",
@@ -422,7 +434,7 @@
           "path": "plugins/mybots-sage-tools/plugin.yaml",
           "component": "plugin",
           "size": 502,
-          "sha256": "a810a4437d41e8a6ff9c38b1d43d59bcb1e795bf8da23ef2dcbabd8eda36a15f"
+          "sha256": "fba062a108a9b165f50e52f70bead8a48bf769600277540d8deccecf9abe95b0"
         },
         {
           "path": "plugins/mybots-sage-tools/report.py",
@@ -475,8 +487,8 @@
         {
           "path": "skills/desk-research/SKILL.md",
           "component": "skills",
-          "size": 20696,
-          "sha256": "9d1f189fdc039f349bda7f0eaca909a9af4fa4ab3e371f2d321e6d173a799335"
+          "size": 20837,
+          "sha256": "35b25ea158ee0b7d19d78c9dc5e1684852e2c40a4234c2cce3451d25456f0e31"
         },
         {
           "path": "skills/desk-research/trend.md",

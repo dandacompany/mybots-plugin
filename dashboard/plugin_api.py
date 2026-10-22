@@ -9,7 +9,7 @@ import sys
 
 from fastapi import APIRouter, HTTPException, Request
 from starlette.concurrency import run_in_threadpool
-from hermes_constants import get_hermes_home
+from hermes_constants import get_default_hermes_root,get_hermes_home
 
 _spec=importlib.util.spec_from_file_location('mybots_installer',Path(__file__).with_name('installer.py'))
 _module=importlib.util.module_from_spec(_spec)
@@ -33,7 +33,7 @@ def credentials():
     if _credentials is None:
         try:
             module=_module._sibling('credentials')
-            _credentials=module.Credentials(Path(__file__).with_name('publisher-keys.json'),Path.home()/'.hermes/.mybots/credentials')
+            _credentials=module.Credentials(Path(__file__).with_name('publisher-keys.json'),default_home()/'.mybots/credentials')
         except Exception as exc:raise HTTPException(503,'제작자 키 공급자 설정을 확인해 주세요.')from exc
     return _credentials
 
@@ -41,16 +41,20 @@ def creator(write=False):
     inst=engine(write=write);provider=credentials();client=_module._sibling('market_client')
     return client.MarketClient(inst.origin,lambda:provider.resolve(inst.origin),allowed_origins=provider.allowed)
 
+def default_home():
+    # Hermes' own default root (~/.hermes, %LOCALAPPDATA%\hermes on Windows, or a custom HERMES_HOME root).
+    return Path(get_default_hermes_root())
+
 def engine(write=False):
     global _engine
-    home=Path.home()/'.hermes'
+    home=default_home()
     if write and Path(get_hermes_home()).resolve()!=home.resolve():
         raise HTTPException(409,'로컬 default 프로필로 연결한 뒤 다시 시도해 주세요.')
     settings_path=Path(__file__).with_name('settings.json')
     machine=hashlib.sha256((platform.node()+str(home)).encode()).hexdigest()
     # A fresh Git package has no machine-specific configuration. Use the signed
     # production catalog in memory; preserve existing local settings exactly.
-    settings=json.loads(settings_path.read_text()) if settings_path.exists() else {
+    settings=json.loads(settings_path.read_text(encoding='utf-8')) if settings_path.exists() else {
         'catalogOrigin':'https://mybots.work','catalogProtocol':1,'machine':machine}
     if settings.get('machine')!=machine:raise HTTPException(403,'이 기기에서 설정한 설치 도우미만 사용할 수 있습니다.')
     signed=settings.get('catalogProtocol')==1

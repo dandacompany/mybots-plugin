@@ -9,7 +9,7 @@ def read_preset(blob):
         preset=json.loads(blob.decode('utf-8'))
         schema=Path(__file__).with_name('voice.schema.json')
         if not schema.exists():schema=Path(__file__).resolve().parents[2]/'contracts/voice.schema.json'
-        jsonschema.validate(preset,json.loads(schema.read_text()))
+        jsonschema.validate(preset,json.loads(schema.read_text(encoding='utf-8')))
     except (UnicodeDecodeError,ValueError,jsonschema.ValidationError,RecursionError)as exc:raise ValueError('Invalid voice preset')from exc
     return preset
 

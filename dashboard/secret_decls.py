@@ -44,7 +44,7 @@ def _load_denylist():
     path=Path(__file__).with_name('env-denylist.json')
     if not path.exists():path=Path(__file__).resolve().parents[2]/'contracts/env-denylist.json'
     try:
-        data=json.loads(path.read_text())
+        data=json.loads(path.read_text(encoding='utf-8'))
         names,prefixes=data['names'],data['prefixes']
         if type(names) is not list or type(prefixes) is not list or not names or not prefixes or any(type(v) is not str for v in names+prefixes):raise ValueError
     except (OSError,ValueError,KeyError,TypeError) as exc:
