@@ -6,6 +6,7 @@ import ctypes
 import errno
 import hashlib
 import json
+import logging
 import os
 from pathlib import Path, PurePosixPath
 import re
@@ -14,7 +15,6 @@ import stat
 import shutil
 import subprocess
 import sys
-import tempfile
 import threading
 import time
 import urllib.error
@@ -29,6 +29,8 @@ import importlib.util
 def _sibling(name):
     spec=importlib.util.spec_from_file_location("mybots_"+name,Path(__file__).with_name(name+".py"));module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);return module
 _catalog=_sibling("catalog");_voice=_sibling("voice");_roster_motion=_sibling("roster_motion");_secret_decls=_sibling("secret_decls");_portable=_sibling("portable")
+
+_log=logging.getLogger(__name__)
 
 class InstallError(Exception):
     pass
@@ -145,11 +147,11 @@ def _make_parents(root,rel,created):
     return folder
 
 def _write_new(root,rel,blob):
-    """``root/rel`` as a new 0600 file (never replacing or following anything), parents 0700."""
+    """``root/rel`` as a new 0600 file (never replacing or following anything), parents 0700 (Windows: inherited ACL)."""
     folder=Path(root)
     for part in rel.split('/')[:-1]:
         folder=folder/part
-        if not os.path.lexists(folder):os.mkdir(folder,0o700)
+        if not os.path.lexists(folder):_portable.make_dir(folder)
         elif _portable.is_link(folder)or not folder.is_dir():raise OSError('Invalid backup path')
     fd=_portable.open_nofollow(folder/rel.rsplit('/',1)[-1],os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
     with os.fdopen(fd,'wb')as stream:stream.write(blob);stream.flush();os.fsync(stream.fileno())
@@ -180,6 +182,7 @@ class Installer:
         self.write_env=_secret_decls.write_profile_env
         self.save_default=_secret_decls.save_default_env
         self.run_staging=subprocess.run
+        self.run_icacls=subprocess.run # Windows only (W4): portable.grant_private on MyBots folder roots
         schema_path=Path(__file__).with_name('bot.schema.json')
         if not schema_path.exists():schema_path=Path(__file__).resolve().parents[2]/'contracts/bot.schema.json'
         self.schema=json.loads(schema_path.read_text(encoding='utf-8'))
@@ -298,7 +301,7 @@ class Installer:
         if _portable.is_link(self.home):raise InstallError('Symlinked Hermes home is not supported')
         profiles=self.home/'profiles'
         if _portable.is_link(profiles):raise InstallError('Symlinked profiles directory is not supported')
-        profiles.mkdir(mode=0o700,parents=True,exist_ok=True)
+        _portable.make_dir(profiles,parents=True,exist_ok=True)
         target=profiles/preview['manifest']['id']
         lock_path=profiles/'.mybots-install.lock'
         with _portable.file_lock(lock_path):
@@ -315,7 +318,9 @@ class Installer:
                     except (ValueError,OSError,RecursionError):pass
                 raise InstallError('Profile name already exists; nothing was overwritten')
             try:
-                with tempfile.TemporaryDirectory(prefix='.mybots-stage-',dir=self.home.parent) as work:
+                # Windows (W4): a TemporaryDirectory would carry its owner-only DACL into the profile, so
+                # the staging root gets the explicit DACL while still empty; everything below inherits it.
+                with _portable.staging_dir('.mybots-stage-',self.home.parent,self.run_icacls) as work:
                     work=Path(work);source=work/'source';source.mkdir()
                     for entry in preview['manifest']['files']:
                         if entry['component'] not in ['soul','avatar',*preview['components']]:continue
@@ -367,12 +372,23 @@ class Installer:
                     # goes in now and is published by the same atomic commit as the profile.
                     if values:self.write_env(staged,values)
                     self._check_live(preview)
+                    # Windows (W4): the profile root keeps its own explicit DACL after the rename
+                    # (root only: its children already inherited the same entries from staging).
+                    if not _portable.grant_private(staged,self.run_icacls):raise _portable.AclError(_portable.STAGING_ACL_FAILED)
                     self.commit(staged,target)
                     activate_profile(target)
             except InstallError:raise
+            except _portable.AclError:raise InstallError(_portable.STAGING_ACL_FAILED)from None
             except Exception as exc:raise InstallError('Installation failed; no existing profile was changed') from exc
             report=self._save_defaults(plan,values)
         return self._result('installed',target.name,preview,report)
+
+    def _grant_root(self,folder):
+        """Windows (W4): the explicit DACL on ``folder`` itself (never its tree). Never fails an update;
+        a failure is logged with a fixed line and the caller reports ``warning``."""
+        ok=_portable.grant_private(folder,self.run_icacls)
+        if not ok:_log.warning(_portable.ACL_GRANT_LOG)
+        return ok
 
     def _new_receipt(self,preview):
         receipt={'bot':preview['manifest']['id'],'version':preview['manifest']['version'],'digest':preview['digest'],'components':preview['components']}
@@ -454,14 +470,17 @@ class Installer:
             ops.append(('write','mybots-receipt.json',json.dumps(self._new_receipt(preview),sort_keys=True).encode()))
             del env_blob
             self._check_live(preview)
-            self._apply_update(target,ops,{f['path']:f['sha256']for f in preview['manifest']['files']})
+            backup_acl=self._apply_update(target,ops,{f['path']:f['sha256']for f in preview['manifest']['files']})
+            # Windows (W4): future children of an existing profile inherit the explicit DACL.
+            acl_ok=self._grant_root(target)and backup_acl
             report=self._save_defaults(plan,values)
         for row in report:
             if row['name']in kept:row['state']='set'
         # Measured: a running Hermes does not pick up a changed profile plugin in new chats, and
         # plugins_activation only reloads the caller's own profile scope (the default profile here),
         # unloading every plugin of this process on the way. So the change applies after a restart.
-        return {**self._result('updated',bot,preview,report),'applies':'restart'}
+        result={**self._result('updated',bot,preview,report),'applies':'restart'}
+        return result if acl_ok else {**result,'warning':_portable.ACL_GRANT_FAILED}
 
     def _update_target(self,bot):
         profiles=self.home/'profiles';target=profiles/bot
@@ -572,17 +591,21 @@ class Installer:
         return out
 
     def _apply_update(self,target,ops,expected):
-        """Back up, then run ``ops`` in order; on any failure put every touched path back."""
+        """Back up, then run ``ops`` in order; on any failure put every touched path back. Returns whether
+        the Windows DACL of the backup folders MyBots created here was set (always True on POSIX)."""
         backup_root=target/'.mybots-backup'
         try:
             if _portable.is_link(backup_root):raise OSError('Linked backup folder')
-            backup_root.mkdir(mode=0o700,exist_ok=True)
+            new_root=not os.path.lexists(backup_root)
+            _portable.make_dir(backup_root,exist_ok=True) # Windows (W4): no owner-only DACL inside a profile
+            acl_ok=self._grant_root(backup_root)if new_root else True
             stamp=time.strftime('%Y%m%dT%H%M%SZ',time.gmtime())
             for n in range(100):
                 backup=backup_root/(stamp if n==0 else f'{stamp}-{n}')
-                try:backup.mkdir(mode=0o700);break
+                try:_portable.make_dir(backup);break
                 except FileExistsError:continue
             else:raise OSError('No free backup name')
+            acl_ok=self._grant_root(backup)and acl_ok
             originals={}
             # Package paths were checked in _previous_files/review; the rest are fixed names (.env too).
             for rel in [*(rel for _,rel,_ in ops),*METADATA]:
@@ -618,6 +641,7 @@ class Installer:
             if failed:raise InstallError('Update failed and some files could not be restored; the previous files are in .mybots-backup')from None
             raise InstallError('Update failed; the previous version was restored')from None
         del originals
+        return acl_ok
 
     def _key_values(self,plan):
         """Values to write, by name: request input as is, ``default`` reread from the default
