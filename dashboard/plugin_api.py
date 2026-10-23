@@ -6,6 +6,9 @@ from pathlib import Path
 import platform
 import re
 import sys
+import threading
+import time
+from urllib.parse import urlsplit
 
 from fastapi import APIRouter, HTTPException, Request
 from starlette.concurrency import run_in_threadpool
@@ -17,6 +20,14 @@ sys.modules[_spec.name]=_module
 _spec.loader.exec_module(_module)
 Installer,InstallError=_module.Installer,_module.InstallError
 router=APIRouter()
+VERSION='0.6.1'
+# After a self-update the files on disk are the new version while this process still runs the old
+# one, and installer.py/plugin_api.py load sibling modules from disk per request. Until Hermes
+# restarts, every write answers this fixed 409 so old and new code never mix in a write.
+RESTART_REQUIRED='MyBots를 업데이트했습니다. Hermes를 다시 시작한 뒤 이용해 주세요.'
+_restart_required=False
+def restart_guard():
+    if _restart_required:raise HTTPException(409,RESTART_REQUIRED)
 _engine=None
 _credentials=None
 
@@ -48,6 +59,7 @@ def default_home():
 def engine(write=False):
     global _engine
     home=default_home()
+    if write:restart_guard()
     if write and Path(get_hermes_home()).resolve()!=home.resolve():
         raise HTTPException(409,'로컬 default 프로필로 연결한 뒤 다시 시도해 주세요.')
     settings_path=Path(__file__).with_name('settings.json')
@@ -86,7 +98,9 @@ def require_json(request):
 
     Every body route needs this: a cross-origin form or text/plain POST is a CORS "simple"
     request with no preflight, so without it a web page could reach these routes. The Desktop's
-    Electron transport always sends application/json for object bodies (fetchJson)."""
+    Electron transport always sends application/json for object bodies (fetchJson). Every body route
+    is a write, so the restart guard runs first, before any sibling module is loaded."""
+    restart_guard()
     media,*params=(request.headers.get('content-type')or'').split(';')
     if not JSON_TYPE.fullmatch(media.strip())or any(not CHARSET_PARAM.fullmatch(p.strip())for p in params):
         raise HTTPException(415,'Content-Type must be application/json')
@@ -161,7 +175,149 @@ async def update_secrets(request:Request):
 @router.get('/capabilities')
 def capabilities():
     inst=engine()
-    return {'installerVersion':'0.6.0','marketProtocol':1 if inst.authority else 0,'registration':bool(inst.authority),'credentialProviders':credentials().providers() if inst.authority else [],'bots':[dict(id=b,version=v)for b,v in inst.trusted]}
+    return {'installerVersion':VERSION,'marketProtocol':1 if inst.authority else 0,'registration':bool(inst.authority),'credentialProviders':credentials().providers() if inst.authority else [],'bots':[dict(id=b,version=v)for b,v in inst.trusted]}
+
+# Self-update. Hermes Desktop draws an update button only for catalog installs, so a Git-installed
+# MyBots offers its own. Both routes ride Hermes' code: the check is ``hermes plugins check-updates``'
+# per-plugin check (ls-remote of the recorded source against the recorded revision), the update is the
+# ``hermes plugins update`` core (staged ``git pull --ff-only`` with autostash, install scan, atomic
+# publish: the live tree is untouched until the scan passes). Answers carry fixed codes, never Git
+# output, URLs or paths.
+SELF_TTL,SELF_RETRY,SELF_WAIT=300,60,8
+_self={'key':None,'at':0.0,'ttl':0,'value':None,'thread':None};_self_lock=threading.Lock();_self_running=threading.Lock()
+# The raw plugin.yaml read is only for the official repository's exact origin; forks, mirrors and
+# other spellings show the short SHA and fetch nothing.
+OFFICIAL_ORIGIN=re.compile(r'https://(?i:github\.com)/dandacompany/mybots-plugin(?:\.git)?');OFFICIAL_REPO='dandacompany/mybots-plugin'
+GITHUB_PATH=re.compile(r'/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+?)(?:\.git)?/?')
+YAML_VERSION=re.compile(r'^version:\s*["\']?([0-9]+\.[0-9]+\.[0-9]+)["\']?\s*$',re.M)
+SELF_NOTES=(('could not be stashed','local-changes-unsaved'),('conflicted with the update','local-changes-stashed'),
+    ('re-applied on top of the update','local-changes-kept'),('new Python dependencies','dependencies'))
+
+def _github(url):
+    """``owner/repo`` of a plain https://github.com/<owner>/<repo>[.git] URL, else None."""
+    try:
+        parts=urlsplit(url)if isinstance(url,str)else None
+        if parts is None or parts.scheme!='https'or parts.hostname!='github.com'or parts.port or parts.username or parts.query or parts.fragment:return None
+    except ValueError:return None
+    match=GITHUB_PATH.fullmatch(parts.path)
+    return (match[1]+'/'+match[2]).lower()if match else None
+
+def _same_path(a,b):
+    import os
+    return os.path.normcase(str(Path(a).resolve()))==os.path.normcase(str(Path(b).resolve()))
+
+def _self_target():
+    """``((provenance, origin), None)`` when this MyBots is the default profile's tracked Git install
+    from GitHub, else ``(None, reason)`` with a fixed reason code."""
+    home=default_home()
+    if not _same_path(get_hermes_home(),home):return None,'profile'
+    target=home/'plugins'/'mybots'
+    if not target.is_dir()or not _same_path(Path(__file__).parent.parent,target):return None,'location'
+    try:
+        from hermes_cli.plugins_provenance import ProvenanceClass,_git_origin_url,plugins_provenance
+        prov=next((p for p in plugins_provenance(home/'plugins')if p.name=='mybots'),None)
+        if prov is None or prov.klass is not ProvenanceClass.GIT:return None,'not-git'
+        row=prov.row or {}
+        if row.get('catalog')or row.get('catalog_name'):return None,'catalog'
+        if row.get('pinned')is True:return None,'pinned'
+        repo,origin=_github(row.get('source')),_origin(target)
+        if repo is None or _github(origin)!=repo:return None,'origin'
+    except Exception:return None,'unsupported'
+    return (prov,origin),None
+
+def _origin(target):
+    from hermes_cli.plugins_provenance import _git_origin_url
+    return _git_origin_url(target)
+
+def _remote_version(origin,sha):
+    """plugin.yaml's version at that exact commit of the official repository, else None (no fetch)."""
+    if not isinstance(origin,str)or not OFFICIAL_ORIGIN.fullmatch(origin):return None
+    try:match=YAML_VERSION.search(_module.fetch_bytes(f'https://raw.githubusercontent.com/{OFFICIAL_REPO}/{sha}/plugin.yaml',4096).decode('utf-8'))
+    except Exception:return None
+    return match[1]if match else None
+
+def _self_check(prov,origin):
+    from hermes_cli.plugins_updates import check_provenanced,default_fetch,default_ls_remote
+    result=check_provenanced(prov,fetch=default_fetch,ls_remote=default_ls_remote)
+    if result.needs_fixing or result.update_available is None:return {'latest':None,'available':False,'reason':'unavailable'}
+    if not result.update_available:return {'latest':VERSION,'available':False}
+    latest=str(result.latest or'')
+    if re.fullmatch(r'[0-9a-fA-F]{40}',latest):latest=_remote_version(origin,latest.lower())or latest[:7].lower()
+    elif not VERSION_RE.fullmatch(latest):latest=None
+    return {'latest':latest,'available':True}
+
+def _self_fill(key,prov,origin):
+    try:value=_self_check(prov,origin)
+    except Exception:value={'latest':None,'available':False,'reason':'unavailable'}
+    with _self_lock:_self.update(key=key,at=time.monotonic(),ttl=SELF_RETRY if value.get('reason')else SELF_TTL,value=value)
+
+def self_status():
+    """The installed version and, for a Git install, whether the recorded source has moved on.
+    The remote check runs in a worker cached for a few minutes; a slow one answers ``checking``."""
+    base={'installed':VERSION,'latest':None,'available':False,**({'restartRequired':True}if _restart_required else{})}
+    found,reason=_self_target()
+    if found is None:return {**base,'kind':'other','reason':reason}
+    prov,origin=found;key=(origin,str((prov.row or{}).get('revision')or''))
+    with _self_lock:
+        fresh=_self['key']==key and _self['value']is not None and time.monotonic()-_self['at']<_self['ttl']
+        worker=_self['thread']
+        if not fresh and not(worker and worker.is_alive()):
+            worker=_self['thread']=threading.Thread(target=_self_fill,args=(key,prov,origin),daemon=True);worker.start()
+    if not fresh:worker.join(SELF_WAIT)
+    with _self_lock:value=_self['value']if _self['key']==key else None
+    return {**base,'kind':'git',**(value or{'reason':'checking'})}
+
+def _hermes_update(prov):
+    """Hermes' own non-interactive Git plugin update for this checkout; returns its output text."""
+    from contextlib import nullcontext
+    from hermes_cli import plugins_cmd as pc
+    from hermes_cli.plugins_cmd_update import _post_pull_housekeeping,_pull_plugin_update
+    try:from hermes_cli.web_server_profiles import _config_profile_scope as scope
+    except Exception:scope=lambda _profile:nullcontext()
+    with scope(None):output=_pull_plugin_update(prov.path,lambda _record:'pinned',lambda:'not a git checkout')
+    # The new tree is already published here; a housekeeping failure (bytecode, example files) must
+    # not read as "the current version stays installed" (Hermes' dashboard path ignores it too).
+    try:_post_pull_housekeeping(prov.path,pc._console())
+    except Exception:pass
+    return output
+
+def _revision():
+    try:
+        from hermes_cli import plugins_cmd as pc
+        value=pc._read_install_metadata().get('mybots',{}).get('revision')
+    except Exception:return None
+    return value[:7].lower()if isinstance(value,str)and value else None
+
+def _note(text):return next((code for needle,code in SELF_NOTES if needle in text),None)
+
+def self_update_run(prov):
+    from hermes_cli import plugins_cmd as pc
+    before,result=_revision(),{'from':VERSION,'to':VERSION,'applies':'restart'}
+    try:output=str(_hermes_update(prov)or'')
+    except pc.PluginScanBlocked:return {**result,'status':'failed','note':'scan-blocked'}
+    # Failures happen before publish: autostash only touched Hermes' staged copy, so even its
+    # "preserved in git stash" texts leave the live tree as it was ('not-changed').
+    except Exception as exc:return {**result,'status':'failed','note':_note(str(exc))or'not-changed'}
+    with _self_lock:_self.update(key=None,value=None)
+    after=_revision()
+    if 'Already up to date'in output or before and before==after:return {**result,'status':'up-to-date'}
+    try:to=YAML_VERSION.search((prov.path/'plugin.yaml').read_text(encoding='utf-8'))[1]
+    except Exception:to=None
+    global _restart_required
+    _restart_required=True;note=_note(output)
+    return {**result,'status':'updated','to':to,'revision':{'from':before,'to':after},**({'note':note}if note else{})}
+
+@router.get('/self-update')
+def self_update_status():return self_status()
+
+@router.post('/self-update')
+async def self_update(request:Request):
+    await json_body(request,64,())
+    found,reason=_self_target()
+    if found is None:raise HTTPException(409,'로컬 default 프로필로 연결한 뒤 다시 시도해 주세요.'if reason=='profile'else'Git으로 설치한 MyBots만 여기서 업데이트할 수 있습니다.')
+    if not _self_running.acquire(blocking=False):raise HTTPException(409,'MyBots 업데이트가 이미 진행 중입니다.')
+    try:return await run_in_threadpool(self_update_run,found[0])
+    finally:_self_running.release()
 
 @router.get('/bots/{bot}/{version}')
 def metadata(bot:str,version:str):

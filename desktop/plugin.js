@@ -224,7 +224,26 @@ var locales_default = {
     "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.",
     "The review expired, so nothing was updated. Review the update again.": "The review expired, so nothing was updated. Review the update again.",
     "This bot was not installed by MyBots, so it cannot be updated here.": "This bot was not installed by MyBots, so it cannot be updated here.",
-    "Could not update. Review the update again and retry.": "Could not update. Review the update again and retry."
+    "Could not update. Review the update again and retry.": "Could not update. Review the update again and retry.",
+    "MyBots {0}": "MyBots {0}",
+    "New version {0}": "New version {0}",
+    "Update MyBots": "Update MyBots",
+    "MyBots is already up to date.": "MyBots is already up to date.",
+    "Your edits to MyBots files were kept on top of the update.": "Your edits to MyBots files were kept on top of the update.",
+    "Your edits to MyBots files conflicted with the update and were saved in git stash.": "Your edits to MyBots files conflicted with the update and were saved in git stash.",
+    "Hermes' security scan blocked this update. The current version stays installed.": "Hermes' security scan blocked this update. The current version stays installed.",
+    "MyBots files have edits that could not be set aside, so nothing was changed.": "MyBots files have edits that could not be set aside, so nothing was changed.",
+    "This update needs new Python packages. Run hermes plugins update mybots in a terminal.": "This update needs new Python packages. Run hermes plugins update mybots in a terminal.",
+    "Could not update MyBots. The current version stays installed.": "Could not update MyBots. The current version stays installed.",
+    "MyBots was updated. Restart Hermes before using it.": "MyBots was updated. Restart Hermes before using it.",
+    "A MyBots update is already running.": "A MyBots update is already running.",
+    "MyBots works on the Hermes default profile.": "MyBots works on the Hermes default profile.",
+    "The connected Hermes backend does not run MyBots, so this screen cannot load.": "The connected Hermes backend does not run MyBots, so this screen cannot load.",
+    "Restart Hermes on default": "Restart Hermes on default",
+    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes restarts on default and opens on default from now on. Replies in progress may stop.",
+    "Or quit Hermes completely and run this in a terminal:": "Or quit Hermes completely and run this in a terminal:",
+    "Quit Hermes completely and run this in a terminal:": "Quit Hermes completely and run this in a terminal:",
+    "Could not restart Hermes. Use the terminal command below.": "Could not restart Hermes. Use the terminal command below."
   },
   ko: {
     "Could not load installed bots. Please retry.": "설치된 봇을 확인하지 못했습니다. 다시 시도해 주세요.",
@@ -444,7 +463,26 @@ var locales_default = {
     "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "업데이트에 실패했고 일부 파일을 되돌리지 못했습니다. 이전 파일은 프로필의 .mybots-backup 폴더에 있습니다.",
     "The review expired, so nothing was updated. Review the update again.": "확인 시간이 지나 아무것도 업데이트하지 않았습니다. 업데이트를 다시 확인해 주세요.",
     "This bot was not installed by MyBots, so it cannot be updated here.": "MyBots가 설치한 봇이 아니어서 여기서 업데이트할 수 없습니다.",
-    "Could not update. Review the update again and retry.": "업데이트하지 못했습니다. 업데이트를 다시 확인한 뒤 시도해 주세요."
+    "Could not update. Review the update again and retry.": "업데이트하지 못했습니다. 업데이트를 다시 확인한 뒤 시도해 주세요.",
+    "MyBots {0}": "MyBots {0}",
+    "New version {0}": "새 버전 {0}",
+    "Update MyBots": "MyBots 업데이트",
+    "MyBots is already up to date.": "MyBots가 이미 최신 버전입니다.",
+    "Your edits to MyBots files were kept on top of the update.": "직접 고친 MyBots 파일은 업데이트 위에 그대로 다시 적용했습니다.",
+    "Your edits to MyBots files conflicted with the update and were saved in git stash.": "직접 고친 MyBots 파일이 업데이트와 겹쳐 git stash에 보관했습니다.",
+    "Hermes' security scan blocked this update. The current version stays installed.": "Hermes 보안 검사가 이 업데이트를 막았습니다. 지금 버전이 그대로 남아 있습니다.",
+    "MyBots files have edits that could not be set aside, so nothing was changed.": "MyBots 파일의 수정 내용을 따로 보관하지 못해 아무것도 바꾸지 않았습니다.",
+    "This update needs new Python packages. Run hermes plugins update mybots in a terminal.": "이 업데이트에는 새 Python 패키지가 필요합니다. 터미널에서 hermes plugins update mybots를 실행해 주세요.",
+    "Could not update MyBots. The current version stays installed.": "MyBots를 업데이트하지 못했습니다. 지금 버전이 그대로 남아 있습니다.",
+    "MyBots was updated. Restart Hermes before using it.": "MyBots를 업데이트했습니다. Hermes를 다시 시작한 뒤 이용해 주세요.",
+    "A MyBots update is already running.": "MyBots 업데이트가 이미 진행 중입니다.",
+    "MyBots works on the Hermes default profile.": "MyBots는 Hermes 기본(default) 프로필에서 동작합니다.",
+    "The connected Hermes backend does not run MyBots, so this screen cannot load.": "연결된 Hermes 백엔드에서 MyBots가 실행되지 않아 이 화면을 불러올 수 없습니다.",
+    "Restart Hermes on default": "Hermes를 default로 다시 시작",
+    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes가 default 프로필로 다시 시작되고, 이후에도 default로 열립니다. 진행 중인 응답은 멈출 수 있습니다.",
+    "Or quit Hermes completely and run this in a terminal:": "또는 Hermes를 완전히 종료한 뒤 터미널에서 실행하세요:",
+    "Quit Hermes completely and run this in a terminal:": "Hermes를 완전히 종료한 뒤 터미널에서 실행하세요:",
+    "Could not restart Hermes. Use the terminal command below.": "Hermes를 다시 시작하지 못했습니다. 아래 터미널 명령을 사용하세요."
   },
   zh: {
     "Could not load installed bots. Please retry.": "无法加载已安装的机器人。请重试。",
@@ -664,7 +702,26 @@ var locales_default = {
     "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "更新失败，部分文件未能恢复。之前的文件在配置文件的 .mybots-backup 文件夹中。",
     "The review expired, so nothing was updated. Review the update again.": "检查已过期，因此未更新任何内容。请重新检查更新。",
     "This bot was not installed by MyBots, so it cannot be updated here.": "此机器人不是由 MyBots 安装的，无法在此更新。",
-    "Could not update. Review the update again and retry.": "无法更新。请重新检查更新后再试。"
+    "Could not update. Review the update again and retry.": "无法更新。请重新检查更新后再试。",
+    "MyBots {0}": "MyBots {0}",
+    "New version {0}": "新版本 {0}",
+    "Update MyBots": "更新 MyBots",
+    "MyBots is already up to date.": "MyBots 已是最新版本。",
+    "Your edits to MyBots files were kept on top of the update.": "你对 MyBots 文件的修改已在更新后重新应用。",
+    "Your edits to MyBots files conflicted with the update and were saved in git stash.": "你对 MyBots 文件的修改与更新冲突，已保存在 git stash 中。",
+    "Hermes' security scan blocked this update. The current version stays installed.": "Hermes 安全扫描阻止了此更新。当前版本保持不变。",
+    "MyBots files have edits that could not be set aside, so nothing was changed.": "MyBots 文件中的修改无法暂存，因此未做任何更改。",
+    "This update needs new Python packages. Run hermes plugins update mybots in a terminal.": "此更新需要新的 Python 包。请在终端中运行 hermes plugins update mybots。",
+    "Could not update MyBots. The current version stays installed.": "无法更新 MyBots。当前版本保持不变。",
+    "MyBots was updated. Restart Hermes before using it.": "MyBots 已更新。请重新启动 Hermes 后再使用。",
+    "A MyBots update is already running.": "MyBots 更新已在进行中。",
+    "MyBots works on the Hermes default profile.": "MyBots 在 Hermes 默认（default）配置文件中运行。",
+    "The connected Hermes backend does not run MyBots, so this screen cannot load.": "已连接的 Hermes 后端未运行 MyBots，因此无法加载此页面。",
+    "Restart Hermes on default": "以 default 重新启动 Hermes",
+    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes 将以 default 重新启动，之后也会以 default 打开。进行中的回复可能会中断。",
+    "Or quit Hermes completely and run this in a terminal:": "或者完全退出 Hermes，然后在终端中运行：",
+    "Quit Hermes completely and run this in a terminal:": "请完全退出 Hermes，然后在终端中运行：",
+    "Could not restart Hermes. Use the terminal command below.": "无法重新启动 Hermes。请使用下面的终端命令。"
   },
   "zh-hant": {
     "Could not load installed bots. Please retry.": "無法載入已安裝的機器人。請重試。",
@@ -884,7 +941,26 @@ var locales_default = {
     "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "更新失敗，部分檔案未能還原。先前的檔案在設定檔的 .mybots-backup 資料夾中。",
     "The review expired, so nothing was updated. Review the update again.": "檢查已逾時，因此未更新任何內容。請重新檢查更新。",
     "This bot was not installed by MyBots, so it cannot be updated here.": "此機器人不是由 MyBots 安裝的，無法在此更新。",
-    "Could not update. Review the update again and retry.": "無法更新。請重新檢查更新後再試。"
+    "Could not update. Review the update again and retry.": "無法更新。請重新檢查更新後再試。",
+    "MyBots {0}": "MyBots {0}",
+    "New version {0}": "新版本 {0}",
+    "Update MyBots": "更新 MyBots",
+    "MyBots is already up to date.": "MyBots 已是最新版本。",
+    "Your edits to MyBots files were kept on top of the update.": "你對 MyBots 檔案的修改已在更新後重新套用。",
+    "Your edits to MyBots files conflicted with the update and were saved in git stash.": "你對 MyBots 檔案的修改與更新衝突，已保存在 git stash 中。",
+    "Hermes' security scan blocked this update. The current version stays installed.": "Hermes 安全掃描阻擋了此更新。目前版本保持不變。",
+    "MyBots files have edits that could not be set aside, so nothing was changed.": "MyBots 檔案中的修改無法暫存，因此未做任何變更。",
+    "This update needs new Python packages. Run hermes plugins update mybots in a terminal.": "此更新需要新的 Python 套件。請在終端機中執行 hermes plugins update mybots。",
+    "Could not update MyBots. The current version stays installed.": "無法更新 MyBots。目前版本保持不變。",
+    "MyBots was updated. Restart Hermes before using it.": "MyBots 已更新。請重新啟動 Hermes 後再使用。",
+    "A MyBots update is already running.": "MyBots 更新已在進行中。",
+    "MyBots works on the Hermes default profile.": "MyBots 在 Hermes 預設（default）設定檔中運作。",
+    "The connected Hermes backend does not run MyBots, so this screen cannot load.": "已連線的 Hermes 後端未執行 MyBots，因此無法載入此畫面。",
+    "Restart Hermes on default": "以 default 重新啟動 Hermes",
+    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes 將以 default 重新啟動，之後也會以 default 開啟。進行中的回覆可能會中斷。",
+    "Or quit Hermes completely and run this in a terminal:": "或者完全結束 Hermes，然後在終端機中執行：",
+    "Quit Hermes completely and run this in a terminal:": "請完全結束 Hermes，然後在終端機中執行：",
+    "Could not restart Hermes. Use the terminal command below.": "無法重新啟動 Hermes。請使用下方的終端機指令。"
   },
   ja: {
     "Could not load installed bots. Please retry.": "インストール済みボットを読み込めません。再試行してください。",
@@ -1104,7 +1180,26 @@ var locales_default = {
     "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "アップデートに失敗し、一部のファイルを元に戻せませんでした。以前のファイルはプロファイルの .mybots-backup フォルダーにあります。",
     "The review expired, so nothing was updated. Review the update again.": "確認の有効期限が切れたため、何もアップデートしていません。アップデートをもう一度確認してください。",
     "This bot was not installed by MyBots, so it cannot be updated here.": "MyBots でインストールしたボットではないため、ここではアップデートできません。",
-    "Could not update. Review the update again and retry.": "アップデートできませんでした。アップデートをもう一度確認してからお試しください。"
+    "Could not update. Review the update again and retry.": "アップデートできませんでした。アップデートをもう一度確認してからお試しください。",
+    "MyBots {0}": "MyBots {0}",
+    "New version {0}": "新しいバージョン {0}",
+    "Update MyBots": "MyBots をアップデート",
+    "MyBots is already up to date.": "MyBots はすでに最新です。",
+    "Your edits to MyBots files were kept on top of the update.": "MyBots ファイルへの変更はアップデートの上に再適用しました。",
+    "Your edits to MyBots files conflicted with the update and were saved in git stash.": "MyBots ファイルへの変更がアップデートと競合したため、git stash に保存しました。",
+    "Hermes' security scan blocked this update. The current version stays installed.": "Hermes のセキュリティスキャンがこのアップデートをブロックしました。現在のバージョンはそのまま残ります。",
+    "MyBots files have edits that could not be set aside, so nothing was changed.": "MyBots ファイルの変更を退避できなかったため、何も変更していません。",
+    "This update needs new Python packages. Run hermes plugins update mybots in a terminal.": "このアップデートには新しい Python パッケージが必要です。ターミナルで hermes plugins update mybots を実行してください。",
+    "Could not update MyBots. The current version stays installed.": "MyBots をアップデートできませんでした。現在のバージョンはそのまま残ります。",
+    "MyBots was updated. Restart Hermes before using it.": "MyBots をアップデートしました。Hermes を再起動してからご利用ください。",
+    "A MyBots update is already running.": "MyBots のアップデートはすでに実行中です。",
+    "MyBots works on the Hermes default profile.": "MyBots は Hermes の既定（default）プロファイルで動作します。",
+    "The connected Hermes backend does not run MyBots, so this screen cannot load.": "接続中の Hermes バックエンドで MyBots が動いていないため、この画面を読み込めません。",
+    "Restart Hermes on default": "Hermes を default で再起動",
+    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes が default プロファイルで再起動し、以後も default で開きます。進行中の応答は止まる場合があります。",
+    "Or quit Hermes completely and run this in a terminal:": "または Hermes を完全に終了し、ターミナルで次を実行してください:",
+    "Quit Hermes completely and run this in a terminal:": "Hermes を完全に終了し、ターミナルで次を実行してください:",
+    "Could not restart Hermes. Use the terminal command below.": "Hermes を再起動できませんでした。下のターミナルコマンドを使ってください。"
   },
   ar: {
     "Could not load installed bots. Please retry.": "تعذر تحميل البوتات المثبتة. حاول مجددًا.",
@@ -1324,7 +1419,26 @@ var locales_default = {
     "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "فشل التحديث وتعذّرت استعادة بعض الملفات. الملفات السابقة موجودة في مجلد .mybots-backup في الملف الشخصي.",
     "The review expired, so nothing was updated. Review the update again.": "انتهت صلاحية المراجعة، لذلك لم يُحدَّث شيء. راجع التحديث مرة أخرى.",
     "This bot was not installed by MyBots, so it cannot be updated here.": "لم يثبّت MyBots هذا البوت، لذلك لا يمكن تحديثه هنا.",
-    "Could not update. Review the update again and retry.": "تعذّر التحديث. راجع التحديث مرة أخرى ثم أعد المحاولة."
+    "Could not update. Review the update again and retry.": "تعذّر التحديث. راجع التحديث مرة أخرى ثم أعد المحاولة.",
+    "MyBots {0}": "MyBots {0}",
+    "New version {0}": "إصدار جديد {0}",
+    "Update MyBots": "تحديث MyBots",
+    "MyBots is already up to date.": "MyBots محدَّث بالفعل.",
+    "Your edits to MyBots files were kept on top of the update.": "أُعيد تطبيق تعديلاتك على ملفات MyBots فوق التحديث.",
+    "Your edits to MyBots files conflicted with the update and were saved in git stash.": "تعارضت تعديلاتك على ملفات MyBots مع التحديث وحُفظت في git stash.",
+    "Hermes' security scan blocked this update. The current version stays installed.": "منع فحص الأمان في Hermes هذا التحديث. يبقى الإصدار الحالي مثبّتًا.",
+    "MyBots files have edits that could not be set aside, so nothing was changed.": "تعذّر حفظ تعديلات ملفات MyBots جانبًا، لذا لم يتغير شيء.",
+    "This update needs new Python packages. Run hermes plugins update mybots in a terminal.": "يحتاج هذا التحديث إلى حزم Python جديدة. شغّل hermes plugins update mybots في الطرفية.",
+    "Could not update MyBots. The current version stays installed.": "تعذّر تحديث MyBots. يبقى الإصدار الحالي مثبّتًا.",
+    "MyBots was updated. Restart Hermes before using it.": "تم تحديث MyBots. أعد تشغيل Hermes قبل استخدامه.",
+    "A MyBots update is already running.": "تحديث MyBots قيد التشغيل بالفعل.",
+    "MyBots works on the Hermes default profile.": "يعمل MyBots على ملف Hermes الافتراضي (default).",
+    "The connected Hermes backend does not run MyBots, so this screen cannot load.": "خادم Hermes المتصل لا يشغّل MyBots، لذا لا يمكن تحميل هذه الشاشة.",
+    "Restart Hermes on default": "إعادة تشغيل Hermes على default",
+    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "سيُعاد تشغيل Hermes على default وسيفتح عليه من الآن فصاعدًا. قد تتوقف الردود الجارية.",
+    "Or quit Hermes completely and run this in a terminal:": "أو أغلق Hermes تمامًا وشغّل هذا في الطرفية:",
+    "Quit Hermes completely and run this in a terminal:": "أغلق Hermes تمامًا وشغّل هذا في الطرفية:",
+    "Could not restart Hermes. Use the terminal command below.": "تعذّرت إعادة تشغيل Hermes. استخدم أمر الطرفية أدناه."
   },
   ru: {
     "Could not load installed bots. Please retry.": "Не удалось загрузить установленных ботов. Повторите попытку.",
@@ -1544,7 +1658,26 @@ var locales_default = {
     "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "Обновление не удалось, и некоторые файлы не удалось восстановить. Предыдущие файлы находятся в папке .mybots-backup профиля.",
     "The review expired, so nothing was updated. Review the update again.": "Срок проверки истёк, поэтому ничего не обновлено. Проверьте обновление ещё раз.",
     "This bot was not installed by MyBots, so it cannot be updated here.": "Этот бот установлен не через MyBots, поэтому обновить его здесь нельзя.",
-    "Could not update. Review the update again and retry.": "Не удалось обновить. Проверьте обновление ещё раз и повторите попытку."
+    "Could not update. Review the update again and retry.": "Не удалось обновить. Проверьте обновление ещё раз и повторите попытку.",
+    "MyBots {0}": "MyBots {0}",
+    "New version {0}": "Новая версия {0}",
+    "Update MyBots": "Обновить MyBots",
+    "MyBots is already up to date.": "MyBots уже обновлён.",
+    "Your edits to MyBots files were kept on top of the update.": "Ваши правки файлов MyBots снова применены поверх обновления.",
+    "Your edits to MyBots files conflicted with the update and were saved in git stash.": "Ваши правки файлов MyBots конфликтуют с обновлением и сохранены в git stash.",
+    "Hermes' security scan blocked this update. The current version stays installed.": "Проверка безопасности Hermes заблокировала это обновление. Текущая версия остаётся установленной.",
+    "MyBots files have edits that could not be set aside, so nothing was changed.": "Не удалось отложить правки файлов MyBots, поэтому ничего не изменено.",
+    "This update needs new Python packages. Run hermes plugins update mybots in a terminal.": "Для этого обновления нужны новые пакеты Python. Выполните hermes plugins update mybots в терминале.",
+    "Could not update MyBots. The current version stays installed.": "Не удалось обновить MyBots. Текущая версия остаётся установленной.",
+    "MyBots was updated. Restart Hermes before using it.": "MyBots обновлён. Перезапустите Hermes, прежде чем продолжить.",
+    "A MyBots update is already running.": "Обновление MyBots уже выполняется.",
+    "MyBots works on the Hermes default profile.": "MyBots работает в профиле Hermes по умолчанию (default).",
+    "The connected Hermes backend does not run MyBots, so this screen cannot load.": "Подключённый бэкенд Hermes не запускает MyBots, поэтому этот экран не загружается.",
+    "Restart Hermes on default": "Перезапустить Hermes в default",
+    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes перезапустится в профиле default и дальше будет открываться в нём. Текущие ответы могут прерваться.",
+    "Or quit Hermes completely and run this in a terminal:": "Или полностью закройте Hermes и выполните в терминале:",
+    "Quit Hermes completely and run this in a terminal:": "Полностью закройте Hermes и выполните в терминале:",
+    "Could not restart Hermes. Use the terminal command below.": "Не удалось перезапустить Hermes. Используйте команду терминала ниже."
   },
   fr: {
     "Could not load installed bots. Please retry.": "Impossible de charger les bots installés. Réessayez.",
@@ -1764,7 +1897,26 @@ var locales_default = {
     "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "La mise à jour a échoué et certains fichiers n’ont pas pu être restaurés. Les fichiers précédents se trouvent dans le dossier .mybots-backup du profil.",
     "The review expired, so nothing was updated. Review the update again.": "La vérification a expiré, donc rien n’a été mis à jour. Vérifiez de nouveau la mise à jour.",
     "This bot was not installed by MyBots, so it cannot be updated here.": "Ce bot n’a pas été installé par MyBots, il ne peut donc pas être mis à jour ici.",
-    "Could not update. Review the update again and retry.": "Impossible de mettre à jour. Vérifiez de nouveau la mise à jour et réessayez."
+    "Could not update. Review the update again and retry.": "Impossible de mettre à jour. Vérifiez de nouveau la mise à jour et réessayez.",
+    "MyBots {0}": "MyBots {0}",
+    "New version {0}": "Nouvelle version {0}",
+    "Update MyBots": "Mettre à jour MyBots",
+    "MyBots is already up to date.": "MyBots est déjà à jour.",
+    "Your edits to MyBots files were kept on top of the update.": "Vos modifications des fichiers MyBots ont été réappliquées sur la mise à jour.",
+    "Your edits to MyBots files conflicted with the update and were saved in git stash.": "Vos modifications des fichiers MyBots entraient en conflit avec la mise à jour et ont été enregistrées dans git stash.",
+    "Hermes' security scan blocked this update. The current version stays installed.": "L’analyse de sécurité de Hermes a bloqué cette mise à jour. La version actuelle reste installée.",
+    "MyBots files have edits that could not be set aside, so nothing was changed.": "Les modifications des fichiers MyBots n’ont pas pu être mises de côté ; rien n’a été modifié.",
+    "This update needs new Python packages. Run hermes plugins update mybots in a terminal.": "Cette mise à jour nécessite de nouveaux paquets Python. Exécutez hermes plugins update mybots dans un terminal.",
+    "Could not update MyBots. The current version stays installed.": "Impossible de mettre à jour MyBots. La version actuelle reste installée.",
+    "MyBots was updated. Restart Hermes before using it.": "MyBots a été mis à jour. Redémarrez Hermes avant de l’utiliser.",
+    "A MyBots update is already running.": "Une mise à jour de MyBots est déjà en cours.",
+    "MyBots works on the Hermes default profile.": "MyBots fonctionne sur le profil Hermes par défaut (default).",
+    "The connected Hermes backend does not run MyBots, so this screen cannot load.": "Le backend Hermes connecté n’exécute pas MyBots, cet écran ne peut donc pas se charger.",
+    "Restart Hermes on default": "Redémarrer Hermes sur default",
+    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes redémarre sur default et s’ouvrira désormais sur default. Les réponses en cours peuvent s’interrompre.",
+    "Or quit Hermes completely and run this in a terminal:": "Ou quittez complètement Hermes et exécutez ceci dans un terminal :",
+    "Quit Hermes completely and run this in a terminal:": "Quittez complètement Hermes et exécutez ceci dans un terminal :",
+    "Could not restart Hermes. Use the terminal command below.": "Impossible de redémarrer Hermes. Utilisez la commande de terminal ci-dessous."
   },
   de: {
     "Could not load installed bots. Please retry.": "Installierte Bots konnten nicht geladen werden. Bitte erneut versuchen.",
@@ -1984,7 +2136,26 @@ var locales_default = {
     "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "Das Update ist fehlgeschlagen und einige Dateien konnten nicht wiederhergestellt werden. Die vorherigen Dateien liegen im Ordner .mybots-backup des Profils.",
     "The review expired, so nothing was updated. Review the update again.": "Die Prüfung ist abgelaufen, daher wurde nichts aktualisiert. Prüfen Sie das Update erneut.",
     "This bot was not installed by MyBots, so it cannot be updated here.": "Dieser Bot wurde nicht von MyBots installiert und kann hier nicht aktualisiert werden.",
-    "Could not update. Review the update again and retry.": "Aktualisierung nicht möglich. Prüfen Sie das Update erneut und versuchen Sie es noch einmal."
+    "Could not update. Review the update again and retry.": "Aktualisierung nicht möglich. Prüfen Sie das Update erneut und versuchen Sie es noch einmal.",
+    "MyBots {0}": "MyBots {0}",
+    "New version {0}": "Neue Version {0}",
+    "Update MyBots": "MyBots aktualisieren",
+    "MyBots is already up to date.": "MyBots ist bereits aktuell.",
+    "Your edits to MyBots files were kept on top of the update.": "Ihre Änderungen an MyBots-Dateien wurden auf das Update erneut angewendet.",
+    "Your edits to MyBots files conflicted with the update and were saved in git stash.": "Ihre Änderungen an MyBots-Dateien standen im Konflikt mit dem Update und wurden in git stash gespeichert.",
+    "Hermes' security scan blocked this update. The current version stays installed.": "Die Sicherheitsprüfung von Hermes hat dieses Update blockiert. Die aktuelle Version bleibt installiert.",
+    "MyBots files have edits that could not be set aside, so nothing was changed.": "Änderungen an MyBots-Dateien konnten nicht beiseitegelegt werden, daher wurde nichts geändert.",
+    "This update needs new Python packages. Run hermes plugins update mybots in a terminal.": "Dieses Update benötigt neue Python-Pakete. Führen Sie hermes plugins update mybots in einem Terminal aus.",
+    "Could not update MyBots. The current version stays installed.": "MyBots konnte nicht aktualisiert werden. Die aktuelle Version bleibt installiert.",
+    "MyBots was updated. Restart Hermes before using it.": "MyBots wurde aktualisiert. Starten Sie Hermes neu, bevor Sie es verwenden.",
+    "A MyBots update is already running.": "Ein MyBots-Update läuft bereits.",
+    "MyBots works on the Hermes default profile.": "MyBots läuft im Hermes-Standardprofil (default).",
+    "The connected Hermes backend does not run MyBots, so this screen cannot load.": "Das verbundene Hermes-Backend führt MyBots nicht aus, daher kann diese Ansicht nicht geladen werden.",
+    "Restart Hermes on default": "Hermes mit default neu starten",
+    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes startet mit default neu und öffnet sich künftig mit default. Laufende Antworten können abbrechen.",
+    "Or quit Hermes completely and run this in a terminal:": "Oder Hermes vollständig beenden und dies im Terminal ausführen:",
+    "Quit Hermes completely and run this in a terminal:": "Hermes vollständig beenden und dies im Terminal ausführen:",
+    "Could not restart Hermes. Use the terminal command below.": "Hermes konnte nicht neu gestartet werden. Verwende den Terminalbefehl unten."
   },
   es: {
     "Could not load installed bots. Please retry.": "No se pudieron cargar los bots instalados. Inténtalo de nuevo.",
@@ -2204,7 +2375,26 @@ var locales_default = {
     "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.": "La actualización falló y algunos archivos no se pudieron restaurar. Los archivos anteriores están en la carpeta .mybots-backup del perfil.",
     "The review expired, so nothing was updated. Review the update again.": "La revisión caducó, así que no se actualizó nada. Revisa la actualización de nuevo.",
     "This bot was not installed by MyBots, so it cannot be updated here.": "MyBots no instaló este bot, así que no se puede actualizar aquí.",
-    "Could not update. Review the update again and retry.": "No se pudo actualizar. Revisa la actualización de nuevo y vuelve a intentarlo."
+    "Could not update. Review the update again and retry.": "No se pudo actualizar. Revisa la actualización de nuevo y vuelve a intentarlo.",
+    "MyBots {0}": "MyBots {0}",
+    "New version {0}": "Nueva versión {0}",
+    "Update MyBots": "Actualizar MyBots",
+    "MyBots is already up to date.": "MyBots ya está actualizado.",
+    "Your edits to MyBots files were kept on top of the update.": "Tus cambios en los archivos de MyBots se volvieron a aplicar sobre la actualización.",
+    "Your edits to MyBots files conflicted with the update and were saved in git stash.": "Tus cambios en los archivos de MyBots chocaban con la actualización y se guardaron en git stash.",
+    "Hermes' security scan blocked this update. The current version stays installed.": "El análisis de seguridad de Hermes bloqueó esta actualización. La versión actual sigue instalada.",
+    "MyBots files have edits that could not be set aside, so nothing was changed.": "No se pudieron apartar los cambios en los archivos de MyBots, así que no se cambió nada.",
+    "This update needs new Python packages. Run hermes plugins update mybots in a terminal.": "Esta actualización necesita nuevos paquetes de Python. Ejecuta hermes plugins update mybots en una terminal.",
+    "Could not update MyBots. The current version stays installed.": "No se pudo actualizar MyBots. La versión actual sigue instalada.",
+    "MyBots was updated. Restart Hermes before using it.": "MyBots se actualizó. Reinicia Hermes antes de usarlo.",
+    "A MyBots update is already running.": "Ya hay una actualización de MyBots en curso.",
+    "MyBots works on the Hermes default profile.": "MyBots funciona en el perfil predeterminado de Hermes (default).",
+    "The connected Hermes backend does not run MyBots, so this screen cannot load.": "El backend de Hermes conectado no ejecuta MyBots, así que esta pantalla no puede cargarse.",
+    "Restart Hermes on default": "Reiniciar Hermes en default",
+    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes se reinicia en default y se abrirá en default a partir de ahora. Las respuestas en curso pueden detenerse.",
+    "Or quit Hermes completely and run this in a terminal:": "O cierra Hermes por completo y ejecuta esto en una terminal:",
+    "Quit Hermes completely and run this in a terminal:": "Cierra Hermes por completo y ejecuta esto en una terminal:",
+    "Could not restart Hermes. Use the terminal command below.": "No se pudo reiniciar Hermes. Usa el comando de terminal de abajo."
   }
 };
 
@@ -2482,6 +2672,97 @@ var MarketApi = class {
   }
 };
 
+// packages/hermes-plugin/desktop/install-state.ts
+var format = (key, ...args) => key.replace(/\{(\d+)\}/g, (_, n) => String(args[Number(n)] ?? ""));
+var initialSelection = (bot) => [...bot.optional];
+var normalizeSelection = (bot, selected) => bot.optional.filter((c) => selected.includes(c));
+function voiceResultMessage(result, t = format) {
+  if (result.voiceStatus === "existing-settings-preserved") return t("Existing voice settings were preserved. Check the profile’s Voice settings.");
+  return result.voiceConfigured ? t("Recommended voice {0} included. Check voice authentication.", result.voice?.voice ?? "") : t("Voice settings were not included.");
+}
+function profileDestination(profile) {
+  if (!BOT_ID.test(profile)) throw Error("Invalid profile");
+  return { route: { connectionId: "local", mode: "local", profile, targetProfile: profile }, options: { workspaceMode: "bots", workspaceOwnerKey: `bot:local::${profile}` } };
+}
+function installErrorMessage(error, profile, t = format) {
+  const reason = detail(error);
+  if (reason.startsWith("Profile name already exists")) return t("A bot named {0} already exists. The existing bot was not changed.", profile);
+  if (reason.startsWith("Existing MyBots profile has changes")) return t("The {0} profile has manual changes, so installation stopped. The existing bot was not changed.", profile);
+  if (reason.startsWith("Review expired")) return t("The review expired, so nothing was installed. Review the configuration again.");
+  return keyRefusal(reason, t) ?? t("Could not install. Review the configuration and retry.");
+}
+var PROFILE_ENV_UNCHECKED = "The bot profile key file could not be checked safely, so nothing was changed";
+function detail(error) {
+  const text2 = String(error?.message ?? error), start = text2.indexOf("{");
+  if (start < 0) return "";
+  try {
+    const body = JSON.parse(text2.slice(start));
+    return typeof body?.detail === "string" ? body.detail : "";
+  } catch {
+    return "";
+  }
+}
+var RESTART_REQUIRED = "MyBots를 업데이트했습니다. Hermes를 다시 시작한 뒤 이용해 주세요.";
+var RESTART_MESSAGE = "MyBots was updated. Restart Hermes before using it.";
+function keyRefusal(reason, t) {
+  if (!reason) return null;
+  if (reason === RESTART_REQUIRED) return t(RESTART_MESSAGE);
+  if (["Invalid request", "Request is too large", "Content-Type must be application/json"].includes(reason)) return t("The request was not accepted, so nothing was changed. Update MyBots and retry.");
+  if (reason === "Key value is missing") return t("A key value is empty. Enter it or leave the key out. Nothing was changed.");
+  if (reason.startsWith("Key value must be one line")) return t("A key must be one line of at most 4,096 bytes without control characters. Nothing was changed.");
+  if (reason === "Key is not declared for the selected components" || reason === "Invalid key input") return t("The keys did not match this bot. Review again; nothing was changed.");
+  if (reason === PROFILE_ENV_UNCHECKED) return t(PROFILE_ENV_UNCHECKED);
+  if (reason.startsWith("The bot profile config could not be read safely")) return t("The bot profile config could not be read safely, so nothing was changed.");
+  if (reason.startsWith("Keys could not be saved")) return t("Could not save the keys to the bot profile. Retry.");
+  if (["This bot is not installed", "This bot was not installed by MyBots", "This bot was not installed with key declarations", "Invalid receipt key declarations"].includes(reason)) return t("This bot was not installed by MyBots with keys, so add keys in Hermes settings.");
+  if (reason.startsWith("The installed version differs") || reason === "Invalid bot or fixed version") return t("The installed version changed. Refresh the bot list and retry.");
+  return null;
+}
+function keyErrorMessage(error, t = format) {
+  return keyRefusal(detail(error), t) ?? t("Could not save the keys. Retry.");
+}
+var NOT_OPEN = "This bot is not open yet";
+function reviewErrorMessage(error) {
+  const reason = detail(error);
+  if (reason === NOT_OPEN) return "This bot is not open yet.";
+  if (reason === RESTART_REQUIRED) return RESTART_MESSAGE;
+  if (reason === "Invalid manifest" || reason.startsWith("This bot/version requires a newer MyBots helper")) return "This bot needs a newer MyBots helper. Update MyBots and retry.";
+  return "Could not review the installation. Check connection and publication status.";
+}
+var UPDATE_REFUSALS = {
+  "Only a newer version can be installed as an update": "Only a newer version can be installed as an update. Refresh the bot list.",
+  "Update needs a reinstall for this version": "This version cannot be updated in place. Reinstall the bot to get it.",
+  "The installed bot changed after the review; review again": "The installed bot changed after the review, so nothing was changed. Review the update again.",
+  "Update failed; the previous version was restored": "The update failed, and the previous version was restored.",
+  "Update failed and some files could not be restored; the previous files are in .mybots-backup": "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.",
+  "Review expired or already used; review again": "The review expired, so nothing was updated. Review the update again.",
+  "This bot is not installed": "This bot was not installed by MyBots, so it cannot be updated here.",
+  "This bot was not installed by MyBots": "This bot was not installed by MyBots, so it cannot be updated here."
+};
+function updateErrorMessage(error, stage) {
+  const reason = detail(error);
+  if (Object.hasOwn(UPDATE_REFUSALS, reason)) return UPDATE_REFUSALS[reason];
+  if (stage === "review") return reviewErrorMessage(error);
+  return keyRefusal(reason, format) ?? "Could not update. Review the update again and retry.";
+}
+var startsDefault = (r) => r.prefill === "default" && r.startWithDefault !== false;
+var initialKeys = (rows) => Object.fromEntries(rows.map((r) => [r.name, { useDefault: startsDefault(r), value: "", save: true }]));
+var choice = (r, keys) => keys[r.name] ?? { useDefault: startsDefault(r), value: "", save: true };
+var usesDefault = (r, keys) => r.prefill === "default" && choice(r, keys).useDefault;
+function keyRequest(rows, keys) {
+  return Object.fromEntries(rows.map((r) => {
+    const c = choice(r, keys), value = c.value.trim();
+    if (usesDefault(r, keys)) return [r.name, { source: "default" }];
+    return [r.name, value ? { source: "input", value, saveToDefault: c.save && !r.defaultHasValue } : { source: "skip" }];
+  }));
+}
+var missingRequired = (rows, keys) => rows.filter((r) => r.required && !usesDefault(r, keys) && !choice(r, keys).value.trim()).length;
+var listedInstalled = (rows) => rows.filter((x) => x.state !== "available" && !(x.state === "name-conflict" && !x.receipt));
+var nameConflictMessage = (profile, t = format) => t("A profile named {0} already exists, so this bot cannot be installed. The existing bot will not be changed. Rename the existing profile and try again.", profile);
+var modelReviewMessage = (model, t = format) => model ? t("Model: {0} (same as the default profile)", model.name) : t("Model: the default profile has no model, so this stays empty. Choose a model first after installing.");
+var modelResultMessage = (result, t = format) => result.modelSetupRequired || !result.model ? t("Choose a model first. This bot has no model yet.") : t("You can chat right away with the same model as the default profile ({0}).", result.model.name);
+var languagePackMessage = (packs, t = format) => packs?.length ? t("Language packs: {0} (copied from the default profile)", packs.map((p) => p.name).join(", ")) : "";
+
 // packages/hermes-plugin/desktop/market-ui.tsx
 import { useEffect, useState } from "react";
 import { host, Button, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, ErrorState } from "@hermes/plugin-sdk";
@@ -2523,6 +2804,44 @@ function LocalNotice() {
         setError("Could not open the local connection. Please retry.");
       }
     }, children: t("Connect to this device’s default") }),
+    error && /* @__PURE__ */ jsx(Failure, { message: t(error) })
+  ] });
+}
+var unattached = (error) => /^404:/.test(String(error?.message ?? error)) && detail(error) === "Plugin not found";
+var RESTART_FAILED = "Could not restart Hermes. Use the terminal command below.";
+var LOCAL_FAILED = "Could not open the local connection. Please retry.";
+function DefaultProfileNotice({ onRetry }) {
+  const { t } = useMyBots();
+  const [connection, setConnection] = useState(() => host.state.connectionId.get()), [busy, setBusy] = useState(false), [error, setError] = useState("");
+  useEffect(() => {
+    setConnection(host.state.connectionId.get());
+    return host.state.connectionId.listen(() => setConnection(host.state.connectionId.get()));
+  }, []);
+  const remote = connection !== "local", bridge = window.hermesDesktop?.profile, restart = typeof bridge?.set === "function";
+  const run = async () => {
+    if (busy) return;
+    setBusy(true);
+    setError("");
+    try {
+      if (remote) await host.ensureAgent("local", "default");
+      else await bridge.set("default");
+      onRetry();
+    } catch {
+      setError(remote ? LOCAL_FAILED : RESTART_FAILED);
+    } finally {
+      setBusy(false);
+    }
+  };
+  return /* @__PURE__ */ jsxs("section", { role: "status", className: "mb-notice", "data-default-profile": true, children: [
+    /* @__PURE__ */ jsx("p", { children: /* @__PURE__ */ jsx("strong", { children: t("MyBots works on the Hermes default profile.") }) }),
+    /* @__PURE__ */ jsx("p", { children: t("The connected Hermes backend does not run MyBots, so this screen cannot load.") }),
+    (remote || restart) && /* @__PURE__ */ jsx(Button, { variant: "secondary", disabled: busy, loading: busy, onClick: run, children: remote ? t("Connect to this device’s default") : t("Restart Hermes on default") }),
+    !remote && restart && /* @__PURE__ */ jsx("p", { className: "mb-muted", children: t("Hermes restarts on default and opens on default from now on. Replies in progress may stop.") }),
+    !remote && /* @__PURE__ */ jsxs("p", { className: "mb-muted", children: [
+      restart ? t("Or quit Hermes completely and run this in a terminal:") : t("Quit Hermes completely and run this in a terminal:"),
+      " ",
+      /* @__PURE__ */ jsx("code", { children: "hermes -p default desktop" })
+    ] }),
     error && /* @__PURE__ */ jsx(Failure, { message: t(error) })
   ] });
 }
@@ -2861,7 +3180,7 @@ function registerLumiIcon() {
 }
 
 // packages/hermes-plugin/desktop/market-page.tsx
-import { useCallback, useEffect as useEffect7, useRef as useRef6, useState as useState7 } from "react";
+import { useCallback, useEffect as useEffect8, useRef as useRef7, useState as useState8 } from "react";
 import { host as host4 } from "@hermes/plugin-sdk";
 
 // packages/hermes-plugin/desktop/install-confirmation.tsx
@@ -2870,95 +3189,6 @@ import { host as host2 } from "@hermes/plugin-sdk";
 
 // packages/hermes-plugin/desktop/secrets-fields.tsx
 import { useId, useRef as useRef3, useState as useState4 } from "react";
-
-// packages/hermes-plugin/desktop/install-state.ts
-var format = (key, ...args) => key.replace(/\{(\d+)\}/g, (_, n) => String(args[Number(n)] ?? ""));
-var initialSelection = (bot) => [...bot.optional];
-var normalizeSelection = (bot, selected) => bot.optional.filter((c) => selected.includes(c));
-function voiceResultMessage(result, t = format) {
-  if (result.voiceStatus === "existing-settings-preserved") return t("Existing voice settings were preserved. Check the profile’s Voice settings.");
-  return result.voiceConfigured ? t("Recommended voice {0} included. Check voice authentication.", result.voice?.voice ?? "") : t("Voice settings were not included.");
-}
-function profileDestination(profile) {
-  if (!BOT_ID.test(profile)) throw Error("Invalid profile");
-  return { route: { connectionId: "local", mode: "local", profile, targetProfile: profile }, options: { workspaceMode: "bots", workspaceOwnerKey: `bot:local::${profile}` } };
-}
-function installErrorMessage(error, profile, t = format) {
-  const reason = detail(error);
-  if (reason.startsWith("Profile name already exists")) return t("A bot named {0} already exists. The existing bot was not changed.", profile);
-  if (reason.startsWith("Existing MyBots profile has changes")) return t("The {0} profile has manual changes, so installation stopped. The existing bot was not changed.", profile);
-  if (reason.startsWith("Review expired")) return t("The review expired, so nothing was installed. Review the configuration again.");
-  return keyRefusal(reason, t) ?? t("Could not install. Review the configuration and retry.");
-}
-var PROFILE_ENV_UNCHECKED = "The bot profile key file could not be checked safely, so nothing was changed";
-function detail(error) {
-  const text2 = String(error?.message ?? error), start = text2.indexOf("{");
-  if (start < 0) return "";
-  try {
-    const body = JSON.parse(text2.slice(start));
-    return typeof body?.detail === "string" ? body.detail : "";
-  } catch {
-    return "";
-  }
-}
-function keyRefusal(reason, t) {
-  if (!reason) return null;
-  if (["Invalid request", "Request is too large", "Content-Type must be application/json"].includes(reason)) return t("The request was not accepted, so nothing was changed. Update MyBots and retry.");
-  if (reason === "Key value is missing") return t("A key value is empty. Enter it or leave the key out. Nothing was changed.");
-  if (reason.startsWith("Key value must be one line")) return t("A key must be one line of at most 4,096 bytes without control characters. Nothing was changed.");
-  if (reason === "Key is not declared for the selected components" || reason === "Invalid key input") return t("The keys did not match this bot. Review again; nothing was changed.");
-  if (reason === PROFILE_ENV_UNCHECKED) return t(PROFILE_ENV_UNCHECKED);
-  if (reason.startsWith("The bot profile config could not be read safely")) return t("The bot profile config could not be read safely, so nothing was changed.");
-  if (reason.startsWith("Keys could not be saved")) return t("Could not save the keys to the bot profile. Retry.");
-  if (["This bot is not installed", "This bot was not installed by MyBots", "This bot was not installed with key declarations", "Invalid receipt key declarations"].includes(reason)) return t("This bot was not installed by MyBots with keys, so add keys in Hermes settings.");
-  if (reason.startsWith("The installed version differs") || reason === "Invalid bot or fixed version") return t("The installed version changed. Refresh the bot list and retry.");
-  return null;
-}
-function keyErrorMessage(error, t = format) {
-  return keyRefusal(detail(error), t) ?? t("Could not save the keys. Retry.");
-}
-var NOT_OPEN = "This bot is not open yet";
-function reviewErrorMessage(error) {
-  const reason = detail(error);
-  if (reason === NOT_OPEN) return "This bot is not open yet.";
-  if (reason === "Invalid manifest" || reason.startsWith("This bot/version requires a newer MyBots helper")) return "This bot needs a newer MyBots helper. Update MyBots and retry.";
-  return "Could not review the installation. Check connection and publication status.";
-}
-var UPDATE_REFUSALS = {
-  "Only a newer version can be installed as an update": "Only a newer version can be installed as an update. Refresh the bot list.",
-  "Update needs a reinstall for this version": "This version cannot be updated in place. Reinstall the bot to get it.",
-  "The installed bot changed after the review; review again": "The installed bot changed after the review, so nothing was changed. Review the update again.",
-  "Update failed; the previous version was restored": "The update failed, and the previous version was restored.",
-  "Update failed and some files could not be restored; the previous files are in .mybots-backup": "The update failed and some files could not be restored. The previous files are in the profile’s .mybots-backup folder.",
-  "Review expired or already used; review again": "The review expired, so nothing was updated. Review the update again.",
-  "This bot is not installed": "This bot was not installed by MyBots, so it cannot be updated here.",
-  "This bot was not installed by MyBots": "This bot was not installed by MyBots, so it cannot be updated here."
-};
-function updateErrorMessage(error, stage) {
-  const reason = detail(error);
-  if (Object.hasOwn(UPDATE_REFUSALS, reason)) return UPDATE_REFUSALS[reason];
-  if (stage === "review") return reviewErrorMessage(error);
-  return keyRefusal(reason, format) ?? "Could not update. Review the update again and retry.";
-}
-var startsDefault = (r) => r.prefill === "default" && r.startWithDefault !== false;
-var initialKeys = (rows) => Object.fromEntries(rows.map((r) => [r.name, { useDefault: startsDefault(r), value: "", save: true }]));
-var choice = (r, keys) => keys[r.name] ?? { useDefault: startsDefault(r), value: "", save: true };
-var usesDefault = (r, keys) => r.prefill === "default" && choice(r, keys).useDefault;
-function keyRequest(rows, keys) {
-  return Object.fromEntries(rows.map((r) => {
-    const c = choice(r, keys), value = c.value.trim();
-    if (usesDefault(r, keys)) return [r.name, { source: "default" }];
-    return [r.name, value ? { source: "input", value, saveToDefault: c.save && !r.defaultHasValue } : { source: "skip" }];
-  }));
-}
-var missingRequired = (rows, keys) => rows.filter((r) => r.required && !usesDefault(r, keys) && !choice(r, keys).value.trim()).length;
-var listedInstalled = (rows) => rows.filter((x) => x.state !== "available" && !(x.state === "name-conflict" && !x.receipt));
-var nameConflictMessage = (profile, t = format) => t("A profile named {0} already exists, so this bot cannot be installed. The existing bot will not be changed. Rename the existing profile and try again.", profile);
-var modelReviewMessage = (model, t = format) => model ? t("Model: {0} (same as the default profile)", model.name) : t("Model: the default profile has no model, so this stays empty. Choose a model first after installing.");
-var modelResultMessage = (result, t = format) => result.modelSetupRequired || !result.model ? t("Choose a model first. This bot has no model yet.") : t("You can chat right away with the same model as the default profile ({0}).", result.model.name);
-var languagePackMessage = (packs, t = format) => packs?.length ? t("Language packs: {0} (copied from the default profile)", packs.map((p) => p.name).join(", ")) : "";
-
-// packages/hermes-plugin/desktop/secrets-fields.tsx
 import { Fragment as Fragment3, jsx as jsx4, jsxs as jsxs4 } from "react/jsx-runtime";
 var STORAGE_NOTICE = "Keys this bot needs are stored only in bot profiles on this computer";
 var APPLY_NOTICE = "Keys apply from the next new chat (or after restarting Hermes)";
@@ -4151,6 +4381,7 @@ var marketStyles = `
 .mb-muted{color:var(--ui-text-secondary)}
 .mb-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem}
 .mb-header p{margin-top:.25rem;color:var(--ui-text-secondary)}
+.mb-self{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}.mb-self p{flex-basis:100%}
 .mb-toolbar,.mb-actions{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
 .mb-toolbar{margin-block:1rem}.mb-toolbar>div:first-child{flex:1;min-width:10rem}.mb-filter{width:8rem;flex:none}
 .mb-content{margin-top:1rem}.mb-stack{display:grid;gap:1rem}.mb-section{display:grid;gap:.75rem}
@@ -4193,16 +4424,79 @@ function presentBot(bot, display) {
 }
 var comingSoon = (bot, display) => display?.bots.some((p) => p.id === bot.id && p.availability === "coming-soon") === true;
 
+// packages/hermes-plugin/desktop/self-update.tsx
+import { useEffect as useEffect7, useRef as useRef6, useState as useState7 } from "react";
+import { jsx as jsx7, jsxs as jsxs6 } from "react/jsx-runtime";
+var VERSION2 = /^[0-9]+\.[0-9]+\.[0-9]+$/;
+var LATEST = /^([0-9]+\.[0-9]+\.[0-9]+|[0-9a-f]{7})$/;
+var SELF_NOTES = { "local-changes-kept": "Your edits to MyBots files were kept on top of the update.", "local-changes-stashed": "Your edits to MyBots files conflicted with the update and were saved in git stash.", "scan-blocked": "Hermes' security scan blocked this update. The current version stays installed.", "local-changes-unsaved": "MyBots files have edits that could not be set aside, so nothing was changed.", "dependencies": "This update needs new Python packages. Run hermes plugins update mybots in a terminal." };
+var FAILED = "Could not update MyBots. The current version stays installed.";
+var RUNNING = "A MyBots update is already running.";
+var RUNNING_DETAIL = "MyBots 업데이트가 이미 진행 중입니다.";
+var valid = (x) => !!x && typeof x.installed === "string" && VERSION2.test(x.installed) && (x.kind === "git" || x.kind === "other") && typeof x.available === "boolean" && (x.latest === null || typeof x.latest === "string");
+function SelfUpdate({ ctx }) {
+  const { t } = useMyBots();
+  const local = useLocal();
+  const [status, setStatus] = useState7(null), [result, setResult] = useState7(null), [failed, setFailed] = useState7(false), [busy, setBusy] = useState7(false), [restart, setRestart] = useState7(false), [running, setRunning] = useState7(false);
+  const posting = useRef6(false);
+  useEffect7(() => {
+    let active = true;
+    setStatus(null);
+    ctx.rest("/self-update", { timeoutMs: 15e3 }).then((x) => {
+      if (active && valid(x)) setStatus(x);
+    }, () => {
+    });
+    return () => {
+      active = false;
+    };
+  }, [ctx, local]);
+  if (!status) return null;
+  const latest = status.kind === "git" && status.available && status.latest && LATEST.test(status.latest) ? status.latest : null, updated = restart || status.restartRequired === true || result?.status === "updated", done = updated || result?.status === "up-to-date";
+  const run = async () => {
+    if (posting.current || !local) return;
+    posting.current = true;
+    setBusy(true);
+    setFailed(false);
+    setRunning(false);
+    setResult(null);
+    try {
+      const r = await ctx.rest("/self-update", { method: "POST", body: {}, timeoutMs: 18e4 });
+      if (r?.status === "updated" || r?.status === "up-to-date") setResult(r);
+      else {
+        setFailed(true);
+        if (r?.status === "failed") setResult(r);
+      }
+    } catch (error) {
+      const reason = detail(error);
+      if (reason === RESTART_REQUIRED) setRestart(true);
+      else if (reason === RUNNING_DETAIL) setRunning(true);
+      else setFailed(true);
+    } finally {
+      posting.current = false;
+      setBusy(false);
+    }
+  };
+  const note = result?.note ? SELF_NOTES[result.note] : void 0;
+  return /* @__PURE__ */ jsxs6("section", { className: "mb-self", children: [
+    /* @__PURE__ */ jsx7("span", { className: "mb-muted", children: t("MyBots {0}", status.installed) }),
+    latest && !done && /* @__PURE__ */ jsx7(Badge, { variant: "muted", children: t("New version {0}", latest) }),
+    latest && !done && /* @__PURE__ */ jsx7(Button2, { variant: "secondary", disabled: !local || busy, loading: busy, onClick: run, children: t("Update MyBots") }),
+    done && /* @__PURE__ */ jsx7("p", { role: "status", children: updated ? t("Restart Hermes to apply.") : t("MyBots is already up to date.") }),
+    running && /* @__PURE__ */ jsx7("p", { role: "status", className: "mb-muted", children: t(RUNNING) }),
+    (failed || note) && /* @__PURE__ */ jsx7("p", { role: failed ? "alert" : "status", className: "mb-muted", children: t(note || FAILED) })
+  ] });
+}
+
 // packages/hermes-plugin/desktop/market-page.tsx
-import { Fragment as Fragment5, jsx as jsx7, jsxs as jsxs6 } from "react/jsx-runtime";
+import { Fragment as Fragment5, jsx as jsx8, jsxs as jsxs7 } from "react/jsx-runtime";
 var INSTALLED_FAILED = "Could not load installed bots. Please retry.";
 function MarketPage({ ctx, renderTab }) {
   const { t, locale, dir, contentLocale } = useMyBots();
-  const [display, setDisplay] = useState7(null);
-  const [displayDone, setDisplayDone] = useState7("");
-  const [tab, setTab] = useState7("browse"), [view, setView] = useState7(null), [installed, setInstalled] = useState7([]), [query, setQuery] = useState7(""), [category, setCategory] = useState7("all"), [selected, setSelected] = useState7(null), [error, setError] = useState7(""), [busy, setBusy] = useState7(false), [reload, setReload] = useState7(0), [hash, setHash] = useState7(location.hash), [linkSequence, setLinkSequence] = useState7(0), [keysFor, setKeysFor] = useState7(null), [updateFor, setUpdateFor] = useState7(null);
-  const fence = useRef6(new ReviewFence()), local = useLocal();
-  useEffect7(() => {
+  const [display, setDisplay] = useState8(null);
+  const [displayDone, setDisplayDone] = useState8("");
+  const [tab, setTab] = useState8("browse"), [view, setView] = useState8(null), [installed, setInstalled] = useState8([]), [query, setQuery] = useState8(""), [category, setCategory] = useState8("all"), [selected, setSelected] = useState8(null), [error, setError] = useState8(""), [busy, setBusy] = useState8(false), [reload, setReload] = useState8(0), [hash, setHash] = useState8(location.hash), [linkSequence, setLinkSequence] = useState8(0), [keysFor, setKeysFor] = useState8(null), [updateFor, setUpdateFor] = useState8(null), [detached, setDetached] = useState8(false);
+  const fence = useRef7(new ReviewFence()), local = useLocal();
+  useEffect8(() => {
     const update = () => {
       setSelected(null);
       setHash(location.hash);
@@ -4228,16 +4522,20 @@ function MarketPage({ ctx, renderTab }) {
       unsubscribe?.();
     };
   }, []);
-  useEffect7(() => {
+  useEffect8(() => {
     const ticket = fence.current.begin();
     let fresh = false;
     setBusy(true);
     setError("");
+    setDetached(false);
     const api = new MarketApi(ctx);
     api.installed().then((x) => {
       if (fence.current.isCurrent(ticket) && !fresh) setInstalled(x);
-    }).catch(() => {
-      if (fence.current.isCurrent(ticket) && !fresh) setError(INSTALLED_FAILED);
+    }).catch((e) => {
+      if (fence.current.isCurrent(ticket) && !fresh) {
+        if (unattached(e)) setDetached(true);
+        else setError(INSTALLED_FAILED);
+      }
     });
     api.load().then((x) => {
       if (fence.current.isCurrent(ticket)) {
@@ -4248,17 +4546,18 @@ function MarketPage({ ctx, renderTab }) {
           setError((e) => e === INSTALLED_FAILED ? "" : e);
         }
       }
-    }, () => {
+    }, (e) => {
       if (fence.current.isCurrent(ticket)) {
         setView(null);
-        setError("Could not load the catalog. Installed bots are still available.");
+        if (unattached(e)) setDetached(true);
+        else setError("Could not load the catalog. Installed bots are still available.");
       }
     }).finally(() => {
       if (fence.current.isCurrent(ticket)) setBusy(false);
     });
     return () => fence.current.invalidate();
   }, [ctx, reload, local]);
-  useEffect7(() => {
+  useEffect8(() => {
     if (!view || view.cached || displayDone !== view.origin + "|" + contentLocale) return;
     try {
       const link = parseInstallLink("hermes://" + hash.replace(/^#\/?/, ""));
@@ -4290,7 +4589,7 @@ function MarketPage({ ctx, renderTab }) {
     const own = installedProfile(bot);
     return own ? moods[own.profile] || "unavailable" : "idle";
   };
-  useEffect7(() => {
+  useEffect8(() => {
     let active = true;
     if (!view) return;
     const key = view.origin + "|" + contentLocale, settle = () => {
@@ -4331,83 +4630,84 @@ function MarketPage({ ctx, renderTab }) {
     const f = b?.files.find((f2) => f2.component === "avatar");
     return f ? { sha256: f.sha256, src: new URL(`/api/bots/${id}/${version}/files/${f.path.split("/").map(encodeURIComponent).join("/")}`, view.origin).href } : null;
   };
-  return /* @__PURE__ */ jsxs6("main", { lang: locale, dir, className: "mybots px-[clamp(1.25rem,4vw,4rem)]", children: [
-    /* @__PURE__ */ jsx7("style", { children: marketStyles }),
-    /* @__PURE__ */ jsxs6("header", { className: "mb-header", children: [
-      /* @__PURE__ */ jsxs6("div", { children: [
-        /* @__PURE__ */ jsx7("h1", { children: "MyBots" }),
-        /* @__PURE__ */ jsx7("p", { children: t("Find your next AI colleague.") })
+  return /* @__PURE__ */ jsxs7("main", { lang: locale, dir, className: "mybots px-[clamp(1.25rem,4vw,4rem)]", children: [
+    /* @__PURE__ */ jsx8("style", { children: marketStyles }),
+    /* @__PURE__ */ jsxs7("header", { className: "mb-header", children: [
+      /* @__PURE__ */ jsxs7("div", { children: [
+        /* @__PURE__ */ jsx8("h1", { children: "MyBots" }),
+        /* @__PURE__ */ jsx8("p", { children: t("Find your next AI colleague.") })
       ] }),
-      (tab === "browse" || tab === "installed") && /* @__PURE__ */ jsx7(Button2, { variant: "ghost", disabled: busy, loading: busy, onClick: () => setReload((n) => n + 1), children: t("Refresh") })
+      (tab === "browse" || tab === "installed") && /* @__PURE__ */ jsx8(Button2, { variant: "ghost", disabled: busy, loading: busy, onClick: () => setReload((n) => n + 1), children: t("Refresh") })
     ] }),
-    /* @__PURE__ */ jsx7(Tabs, { dir, value: tab, onValueChange: (v) => setTab(v), children: /* @__PURE__ */ jsx7(TabsList, { className: "self-start", "aria-label": t("MyBots menu"), children: [["browse", t("Browse bots")], ["installed", t("Installed bots")], ["submissions", t("My submissions")], ["connection", t("Connection settings")]].map(([value, label]) => /* @__PURE__ */ jsx7(TabsTrigger, { value, children: label }, value)) }) }),
-    error && /* @__PURE__ */ jsx7(Failure, { message: t(error) }),
-    /* @__PURE__ */ jsxs6("div", { className: "mb-content", children: [
-      linkWaiting && /* @__PURE__ */ jsx7(Loader, { label: t("Loading colleagues") }),
-      tab === "browse" && /* @__PURE__ */ jsxs6(Fragment5, { children: [
-        !local && /* @__PURE__ */ jsx7(LocalNotice, {}),
-        view?.cached && /* @__PURE__ */ jsxs6("section", { className: "mb-notice", role: "status", children: [
-          /* @__PURE__ */ jsx7("p", { children: t("Showing the saved catalog while offline. Reconnect to install.") }),
-          /* @__PURE__ */ jsxs6("small", { children: [
+    /* @__PURE__ */ jsx8(SelfUpdate, { ctx }),
+    /* @__PURE__ */ jsx8(Tabs, { dir, value: tab, onValueChange: (v) => setTab(v), children: /* @__PURE__ */ jsx8(TabsList, { className: "self-start", "aria-label": t("MyBots menu"), children: [["browse", t("Browse bots")], ["installed", t("Installed bots")], ["submissions", t("My submissions")], ["connection", t("Connection settings")]].map(([value, label]) => /* @__PURE__ */ jsx8(TabsTrigger, { value, children: label }, value)) }) }),
+    detached ? /* @__PURE__ */ jsx8(DefaultProfileNotice, { onRetry: () => setReload((n) => n + 1) }) : error && /* @__PURE__ */ jsx8(Failure, { message: t(error) }),
+    /* @__PURE__ */ jsxs7("div", { className: "mb-content", children: [
+      linkWaiting && /* @__PURE__ */ jsx8(Loader, { label: t("Loading colleagues") }),
+      tab === "browse" && /* @__PURE__ */ jsxs7(Fragment5, { children: [
+        !local && !detached && /* @__PURE__ */ jsx8(LocalNotice, {}),
+        view?.cached && /* @__PURE__ */ jsxs7("section", { className: "mb-notice", role: "status", children: [
+          /* @__PURE__ */ jsx8("p", { children: t("Showing the saved catalog while offline. Reconnect to install.") }),
+          /* @__PURE__ */ jsxs7("small", { children: [
             t("Last checked:"),
             new Date(view.checkedAt).toLocaleString(locale === "zh-hant" ? "zh-TW" : locale)
           ] })
         ] }),
-        !!view?.catalog.bots.length && /* @__PURE__ */ jsxs6("div", { className: "mb-toolbar", children: [
-          /* @__PURE__ */ jsx7(SearchField, { "aria-label": t("Search bots"), placeholder: t("Search by name or role"), value: query, onChange: setQuery }),
-          /* @__PURE__ */ jsx7("div", { className: "mb-filter", children: /* @__PURE__ */ jsx7(Choice, { label: t("Bot category"), value: category, onChange: (v) => setCategory(v), options: [["all", t("All categories")], ["business", t("Business")], ["learning", t("Learning")], ["daily", t("Daily life")]] }) })
+        !!view?.catalog.bots.length && /* @__PURE__ */ jsxs7("div", { className: "mb-toolbar", children: [
+          /* @__PURE__ */ jsx8(SearchField, { "aria-label": t("Search bots"), placeholder: t("Search by name or role"), value: query, onChange: setQuery }),
+          /* @__PURE__ */ jsx8("div", { className: "mb-filter", children: /* @__PURE__ */ jsx8(Choice, { label: t("Bot category"), value: category, onChange: (v) => setCategory(v), options: [["all", t("All categories")], ["business", t("Business")], ["learning", t("Learning")], ["daily", t("Daily life")]] }) })
         ] }),
-        busy && !view && /* @__PURE__ */ jsx7(Loader, { label: t("Loading colleagues") }),
-        view && /* @__PURE__ */ jsx7("p", { className: "mb-count", children: t("{0} colleagues", visible.length) }),
-        /* @__PURE__ */ jsx7("div", { className: "mb-grid", children: visible.map((bot) => {
+        busy && !view && /* @__PURE__ */ jsx8(Loader, { label: t("Loading colleagues") }),
+        view && /* @__PURE__ */ jsx8("p", { className: "mb-count", children: t("{0} colleagues", visible.length) }),
+        /* @__PURE__ */ jsx8("div", { className: "mb-grid", children: visible.map((bot) => {
           const asset = portrait(bot.id, bot.version), owned = !!installedProfile(bot), soon = comingSoon(bot, presentation);
           const mood = botMood(bot);
-          return /* @__PURE__ */ jsxs6("article", { className: "mb-bot", children: [
-            /* @__PURE__ */ jsx7(BotAvatar, { bot: bot.id, name: bot.name, src: new URL(bot.avatarUrl, view.origin).href, sha256: asset?.sha256, mood, size: 112 }),
-            /* @__PURE__ */ jsx7("h2", { children: bot.name }),
-            /* @__PURE__ */ jsx7("p", { children: bot.role }),
-            /* @__PURE__ */ jsx7("p", { className: "mb-description", children: bot.description }),
-            /* @__PURE__ */ jsxs6("div", { className: "mb-badges", children: [
-              soon && /* @__PURE__ */ jsx7(Badge, { id: "mb-soon-" + bot.id, variant: "muted", children: t("Coming soon") }),
-              /* @__PURE__ */ jsx7(Badge, { variant: "muted", children: t("Soul") }),
-              bot.optional.map((c) => /* @__PURE__ */ jsx7(Badge, { variant: "muted", children: { skills: t("Skills"), mcp: "MCP", plugin: t("Plugins"), voice: t("Voice") }[c] }, c))
+          return /* @__PURE__ */ jsxs7("article", { className: "mb-bot", children: [
+            /* @__PURE__ */ jsx8(BotAvatar, { bot: bot.id, name: bot.name, src: new URL(bot.avatarUrl, view.origin).href, sha256: asset?.sha256, mood, size: 112 }),
+            /* @__PURE__ */ jsx8("h2", { children: bot.name }),
+            /* @__PURE__ */ jsx8("p", { children: bot.role }),
+            /* @__PURE__ */ jsx8("p", { className: "mb-description", children: bot.description }),
+            /* @__PURE__ */ jsxs7("div", { className: "mb-badges", children: [
+              soon && /* @__PURE__ */ jsx8(Badge, { id: "mb-soon-" + bot.id, variant: "muted", children: t("Coming soon") }),
+              /* @__PURE__ */ jsx8(Badge, { variant: "muted", children: t("Soul") }),
+              bot.optional.map((c) => /* @__PURE__ */ jsx8(Badge, { variant: "muted", children: { skills: t("Skills"), mcp: "MCP", plugin: t("Plugins"), voice: t("Voice") }[c] }, c))
             ] }),
-            /* @__PURE__ */ jsxs6("div", { className: "mb-actions", children: [
-              /* @__PURE__ */ jsx7(Button2, { variant: "secondary", disabled: view.cached || !local || soon, "aria-describedby": soon ? "mb-soon-" + bot.id : void 0, onClick: () => setSelected(view.catalog.bots.find((b) => b.id === bot.id && b.version === bot.version) ?? bot), children: t("Meet") }),
-              /* @__PURE__ */ jsx7("small", { className: "mb-muted", children: owned ? t(moodLabels[mood]) : t("Motion preview") })
+            /* @__PURE__ */ jsxs7("div", { className: "mb-actions", children: [
+              /* @__PURE__ */ jsx8(Button2, { variant: "secondary", disabled: view.cached || !local || soon, "aria-describedby": soon ? "mb-soon-" + bot.id : void 0, onClick: () => setSelected(view.catalog.bots.find((b) => b.id === bot.id && b.version === bot.version) ?? bot), children: t("Meet") }),
+              /* @__PURE__ */ jsx8("small", { className: "mb-muted", children: owned ? t(moodLabels[mood]) : t("Motion preview") })
             ] })
           ] }, bot.id);
         }) }),
-        view && visible.length === 0 && /* @__PURE__ */ jsx7(EmptyState, { title: t("No matching bots"), description: t("Try another search or category.") })
+        view && visible.length === 0 && /* @__PURE__ */ jsx8(EmptyState, { title: t("No matching bots"), description: t("Try another search or category.") })
       ] }),
-      tab === "installed" && /* @__PURE__ */ jsxs6("section", { className: "mb-section", children: [
-        /* @__PURE__ */ jsx7("h2", { children: t("Installed bots") }),
-        listedInstalled(installed).length === 0 && /* @__PURE__ */ jsx7(EmptyState, { title: t("No bots installed yet"), description: t("Find your first colleague in Browse bots.") }),
+      tab === "installed" && /* @__PURE__ */ jsxs7("section", { className: "mb-section", children: [
+        /* @__PURE__ */ jsx8("h2", { children: t("Installed bots") }),
+        !detached && listedInstalled(installed).length === 0 && /* @__PURE__ */ jsx8(EmptyState, { title: t("No bots installed yet"), description: t("Find your first colleague in Browse bots.") }),
         listedInstalled(installed).map((x) => {
           const asset = portrait(x.bot, x.version);
           const mood = moods[x.profile] || "unavailable", label = installedLabel(x);
-          return /* @__PURE__ */ jsxs6("article", { className: "mb-row", children: [
-            asset && /* @__PURE__ */ jsx7(BotAvatar, { bot: x.bot, name: label, src: asset.src, sha256: asset.sha256, mood, size: 56 }),
-            /* @__PURE__ */ jsxs6("div", { children: [
-              /* @__PURE__ */ jsx7("h3", { children: label }),
-              /* @__PURE__ */ jsxs6("p", { children: [
+          return /* @__PURE__ */ jsxs7("article", { className: "mb-row", children: [
+            asset && /* @__PURE__ */ jsx8(BotAvatar, { bot: x.bot, name: label, src: asset.src, sha256: asset.sha256, mood, size: 56 }),
+            /* @__PURE__ */ jsxs7("div", { children: [
+              /* @__PURE__ */ jsx8("h3", { children: label }),
+              /* @__PURE__ */ jsxs7("p", { children: [
                 x.profile,
                 " · ",
                 x.version || t("Check version")
               ] }),
-              /* @__PURE__ */ jsx7("small", { className: "mb-muted", children: t(moodLabels[mood]) })
+              /* @__PURE__ */ jsx8("small", { className: "mb-muted", children: t(moodLabels[mood]) })
             ] }),
-            /* @__PURE__ */ jsx7(Badge, { variant: x.state === "name-conflict" ? "warn" : "muted", children: x.updatable ? t("Update available") : x.state === "installed" ? t("Installed") : x.state === "other-version" ? t("Other version") : t("Check files") }),
+            /* @__PURE__ */ jsx8(Badge, { variant: x.state === "name-conflict" ? "warn" : "muted", children: x.updatable ? t("Update available") : x.state === "installed" ? t("Installed") : x.state === "other-version" ? t("Other version") : t("Check files") }),
             (() => {
               const badge = keyBadge(x.secrets);
-              return badge && /* @__PURE__ */ jsx7(Badge, { variant: badge.variant, children: t(badge.label) });
+              return badge && /* @__PURE__ */ jsx8(Badge, { variant: badge.variant, children: t(badge.label) });
             })(),
-            !!x.secrets?.length && x.version && (x.state === "installed" || x.state === "other-version") && /* @__PURE__ */ jsx7(Button2, { variant: "secondary", disabled: !local, onClick: () => setKeysFor(x), children: t("Add keys") }),
+            !!x.secrets?.length && x.version && (x.state === "installed" || x.state === "other-version") && /* @__PURE__ */ jsx8(Button2, { variant: "secondary", disabled: !local, onClick: () => setKeysFor(x), children: t("Add keys") }),
             (() => {
               const latest = latestBot(x);
-              return latest && /* @__PURE__ */ jsx7(Button2, { variant: "secondary", disabled: !local || view.cached || comingSoon(latest, presentation), onClick: () => setUpdateFor(x), children: t("Update") });
+              return latest && /* @__PURE__ */ jsx8(Button2, { variant: "secondary", disabled: !local || view.cached || comingSoon(latest, presentation), onClick: () => setUpdateFor(x), children: t("Update") });
             })(),
-            (x.state === "installed" || x.state === "other-version") && /* @__PURE__ */ jsx7(Button2, { variant: "secondary", onClick: () => {
+            (x.state === "installed" || x.state === "other-version") && /* @__PURE__ */ jsx8(Button2, { variant: "secondary", onClick: () => {
               const d = profileDestination(x.profile);
               host4.newChat(d.route, d.options);
               location.hash = "#/";
@@ -4415,23 +4715,23 @@ function MarketPage({ ctx, renderTab }) {
           ] }, x.profile);
         })
       ] }),
-      (tab === "connection" || tab === "submissions") && (renderTab ? renderTab(tab) : /* @__PURE__ */ jsx7(Loader, { label: t("Loading submissions") }))
+      (tab === "connection" || tab === "submissions") && (renderTab ? renderTab(tab) : /* @__PURE__ */ jsx8(Loader, { label: t("Loading submissions") }))
     ] }),
-    keysFor?.version && keysFor.secrets && /* @__PURE__ */ jsx7(AddKeysDialog, { ctx, status: { ...keysFor, version: keysFor.version, secrets: keysFor.secrets }, label: installedLabel(keysFor), onClose: () => setKeysFor(null), onSaved: done }, keysFor.profile),
+    keysFor?.version && keysFor.secrets && /* @__PURE__ */ jsx8(AddKeysDialog, { ctx, status: { ...keysFor, version: keysFor.version, secrets: keysFor.secrets }, label: installedLabel(keysFor), onClose: () => setKeysFor(null), onSaved: done }, keysFor.profile),
     updateFor && (() => {
       const latest = latestBot(updateFor);
-      return latest && /* @__PURE__ */ jsx7(InstallConfirmation, { mode: "update", ctx, bot: shown(latest), mood: moods[updateFor.profile] || "unavailable", status: updateFor, onClose: () => setUpdateFor(null), onInstalled: done, onKeysSaved: done, comingSoon: comingSoon(latest, presentation) }, "update:" + updateFor.profile);
+      return latest && /* @__PURE__ */ jsx8(InstallConfirmation, { mode: "update", ctx, bot: shown(latest), mood: moods[updateFor.profile] || "unavailable", status: updateFor, onClose: () => setUpdateFor(null), onInstalled: done, onKeysSaved: done, comingSoon: comingSoon(latest, presentation) }, "update:" + updateFor.profile);
     })(),
-    selected && /* @__PURE__ */ jsx7(InstallConfirmation, { ctx, bot: shown(selected), mood: botMood(selected), status: installed.find((x) => x.bot === selected.id), onClose: close, onInstalled: done, onKeysSaved: done, comingSoon: comingSoon(selected, presentation) }, selected.id + "@" + selected.version)
+    selected && /* @__PURE__ */ jsx8(InstallConfirmation, { ctx, bot: shown(selected), mood: botMood(selected), status: installed.find((x) => x.bot === selected.id), onClose: close, onInstalled: done, onKeysSaved: done, comingSoon: comingSoon(selected, presentation) }, selected.id + "@" + selected.version)
   ] });
 }
 
 // packages/hermes-plugin/desktop/plugin.tsx
-import { jsx as jsx8 } from "react/jsx-runtime";
+import { jsx as jsx9 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.6.0",
+  version: "0.6.1",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {
@@ -4439,8 +4739,8 @@ var plugin_default = {
     const disposeIcon = registerLumiIcon();
     ctx.onDispose?.(disposeIcon);
     ctx.registerMany([
-      { id: "market", area: ROUTES_AREA, data: { path: "/mybots" }, render: () => /* @__PURE__ */ jsx8(MarketPage, { ctx, renderTab: (tab) => tab === "connection" ? /* @__PURE__ */ jsx8(ConnectionPage, { ctx }) : /* @__PURE__ */ jsx8(SubmissionsPage, { ctx }) }) },
-      { id: "install", area: ROUTES_AREA, data: { path: "/mybots/install" }, render: () => /* @__PURE__ */ jsx8(MarketPage, { ctx, renderTab: (tab) => tab === "connection" ? /* @__PURE__ */ jsx8(ConnectionPage, { ctx }) : /* @__PURE__ */ jsx8(SubmissionsPage, { ctx }) }) },
+      { id: "market", area: ROUTES_AREA, data: { path: "/mybots" }, render: () => /* @__PURE__ */ jsx9(MarketPage, { ctx, renderTab: (tab) => tab === "connection" ? /* @__PURE__ */ jsx9(ConnectionPage, { ctx }) : /* @__PURE__ */ jsx9(SubmissionsPage, { ctx }) }) },
+      { id: "install", area: ROUTES_AREA, data: { path: "/mybots/install" }, render: () => /* @__PURE__ */ jsx9(MarketPage, { ctx, renderTab: (tab) => tab === "connection" ? /* @__PURE__ */ jsx9(ConnectionPage, { ctx }) : /* @__PURE__ */ jsx9(SubmissionsPage, { ctx }) }) },
       { id: "nav", area: SIDEBAR_NAV_AREA, data: { path: "/mybots", label: "MyBots", codicon: "mybots-lumi" } }
     ]);
   }
