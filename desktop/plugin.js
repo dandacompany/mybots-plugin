@@ -240,10 +240,14 @@ var locales_default = {
     "MyBots works on the Hermes default profile.": "MyBots works on the Hermes default profile.",
     "The connected Hermes backend does not run MyBots, so this screen cannot load.": "The connected Hermes backend does not run MyBots, so this screen cannot load.",
     "Restart Hermes on default": "Restart Hermes on default",
-    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes restarts on default and opens on default from now on. Replies in progress may stop.",
-    "Or quit Hermes completely and run this in a terminal:": "Or quit Hermes completely and run this in a terminal:",
-    "Quit Hermes completely and run this in a terminal:": "Quit Hermes completely and run this in a terminal:",
-    "Could not restart Hermes. Use the terminal command below.": "Could not restart Hermes. Use the terminal command below."
+    "Hermes restarts and tries to open on default. Replies in progress may stop.": "Hermes restarts and tries to open on default. Replies in progress may stop.",
+    "Restarting Hermes…": "Restarting Hermes…",
+    "Hermes’ start profile did not change.": "Hermes’ start profile did not change.",
+    "Open Hermes on default by hand:": "Open Hermes on default by hand:",
+    "Quit Hermes completely.": "Quit Hermes completely.",
+    "Save this file with exactly the content below:": "Save this file with exactly the content below:",
+    "Open Hermes again.": "Open Hermes again.",
+    "Could not restart Hermes. Follow the steps below.": "Could not restart Hermes. Follow the steps below."
   },
   ko: {
     "Could not load installed bots. Please retry.": "설치된 봇을 확인하지 못했습니다. 다시 시도해 주세요.",
@@ -479,10 +483,14 @@ var locales_default = {
     "MyBots works on the Hermes default profile.": "MyBots는 Hermes 기본(default) 프로필에서 동작합니다.",
     "The connected Hermes backend does not run MyBots, so this screen cannot load.": "연결된 Hermes 백엔드에서 MyBots가 실행되지 않아 이 화면을 불러올 수 없습니다.",
     "Restart Hermes on default": "Hermes를 default로 다시 시작",
-    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes가 default 프로필로 다시 시작되고, 이후에도 default로 열립니다. 진행 중인 응답은 멈출 수 있습니다.",
-    "Or quit Hermes completely and run this in a terminal:": "또는 Hermes를 완전히 종료한 뒤 터미널에서 실행하세요:",
-    "Quit Hermes completely and run this in a terminal:": "Hermes를 완전히 종료한 뒤 터미널에서 실행하세요:",
-    "Could not restart Hermes. Use the terminal command below.": "Hermes를 다시 시작하지 못했습니다. 아래 터미널 명령을 사용하세요."
+    "Hermes restarts and tries to open on default. Replies in progress may stop.": "Hermes를 다시 시작해 default로 열기를 시도합니다. 진행 중인 응답은 멈출 수 있습니다.",
+    "Restarting Hermes…": "Hermes를 다시 시작하는 중…",
+    "Hermes’ start profile did not change.": "Hermes 시작 프로필이 바뀌지 않았습니다.",
+    "Open Hermes on default by hand:": "직접 default로 여는 방법:",
+    "Quit Hermes completely.": "Hermes를 완전히 종료합니다.",
+    "Save this file with exactly the content below:": "아래 파일을 정확히 아래 내용으로 저장합니다:",
+    "Open Hermes again.": "Hermes를 다시 엽니다.",
+    "Could not restart Hermes. Follow the steps below.": "Hermes를 다시 시작하지 못했습니다. 아래 방법을 따라 주세요."
   },
   zh: {
     "Could not load installed bots. Please retry.": "无法加载已安装的机器人。请重试。",
@@ -718,10 +726,14 @@ var locales_default = {
     "MyBots works on the Hermes default profile.": "MyBots 在 Hermes 默认（default）配置文件中运行。",
     "The connected Hermes backend does not run MyBots, so this screen cannot load.": "已连接的 Hermes 后端未运行 MyBots，因此无法加载此页面。",
     "Restart Hermes on default": "以 default 重新启动 Hermes",
-    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes 将以 default 重新启动，之后也会以 default 打开。进行中的回复可能会中断。",
-    "Or quit Hermes completely and run this in a terminal:": "或者完全退出 Hermes，然后在终端中运行：",
-    "Quit Hermes completely and run this in a terminal:": "请完全退出 Hermes，然后在终端中运行：",
-    "Could not restart Hermes. Use the terminal command below.": "无法重新启动 Hermes。请使用下面的终端命令。"
+    "Hermes restarts and tries to open on default. Replies in progress may stop.": "Hermes 将重新启动并尝试以 default 打开。进行中的回复可能会中断。",
+    "Restarting Hermes…": "正在重新启动 Hermes…",
+    "Hermes’ start profile did not change.": "Hermes 的启动配置文件没有改变。",
+    "Open Hermes on default by hand:": "手动以 default 打开 Hermes：",
+    "Quit Hermes completely.": "完全退出 Hermes。",
+    "Save this file with exactly the content below:": "将下面的文件保存为与下方内容完全一致：",
+    "Open Hermes again.": "重新打开 Hermes。",
+    "Could not restart Hermes. Follow the steps below.": "无法重新启动 Hermes。请按照下面的步骤操作。"
   },
   "zh-hant": {
     "Could not load installed bots. Please retry.": "無法載入已安裝的機器人。請重試。",
@@ -957,10 +969,14 @@ var locales_default = {
     "MyBots works on the Hermes default profile.": "MyBots 在 Hermes 預設（default）設定檔中運作。",
     "The connected Hermes backend does not run MyBots, so this screen cannot load.": "已連線的 Hermes 後端未執行 MyBots，因此無法載入此畫面。",
     "Restart Hermes on default": "以 default 重新啟動 Hermes",
-    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes 將以 default 重新啟動，之後也會以 default 開啟。進行中的回覆可能會中斷。",
-    "Or quit Hermes completely and run this in a terminal:": "或者完全結束 Hermes，然後在終端機中執行：",
-    "Quit Hermes completely and run this in a terminal:": "請完全結束 Hermes，然後在終端機中執行：",
-    "Could not restart Hermes. Use the terminal command below.": "無法重新啟動 Hermes。請使用下方的終端機指令。"
+    "Hermes restarts and tries to open on default. Replies in progress may stop.": "Hermes 將重新啟動並嘗試以 default 開啟。進行中的回覆可能會中斷。",
+    "Restarting Hermes…": "正在重新啟動 Hermes…",
+    "Hermes’ start profile did not change.": "Hermes 的啟動設定檔沒有改變。",
+    "Open Hermes on default by hand:": "手動以 default 開啟 Hermes：",
+    "Quit Hermes completely.": "完全結束 Hermes。",
+    "Save this file with exactly the content below:": "將下方檔案儲存為與下方內容完全一致：",
+    "Open Hermes again.": "重新開啟 Hermes。",
+    "Could not restart Hermes. Follow the steps below.": "無法重新啟動 Hermes。請依照下方步驟操作。"
   },
   ja: {
     "Could not load installed bots. Please retry.": "インストール済みボットを読み込めません。再試行してください。",
@@ -1196,10 +1212,14 @@ var locales_default = {
     "MyBots works on the Hermes default profile.": "MyBots は Hermes の既定（default）プロファイルで動作します。",
     "The connected Hermes backend does not run MyBots, so this screen cannot load.": "接続中の Hermes バックエンドで MyBots が動いていないため、この画面を読み込めません。",
     "Restart Hermes on default": "Hermes を default で再起動",
-    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes が default プロファイルで再起動し、以後も default で開きます。進行中の応答は止まる場合があります。",
-    "Or quit Hermes completely and run this in a terminal:": "または Hermes を完全に終了し、ターミナルで次を実行してください:",
-    "Quit Hermes completely and run this in a terminal:": "Hermes を完全に終了し、ターミナルで次を実行してください:",
-    "Could not restart Hermes. Use the terminal command below.": "Hermes を再起動できませんでした。下のターミナルコマンドを使ってください。"
+    "Hermes restarts and tries to open on default. Replies in progress may stop.": "Hermes を再起動し、default で開くことを試みます。進行中の応答は止まる場合があります。",
+    "Restarting Hermes…": "Hermes を再起動しています…",
+    "Hermes’ start profile did not change.": "Hermes の起動プロファイルは変わりませんでした。",
+    "Open Hermes on default by hand:": "手動で default で開く方法:",
+    "Quit Hermes completely.": "Hermes を完全に終了します。",
+    "Save this file with exactly the content below:": "下のファイルを、下の内容どおりに保存します:",
+    "Open Hermes again.": "Hermes をもう一度開きます。",
+    "Could not restart Hermes. Follow the steps below.": "Hermes を再起動できませんでした。下の手順に従ってください。"
   },
   ar: {
     "Could not load installed bots. Please retry.": "تعذر تحميل البوتات المثبتة. حاول مجددًا.",
@@ -1435,10 +1455,14 @@ var locales_default = {
     "MyBots works on the Hermes default profile.": "يعمل MyBots على ملف Hermes الافتراضي (default).",
     "The connected Hermes backend does not run MyBots, so this screen cannot load.": "خادم Hermes المتصل لا يشغّل MyBots، لذا لا يمكن تحميل هذه الشاشة.",
     "Restart Hermes on default": "إعادة تشغيل Hermes على default",
-    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "سيُعاد تشغيل Hermes على default وسيفتح عليه من الآن فصاعدًا. قد تتوقف الردود الجارية.",
-    "Or quit Hermes completely and run this in a terminal:": "أو أغلق Hermes تمامًا وشغّل هذا في الطرفية:",
-    "Quit Hermes completely and run this in a terminal:": "أغلق Hermes تمامًا وشغّل هذا في الطرفية:",
-    "Could not restart Hermes. Use the terminal command below.": "تعذّرت إعادة تشغيل Hermes. استخدم أمر الطرفية أدناه."
+    "Hermes restarts and tries to open on default. Replies in progress may stop.": "سيُعاد تشغيل Hermes ويحاول الفتح على default. قد تتوقف الردود الجارية.",
+    "Restarting Hermes…": "جارٍ إعادة تشغيل Hermes…",
+    "Hermes’ start profile did not change.": "لم يتغير ملف بدء تشغيل Hermes.",
+    "Open Hermes on default by hand:": "افتح Hermes على default يدويًا:",
+    "Quit Hermes completely.": "أغلق Hermes تمامًا.",
+    "Save this file with exactly the content below:": "احفظ هذا الملف بالمحتوى أدناه تمامًا:",
+    "Open Hermes again.": "افتح Hermes مرة أخرى.",
+    "Could not restart Hermes. Follow the steps below.": "تعذّرت إعادة تشغيل Hermes. اتبع الخطوات أدناه."
   },
   ru: {
     "Could not load installed bots. Please retry.": "Не удалось загрузить установленных ботов. Повторите попытку.",
@@ -1674,10 +1698,14 @@ var locales_default = {
     "MyBots works on the Hermes default profile.": "MyBots работает в профиле Hermes по умолчанию (default).",
     "The connected Hermes backend does not run MyBots, so this screen cannot load.": "Подключённый бэкенд Hermes не запускает MyBots, поэтому этот экран не загружается.",
     "Restart Hermes on default": "Перезапустить Hermes в default",
-    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes перезапустится в профиле default и дальше будет открываться в нём. Текущие ответы могут прерваться.",
-    "Or quit Hermes completely and run this in a terminal:": "Или полностью закройте Hermes и выполните в терминале:",
-    "Quit Hermes completely and run this in a terminal:": "Полностью закройте Hermes и выполните в терминале:",
-    "Could not restart Hermes. Use the terminal command below.": "Не удалось перезапустить Hermes. Используйте команду терминала ниже."
+    "Hermes restarts and tries to open on default. Replies in progress may stop.": "Hermes перезапустится и попробует открыться в профиле default. Текущие ответы могут прерваться.",
+    "Restarting Hermes…": "Перезапуск Hermes…",
+    "Hermes’ start profile did not change.": "Стартовый профиль Hermes не изменился.",
+    "Open Hermes on default by hand:": "Как открыть Hermes в default вручную:",
+    "Quit Hermes completely.": "Полностью закройте Hermes.",
+    "Save this file with exactly the content below:": "Сохраните этот файл точно с содержимым ниже:",
+    "Open Hermes again.": "Снова откройте Hermes.",
+    "Could not restart Hermes. Follow the steps below.": "Не удалось перезапустить Hermes. Выполните шаги ниже."
   },
   fr: {
     "Could not load installed bots. Please retry.": "Impossible de charger les bots installés. Réessayez.",
@@ -1913,10 +1941,14 @@ var locales_default = {
     "MyBots works on the Hermes default profile.": "MyBots fonctionne sur le profil Hermes par défaut (default).",
     "The connected Hermes backend does not run MyBots, so this screen cannot load.": "Le backend Hermes connecté n’exécute pas MyBots, cet écran ne peut donc pas se charger.",
     "Restart Hermes on default": "Redémarrer Hermes sur default",
-    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes redémarre sur default et s’ouvrira désormais sur default. Les réponses en cours peuvent s’interrompre.",
-    "Or quit Hermes completely and run this in a terminal:": "Ou quittez complètement Hermes et exécutez ceci dans un terminal :",
-    "Quit Hermes completely and run this in a terminal:": "Quittez complètement Hermes et exécutez ceci dans un terminal :",
-    "Could not restart Hermes. Use the terminal command below.": "Impossible de redémarrer Hermes. Utilisez la commande de terminal ci-dessous."
+    "Hermes restarts and tries to open on default. Replies in progress may stop.": "Hermes redémarre et tente de s’ouvrir sur default. Les réponses en cours peuvent s’interrompre.",
+    "Restarting Hermes…": "Redémarrage de Hermes…",
+    "Hermes’ start profile did not change.": "Le profil de démarrage de Hermes n’a pas changé.",
+    "Open Hermes on default by hand:": "Ouvrir Hermes sur default à la main :",
+    "Quit Hermes completely.": "Quittez complètement Hermes.",
+    "Save this file with exactly the content below:": "Enregistrez ce fichier avec exactement le contenu ci-dessous :",
+    "Open Hermes again.": "Rouvrez Hermes.",
+    "Could not restart Hermes. Follow the steps below.": "Impossible de redémarrer Hermes. Suivez les étapes ci-dessous."
   },
   de: {
     "Could not load installed bots. Please retry.": "Installierte Bots konnten nicht geladen werden. Bitte erneut versuchen.",
@@ -2152,10 +2184,14 @@ var locales_default = {
     "MyBots works on the Hermes default profile.": "MyBots läuft im Hermes-Standardprofil (default).",
     "The connected Hermes backend does not run MyBots, so this screen cannot load.": "Das verbundene Hermes-Backend führt MyBots nicht aus, daher kann diese Ansicht nicht geladen werden.",
     "Restart Hermes on default": "Hermes mit default neu starten",
-    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes startet mit default neu und öffnet sich künftig mit default. Laufende Antworten können abbrechen.",
-    "Or quit Hermes completely and run this in a terminal:": "Oder Hermes vollständig beenden und dies im Terminal ausführen:",
-    "Quit Hermes completely and run this in a terminal:": "Hermes vollständig beenden und dies im Terminal ausführen:",
-    "Could not restart Hermes. Use the terminal command below.": "Hermes konnte nicht neu gestartet werden. Verwende den Terminalbefehl unten."
+    "Hermes restarts and tries to open on default. Replies in progress may stop.": "Hermes startet neu und versucht, mit default zu öffnen. Laufende Antworten können abbrechen.",
+    "Restarting Hermes…": "Hermes wird neu gestartet…",
+    "Hermes’ start profile did not change.": "Das Startprofil von Hermes hat sich nicht geändert.",
+    "Open Hermes on default by hand:": "Hermes von Hand mit default öffnen:",
+    "Quit Hermes completely.": "Hermes vollständig beenden.",
+    "Save this file with exactly the content below:": "Diese Datei mit genau dem Inhalt unten speichern:",
+    "Open Hermes again.": "Hermes wieder öffnen.",
+    "Could not restart Hermes. Follow the steps below.": "Hermes konnte nicht neu gestartet werden. Folge den Schritten unten."
   },
   es: {
     "Could not load installed bots. Please retry.": "No se pudieron cargar los bots instalados. Inténtalo de nuevo.",
@@ -2391,10 +2427,14 @@ var locales_default = {
     "MyBots works on the Hermes default profile.": "MyBots funciona en el perfil predeterminado de Hermes (default).",
     "The connected Hermes backend does not run MyBots, so this screen cannot load.": "El backend de Hermes conectado no ejecuta MyBots, así que esta pantalla no puede cargarse.",
     "Restart Hermes on default": "Reiniciar Hermes en default",
-    "Hermes restarts on default and opens on default from now on. Replies in progress may stop.": "Hermes se reinicia en default y se abrirá en default a partir de ahora. Las respuestas en curso pueden detenerse.",
-    "Or quit Hermes completely and run this in a terminal:": "O cierra Hermes por completo y ejecuta esto en una terminal:",
-    "Quit Hermes completely and run this in a terminal:": "Cierra Hermes por completo y ejecuta esto en una terminal:",
-    "Could not restart Hermes. Use the terminal command below.": "No se pudo reiniciar Hermes. Usa el comando de terminal de abajo."
+    "Hermes restarts and tries to open on default. Replies in progress may stop.": "Hermes se reinicia e intenta abrirse en default. Las respuestas en curso pueden detenerse.",
+    "Restarting Hermes…": "Reiniciando Hermes…",
+    "Hermes’ start profile did not change.": "El perfil de inicio de Hermes no cambió.",
+    "Open Hermes on default by hand:": "Abrir Hermes en default a mano:",
+    "Quit Hermes completely.": "Cierra Hermes por completo.",
+    "Save this file with exactly the content below:": "Guarda este archivo con exactamente el contenido de abajo:",
+    "Open Hermes again.": "Vuelve a abrir Hermes.",
+    "Could not restart Hermes. Follow the steps below.": "No se pudo reiniciar Hermes. Sigue los pasos de abajo."
   }
 };
 
@@ -2422,7 +2462,7 @@ function useMyBots() {
 }
 
 // packages/hermes-plugin/desktop/submissions-page.tsx
-import { useEffect as useEffect2, useRef, useState as useState2 } from "react";
+import { useEffect as useEffect2, useRef as useRef2, useState as useState2 } from "react";
 
 // packages/contracts/src/voice.ts
 var VOICE_IDS = ["marin", "cedar", "quartz", "ripple", "vesper", "willow", "stone", "gleam", "meridian", "bossa", "tempo", "beacon", "delta", "cinder"];
@@ -2769,7 +2809,7 @@ var modelResultMessage = (result, t = format) => result.modelSetupRequired || !r
 var languagePackMessage = (packs, t = format) => packs?.length ? t("Language packs: {0} (copied from the default profile)", packs.map((p) => p.name).join(", ")) : "";
 
 // packages/hermes-plugin/desktop/market-ui.tsx
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { host, Button, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, ErrorState } from "@hermes/plugin-sdk";
 import { Button as Button2, Input, Textarea, Badge, Loader, EmptyState, SearchField, Tabs, TabsList, TabsTrigger, Checkbox, Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Codicon } from "@hermes/plugin-sdk";
 import { jsx, jsxs } from "react/jsx-runtime";
@@ -2813,26 +2853,86 @@ function LocalNotice() {
   ] });
 }
 var unattached = (error) => /^404:/.test(hostError(error)) && detail(error) === "Plugin not found";
-var RESTART_FAILED = "Could not restart Hermes. Use the terminal command below.";
+var RESTART_FAILED = "Could not restart Hermes. Follow the steps below.";
 var LOCAL_FAILED = "Could not open the local connection. Please retry.";
+var RESTART_WAIT = 15e3;
+var MARK = "mybots.defaultRestart";
+var restartMark = { get() {
+  try {
+    return window.sessionStorage.getItem(MARK) === "1";
+  } catch {
+    return false;
+  }
+}, set() {
+  try {
+    window.sessionStorage.setItem(MARK, "1");
+  } catch {
+  }
+}, clear() {
+  try {
+    window.sessionStorage.removeItem(MARK);
+  } catch {
+  }
+} };
+var clearRestartMark = () => restartMark.clear();
+var START_FILES = { windows: "%APPDATA%\\Hermes\\active-profile.json", mac: "~/Library/Application Support/Hermes/active-profile.json" };
+function ManualSteps() {
+  const { t } = useMyBots();
+  const agent = String(window.navigator?.userAgent || "");
+  const files = /Windows/.test(agent) ? [START_FILES.windows] : /Macintosh|Mac OS X/.test(agent) ? [START_FILES.mac] : [START_FILES.windows, START_FILES.mac];
+  return /* @__PURE__ */ jsxs("div", { "data-manual-steps": true, children: [
+    /* @__PURE__ */ jsx("p", { children: t("Open Hermes on default by hand:") }),
+    /* @__PURE__ */ jsxs("ol", { children: [
+      /* @__PURE__ */ jsx("li", { children: t("Quit Hermes completely.") }),
+      /* @__PURE__ */ jsxs("li", { children: [
+        t("Save this file with exactly the content below:"),
+        files.map((file) => /* @__PURE__ */ jsxs("span", { children: [
+          /* @__PURE__ */ jsx("br", {}),
+          /* @__PURE__ */ jsx("code", { children: file })
+        ] }, file)),
+        /* @__PURE__ */ jsx("br", {}),
+        /* @__PURE__ */ jsx("code", { children: '{"profile": "default"}' })
+      ] }),
+      /* @__PURE__ */ jsx("li", { children: t("Open Hermes again.") })
+    ] })
+  ] });
+}
 function DefaultProfileNotice({ onRetry }) {
   const { t } = useMyBots();
-  const [connection, setConnection] = useState(() => host.state.connectionId.get()), [busy, setBusy] = useState(false), [error, setError] = useState("");
+  const [connection, setConnection] = useState(() => host.state.connectionId.get()), [busy, setBusy] = useState(false), [error, setError] = useState(""), [attempted] = useState(() => restartMark.get()), [restarting, setRestarting] = useState(false);
+  const timer = useRef(null);
   useEffect(() => {
     setConnection(host.state.connectionId.get());
-    return host.state.connectionId.listen(() => setConnection(host.state.connectionId.get()));
+    const off = host.state.connectionId.listen(() => setConnection(host.state.connectionId.get()));
+    return () => {
+      off();
+      if (timer.current) clearTimeout(timer.current);
+    };
   }, []);
-  const remote = connection !== "local", bridge = window.hermesDesktop?.profile, restart = typeof bridge?.set === "function";
+  const remote = connection !== "local", bridge = window.hermesDesktop?.profile, restart = typeof bridge?.set === "function", failed = !remote && attempted;
   const run = async () => {
-    if (busy) return;
+    if (busy || restarting) return;
     setBusy(true);
     setError("");
+    if (remote) {
+      try {
+        await host.ensureAgent("local", "default");
+        onRetry();
+      } catch {
+        setError(LOCAL_FAILED);
+      } finally {
+        setBusy(false);
+      }
+      return;
+    }
+    restartMark.set();
     try {
-      if (remote) await host.ensureAgent("local", "default");
-      else await bridge.set("default");
-      onRetry();
+      await bridge.set("default");
+      setRestarting(true);
+      timer.current = setTimeout(onRetry, RESTART_WAIT);
     } catch {
-      setError(remote ? LOCAL_FAILED : RESTART_FAILED);
+      restartMark.clear();
+      setError(RESTART_FAILED);
     } finally {
       setBusy(false);
     }
@@ -2840,14 +2940,11 @@ function DefaultProfileNotice({ onRetry }) {
   return /* @__PURE__ */ jsxs("section", { role: "status", className: "mb-notice", "data-default-profile": true, children: [
     /* @__PURE__ */ jsx("p", { children: /* @__PURE__ */ jsx("strong", { children: t("MyBots works on the Hermes default profile.") }) }),
     /* @__PURE__ */ jsx("p", { children: t("The connected Hermes backend does not run MyBots, so this screen cannot load.") }),
-    (remote || restart) && /* @__PURE__ */ jsx(Button, { variant: "secondary", disabled: busy, loading: busy, onClick: run, children: remote ? t("Connect to this device’s default") : t("Restart Hermes on default") }),
-    !remote && restart && /* @__PURE__ */ jsx("p", { className: "mb-muted", children: t("Hermes restarts on default and opens on default from now on. Replies in progress may stop.") }),
-    !remote && /* @__PURE__ */ jsxs("p", { className: "mb-muted", children: [
-      restart ? t("Or quit Hermes completely and run this in a terminal:") : t("Quit Hermes completely and run this in a terminal:"),
-      " ",
-      /* @__PURE__ */ jsx("code", { children: "hermes -p default desktop" })
-    ] }),
-    error && /* @__PURE__ */ jsx(Failure, { message: t(error) })
+    failed && /* @__PURE__ */ jsx("p", { "data-restart-failed": true, children: /* @__PURE__ */ jsx("strong", { children: t("Hermes’ start profile did not change.") }) }),
+    (remote || restart && !failed) && /* @__PURE__ */ jsx(Button, { variant: "secondary", disabled: busy || restarting, loading: busy || restarting, onClick: run, children: remote ? t("Connect to this device’s default") : t("Restart Hermes on default") }),
+    !remote && restart && !failed && /* @__PURE__ */ jsx("p", { className: "mb-muted", children: restarting ? t("Restarting Hermes…") : t("Hermes restarts and tries to open on default. Replies in progress may stop.") }),
+    error && /* @__PURE__ */ jsx(Failure, { message: t(error) }),
+    !remote && (failed || !restart || !!error) && /* @__PURE__ */ jsx(ManualSteps, {})
   ] });
 }
 
@@ -2878,7 +2975,7 @@ var fields = [["id", "Bot ID"], ["version", "Version"], ["name", "Name"], ["engl
 function SubmissionsPage({ ctx }) {
   const { t } = useMyBots();
   const [connection, setConnection] = useState2(null), [drafts, setDrafts] = useState2([]), [draft, setDraft] = useState2(null), [form, setForm] = useState2(empty), [soul, setSoul] = useState2(""), [avatar, setAvatar] = useState2(null), [zip, setZip] = useState2(null), [editing, setEditing] = useState2(false), [busy, setBusy] = useState2(false), [error, setError] = useState2(""), [reload, setReload] = useState2(0);
-  const fence = useRef(new ReviewFence()), posting = useRef(null), requests = useRef(/* @__PURE__ */ new Map()), local = useLocal();
+  const fence = useRef2(new ReviewFence()), posting = useRef2(null), requests = useRef2(/* @__PURE__ */ new Map()), local = useLocal();
   useEffect2(() => {
     const ticket = fence.current.begin();
     posting.current = null;
@@ -3074,12 +3171,12 @@ function SubmissionsPage({ ctx }) {
 }
 
 // packages/hermes-plugin/desktop/connection-page.tsx
-import { useEffect as useEffect3, useRef as useRef2, useState as useState3 } from "react";
+import { useEffect as useEffect3, useRef as useRef3, useState as useState3 } from "react";
 import { Fragment as Fragment2, jsx as jsx3, jsxs as jsxs3 } from "react/jsx-runtime";
 function ConnectionPage({ ctx }) {
   const { t, locale } = useMyBots();
   const [state, setState] = useState3(null), [mode, setMode] = useState3("bws"), [value, setValue] = useState3(""), [busy, setBusy] = useState3(false), [error, setError] = useState3(""), [reload, setReload] = useState3(0);
-  const fence = useRef2(new ReviewFence()), posting = useRef2(null), local = useLocal();
+  const fence = useRef3(new ReviewFence()), posting = useRef3(null), local = useLocal();
   useEffect3(() => {
     const ticket = fence.current.begin();
     posting.current = null;
@@ -3185,15 +3282,15 @@ function registerLumiIcon() {
 }
 
 // packages/hermes-plugin/desktop/market-page.tsx
-import { useCallback, useEffect as useEffect8, useRef as useRef7, useState as useState8 } from "react";
+import { useCallback, useEffect as useEffect8, useRef as useRef8, useState as useState8 } from "react";
 import { host as host4 } from "@hermes/plugin-sdk";
 
 // packages/hermes-plugin/desktop/install-confirmation.tsx
-import { useEffect as useEffect5, useRef as useRef5, useState as useState5 } from "react";
+import { useEffect as useEffect5, useRef as useRef6, useState as useState5 } from "react";
 import { host as host2 } from "@hermes/plugin-sdk";
 
 // packages/hermes-plugin/desktop/secrets-fields.tsx
-import { useId, useRef as useRef3, useState as useState4 } from "react";
+import { useId, useRef as useRef4, useState as useState4 } from "react";
 import { Fragment as Fragment3, jsx as jsx4, jsxs as jsxs4 } from "react/jsx-runtime";
 var STORAGE_NOTICE = "Keys this bot needs are stored only in bot profiles on this computer";
 var APPLY_NOTICE = "Keys apply from the next new chat (or after restarting Hermes)";
@@ -3334,7 +3431,7 @@ function AddKeysForm({
   const [keys, setKeys] = useState4(
     () => initialKeys(secrets)
   ), [busy, setBusy] = useState4(false), [error, setError] = useState4(""), [result, setResult] = useState4(null);
-  const posting = useRef3(false), local = useLocal();
+  const posting = useRef4(false), local = useLocal();
   const labels2 = Object.fromEntries(secrets.map((r) => [r.name, r.label]));
   const request = keyRequest(secrets, keys), empty2 = Object.values(request).every((x) => x.source === "skip");
   async function save() {
@@ -3406,7 +3503,7 @@ function AddKeysDialog({
   onSaved
 }) {
   const { t, locale, dir } = useMyBots();
-  const opener = useRef3(document.activeElement);
+  const opener = useRef4(document.activeElement);
   const [fields2] = useState4(() => installedFields(status.secrets));
   return /* @__PURE__ */ jsx4(
     Dialog,
@@ -3452,7 +3549,7 @@ function AddKeysDialog({
 }
 
 // packages/hermes-plugin/desktop/bot-avatar.tsx
-import { useEffect as useEffect4, useRef as useRef4 } from "react";
+import { useEffect as useEffect4, useRef as useRef5 } from "react";
 import * as sdk2 from "@hermes/plugin-sdk";
 
 // packages/hermes-plugin/desktop/avatar-presets.ts
@@ -4051,7 +4148,7 @@ var sharedLoop = (draw, options) => {
 function BotAvatar({ bot, name, src, sha256, mood = "idle", size = 80 }) {
   const { t } = useMyBots();
   const accessibleLabel = t("{0} avatar", name);
-  const ref = useRef4(null), scene = useRef4(null);
+  const ref = useRef5(null), scene = useRef5(null);
   const calibration = sha256 ? avatarPreset(bot, sha256) : null;
   const animate = !!calibration && mood !== "unavailable";
   useEffect4(() => {
@@ -4081,11 +4178,11 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
   const updating = mode === "update";
   const [selection, setSelection] = useState5(() => initialSelection(bot)), [review, setReview] = useState5(null), [result, setResult] = useState5(null), [busy, setBusy] = useState5(false), [error, setError] = useState5(""), [retry, setRetry] = useState5(0);
   const [keys, setKeys] = useState5({}), [decls, setDecls] = useState5([]), [addKeys, setAddKeys] = useState5(null), [typed, setTyped] = useState5(false), [existing, setExisting] = useState5(null);
-  const opener = useRef5(document.activeElement);
-  const fence = useRef5(new ReviewFence()), posting = useRef5(false), local = useLocal();
+  const opener = useRef6(document.activeElement);
+  const fence = useRef6(new ReviewFence()), posting = useRef6(false), local = useLocal();
   const identity = bot.id + "@" + bot.version;
   const conflict = !updating && status?.state === "name-conflict", chatBusy = updating && mood === "think";
-  const owner = useRef5(identity);
+  const owner = useRef6(identity);
   owner.current = identity;
   useEffect5(() => {
     setSelection(initialSelection(bot));
@@ -4430,10 +4527,10 @@ function presentBot(bot, display) {
 var comingSoon = (bot, display) => display?.bots.some((p) => p.id === bot.id && p.availability === "coming-soon") === true;
 
 // packages/hermes-plugin/desktop/self-update.tsx
-import { useEffect as useEffect7, useRef as useRef6, useState as useState7 } from "react";
+import { useEffect as useEffect7, useRef as useRef7, useState as useState7 } from "react";
 import { jsx as jsx7, jsxs as jsxs6 } from "react/jsx-runtime";
 var VERSION2 = /^[0-9]+\.[0-9]+\.[0-9]+$/;
-var LATEST = /^([0-9]+\.[0-9]+\.[0-9]+|[0-9a-f]{7})$/;
+var LATEST = /^([0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?|[0-9a-f]{7})$/;
 var SELF_NOTES = { "local-changes-kept": "Your edits to MyBots files were kept on top of the update.", "local-changes-stashed": "Your edits to MyBots files conflicted with the update and were saved in git stash.", "scan-blocked": "Hermes' security scan blocked this update. The current version stays installed.", "local-changes-unsaved": "MyBots files have edits that could not be set aside, so nothing was changed.", "dependencies": "This update needs new Python packages. Run hermes plugins update mybots in a terminal." };
 var FAILED = "Could not update MyBots. The current version stays installed.";
 var RUNNING = "A MyBots update is already running.";
@@ -4443,7 +4540,7 @@ function SelfUpdate({ ctx }) {
   const { t } = useMyBots();
   const local = useLocal();
   const [status, setStatus] = useState7(null), [result, setResult] = useState7(null), [failed, setFailed] = useState7(false), [busy, setBusy] = useState7(false), [restart, setRestart] = useState7(false), [running, setRunning] = useState7(false);
-  const posting = useRef6(false);
+  const posting = useRef7(false);
   useEffect7(() => {
     let active = true;
     setStatus(null);
@@ -4500,7 +4597,7 @@ function MarketPage({ ctx, renderTab }) {
   const [display, setDisplay] = useState8(null);
   const [displayDone, setDisplayDone] = useState8("");
   const [tab, setTab] = useState8("browse"), [view, setView] = useState8(null), [installed, setInstalled] = useState8([]), [query, setQuery] = useState8(""), [category, setCategory] = useState8("all"), [selected, setSelected] = useState8(null), [error, setError] = useState8(""), [busy, setBusy] = useState8(false), [reload, setReload] = useState8(0), [hash, setHash] = useState8(location.hash), [linkSequence, setLinkSequence] = useState8(0), [keysFor, setKeysFor] = useState8(null), [updateFor, setUpdateFor] = useState8(null), [detached, setDetached] = useState8(false);
-  const fence = useRef7(new ReviewFence()), local = useLocal();
+  const fence = useRef8(new ReviewFence()), local = useLocal();
   useEffect8(() => {
     const update = () => {
       setSelected(null);
@@ -4535,6 +4632,7 @@ function MarketPage({ ctx, renderTab }) {
     setDetached(false);
     const api = new MarketApi(ctx);
     api.installed().then((x) => {
+      clearRestartMark();
       if (fence.current.isCurrent(ticket) && !fresh) setInstalled(x);
     }).catch((e) => {
       if (fence.current.isCurrent(ticket) && !fresh) {
@@ -4543,6 +4641,7 @@ function MarketPage({ ctx, renderTab }) {
       }
     });
     api.load().then((x) => {
+      clearRestartMark();
       if (fence.current.isCurrent(ticket)) {
         setView(x);
         if (Array.isArray(x.statuses)) {

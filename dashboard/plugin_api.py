@@ -189,7 +189,8 @@ _self={'key':None,'at':0.0,'ttl':0,'value':None,'thread':None};_self_lock=thread
 # other spellings show the short SHA and fetch nothing.
 OFFICIAL_ORIGIN=re.compile(r'https://(?i:github\.com)/dandacompany/mybots-plugin(?:\.git)?');OFFICIAL_REPO='dandacompany/mybots-plugin'
 GITHUB_PATH=re.compile(r'/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+?)(?:\.git)?/?')
-YAML_VERSION=re.compile(r'^version:\s*["\']?([0-9]+\.[0-9]+\.[0-9]+)["\']?\s*$',re.M)
+YAML_VERSION=re.compile(r'^version:\s*["\']?([0-9]+\.[0-9]+\.[0-9]+(?:-[0-9A-Za-z.-]+)?)["\']?\s*$',re.M)
+SEMVER=re.compile(r'(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?');FULL_SHA=re.compile(r'[0-9a-fA-F]{40}')
 SELF_NOTES=(('could not be stashed','local-changes-unsaved'),('conflicted with the update','local-changes-stashed'),
     ('re-applied on top of the update','local-changes-kept'),('new Python dependencies','dependencies'))
 
@@ -236,15 +237,43 @@ def _remote_version(origin,sha):
     except Exception:return None
     return match[1]if match else None
 
+def _semver_key(text):
+    """SemVer 2.0 precedence key (build metadata unsupported), else None."""
+    match=SEMVER.fullmatch(text)if isinstance(text,str)else None
+    if match is None:return None
+    pre=match[4]
+    # A release sorts after every prerelease of the same core; numeric identifiers sort before alphanumeric ones.
+    tail=(1,)if pre is None else(0,*((0,int(p),'')if p.isdigit()else(1,0,p)for p in pre.split('.')))
+    return (int(match[1]),int(match[2]),int(match[3]),tail)
+
+def _newer(latest,installed):
+    a,b=_semver_key(latest),_semver_key(installed)
+    return a is not None and b is not None and a>b
+
+def _checkout_head(path):
+    """The checkout's own HEAD through Hermes' git helper (Hermes' record can be the install-time commit), else None."""
+    try:
+        from hermes_cli.plugins_cmd import _resolve_git_executable
+        from hermes_cli.plugins_cmd_git import _git_head_revision
+        return _git_head_revision(Path(path),_resolve_git_executable())
+    except Exception:return None
+
 def _self_check(prov,origin):
+    """Offer an update only for a strictly newer plugin version, or, when the version cannot be read,
+    for a remote commit other than the checkout's current HEAD. Never a downgrade or a same version."""
     from hermes_cli.plugins_updates import check_provenanced,default_fetch,default_ls_remote
     result=check_provenanced(prov,fetch=default_fetch,ls_remote=default_ls_remote)
     if result.needs_fixing or result.update_available is None:return {'latest':None,'available':False,'reason':'unavailable'}
-    if not result.update_available:return {'latest':VERSION,'available':False}
+    current={'latest':VERSION,'available':False}
+    if not result.update_available:return current
     latest=str(result.latest or'')
-    if re.fullmatch(r'[0-9a-fA-F]{40}',latest):latest=_remote_version(origin,latest.lower())or latest[:7].lower()
-    elif not VERSION_RE.fullmatch(latest):latest=None
-    return {'latest':latest,'available':True}
+    if not FULL_SHA.fullmatch(latest):return {'latest':latest,'available':True}if _newer(latest,VERSION)else current
+    sha=latest.lower();head=_checkout_head(prov.path)
+    if head==sha:return current
+    remote=_remote_version(origin,sha)
+    if remote is not None:return {'latest':remote,'available':True}if _newer(remote,VERSION)else current
+    if head is None:return {'latest':None,'available':False,'reason':'unavailable'}
+    return {'latest':sha[:7],'available':True}
 
 def _self_fill(key,prov,origin):
     try:value=_self_check(prov,origin)
