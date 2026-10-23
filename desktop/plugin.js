@@ -2692,8 +2692,13 @@ function installErrorMessage(error, profile, t = format) {
   return keyRefusal(reason, t) ?? t("Could not install. Review the configuration and retry.");
 }
 var PROFILE_ENV_UNCHECKED = "The bot profile key file could not be checked safely, so nothing was changed";
+function hostError(error) {
+  let text2 = String(error?.message ?? error), next;
+  while ((next = text2.replace(/^Error invoking remote method '[^']+': (?:Error: )?/, "")) !== text2) text2 = next;
+  return text2;
+}
 function detail(error) {
-  const text2 = String(error?.message ?? error), start = text2.indexOf("{");
+  const text2 = hostError(error), start = text2.indexOf("{");
   if (start < 0) return "";
   try {
     const body = JSON.parse(text2.slice(start));
@@ -2807,7 +2812,7 @@ function LocalNotice() {
     error && /* @__PURE__ */ jsx(Failure, { message: t(error) })
   ] });
 }
-var unattached = (error) => /^404:/.test(String(error?.message ?? error)) && detail(error) === "Plugin not found";
+var unattached = (error) => /^404:/.test(hostError(error)) && detail(error) === "Plugin not found";
 var RESTART_FAILED = "Could not restart Hermes. Use the terminal command below.";
 var LOCAL_FAILED = "Could not open the local connection. Please retry.";
 function DefaultProfileNotice({ onRetry }) {
