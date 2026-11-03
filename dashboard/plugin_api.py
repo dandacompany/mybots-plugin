@@ -19,8 +19,19 @@ _module=importlib.util.module_from_spec(_spec)
 sys.modules[_spec.name]=_module
 _spec.loader.exec_module(_module)
 Installer,InstallError=_module.Installer,_module.InstallError
+_rspec=importlib.util.spec_from_file_location('mybots_routines',Path(__file__).with_name('routines.py'))
+routines=importlib.util.module_from_spec(_rspec);_rspec.loader.exec_module(routines)
+class _LazyTeams:
+    # Loaded on the first team request, not at import: importing it eagerly made the self-update tests flaky (11-03).
+    _mod=None
+    def __getattr__(self,name):
+        if _LazyTeams._mod is None:
+            spec=importlib.util.spec_from_file_location('mybots_teams',Path(__file__).with_name('teams.py'))
+            mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod);_LazyTeams._mod=mod
+        return getattr(_LazyTeams._mod,name)
+teams=_LazyTeams()
 router=APIRouter()
-VERSION='0.6.1'
+VERSION='0.7.0'
 # After a self-update the files on disk are the new version while this process still runs the old
 # one, and installer.py/plugin_api.py load sibling modules from disk per request. Until Hermes
 # restarts, every write answers this fixed 409 so old and new code never mix in a write.
@@ -459,3 +470,94 @@ async def minimal_submission(draft_id:str,request:Request):
 async def validate_submission(draft_id:str,request:Request):
     client,body=await registration_body(request,['revision'])
     return await registration_call(client.validate,draft_id,body['revision'])
+
+
+# --- Bot call panel (0.7.0): every bot's scheduled jobs and "run now" (hermes cron run, in the background).
+_runs=None
+_runs_lock=threading.Lock()
+def runs():
+    global _runs
+    with _runs_lock:
+        if _runs is None:_runs=routines.Runs(get_default_hermes_root())
+        return _runs
+
+@router.get('/routines')
+def routines_list():return {'routines':routines.list_all(get_default_hermes_root())}
+
+@router.post('/routines/run')
+async def routines_run(request:Request):
+    restart_guard();body=await json_body(request,512,('profile','job'))
+    try:return {'run_id':runs().start(body['profile'],body['job'])}
+    except routines.NotFound:raise HTTPException(404,'그 예약 작업을 찾지 못했습니다. 목록을 새로고침해 주세요.')
+    except routines.Paused:raise HTTPException(409,'멈춘 작업입니다. 봇에서 다시 켠 뒤 실행해 주세요.')
+    except routines.Busy:raise HTTPException(409,'이미 실행 중입니다.')
+
+@router.get('/routines/run/{run_id}')
+def routines_status(run_id:str):
+    try:return runs().status(run_id)
+    except routines.NotFound:raise HTTPException(404,'실행 기록이 없습니다.')
+
+
+# --- Team recruit (0.7.0): templates shipped in dashboard/teams, members installed with the same installer.
+_TEAM_ID=re.compile(r'^[a-z][a-z0-9-]{2,39}$')
+def _team(team_id:str):
+    if not _TEAM_ID.fullmatch(team_id or ''):raise HTTPException(404,'팀을 찾지 못했습니다.')
+    try:return teams.get(team_id)
+    except KeyError:raise HTTPException(404,'팀을 찾지 못했습니다.')
+    except ValueError:raise HTTPException(500,'팀 템플릿이 올바르지 않습니다. MyBots를 업데이트해 주세요.')
+
+@router.get('/teams')
+def teams_list():
+    root=get_default_hermes_root();out=[]
+    try:
+        eng=engine()
+        if getattr(eng,'authority',None):eng._refresh()
+        trusted=eng.trusted
+    except Exception:trusted={}
+    for t in teams.load_all().values():
+        out.append({'id':t['id'],'name':t['name'],'englishName':t.get('englishName'),'summary':t['summary'],
+                    'mode':t['collaboration']['mode'],'room':bool(t['room']),
+                    'members':[{k:m[k] for k in('bot','version','role','is_leader','duties','dont','voice','wakes')}for m in t['members']],
+                    'recruited':(teams.team_dir(t,root)/'recruit.json').exists(),'available':teams.available(t,trusted)})
+    return {'teams':out}
+
+@router.post('/teams/{team_id}/review')
+async def teams_review(team_id:str,request:Request):
+    restart_guard();await json_body(request,64,());team=_team(team_id)
+    def run():
+        try:return teams.review(team,engine(write=True),get_default_hermes_root(),runner=teams.HermesRunner(get_default_hermes_root()))
+        except InstallError as exc:raise HTTPException(400,str(exc)) from exc
+    return await run_in_threadpool(run)
+
+@router.post('/teams/{team_id}/install')
+async def teams_install(team_id:str,request:Request):
+    restart_guard();body=await json_body(request,200_000,('members',),('secrets','consents'));team=_team(team_id)
+    members=body['members'];secrets_by_bot=body.get('secrets')or{};consents=body.get('consents')or[]
+    if(type(members)is not list or len(members)>6 or any(type(m)is not dict or type(m.get('bot'))is not str or type(m.get('token'))is not str for m in members)
+       or type(secrets_by_bot)is not dict or type(consents)is not list or any(type(c)is not str for c in consents)):raise HTTPException(422,INVALID_REQUEST)
+    def run():
+        try:return teams.install(team,{'members':[{'bot':m['bot'],'token':m['token']}for m in members]},secrets_by_bot,consents,
+                                 engine=engine(write=True),runner=teams.HermesRunner(get_default_hermes_root()),root=get_default_hermes_root())
+        except teams.TeamError as exc:raise HTTPException(409,str(exc)) from exc
+    return await run_in_threadpool(run)
+
+@router.post('/teams/{team_id}/room')
+async def teams_room(team_id:str,request:Request):
+    restart_guard();body=await json_body(request,512,('room_id',));team=_team(team_id)
+    if type(body['room_id'])is not str or not 1<=len(body['room_id'])<=120:raise HTTPException(422,INVALID_REQUEST)
+    try:return teams.record_room(team,body['room_id'],get_default_hermes_root())
+    except (OSError,ValueError):raise HTTPException(409,'이 팀을 영입한 기록이 없습니다.')
+
+@router.post('/teams/{team_id}/disband')
+async def teams_disband(team_id:str,request:Request):
+    restart_guard();await json_body(request,64,());team=_team(team_id)
+    def run():
+        try:return teams.disband(team,runner=teams.HermesRunner(get_default_hermes_root()),root=get_default_hermes_root())
+        except teams.TeamError as exc:raise HTTPException(409,str(exc)) from exc
+    return await run_in_threadpool(run)
+
+@router.post('/teams/{team_id}/room-closed')
+async def teams_room_closed(team_id:str,request:Request):
+    restart_guard();await json_body(request,64,());team=_team(team_id)
+    try:return teams.room_closed(team,get_default_hermes_root())
+    except teams.TeamError as exc:raise HTTPException(409,str(exc)) from exc

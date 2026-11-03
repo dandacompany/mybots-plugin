@@ -1,0 +1,44 @@
+{
+ "type": "object", "additionalProperties": false,
+ "required": ["id", "name", "version", "summary", "collaboration", "members", "board", "room", "memory", "google", "briefing", "review_notice"],
+ "properties": {
+  "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]{2,39}$"},
+  "name": {"type": "string", "minLength": 1, "maxLength": 40},
+  "englishName": {"type": "string", "maxLength": 40},
+  "version": {"type": "integer", "minimum": 1},
+  "summary": {"type": "string", "maxLength": 200},
+  "collaboration": {"type": "object", "additionalProperties": false, "required": ["mode", "leader", "pull"], "properties": {
+   "mode": {"enum": ["delegate", "pull"]},
+   "leader": {"type": "string"},
+   "pull": {"oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": false,
+    "required": ["match", "tag", "same_role", "max_running_per_bot", "no_match", "wait_parents"], "properties": {
+     "match": {"const": "role-tag"}, "tag": {"type": "string", "minLength": 1, "maxLength": 10},
+     "same_role": {"const": "least-busy"}, "max_running_per_bot": {"type": "integer", "minimum": 1, "maximum": 5},
+     "no_match": {"const": "leader"}, "wait_parents": {"type": "boolean"}}}]}}},
+  "members": {"type": "array", "minItems": 2, "maxItems": 6, "items": {"type": "object", "additionalProperties": false,
+   "required": ["bot", "version", "role", "is_leader", "duties", "dont", "voice", "wakes"], "properties": {
+    "bot": {"type": "string", "pattern": "^mybots-[a-z0-9-]{2,30}$"},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "role": {"type": "string", "minLength": 1, "maxLength": 30},
+    "is_leader": {"type": "boolean"},
+    "duties": {"type": "string", "maxLength": 300},
+    "dont": {"type": "array", "minItems": 1, "maxItems": 8, "items": {"type": "object", "additionalProperties": false,
+     "required": ["what", "instead"], "properties": {"what": {"type": "string", "maxLength": 120}, "instead": {"type": "string", "maxLength": 60}}}},
+    "voice": {"type": "string", "maxLength": 80},
+    "wakes": {"type": "string", "maxLength": 120},
+    "setup": {"type": "object", "additionalProperties": false, "properties": {
+     "skills": {"type": "array", "maxItems": 3, "items": {"type": "object", "additionalProperties": false, "required": ["id", "label"],
+      "properties": {"id": {"type": "string", "maxLength": 120}, "label": {"type": "string", "maxLength": 80}}}}}}}}},
+  "board": {"type": "object", "additionalProperties": false, "required": ["slug", "workspace"], "properties": {
+   "slug": {"type": "string", "pattern": "^[a-z][a-z0-9-]{2,39}$"}, "workspace": {"const": "dir:team"}}},
+  "room": {"oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": false, "required": ["name", "members"],
+   "properties": {"name": {"type": "string", "maxLength": 40}, "members": {"const": "all"}}}]},
+  "memory": {"type": "object", "additionalProperties": false, "required": ["file", "log"], "properties": {
+   "file": {"const": "TEAM.md"}, "log": {"const": "log.md"}}},
+  "google": {"type": "object", "additionalProperties": false, "required": ["copy_default_to", "ask_consent"], "properties": {
+   "copy_default_to": {"type": "array", "items": {"const": "leader"}, "maxItems": 1}, "ask_consent": {"const": true}}},
+  "briefing": {"type": "object", "additionalProperties": false, "required": ["deliver"], "properties": {"deliver": {"const": "bot-chat"}}},
+  "review_notice": {"oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": false, "required": ["deliver", "every"],
+   "properties": {"deliver": {"const": "bot-chat"}, "every": {"type": "string", "pattern": "^[1-9][0-9]?m$"}}}]}
+ }
+}

@@ -247,7 +247,75 @@ var locales_default = {
     "Quit Hermes completely.": "Quit Hermes completely.",
     "Save this file with exactly the content below:": "Save this file with exactly the content below:",
     "Open Hermes again.": "Open Hermes again.",
-    "Could not restart Hermes. Follow the steps below.": "Could not restart Hermes. Follow the steps below."
+    "Could not restart Hermes. Follow the steps below.": "Could not restart Hermes. Follow the steps below.",
+    "Bot calls": "Bot calls",
+    "Run any bot's scheduled job now. The result goes where that job normally sends it.": "Run any bot's scheduled job now. The result goes where that job normally sends it.",
+    "Could not load scheduled jobs. Please retry.": "Could not load scheduled jobs. Please retry.",
+    "This job is already running.": "This job is already running.",
+    "This job is paused. Turn it back on in that bot first.": "This job is paused. Turn it back on in that bot first.",
+    "That job no longer exists. Refresh the list.": "That job no longer exists. Refresh the list.",
+    "Could not start the run. Refresh the list and try again.": "Could not start the run. Refresh the list and try again.",
+    "Running…": "Running…",
+    "Ran. The result goes where this job sends it.": "Ran. The result goes where this job sends it.",
+    "Could not run. Check the job in that bot.": "Could not run. Check the job in that bot.",
+    "Loading scheduled jobs": "Loading scheduled jobs",
+    "No scheduled jobs yet": "No scheduled jobs yet",
+    "Scheduled jobs of your bots will show here.": "Scheduled jobs of your bots will show here.",
+    Paused: "Paused",
+    "Last run: {0}": "Last run: {0}",
+    "Next: {0}": "Next: {0}",
+    "Run now": "Run now",
+    "Run this job now?": "Run this job now?",
+    "{0} · {1} runs once now. A job that calls the model uses tokens.": "{0} · {1} runs once now. A job that calls the model uses tokens.",
+    Run: "Run",
+    Teams: "Teams",
+    "Recruit a whole team of bots that share one board and one folder.": "Recruit a whole team of bots that share one board and one folder.",
+    "Could not load teams. Please retry.": "Could not load teams. Please retry.",
+    "Loading teams": "Loading teams",
+    "No teams yet": "No teams yet",
+    Recruited: "Recruited",
+    Leader: "Leader",
+    "The leader hands out the work": "The leader hands out the work",
+    "A bot with the matching role picks up the work": "A bot with the matching role picks up the work",
+    "Recruit team": "Recruit team",
+    "Disband team": "Disband team",
+    "Recruit {0}": "Recruit {0}",
+    "Nothing that already exists is overwritten.": "Nothing that already exists is overwritten.",
+    "Reviewing every bot": "Reviewing every bot",
+    "This team is already recruited.": "This team is already recruited.",
+    "Already existing bots: {0}. Nothing was installed.": "Already existing bots: {0}. Nothing was installed.",
+    "This recruit creates": "This recruit creates",
+    "Bot {0} · {1}": "Bot {0} · {1}",
+    "Team folder {0}": "Team folder {0}",
+    "Team board {0}": "Team board {0}",
+    "Group room {0}": "Group room {0}",
+    "Review notice every {0} in the leader's bot chat": "Review notice every {0} in the leader's bot chat",
+    Choose: "Choose",
+    "Not available on this computer": "Not available on this computer",
+    "Keys for {0}": "Keys for {0}",
+    "Recruiting. This can take a few minutes.": "Recruiting. This can take a few minutes.",
+    Recruit: "Recruit",
+    "Could not review this team. Please retry.": "Could not review this team. Please retry.",
+    "Could not recruit. Please retry.": "Could not recruit. Please retry.",
+    "Recruited {0}.": "Recruited {0}.",
+    "Review notice job: {0}": "Review notice job: {0}",
+    "Copied the Google connection to the leader.": "Copied the Google connection to the leader.",
+    "The Google connection was not copied.": "The Google connection was not copied.",
+    "There was no Google connection in the default profile to copy.": "There was no Google connection in the default profile to copy.",
+    "Some steps did not finish: {0}": "Some steps did not finish: {0}",
+    "Created the group room.": "Created the group room.",
+    "Could not create the group room. Make one in Desktop's group chat with: {0}": "Could not create the group room. Make one in Desktop's group chat with: {0}",
+    "Stopped at installing {0}.": "Stopped at installing {0}.",
+    "Rolled back every bot it created.": "Rolled back every bot it created.",
+    "Could not remove: {0}": "Could not remove: {0}",
+    "Disband {0}?": "Disband {0}?",
+    Disband: "Disband",
+    "Disbanded the team.": "Disbanded the team.",
+    "Some things were left: {0}. Try disbanding again.": "Some things were left: {0}. Try disbanding again.",
+    "Could not disband. Please retry.": "Could not disband. Please retry.",
+    "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.",
+    "Its work files were kept in {0}.": "Its work files were kept in {0}.",
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one."
   },
   ko: {
     "Could not load installed bots. Please retry.": "설치된 봇을 확인하지 못했습니다. 다시 시도해 주세요.",
@@ -490,7 +558,75 @@ var locales_default = {
     "Quit Hermes completely.": "Hermes를 완전히 종료합니다.",
     "Save this file with exactly the content below:": "아래 파일을 정확히 아래 내용으로 저장합니다:",
     "Open Hermes again.": "Hermes를 다시 엽니다.",
-    "Could not restart Hermes. Follow the steps below.": "Hermes를 다시 시작하지 못했습니다. 아래 방법을 따라 주세요."
+    "Could not restart Hermes. Follow the steps below.": "Hermes를 다시 시작하지 못했습니다. 아래 방법을 따라 주세요.",
+    "Bot calls": "봇 호출",
+    "Run any bot's scheduled job now. The result goes where that job normally sends it.": "봇의 예약 작업을 지금 바로 실행합니다. 결과는 그 작업이 원래 보내는 곳으로 갑니다.",
+    "Could not load scheduled jobs. Please retry.": "예약 작업 목록을 불러오지 못했어요. 다시 시도해 주세요.",
+    "This job is already running.": "이미 실행 중이에요.",
+    "This job is paused. Turn it back on in that bot first.": "멈춘 작업이에요. 그 봇에서 다시 켠 뒤 실행해 주세요.",
+    "That job no longer exists. Refresh the list.": "그 작업이 더는 없어요. 목록을 새로고침해 주세요.",
+    "Could not start the run. Refresh the list and try again.": "실행을 시작하지 못했어요. 목록을 새로고침한 뒤 다시 시도해 주세요.",
+    "Running…": "실행 중…",
+    "Ran. The result goes where this job sends it.": "실행했어요. 결과는 이 작업이 보내는 곳으로 가요.",
+    "Could not run. Check the job in that bot.": "실행하지 못했어요. 그 봇에서 작업을 확인해 주세요.",
+    "Loading scheduled jobs": "예약 작업을 불러오는 중",
+    "No scheduled jobs yet": "아직 예약 작업이 없어요",
+    "Scheduled jobs of your bots will show here.": "봇들의 예약 작업이 여기에 보여요.",
+    Paused: "멈춤",
+    "Last run: {0}": "마지막 실행: {0}",
+    "Next: {0}": "다음 실행: {0}",
+    "Run now": "지금 실행",
+    "Run this job now?": "이 작업을 지금 실행할까요?",
+    "{0} · {1} runs once now. A job that calls the model uses tokens.": "{0} · {1} 작업을 지금 한 번 실행해요. 모델을 부르는 작업이면 토큰이 들어요.",
+    Run: "실행",
+    Teams: "팀",
+    "Recruit a whole team of bots that share one board and one folder.": "보드 하나와 폴더 하나를 함께 쓰는 봇 팀을 한 번에 영입해요.",
+    "Could not load teams. Please retry.": "팀 목록을 불러오지 못했어요. 다시 시도해 주세요.",
+    "Loading teams": "팀 불러오는 중",
+    "No teams yet": "아직 팀이 없어요",
+    Recruited: "영입함",
+    Leader: "리더",
+    "The leader hands out the work": "리더가 나눠 맡겨요",
+    "A bot with the matching role picks up the work": "역할에 맞는 봇이 가져가요",
+    "Recruit team": "팀 영입",
+    "Disband team": "팀 해산",
+    "Recruit {0}": "{0} 영입",
+    "Nothing that already exists is overwritten.": "이미 있는 것은 덮어쓰지 않아요.",
+    "Reviewing every bot": "봇마다 검토하는 중",
+    "This team is already recruited.": "이 팀은 이미 영입했어요.",
+    "Already existing bots: {0}. Nothing was installed.": "이미 있는 봇: {0}. 아무것도 설치하지 않았어요.",
+    "This recruit creates": "영입하면 생기는 것",
+    "Bot {0} · {1}": "봇 {0} · {1}",
+    "Team folder {0}": "팀 폴더 {0}",
+    "Team board {0}": "팀 보드 {0}",
+    "Group room {0}": "그룹방 {0}",
+    "Review notice every {0} in the leader's bot chat": "검수 알림: {0}마다 리더 봇 대화에",
+    Choose: "동의할 것",
+    "Not available on this computer": "이 컴퓨터에는 없어요",
+    "Keys for {0}": "{0} 키",
+    "Recruiting. This can take a few minutes.": "영입하는 중이에요. 몇 분 걸릴 수 있어요.",
+    Recruit: "영입하기",
+    "Could not review this team. Please retry.": "이 팀을 검토하지 못했어요. 다시 시도해 주세요.",
+    "Could not recruit. Please retry.": "영입하지 못했어요. 다시 시도해 주세요.",
+    "Recruited {0}.": "{0}을(를) 영입했어요.",
+    "Review notice job: {0}": "검수 알림 예약: {0}",
+    "Copied the Google connection to the leader.": "구글 연결을 리더에게 복사했어요.",
+    "The Google connection was not copied.": "구글 연결은 복사하지 않았어요.",
+    "There was no Google connection in the default profile to copy.": "기본 프로필에 복사할 구글 연결이 없어요.",
+    "Some steps did not finish: {0}": "끝나지 않은 단계: {0}",
+    "Created the group room.": "그룹방을 만들었어요.",
+    "Could not create the group room. Make one in Desktop's group chat with: {0}": "그룹방은 만들지 못했어요. Desktop 그룹 대화에서 직접 만들어 주세요: {0}",
+    "Stopped at installing {0}.": "{0} 설치에서 멈췄어요.",
+    "Rolled back every bot it created.": "만든 봇을 모두 되돌렸어요.",
+    "Could not remove: {0}": "지우지 못한 봇: {0}",
+    "Disband {0}?": "{0}을(를) 해산할까요?",
+    Disband: "해산하기",
+    "Disbanded the team.": "팀을 해산했어요.",
+    "Some things were left: {0}. Try disbanding again.": "남은 것: {0}. 해산을 다시 눌러 주세요.",
+    "Could not disband. Please retry.": "해산하지 못했어요. 다시 시도해 주세요.",
+    "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "이 팀이 만든 봇·보드·예약만 지워요. 작업 결과(work)는 지우지 않고 teams/_disbanded 로 옮겨요. 다른 봇은 건드리지 않아요.",
+    "Its work files were kept in {0}.": "작업 결과는 {0} 에 보관했어요.",
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "영입은 끝났어요. 다만 이 화면이 결과를 받지 못했어요. 팀 폴더를 확인하고, 그룹방이 있는 팀이면 직접 만들어 주세요."
   },
   zh: {
     "Could not load installed bots. Please retry.": "无法加载已安装的机器人。请重试。",
@@ -733,7 +869,75 @@ var locales_default = {
     "Quit Hermes completely.": "完全退出 Hermes。",
     "Save this file with exactly the content below:": "将下面的文件保存为与下方内容完全一致：",
     "Open Hermes again.": "重新打开 Hermes。",
-    "Could not restart Hermes. Follow the steps below.": "无法重新启动 Hermes。请按照下面的步骤操作。"
+    "Could not restart Hermes. Follow the steps below.": "无法重新启动 Hermes。请按照下面的步骤操作。",
+    "Bot calls": "机器人调用",
+    "Run any bot's scheduled job now. The result goes where that job normally sends it.": "立即运行机器人的定时任务。结果会发送到该任务原本的目标。",
+    "Could not load scheduled jobs. Please retry.": "无法加载定时任务。请重试。",
+    "This job is already running.": "该任务正在运行。",
+    "This job is paused. Turn it back on in that bot first.": "该任务已暂停。请先在该机器人中重新开启。",
+    "That job no longer exists. Refresh the list.": "该任务已不存在。请刷新列表。",
+    "Could not start the run. Refresh the list and try again.": "无法开始运行。请刷新列表后重试。",
+    "Running…": "运行中…",
+    "Ran. The result goes where this job sends it.": "已运行。结果会发送到该任务的目标。",
+    "Could not run. Check the job in that bot.": "运行失败。请在该机器人中检查任务。",
+    "Loading scheduled jobs": "正在加载定时任务",
+    "No scheduled jobs yet": "还没有定时任务",
+    "Scheduled jobs of your bots will show here.": "机器人的定时任务会显示在这里。",
+    Paused: "已暂停",
+    "Last run: {0}": "上次运行：{0}",
+    "Next: {0}": "下次：{0}",
+    "Run now": "立即运行",
+    "Run this job now?": "现在运行此任务吗？",
+    "{0} · {1} runs once now. A job that calls the model uses tokens.": "{0} · {1} 将立即运行一次。调用模型的任务会消耗 token。",
+    Run: "运行",
+    Teams: "团队",
+    "Recruit a whole team of bots that share one board and one folder.": "一次招募共用一个看板和一个文件夹的机器人团队。",
+    "Could not load teams. Please retry.": "无法加载团队。请重试。",
+    "Loading teams": "正在加载团队",
+    "No teams yet": "暂无团队",
+    Recruited: "已招募",
+    Leader: "负责人",
+    "The leader hands out the work": "由负责人分派工作",
+    "A bot with the matching role picks up the work": "由角色匹配的机器人领取工作",
+    "Recruit team": "招募团队",
+    "Disband team": "解散团队",
+    "Recruit {0}": "招募{0}",
+    "Nothing that already exists is overwritten.": "不会覆盖任何已有内容。",
+    "Reviewing every bot": "正在逐个检查机器人",
+    "This team is already recruited.": "该团队已招募。",
+    "Already existing bots: {0}. Nothing was installed.": "已存在的机器人：{0}。未安装任何内容。",
+    "This recruit creates": "招募后将创建",
+    "Bot {0} · {1}": "机器人 {0} · {1}",
+    "Team folder {0}": "团队文件夹 {0}",
+    "Team board {0}": "团队看板 {0}",
+    "Group room {0}": "群聊 {0}",
+    "Review notice every {0} in the leader's bot chat": "审核提醒：每 {0} 发到负责人的机器人对话",
+    Choose: "请选择",
+    "Not available on this computer": "此电脑上没有",
+    "Keys for {0}": "{0} 的密钥",
+    "Recruiting. This can take a few minutes.": "正在招募，可能需要几分钟。",
+    Recruit: "招募",
+    "Could not review this team. Please retry.": "无法检查该团队。请重试。",
+    "Could not recruit. Please retry.": "招募失败。请重试。",
+    "Recruited {0}.": "已招募{0}。",
+    "Review notice job: {0}": "审核提醒任务：{0}",
+    "Copied the Google connection to the leader.": "已将 Google 连接复制给负责人。",
+    "The Google connection was not copied.": "未复制 Google 连接。",
+    "There was no Google connection in the default profile to copy.": "默认配置中没有可复制的 Google 连接。",
+    "Some steps did not finish: {0}": "未完成的步骤：{0}",
+    "Created the group room.": "已创建群聊。",
+    "Could not create the group room. Make one in Desktop's group chat with: {0}": "无法创建群聊。请在 Desktop 群聊中手动创建：{0}",
+    "Stopped at installing {0}.": "在安装 {0} 时停止。",
+    "Rolled back every bot it created.": "已撤回所有新建的机器人。",
+    "Could not remove: {0}": "无法删除：{0}",
+    "Disband {0}?": "解散{0}？",
+    Disband: "解散",
+    "Disbanded the team.": "已解散团队。",
+    "Some things were left: {0}. Try disbanding again.": "仍有残留：{0}。请再次解散。",
+    "Could not disband. Please retry.": "解散失败。请重试。",
+    "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "只删除该团队创建的机器人、看板和任务。工作文件不会删除，会移到 teams/_disbanded。不影响其他机器人。",
+    "Its work files were kept in {0}.": "工作文件已保存在 {0}。",
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "招募已完成，但此画面没有收到结果。请检查团队文件夹；如果团队有群聊，请手动创建。"
   },
   "zh-hant": {
     "Could not load installed bots. Please retry.": "無法載入已安裝的機器人。請重試。",
@@ -976,7 +1180,75 @@ var locales_default = {
     "Quit Hermes completely.": "完全結束 Hermes。",
     "Save this file with exactly the content below:": "將下方檔案儲存為與下方內容完全一致：",
     "Open Hermes again.": "重新開啟 Hermes。",
-    "Could not restart Hermes. Follow the steps below.": "無法重新啟動 Hermes。請依照下方步驟操作。"
+    "Could not restart Hermes. Follow the steps below.": "無法重新啟動 Hermes。請依照下方步驟操作。",
+    "Bot calls": "機器人呼叫",
+    "Run any bot's scheduled job now. The result goes where that job normally sends it.": "立即執行機器人的排程工作。結果會送到該工作原本的目的地。",
+    "Could not load scheduled jobs. Please retry.": "無法載入排程工作。請重試。",
+    "This job is already running.": "此工作正在執行。",
+    "This job is paused. Turn it back on in that bot first.": "此工作已暫停。請先在該機器人中重新開啟。",
+    "That job no longer exists. Refresh the list.": "此工作已不存在。請重新整理清單。",
+    "Could not start the run. Refresh the list and try again.": "無法開始執行。請重新整理清單後再試。",
+    "Running…": "執行中…",
+    "Ran. The result goes where this job sends it.": "已執行。結果會送到此工作的目的地。",
+    "Could not run. Check the job in that bot.": "執行失敗。請在該機器人中檢查工作。",
+    "Loading scheduled jobs": "正在載入排程工作",
+    "No scheduled jobs yet": "尚無排程工作",
+    "Scheduled jobs of your bots will show here.": "機器人的排程工作會顯示在這裡。",
+    Paused: "已暫停",
+    "Last run: {0}": "上次執行：{0}",
+    "Next: {0}": "下次：{0}",
+    "Run now": "立即執行",
+    "Run this job now?": "現在執行此工作嗎？",
+    "{0} · {1} runs once now. A job that calls the model uses tokens.": "{0} · {1} 將立即執行一次。呼叫模型的工作會使用 token。",
+    Run: "執行",
+    Teams: "團隊",
+    "Recruit a whole team of bots that share one board and one folder.": "一次招募共用一個看板和一個資料夾的機器人團隊。",
+    "Could not load teams. Please retry.": "無法載入團隊。請重試。",
+    "Loading teams": "正在載入團隊",
+    "No teams yet": "尚無團隊",
+    Recruited: "已招募",
+    Leader: "負責人",
+    "The leader hands out the work": "由負責人分派工作",
+    "A bot with the matching role picks up the work": "由角色相符的機器人領取工作",
+    "Recruit team": "招募團隊",
+    "Disband team": "解散團隊",
+    "Recruit {0}": "招募{0}",
+    "Nothing that already exists is overwritten.": "不會覆寫任何既有內容。",
+    "Reviewing every bot": "正在逐一檢查機器人",
+    "This team is already recruited.": "此團隊已招募。",
+    "Already existing bots: {0}. Nothing was installed.": "已存在的機器人：{0}。未安裝任何內容。",
+    "This recruit creates": "招募後將建立",
+    "Bot {0} · {1}": "機器人 {0} · {1}",
+    "Team folder {0}": "團隊資料夾 {0}",
+    "Team board {0}": "團隊看板 {0}",
+    "Group room {0}": "群組聊天室 {0}",
+    "Review notice every {0} in the leader's bot chat": "審核提醒：每 {0} 發到負責人的機器人對話",
+    Choose: "請選擇",
+    "Not available on this computer": "此電腦上沒有",
+    "Keys for {0}": "{0} 的金鑰",
+    "Recruiting. This can take a few minutes.": "正在招募，可能需要幾分鐘。",
+    Recruit: "招募",
+    "Could not review this team. Please retry.": "無法檢查此團隊。請重試。",
+    "Could not recruit. Please retry.": "招募失敗。請重試。",
+    "Recruited {0}.": "已招募{0}。",
+    "Review notice job: {0}": "審核提醒排程：{0}",
+    "Copied the Google connection to the leader.": "已將 Google 連線複製給負責人。",
+    "The Google connection was not copied.": "未複製 Google 連線。",
+    "There was no Google connection in the default profile to copy.": "預設設定檔中沒有可複製的 Google 連線。",
+    "Some steps did not finish: {0}": "未完成的步驟：{0}",
+    "Created the group room.": "已建立群組聊天室。",
+    "Could not create the group room. Make one in Desktop's group chat with: {0}": "無法建立群組聊天室。請在 Desktop 群組對話中手動建立：{0}",
+    "Stopped at installing {0}.": "在安裝 {0} 時停止。",
+    "Rolled back every bot it created.": "已復原所有新建的機器人。",
+    "Could not remove: {0}": "無法刪除：{0}",
+    "Disband {0}?": "解散{0}？",
+    Disband: "解散",
+    "Disbanded the team.": "已解散團隊。",
+    "Some things were left: {0}. Try disbanding again.": "仍有殘留：{0}。請再次解散。",
+    "Could not disband. Please retry.": "解散失敗。請重試。",
+    "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "只刪除此團隊建立的機器人、看板和排程。工作檔案不會刪除，會移到 teams/_disbanded。不影響其他機器人。",
+    "Its work files were kept in {0}.": "工作檔案已保存在 {0}。",
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "招募已完成，但此畫面沒有收到結果。請檢查團隊資料夾；若團隊有群組聊天室，請手動建立。"
   },
   ja: {
     "Could not load installed bots. Please retry.": "インストール済みボットを読み込めません。再試行してください。",
@@ -1219,7 +1491,75 @@ var locales_default = {
     "Quit Hermes completely.": "Hermes を完全に終了します。",
     "Save this file with exactly the content below:": "下のファイルを、下の内容どおりに保存します:",
     "Open Hermes again.": "Hermes をもう一度開きます。",
-    "Could not restart Hermes. Follow the steps below.": "Hermes を再起動できませんでした。下の手順に従ってください。"
+    "Could not restart Hermes. Follow the steps below.": "Hermes を再起動できませんでした。下の手順に従ってください。",
+    "Bot calls": "ボット呼び出し",
+    "Run any bot's scheduled job now. The result goes where that job normally sends it.": "ボットの予約ジョブを今すぐ実行します。結果はそのジョブの通常の送信先に届きます。",
+    "Could not load scheduled jobs. Please retry.": "予約ジョブを読み込めませんでした。もう一度お試しください。",
+    "This job is already running.": "このジョブはすでに実行中です。",
+    "This job is paused. Turn it back on in that bot first.": "停止中のジョブです。そのボットで再開してから実行してください。",
+    "That job no longer exists. Refresh the list.": "そのジョブはもうありません。一覧を更新してください。",
+    "Could not start the run. Refresh the list and try again.": "実行を開始できませんでした。一覧を更新してからもう一度お試しください。",
+    "Running…": "実行中…",
+    "Ran. The result goes where this job sends it.": "実行しました。結果はこのジョブの送信先に届きます。",
+    "Could not run. Check the job in that bot.": "実行できませんでした。そのボットでジョブを確認してください。",
+    "Loading scheduled jobs": "予約ジョブを読み込み中",
+    "No scheduled jobs yet": "予約ジョブはまだありません",
+    "Scheduled jobs of your bots will show here.": "ボットの予約ジョブがここに表示されます。",
+    Paused: "停止中",
+    "Last run: {0}": "前回の実行: {0}",
+    "Next: {0}": "次回: {0}",
+    "Run now": "今すぐ実行",
+    "Run this job now?": "このジョブを今すぐ実行しますか?",
+    "{0} · {1} runs once now. A job that calls the model uses tokens.": "{0} · {1} を今1回実行します。モデルを呼ぶジョブはトークンを使います。",
+    Run: "実行",
+    Teams: "チーム",
+    "Recruit a whole team of bots that share one board and one folder.": "ボード1つとフォルダー1つを共有するボットのチームをまとめて迎え入れます。",
+    "Could not load teams. Please retry.": "チームを読み込めませんでした。もう一度お試しください。",
+    "Loading teams": "チームを読み込み中",
+    "No teams yet": "まだチームがありません",
+    Recruited: "迎え入れ済み",
+    Leader: "リーダー",
+    "The leader hands out the work": "リーダーが仕事を割り振ります",
+    "A bot with the matching role picks up the work": "役割が合うボットが仕事を引き取ります",
+    "Recruit team": "チームを迎える",
+    "Disband team": "チームを解散",
+    "Recruit {0}": "{0}を迎える",
+    "Nothing that already exists is overwritten.": "既にあるものは上書きしません。",
+    "Reviewing every bot": "ボットを1つずつ確認中",
+    "This team is already recruited.": "このチームは既に迎え入れています。",
+    "Already existing bots: {0}. Nothing was installed.": "既にあるボット: {0}。何もインストールしていません。",
+    "This recruit creates": "迎え入れると作られるもの",
+    "Bot {0} · {1}": "ボット {0} · {1}",
+    "Team folder {0}": "チームフォルダー {0}",
+    "Team board {0}": "チームボード {0}",
+    "Group room {0}": "グループルーム {0}",
+    "Review notice every {0} in the leader's bot chat": "確認待ちのお知らせ: {0}ごとにリーダーのボット会話へ",
+    Choose: "選んでください",
+    "Not available on this computer": "このコンピューターにはありません",
+    "Keys for {0}": "{0} のキー",
+    "Recruiting. This can take a few minutes.": "迎え入れ中です。数分かかることがあります。",
+    Recruit: "迎える",
+    "Could not review this team. Please retry.": "このチームを確認できませんでした。もう一度お試しください。",
+    "Could not recruit. Please retry.": "迎え入れられませんでした。もう一度お試しください。",
+    "Recruited {0}.": "{0}を迎え入れました。",
+    "Review notice job: {0}": "確認待ちお知らせの予約: {0}",
+    "Copied the Google connection to the leader.": "Google 接続をリーダーにコピーしました。",
+    "The Google connection was not copied.": "Google 接続はコピーしていません。",
+    "There was no Google connection in the default profile to copy.": "既定プロファイルにコピーする Google 接続がありません。",
+    "Some steps did not finish: {0}": "終わらなかった手順: {0}",
+    "Created the group room.": "グループルームを作りました。",
+    "Could not create the group room. Make one in Desktop's group chat with: {0}": "グループルームを作れませんでした。Desktop のグループ会話で作ってください: {0}",
+    "Stopped at installing {0}.": "{0} のインストールで止まりました。",
+    "Rolled back every bot it created.": "作ったボットはすべて元に戻しました。",
+    "Could not remove: {0}": "削除できなかったもの: {0}",
+    "Disband {0}?": "{0}を解散しますか？",
+    Disband: "解散する",
+    "Disbanded the team.": "チームを解散しました。",
+    "Some things were left: {0}. Try disbanding again.": "残ったもの: {0}。もう一度解散してください。",
+    "Could not disband. Please retry.": "解散できませんでした。もう一度お試しください。",
+    "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "このチームが作ったボット・ボード・予約だけを削除します。作業ファイルは削除せず teams/_disbanded に移します。他のボットには触れません。",
+    "Its work files were kept in {0}.": "作業ファイルは {0} に残しました。",
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "迎え入れは終わりましたが、この画面は結果を受け取れませんでした。チームフォルダーを確認し、グループルームがあるチームなら手動で作ってください。"
   },
   ar: {
     "Could not load installed bots. Please retry.": "تعذر تحميل البوتات المثبتة. حاول مجددًا.",
@@ -1462,7 +1802,75 @@ var locales_default = {
     "Quit Hermes completely.": "أغلق Hermes تمامًا.",
     "Save this file with exactly the content below:": "احفظ هذا الملف بالمحتوى أدناه تمامًا:",
     "Open Hermes again.": "افتح Hermes مرة أخرى.",
-    "Could not restart Hermes. Follow the steps below.": "تعذّرت إعادة تشغيل Hermes. اتبع الخطوات أدناه."
+    "Could not restart Hermes. Follow the steps below.": "تعذّرت إعادة تشغيل Hermes. اتبع الخطوات أدناه.",
+    "Bot calls": "استدعاء الروبوتات",
+    "Run any bot's scheduled job now. The result goes where that job normally sends it.": "شغّل مهمة مجدولة لأي روبوت الآن. تذهب النتيجة إلى حيث ترسلها المهمة عادةً.",
+    "Could not load scheduled jobs. Please retry.": "تعذّر تحميل المهام المجدولة. حاول مرة أخرى.",
+    "This job is already running.": "هذه المهمة قيد التشغيل بالفعل.",
+    "This job is paused. Turn it back on in that bot first.": "هذه المهمة متوقفة. أعد تشغيلها في ذلك الروبوت أولًا.",
+    "That job no longer exists. Refresh the list.": "لم تعد هذه المهمة موجودة. حدّث القائمة.",
+    "Could not start the run. Refresh the list and try again.": "تعذّر بدء التشغيل. حدّث القائمة وحاول مرة أخرى.",
+    "Running…": "قيد التشغيل…",
+    "Ran. The result goes where this job sends it.": "تم التشغيل. تذهب النتيجة إلى حيث ترسلها هذه المهمة.",
+    "Could not run. Check the job in that bot.": "تعذّر التشغيل. تحقّق من المهمة في ذلك الروبوت.",
+    "Loading scheduled jobs": "جارٍ تحميل المهام المجدولة",
+    "No scheduled jobs yet": "لا توجد مهام مجدولة بعد",
+    "Scheduled jobs of your bots will show here.": "ستظهر هنا المهام المجدولة لروبوتاتك.",
+    Paused: "متوقفة",
+    "Last run: {0}": "آخر تشغيل: {0}",
+    "Next: {0}": "التالي: {0}",
+    "Run now": "شغّل الآن",
+    "Run this job now?": "تشغيل هذه المهمة الآن؟",
+    "{0} · {1} runs once now. A job that calls the model uses tokens.": "{0} · {1} ستعمل مرة واحدة الآن. المهمة التي تستدعي النموذج تستهلك رموزًا.",
+    Run: "تشغيل",
+    Teams: "الفرق",
+    "Recruit a whole team of bots that share one board and one folder.": "استقطب فريقًا كاملًا من البوتات يتشارك لوحة واحدة ومجلدًا واحدًا.",
+    "Could not load teams. Please retry.": "تعذّر تحميل الفرق. أعد المحاولة.",
+    "Loading teams": "جارٍ تحميل الفرق",
+    "No teams yet": "لا توجد فرق بعد",
+    Recruited: "تم الاستقطاب",
+    Leader: "القائد",
+    "The leader hands out the work": "القائد يوزّع العمل",
+    "A bot with the matching role picks up the work": "يأخذ العمل البوت صاحب الدور المناسب",
+    "Recruit team": "استقطاب الفريق",
+    "Disband team": "حلّ الفريق",
+    "Recruit {0}": "استقطاب {0}",
+    "Nothing that already exists is overwritten.": "لن يُستبدل أي شيء موجود.",
+    "Reviewing every bot": "جارٍ مراجعة كل بوت",
+    "This team is already recruited.": "تم استقطاب هذا الفريق بالفعل.",
+    "Already existing bots: {0}. Nothing was installed.": "بوتات موجودة بالفعل: {0}. لم يُثبَّت شيء.",
+    "This recruit creates": "سيُنشئ هذا الاستقطاب",
+    "Bot {0} · {1}": "بوت {0} · {1}",
+    "Team folder {0}": "مجلد الفريق {0}",
+    "Team board {0}": "لوحة الفريق {0}",
+    "Group room {0}": "غرفة المجموعة {0}",
+    "Review notice every {0} in the leader's bot chat": "تنبيه المراجعة كل {0} في محادثة بوت القائد",
+    Choose: "اختر",
+    "Not available on this computer": "غير متوفر على هذا الحاسوب",
+    "Keys for {0}": "مفاتيح {0}",
+    "Recruiting. This can take a few minutes.": "جارٍ الاستقطاب. قد يستغرق ذلك بضع دقائق.",
+    Recruit: "استقطاب",
+    "Could not review this team. Please retry.": "تعذّرت مراجعة هذا الفريق. أعد المحاولة.",
+    "Could not recruit. Please retry.": "تعذّر الاستقطاب. أعد المحاولة.",
+    "Recruited {0}.": "تم استقطاب {0}.",
+    "Review notice job: {0}": "مهمة تنبيه المراجعة: {0}",
+    "Copied the Google connection to the leader.": "تم نسخ اتصال Google إلى القائد.",
+    "The Google connection was not copied.": "لم يُنسخ اتصال Google.",
+    "There was no Google connection in the default profile to copy.": "لا يوجد اتصال Google في الملف الافتراضي لنسخه.",
+    "Some steps did not finish: {0}": "خطوات لم تكتمل: {0}",
+    "Created the group room.": "تم إنشاء غرفة المجموعة.",
+    "Could not create the group room. Make one in Desktop's group chat with: {0}": "تعذّر إنشاء غرفة المجموعة. أنشئها في محادثة المجموعة في Desktop مع: {0}",
+    "Stopped at installing {0}.": "توقف عند تثبيت {0}.",
+    "Rolled back every bot it created.": "تم التراجع عن كل البوتات التي أُنشئت.",
+    "Could not remove: {0}": "تعذّرت إزالة: {0}",
+    "Disband {0}?": "حلّ {0}؟",
+    Disband: "حلّ",
+    "Disbanded the team.": "تم حلّ الفريق.",
+    "Some things were left: {0}. Try disbanding again.": "بقيت أشياء: {0}. حاول الحلّ مجددًا.",
+    "Could not disband. Please retry.": "تعذّر الحلّ. أعد المحاولة.",
+    "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "يزيل فقط ما أنشأه هذا الفريق: البوتات واللوحة والمهام. لا تُحذف ملفات العمل بل تُنقل إلى teams/_disbanded. لا يمس البوتات الأخرى.",
+    "Its work files were kept in {0}.": "حُفظت ملفات العمل في {0}.",
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "اكتمل الاستقطاب لكن هذه الشاشة لم تتلقَّ النتيجة. تحقّق من مجلد الفريق، وأنشئ غرفة المجموعة بنفسك إن كان للفريق غرفة."
   },
   ru: {
     "Could not load installed bots. Please retry.": "Не удалось загрузить установленных ботов. Повторите попытку.",
@@ -1705,7 +2113,75 @@ var locales_default = {
     "Quit Hermes completely.": "Полностью закройте Hermes.",
     "Save this file with exactly the content below:": "Сохраните этот файл точно с содержимым ниже:",
     "Open Hermes again.": "Снова откройте Hermes.",
-    "Could not restart Hermes. Follow the steps below.": "Не удалось перезапустить Hermes. Выполните шаги ниже."
+    "Could not restart Hermes. Follow the steps below.": "Не удалось перезапустить Hermes. Выполните шаги ниже.",
+    "Bot calls": "Вызов ботов",
+    "Run any bot's scheduled job now. The result goes where that job normally sends it.": "Запустите запланированную задачу любого бота сейчас. Результат уйдёт туда, куда задача обычно его отправляет.",
+    "Could not load scheduled jobs. Please retry.": "Не удалось загрузить запланированные задачи. Повторите попытку.",
+    "This job is already running.": "Эта задача уже выполняется.",
+    "This job is paused. Turn it back on in that bot first.": "Задача приостановлена. Сначала включите её в этом боте.",
+    "That job no longer exists. Refresh the list.": "Этой задачи больше нет. Обновите список.",
+    "Could not start the run. Refresh the list and try again.": "Не удалось запустить. Обновите список и попробуйте снова.",
+    "Running…": "Выполняется…",
+    "Ran. The result goes where this job sends it.": "Выполнено. Результат уйдёт туда, куда его отправляет задача.",
+    "Could not run. Check the job in that bot.": "Не удалось выполнить. Проверьте задачу в этом боте.",
+    "Loading scheduled jobs": "Загрузка запланированных задач",
+    "No scheduled jobs yet": "Запланированных задач пока нет",
+    "Scheduled jobs of your bots will show here.": "Здесь появятся запланированные задачи ваших ботов.",
+    Paused: "Приостановлена",
+    "Last run: {0}": "Последний запуск: {0}",
+    "Next: {0}": "Следующий: {0}",
+    "Run now": "Запустить сейчас",
+    "Run this job now?": "Запустить эту задачу сейчас?",
+    "{0} · {1} runs once now. A job that calls the model uses tokens.": "{0} · {1} выполнится один раз сейчас. Задача, вызывающая модель, расходует токены.",
+    Run: "Запустить",
+    Teams: "Команды",
+    "Recruit a whole team of bots that share one board and one folder.": "Наймите сразу целую команду ботов с общей доской и общей папкой.",
+    "Could not load teams. Please retry.": "Не удалось загрузить команды. Повторите попытку.",
+    "Loading teams": "Загрузка команд",
+    "No teams yet": "Команд пока нет",
+    Recruited: "Нанята",
+    Leader: "Лидер",
+    "The leader hands out the work": "Лидер распределяет работу",
+    "A bot with the matching role picks up the work": "Работу берёт бот с подходящей ролью",
+    "Recruit team": "Нанять команду",
+    "Disband team": "Распустить команду",
+    "Recruit {0}": "Нанять: {0}",
+    "Nothing that already exists is overwritten.": "Ничего существующего не перезаписывается.",
+    "Reviewing every bot": "Проверка каждого бота",
+    "This team is already recruited.": "Эта команда уже нанята.",
+    "Already existing bots: {0}. Nothing was installed.": "Уже есть боты: {0}. Ничего не установлено.",
+    "This recruit creates": "Будет создано",
+    "Bot {0} · {1}": "Бот {0} · {1}",
+    "Team folder {0}": "Папка команды {0}",
+    "Team board {0}": "Доска команды {0}",
+    "Group room {0}": "Групповая комната {0}",
+    "Review notice every {0} in the leader's bot chat": "Напоминание о проверке каждые {0} в чате лидера",
+    Choose: "Выберите",
+    "Not available on this computer": "На этом компьютере нет",
+    "Keys for {0}": "Ключи для {0}",
+    "Recruiting. This can take a few minutes.": "Идёт найм. Это может занять несколько минут.",
+    Recruit: "Нанять",
+    "Could not review this team. Please retry.": "Не удалось проверить команду. Повторите попытку.",
+    "Could not recruit. Please retry.": "Не удалось нанять. Повторите попытку.",
+    "Recruited {0}.": "Команда {0} нанята.",
+    "Review notice job: {0}": "Задание напоминания: {0}",
+    "Copied the Google connection to the leader.": "Подключение Google скопировано лидеру.",
+    "The Google connection was not copied.": "Подключение Google не скопировано.",
+    "There was no Google connection in the default profile to copy.": "В профиле по умолчанию нет подключения Google.",
+    "Some steps did not finish: {0}": "Не завершены шаги: {0}",
+    "Created the group room.": "Групповая комната создана.",
+    "Could not create the group room. Make one in Desktop's group chat with: {0}": "Не удалось создать комнату. Создайте её в групповом чате Desktop: {0}",
+    "Stopped at installing {0}.": "Остановлено на установке {0}.",
+    "Rolled back every bot it created.": "Все созданные боты удалены.",
+    "Could not remove: {0}": "Не удалось удалить: {0}",
+    "Disband {0}?": "Распустить {0}?",
+    Disband: "Распустить",
+    "Disbanded the team.": "Команда распущена.",
+    "Some things were left: {0}. Try disbanding again.": "Осталось: {0}. Попробуйте распустить ещё раз.",
+    "Could not disband. Please retry.": "Не удалось распустить. Повторите попытку.",
+    "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "Удаляет только созданное командой: ботов, доску и задания. Рабочие файлы не удаляются, а переносятся в teams/_disbanded. Другие боты не затрагиваются.",
+    "Its work files were kept in {0}.": "Рабочие файлы сохранены в {0}.",
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "Найм завершён, но экран не получил ответ. Проверьте папку команды и, если у команды есть комната, создайте её вручную."
   },
   fr: {
     "Could not load installed bots. Please retry.": "Impossible de charger les bots installés. Réessayez.",
@@ -1948,7 +2424,75 @@ var locales_default = {
     "Quit Hermes completely.": "Quittez complètement Hermes.",
     "Save this file with exactly the content below:": "Enregistrez ce fichier avec exactement le contenu ci-dessous :",
     "Open Hermes again.": "Rouvrez Hermes.",
-    "Could not restart Hermes. Follow the steps below.": "Impossible de redémarrer Hermes. Suivez les étapes ci-dessous."
+    "Could not restart Hermes. Follow the steps below.": "Impossible de redémarrer Hermes. Suivez les étapes ci-dessous.",
+    "Bot calls": "Appels de bots",
+    "Run any bot's scheduled job now. The result goes where that job normally sends it.": "Lancez maintenant la tâche planifiée d’un bot. Le résultat part là où la tâche l’envoie d’habitude.",
+    "Could not load scheduled jobs. Please retry.": "Impossible de charger les tâches planifiées. Réessayez.",
+    "This job is already running.": "Cette tâche est déjà en cours.",
+    "This job is paused. Turn it back on in that bot first.": "Cette tâche est en pause. Réactivez-la d’abord dans ce bot.",
+    "That job no longer exists. Refresh the list.": "Cette tâche n’existe plus. Actualisez la liste.",
+    "Could not start the run. Refresh the list and try again.": "Impossible de lancer. Actualisez la liste et réessayez.",
+    "Running…": "En cours…",
+    "Ran. The result goes where this job sends it.": "Lancée. Le résultat part là où cette tâche l’envoie.",
+    "Could not run. Check the job in that bot.": "Échec. Vérifiez la tâche dans ce bot.",
+    "Loading scheduled jobs": "Chargement des tâches planifiées",
+    "No scheduled jobs yet": "Aucune tâche planifiée pour l’instant",
+    "Scheduled jobs of your bots will show here.": "Les tâches planifiées de vos bots s’afficheront ici.",
+    Paused: "En pause",
+    "Last run: {0}": "Dernier lancement : {0}",
+    "Next: {0}": "Prochain : {0}",
+    "Run now": "Lancer maintenant",
+    "Run this job now?": "Lancer cette tâche maintenant ?",
+    "{0} · {1} runs once now. A job that calls the model uses tokens.": "{0} · {1} sera lancée une fois maintenant. Une tâche qui appelle le modèle consomme des jetons.",
+    Run: "Lancer",
+    Teams: "Équipes",
+    "Recruit a whole team of bots that share one board and one folder.": "Recrutez d’un coup une équipe de bots qui partagent un tableau et un dossier.",
+    "Could not load teams. Please retry.": "Impossible de charger les équipes. Réessayez.",
+    "Loading teams": "Chargement des équipes",
+    "No teams yet": "Aucune équipe pour l’instant",
+    Recruited: "Recrutée",
+    Leader: "Responsable",
+    "The leader hands out the work": "Le responsable répartit le travail",
+    "A bot with the matching role picks up the work": "Le bot du bon rôle prend le travail",
+    "Recruit team": "Recruter l’équipe",
+    "Disband team": "Dissoudre l’équipe",
+    "Recruit {0}": "Recruter {0}",
+    "Nothing that already exists is overwritten.": "Rien d’existant n’est écrasé.",
+    "Reviewing every bot": "Vérification de chaque bot",
+    "This team is already recruited.": "Cette équipe est déjà recrutée.",
+    "Already existing bots: {0}. Nothing was installed.": "Bots déjà présents : {0}. Rien n’a été installé.",
+    "This recruit creates": "Ce recrutement crée",
+    "Bot {0} · {1}": "Bot {0} · {1}",
+    "Team folder {0}": "Dossier d’équipe {0}",
+    "Team board {0}": "Tableau d’équipe {0}",
+    "Group room {0}": "Salon de groupe {0}",
+    "Review notice every {0} in the leader's bot chat": "Avis de relecture toutes les {0} dans le chat du responsable",
+    Choose: "Choisir",
+    "Not available on this computer": "Indisponible sur cet ordinateur",
+    "Keys for {0}": "Clés pour {0}",
+    "Recruiting. This can take a few minutes.": "Recrutement en cours. Cela peut prendre quelques minutes.",
+    Recruit: "Recruter",
+    "Could not review this team. Please retry.": "Impossible de vérifier cette équipe. Réessayez.",
+    "Could not recruit. Please retry.": "Recrutement impossible. Réessayez.",
+    "Recruited {0}.": "{0} est recrutée.",
+    "Review notice job: {0}": "Tâche d’avis de relecture : {0}",
+    "Copied the Google connection to the leader.": "Connexion Google copiée pour le responsable.",
+    "The Google connection was not copied.": "La connexion Google n’a pas été copiée.",
+    "There was no Google connection in the default profile to copy.": "Aucune connexion Google à copier dans le profil par défaut.",
+    "Some steps did not finish: {0}": "Étapes non terminées : {0}",
+    "Created the group room.": "Salon de groupe créé.",
+    "Could not create the group room. Make one in Desktop's group chat with: {0}": "Impossible de créer le salon. Créez-le dans le chat de groupe de Desktop avec : {0}",
+    "Stopped at installing {0}.": "Arrêt à l’installation de {0}.",
+    "Rolled back every bot it created.": "Tous les bots créés ont été annulés.",
+    "Could not remove: {0}": "Impossible de supprimer : {0}",
+    "Disband {0}?": "Dissoudre {0} ?",
+    Disband: "Dissoudre",
+    "Disbanded the team.": "Équipe dissoute.",
+    "Some things were left: {0}. Try disbanding again.": "Éléments restants : {0}. Réessayez la dissolution.",
+    "Could not disband. Please retry.": "Dissolution impossible. Réessayez.",
+    "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "Supprime uniquement ce que l’équipe a créé : bots, tableau et tâches. Les fichiers de travail ne sont pas supprimés ; ils vont dans teams/_disbanded. Les autres bots ne sont pas touchés.",
+    "Its work files were kept in {0}.": "Les fichiers de travail sont conservés dans {0}.",
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "Le recrutement est terminé, mais cet écran n’a pas reçu la réponse. Vérifiez le dossier de l’équipe et créez vous-même le salon si l’équipe en a un."
   },
   de: {
     "Could not load installed bots. Please retry.": "Installierte Bots konnten nicht geladen werden. Bitte erneut versuchen.",
@@ -2191,7 +2735,75 @@ var locales_default = {
     "Quit Hermes completely.": "Hermes vollständig beenden.",
     "Save this file with exactly the content below:": "Diese Datei mit genau dem Inhalt unten speichern:",
     "Open Hermes again.": "Hermes wieder öffnen.",
-    "Could not restart Hermes. Follow the steps below.": "Hermes konnte nicht neu gestartet werden. Folge den Schritten unten."
+    "Could not restart Hermes. Follow the steps below.": "Hermes konnte nicht neu gestartet werden. Folge den Schritten unten.",
+    "Bot calls": "Bot-Aufrufe",
+    "Run any bot's scheduled job now. The result goes where that job normally sends it.": "Führen Sie die geplante Aufgabe eines Bots jetzt aus. Das Ergebnis geht dorthin, wohin die Aufgabe es sonst sendet.",
+    "Could not load scheduled jobs. Please retry.": "Geplante Aufgaben konnten nicht geladen werden. Bitte erneut versuchen.",
+    "This job is already running.": "Diese Aufgabe läuft bereits.",
+    "This job is paused. Turn it back on in that bot first.": "Diese Aufgabe ist pausiert. Aktivieren Sie sie zuerst in diesem Bot.",
+    "That job no longer exists. Refresh the list.": "Diese Aufgabe gibt es nicht mehr. Aktualisieren Sie die Liste.",
+    "Could not start the run. Refresh the list and try again.": "Ausführung konnte nicht gestartet werden. Liste aktualisieren und erneut versuchen.",
+    "Running…": "Läuft…",
+    "Ran. The result goes where this job sends it.": "Ausgeführt. Das Ergebnis geht dorthin, wohin diese Aufgabe es sendet.",
+    "Could not run. Check the job in that bot.": "Ausführung fehlgeschlagen. Prüfen Sie die Aufgabe in diesem Bot.",
+    "Loading scheduled jobs": "Geplante Aufgaben werden geladen",
+    "No scheduled jobs yet": "Noch keine geplanten Aufgaben",
+    "Scheduled jobs of your bots will show here.": "Hier erscheinen die geplanten Aufgaben Ihrer Bots.",
+    Paused: "Pausiert",
+    "Last run: {0}": "Letzte Ausführung: {0}",
+    "Next: {0}": "Nächste: {0}",
+    "Run now": "Jetzt ausführen",
+    "Run this job now?": "Diese Aufgabe jetzt ausführen?",
+    "{0} · {1} runs once now. A job that calls the model uses tokens.": "{0} · {1} wird jetzt einmal ausgeführt. Eine Aufgabe, die das Modell aufruft, verbraucht Tokens.",
+    Run: "Ausführen",
+    Teams: "Teams",
+    "Recruit a whole team of bots that share one board and one folder.": "Holen Sie ein ganzes Bot-Team, das sich ein Board und einen Ordner teilt.",
+    "Could not load teams. Please retry.": "Teams konnten nicht geladen werden. Bitte erneut versuchen.",
+    "Loading teams": "Teams werden geladen",
+    "No teams yet": "Noch keine Teams",
+    Recruited: "Geholt",
+    Leader: "Leitung",
+    "The leader hands out the work": "Die Leitung verteilt die Arbeit",
+    "A bot with the matching role picks up the work": "Der Bot mit der passenden Rolle übernimmt",
+    "Recruit team": "Team holen",
+    "Disband team": "Team auflösen",
+    "Recruit {0}": "{0} holen",
+    "Nothing that already exists is overwritten.": "Vorhandenes wird nicht überschrieben.",
+    "Reviewing every bot": "Jeder Bot wird geprüft",
+    "This team is already recruited.": "Dieses Team wurde bereits geholt.",
+    "Already existing bots: {0}. Nothing was installed.": "Bereits vorhandene Bots: {0}. Nichts wurde installiert.",
+    "This recruit creates": "Dabei entsteht",
+    "Bot {0} · {1}": "Bot {0} · {1}",
+    "Team folder {0}": "Team-Ordner {0}",
+    "Team board {0}": "Team-Board {0}",
+    "Group room {0}": "Gruppenraum {0}",
+    "Review notice every {0} in the leader's bot chat": "Prüfhinweis alle {0} im Bot-Chat der Leitung",
+    Choose: "Auswählen",
+    "Not available on this computer": "Auf diesem Computer nicht vorhanden",
+    "Keys for {0}": "Schlüssel für {0}",
+    "Recruiting. This can take a few minutes.": "Wird geholt. Das kann einige Minuten dauern.",
+    Recruit: "Holen",
+    "Could not review this team. Please retry.": "Dieses Team konnte nicht geprüft werden. Bitte erneut versuchen.",
+    "Could not recruit. Please retry.": "Konnte nicht geholt werden. Bitte erneut versuchen.",
+    "Recruited {0}.": "{0} wurde geholt.",
+    "Review notice job: {0}": "Prüfhinweis-Job: {0}",
+    "Copied the Google connection to the leader.": "Google-Verbindung zur Leitung kopiert.",
+    "The Google connection was not copied.": "Die Google-Verbindung wurde nicht kopiert.",
+    "There was no Google connection in the default profile to copy.": "Im Standardprofil gibt es keine Google-Verbindung zum Kopieren.",
+    "Some steps did not finish: {0}": "Nicht abgeschlossene Schritte: {0}",
+    "Created the group room.": "Gruppenraum erstellt.",
+    "Could not create the group room. Make one in Desktop's group chat with: {0}": "Gruppenraum konnte nicht erstellt werden. Im Desktop-Gruppenchat anlegen mit: {0}",
+    "Stopped at installing {0}.": "Bei der Installation von {0} angehalten.",
+    "Rolled back every bot it created.": "Alle erstellten Bots wurden zurückgenommen.",
+    "Could not remove: {0}": "Nicht entfernt: {0}",
+    "Disband {0}?": "{0} auflösen?",
+    Disband: "Auflösen",
+    "Disbanded the team.": "Team aufgelöst.",
+    "Some things were left: {0}. Try disbanding again.": "Übrig geblieben: {0}. Bitte erneut auflösen.",
+    "Could not disband. Please retry.": "Konnte nicht aufgelöst werden. Bitte erneut versuchen.",
+    "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "Entfernt nur, was dieses Team angelegt hat: Bots, Board und Jobs. Arbeitsdateien werden nicht gelöscht, sondern nach teams/_disbanded verschoben. Andere Bots bleiben unberührt.",
+    "Its work files were kept in {0}.": "Die Arbeitsdateien liegen in {0}.",
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "Das Holen ist abgeschlossen, aber dieser Bildschirm hat die Antwort verloren. Prüfen Sie den Team-Ordner und legen Sie den Gruppenraum selbst an, falls das Team einen hat."
   },
   es: {
     "Could not load installed bots. Please retry.": "No se pudieron cargar los bots instalados. Inténtalo de nuevo.",
@@ -2434,29 +3046,97 @@ var locales_default = {
     "Quit Hermes completely.": "Cierra Hermes por completo.",
     "Save this file with exactly the content below:": "Guarda este archivo con exactamente el contenido de abajo:",
     "Open Hermes again.": "Vuelve a abrir Hermes.",
-    "Could not restart Hermes. Follow the steps below.": "No se pudo reiniciar Hermes. Sigue los pasos de abajo."
+    "Could not restart Hermes. Follow the steps below.": "No se pudo reiniciar Hermes. Sigue los pasos de abajo.",
+    "Bot calls": "Llamadas a bots",
+    "Run any bot's scheduled job now. The result goes where that job normally sends it.": "Ejecuta ahora la tarea programada de cualquier bot. El resultado va adonde la tarea lo envía normalmente.",
+    "Could not load scheduled jobs. Please retry.": "No se pudieron cargar las tareas programadas. Inténtalo de nuevo.",
+    "This job is already running.": "Esta tarea ya se está ejecutando.",
+    "This job is paused. Turn it back on in that bot first.": "Esta tarea está en pausa. Actívala primero en ese bot.",
+    "That job no longer exists. Refresh the list.": "Esa tarea ya no existe. Actualiza la lista.",
+    "Could not start the run. Refresh the list and try again.": "No se pudo iniciar. Actualiza la lista e inténtalo de nuevo.",
+    "Running…": "Ejecutando…",
+    "Ran. The result goes where this job sends it.": "Ejecutada. El resultado va adonde esta tarea lo envía.",
+    "Could not run. Check the job in that bot.": "No se pudo ejecutar. Revisa la tarea en ese bot.",
+    "Loading scheduled jobs": "Cargando tareas programadas",
+    "No scheduled jobs yet": "Aún no hay tareas programadas",
+    "Scheduled jobs of your bots will show here.": "Aquí aparecerán las tareas programadas de tus bots.",
+    Paused: "En pausa",
+    "Last run: {0}": "Última ejecución: {0}",
+    "Next: {0}": "Siguiente: {0}",
+    "Run now": "Ejecutar ahora",
+    "Run this job now?": "¿Ejecutar esta tarea ahora?",
+    "{0} · {1} runs once now. A job that calls the model uses tokens.": "{0} · {1} se ejecutará una vez ahora. Una tarea que llama al modelo usa tokens.",
+    Run: "Ejecutar",
+    Teams: "Equipos",
+    "Recruit a whole team of bots that share one board and one folder.": "Recluta de una vez un equipo de bots que comparten un tablero y una carpeta.",
+    "Could not load teams. Please retry.": "No se pudieron cargar los equipos. Inténtalo de nuevo.",
+    "Loading teams": "Cargando equipos",
+    "No teams yet": "Aún no hay equipos",
+    Recruited: "Reclutado",
+    Leader: "Líder",
+    "The leader hands out the work": "El líder reparte el trabajo",
+    "A bot with the matching role picks up the work": "El bot con el rol adecuado toma el trabajo",
+    "Recruit team": "Reclutar equipo",
+    "Disband team": "Disolver equipo",
+    "Recruit {0}": "Reclutar {0}",
+    "Nothing that already exists is overwritten.": "No se sobrescribe nada existente.",
+    "Reviewing every bot": "Revisando cada bot",
+    "This team is already recruited.": "Este equipo ya está reclutado.",
+    "Already existing bots: {0}. Nothing was installed.": "Bots que ya existen: {0}. No se instaló nada.",
+    "This recruit creates": "Este reclutamiento crea",
+    "Bot {0} · {1}": "Bot {0} · {1}",
+    "Team folder {0}": "Carpeta del equipo {0}",
+    "Team board {0}": "Tablero del equipo {0}",
+    "Group room {0}": "Sala de grupo {0}",
+    "Review notice every {0} in the leader's bot chat": "Aviso de revisión cada {0} en el chat del líder",
+    Choose: "Elegir",
+    "Not available on this computer": "No disponible en este equipo",
+    "Keys for {0}": "Claves de {0}",
+    "Recruiting. This can take a few minutes.": "Reclutando. Puede tardar unos minutos.",
+    Recruit: "Reclutar",
+    "Could not review this team. Please retry.": "No se pudo revisar este equipo. Inténtalo de nuevo.",
+    "Could not recruit. Please retry.": "No se pudo reclutar. Inténtalo de nuevo.",
+    "Recruited {0}.": "{0} reclutado.",
+    "Review notice job: {0}": "Tarea de aviso de revisión: {0}",
+    "Copied the Google connection to the leader.": "Conexión de Google copiada al líder.",
+    "The Google connection was not copied.": "No se copió la conexión de Google.",
+    "There was no Google connection in the default profile to copy.": "No hay conexión de Google en el perfil predeterminado para copiar.",
+    "Some steps did not finish: {0}": "Pasos sin terminar: {0}",
+    "Created the group room.": "Sala de grupo creada.",
+    "Could not create the group room. Make one in Desktop's group chat with: {0}": "No se pudo crear la sala. Créala en el chat de grupo de Desktop con: {0}",
+    "Stopped at installing {0}.": "Se detuvo al instalar {0}.",
+    "Rolled back every bot it created.": "Se revirtieron todos los bots creados.",
+    "Could not remove: {0}": "No se pudo eliminar: {0}",
+    "Disband {0}?": "¿Disolver {0}?",
+    Disband: "Disolver",
+    "Disbanded the team.": "Equipo disuelto.",
+    "Some things were left: {0}. Try disbanding again.": "Quedó algo: {0}. Vuelve a disolver.",
+    "Could not disband. Please retry.": "No se pudo disolver. Inténtalo de nuevo.",
+    "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "Elimina solo lo que creó este equipo: bots, tablero y tareas. Los archivos de trabajo no se borran; se mueven a teams/_disbanded. No toca otros bots.",
+    "Its work files were kept in {0}.": "Los archivos de trabajo se guardaron en {0}.",
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "El reclutamiento terminó, pero esta pantalla no recibió la respuesta. Revisa la carpeta del equipo y crea tú la sala si el equipo tiene una."
   }
 };
 
 // packages/hermes-plugin/desktop/i18n.ts
 var supportedLocales = Object.keys(locales_default);
-var messageIds = Object.fromEntries(Object.keys(locales_default.en).map((key, index) => [key, "message" + index]));
+var messageIds = Object.fromEntries(Object.keys(locales_default.en).map((key2, index) => [key2, "message" + index]));
 function normalizePluginLocale(value) {
   return Object.hasOwn(locales_default, value) ? value : "en";
 }
 var formatMessage = (message, args) => message.replace(/\{(\d+)\}/g, (whole, index) => args[Number(index)] === void 0 ? whole : String(args[Number(index)]));
 function registerMyBotsI18n(ctx) {
-  ctx.i18n?.register(Object.fromEntries(supportedLocales.map((locale) => [locale, Object.fromEntries(Object.entries(locales_default[locale]).map(([key, value]) => [messageIds[key], value]))])));
+  ctx.i18n?.register(Object.fromEntries(supportedLocales.map((locale) => [locale, Object.fromEntries(Object.entries(locales_default[locale]).map(([key2, value]) => [messageIds[key2], value]))])));
 }
 function useMyBots() {
   const hostLocale = typeof sdk.useI18n === "function" ? sdk.useI18n().locale : "en";
   const locale = normalizePluginLocale(hostLocale);
   const scoped = typeof sdk.usePluginI18n === "function" ? sdk.usePluginI18n("mybots") : null;
-  const t = (key, ...args) => {
-    const id = messageIds[key], resolved = id ? scoped?.(id) : void 0;
+  const t = (key2, ...args) => {
+    const id = messageIds[key2], resolved = id ? scoped?.(id) : void 0;
     if (resolved && resolved !== id) return formatMessage(resolved, args);
     const messages = locales_default[locale];
-    return formatMessage(messages[key] ?? locales_default.en[key] ?? key, args);
+    return formatMessage(messages[key2] ?? locales_default.en[key2] ?? key2, args);
   };
   return { locale, t, dir: locale === "ar" ? "rtl" : "ltr", contentLocale: locale === "ko" ? "ko" : "en" };
 }
@@ -2602,7 +3282,7 @@ function parseAuthoredCatalog(input) {
     text(b.version, 40);
     if (!VERSION.test(b.version) || ids.has(b.id)) throw new Error("Invalid version or duplicate profile");
     ids.add(b.id);
-    for (const key of ["name", "englishName", "role", "personality", "description", "firstPrompt"]) text(b[key], key === "name" || key === "englishName" ? 80 : 1e3);
+    for (const key2 of ["name", "englishName", "role", "personality", "description", "firstPrompt"]) text(b[key2], key2 === "name" || key2 === "englishName" ? 80 : 1e3);
     if (!["business", "learning", "daily"].includes(String(b.category))) throw new Error("Unknown category");
     strings(b.optional);
     const order = ["skills", "mcp", "plugin", "voice"];
@@ -2713,7 +3393,7 @@ var MarketApi = class {
 };
 
 // packages/hermes-plugin/desktop/install-state.ts
-var format = (key, ...args) => key.replace(/\{(\d+)\}/g, (_, n) => String(args[Number(n)] ?? ""));
+var format = (key2, ...args) => key2.replace(/\{(\d+)\}/g, (_, n) => String(args[Number(n)] ?? ""));
 var initialSelection = (bot) => [...bot.optional];
 var normalizeSelection = (bot, selected) => bot.optional.filter((c) => selected.includes(c));
 function voiceResultMessage(result, t = format) {
@@ -3015,8 +3695,8 @@ function SubmissionsPage({ ctx }) {
     setBusy(true);
     setError("");
     try {
-      const guarded = new Proxy(new MarketApi(ctx), { get(target, key) {
-        const value = Reflect.get(target, key);
+      const guarded = new Proxy(new MarketApi(ctx), { get(target, key2) {
+        const value = Reflect.get(target, key2);
         return typeof value === "function" ? async (...args) => {
           if (!fence.current.isCurrent(ticket) || !isLocal()) throw Error("The screen or connection changed.");
           const result = await value.apply(target, args);
@@ -3039,11 +3719,11 @@ function SubmissionsPage({ ctx }) {
   async function save(api) {
     const m = metadata();
     if (draft) return api.patch(draft.id, draft.revision, m);
-    const key = canonicalJson(m);
-    let id = requests.current.get(key);
+    const key2 = canonicalJson(m);
+    let id = requests.current.get(key2);
     if (!id) {
       id = crypto.randomUUID();
-      requests.current.set(key, id);
+      requests.current.set(key2, id);
     }
     return api.create(id, m);
   }
@@ -3112,10 +3792,10 @@ function SubmissionsPage({ ctx }) {
         ] }),
         /* @__PURE__ */ jsxs2("fieldset", { disabled: busy || !local || !connection.scopes.includes("submissions:write") || draft?.state === "published", children: [
           /* @__PURE__ */ jsxs2("div", { className: "mb-fields", children: [
-            fields.map(([key, label]) => /* @__PURE__ */ jsxs2("label", { className: "mb-field" + (["description", "firstPrompt"].includes(key) ? " mb-field-wide" : ""), children: [
+            fields.map(([key2, label]) => /* @__PURE__ */ jsxs2("label", { className: "mb-field" + (["description", "firstPrompt"].includes(key2) ? " mb-field-wide" : ""), children: [
               t(label),
-              /* @__PURE__ */ jsx2(Input, { "aria-label": t(label), value: form[key], disabled: !!draft && (key === "id" || key === "version"), required: key !== "englishName", maxLength: key === "name" || key === "englishName" ? 80 : 1e3, onChange: (e) => setForm((f) => ({ ...f, [key]: e.target.value, ...key === "id" && !draft ? { skillId: e.target.value } : {} })) })
-            ] }, key)),
+              /* @__PURE__ */ jsx2(Input, { "aria-label": t(label), value: form[key2], disabled: !!draft && (key2 === "id" || key2 === "version"), required: key2 !== "englishName", maxLength: key2 === "name" || key2 === "englishName" ? 80 : 1e3, onChange: (e) => setForm((f) => ({ ...f, [key2]: e.target.value, ...key2 === "id" && !draft ? { skillId: e.target.value } : {} })) })
+            ] }, key2)),
             /* @__PURE__ */ jsxs2("label", { className: "mb-field", children: [
               t("Category"),
               /* @__PURE__ */ jsx2(Choice, { label: t("Category"), value: form.category, onChange: (v) => setForm((f) => ({ ...f, category: v })), options: [["daily", t("Daily life")], ["business", t("Business")], ["learning", t("Learning")]] })
@@ -3268,30 +3948,212 @@ function ConnectionPage({ ctx }) {
   ] });
 }
 
-// packages/hermes-plugin/desktop/lumi-icon.ts
-var lumiIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><rect x="1.5" y="2" width="13" height="12" rx="5.5" fill="none" stroke="black" stroke-width="1.25"/><ellipse cx="6" cy="8" rx=".75" ry="1.5"/><ellipse cx="10" cy="8" rx=".75" ry="1.5"/></svg>';
-function registerLumiIcon() {
-  if (typeof document === "undefined") return () => {
+// packages/hermes-plugin/desktop/routines-page.tsx
+import { useCallback, useEffect as useEffect4, useRef as useRef4, useState as useState4 } from "react";
+import { Fragment as Fragment3, jsx as jsx4, jsxs as jsxs4 } from "react/jsx-runtime";
+var LOAD_FAILED = "Could not load scheduled jobs. Please retry.";
+var NOTICES = {
+  busy: "This job is already running.",
+  paused: "This job is paused. Turn it back on in that bot first.",
+  missing: "That job no longer exists. Refresh the list.",
+  start: "Could not start the run. Refresh the list and try again."
+};
+var key = (r) => r.profile + "/" + r.id;
+var when = (value, locale) => {
+  if (!value) return "—";
+  const d = new Date(value);
+  return isNaN(d.getTime()) ? "—" : d.toLocaleString(locale === "zh-hant" ? "zh-TW" : locale);
+};
+function RoutinesPage({
+  ctx,
+  pollMs = 3e3
+}) {
+  const { t, locale } = useMyBots();
+  const [rows, setRows] = useState4(null), [error, setError] = useState4(""), [reload, setReload] = useState4(0), [confirm, setConfirm] = useState4(null), [runs, setRuns] = useState4({}), [notices, setNotices] = useState4({});
+  const alive = useRef4(true);
+  useEffect4(
+    () => () => {
+      alive.current = false;
+    },
+    []
+  );
+  useEffect4(() => {
+    let active = true;
+    setError("");
+    ctx.rest("/routines").then(
+      (r) => {
+        if (active) setRows(Array.isArray(r?.routines) ? r.routines : []);
+      },
+      () => {
+        if (active) {
+          setRows(null);
+          setError(LOAD_FAILED);
+        }
+      }
+    );
+    return () => {
+      active = false;
+    };
+  }, [ctx, reload]);
+  useEffect4(() => {
+    const running = Object.entries(runs).filter(
+      ([, r]) => r.state === "running"
+    );
+    if (!running.length) return;
+    const timer = setTimeout(() => {
+      for (const [k, r] of running)
+        ctx.rest("/routines/run/" + encodeURIComponent(r.run_id)).then(
+          (s) => {
+            if (alive.current && s && (s.state === "running" || s.state === "succeeded" || s.state === "failed"))
+              setRuns(
+                (x) => x[k]?.run_id === r.run_id ? { ...x, [k]: { run_id: r.run_id, state: s.state } } : x
+              );
+          },
+          () => {
+            if (alive.current)
+              setRuns(
+                (x) => x[k]?.run_id === r.run_id ? { ...x, [k]: { ...x[k] } } : x
+              );
+          }
+        );
+    }, pollMs);
+    return () => clearTimeout(timer);
+  }, [ctx, runs, pollMs]);
+  const start = useCallback(
+    async (r) => {
+      setConfirm(null);
+      const k = key(r);
+      setNotices((x) => {
+        const { [k]: _, ...rest } = x;
+        return rest;
+      });
+      try {
+        const res = await ctx.rest("/routines/run", {
+          method: "POST",
+          body: { profile: r.profile, job: r.id }
+        });
+        if (alive.current && res?.run_id)
+          setRuns((x) => ({
+            ...x,
+            [k]: { run_id: res.run_id, state: "running" }
+          }));
+      } catch (e) {
+        const d = detail(e) || "";
+        const n = /이미 실행/.test(d) ? "busy" : /멈춘/.test(d) ? "paused" : /찾지 못/.test(d) ? "missing" : "start";
+        if (alive.current) setNotices((x) => ({ ...x, [k]: n }));
+      }
+    },
+    [ctx]
+  );
+  const groups = (rows || []).reduce((g, r) => {
+    (g[r.profile] = g[r.profile] || []).push(r);
+    return g;
+  }, {});
+  const status = (r) => {
+    const run = runs[key(r)], n = notices[key(r)];
+    if (n)
+      return /* @__PURE__ */ jsx4("span", { role: "status", className: "mb-muted", children: t(NOTICES[n]) });
+    if (!run) return null;
+    return /* @__PURE__ */ jsx4(
+      "span",
+      {
+        role: "status",
+        className: run.state === "failed" ? "mb-error" : "mb-muted",
+        children: run.state === "running" ? t("Running…") : run.state === "succeeded" ? t("Ran. The result goes where this job sends it.") : t("Could not run. Check the job in that bot.")
+      }
+    );
   };
-  const style = document.createElement("style");
-  style.dataset.mybotsIcon = "lumi";
-  const mask = `url("data:image/svg+xml,${encodeURIComponent(lumiIconSvg)}")`;
-  style.textContent = `.codicon.codicon-mybots-lumi::before{content:"";display:block;width:1em;height:1em;background-color:currentColor;mask-image:${mask};mask-repeat:no-repeat;mask-position:center;mask-size:contain}`;
-  document.head.append(style);
-  return () => style.remove();
+  return /* @__PURE__ */ jsxs4("section", { className: "mb-stack", children: [
+    /* @__PURE__ */ jsxs4("div", { className: "mb-section", children: [
+      /* @__PURE__ */ jsx4("h2", { children: t("Bot calls") }),
+      /* @__PURE__ */ jsx4("p", { className: "mb-muted", children: t(
+        "Run any bot's scheduled job now. The result goes where that job normally sends it."
+      ) })
+    ] }),
+    /* @__PURE__ */ jsx4("div", { children: /* @__PURE__ */ jsx4(Button2, { variant: "ghost", onClick: () => setReload((n) => n + 1), children: t("Refresh") }) }),
+    error && /* @__PURE__ */ jsx4(Failure, { message: t(error) }),
+    rows === null && !error && /* @__PURE__ */ jsx4(Loader, { label: t("Loading scheduled jobs") }),
+    rows && rows.length === 0 && /* @__PURE__ */ jsx4(
+      EmptyState,
+      {
+        title: t("No scheduled jobs yet"),
+        description: t("Scheduled jobs of your bots will show here.")
+      }
+    ),
+    Object.entries(groups).map(([profile, items]) => /* @__PURE__ */ jsxs4("section", { "data-bot": profile, className: "mb-section", children: [
+      /* @__PURE__ */ jsx4("h3", { children: profile }),
+      /* @__PURE__ */ jsx4("ul", { className: "mb-list", children: items.map((r) => {
+        const paused = r.state === "paused", running = runs[key(r)]?.state === "running";
+        return /* @__PURE__ */ jsxs4("li", { className: "mb-row", children: [
+          /* @__PURE__ */ jsxs4("div", { children: [
+            /* @__PURE__ */ jsx4("strong", { children: r.name || r.id }),
+            " ",
+            /* @__PURE__ */ jsx4("small", { className: "mb-muted", children: r.schedule }),
+            paused && /* @__PURE__ */ jsxs4(Fragment3, { children: [
+              " ",
+              /* @__PURE__ */ jsx4(Badge, { variant: "muted", children: t("Paused") })
+            ] }),
+            /* @__PURE__ */ jsxs4("p", { className: "mb-muted", children: [
+              t("Last run: {0}", when(r.last_run_at, locale)),
+              " ·",
+              " ",
+              t("Next: {0}", when(r.next_run_at, locale))
+            ] }),
+            status(r)
+          ] }),
+          /* @__PURE__ */ jsx4(
+            Button2,
+            {
+              variant: "secondary",
+              disabled: paused || running,
+              onClick: () => setConfirm(r),
+              children: t("Run now")
+            }
+          )
+        ] }, r.id);
+      }) })
+    ] }, profile)),
+    /* @__PURE__ */ jsx4(
+      Dialog,
+      {
+        open: !!confirm,
+        onOpenChange: (open) => {
+          if (!open) setConfirm(null);
+        },
+        children: /* @__PURE__ */ jsxs4(DialogContent, { children: [
+          /* @__PURE__ */ jsxs4(DialogHeader, { children: [
+            /* @__PURE__ */ jsx4(DialogTitle, { children: t("Run this job now?") }),
+            /* @__PURE__ */ jsx4(DialogDescription, { children: confirm ? t(
+              "{0} · {1} runs once now. A job that calls the model uses tokens.",
+              confirm.profile,
+              confirm.name || confirm.id
+            ) : "" })
+          ] }),
+          /* @__PURE__ */ jsxs4(DialogFooter, { children: [
+            /* @__PURE__ */ jsx4(Button2, { variant: "text", onClick: () => setConfirm(null), children: t("Cancel") }),
+            /* @__PURE__ */ jsx4(
+              Button2,
+              {
+                onClick: () => {
+                  if (confirm) void start(confirm);
+                },
+                children: t("Run")
+              }
+            )
+          ] })
+        ] })
+      }
+    )
+  ] });
 }
 
-// packages/hermes-plugin/desktop/market-page.tsx
-import { useCallback, useEffect as useEffect8, useRef as useRef8, useState as useState8 } from "react";
-import { host as host4 } from "@hermes/plugin-sdk";
-
-// packages/hermes-plugin/desktop/install-confirmation.tsx
-import { useEffect as useEffect5, useRef as useRef6, useState as useState5 } from "react";
-import { host as host2 } from "@hermes/plugin-sdk";
+// packages/hermes-plugin/desktop/teams-page.tsx
+import { useEffect as useEffect5, useState as useState6 } from "react";
+import * as sdk2 from "@hermes/plugin-sdk";
 
 // packages/hermes-plugin/desktop/secrets-fields.tsx
-import { useId, useRef as useRef4, useState as useState4 } from "react";
-import { Fragment as Fragment3, jsx as jsx4, jsxs as jsxs4 } from "react/jsx-runtime";
+import { useId, useRef as useRef5, useState as useState5 } from "react";
+import { Fragment as Fragment4, jsx as jsx5, jsxs as jsxs5 } from "react/jsx-runtime";
 var STORAGE_NOTICE = "Keys this bot needs are stored only in bot profiles on this computer";
 var APPLY_NOTICE = "Keys apply from the next new chat (or after restarting Hermes)";
 var DEFAULT_ERRORS = [
@@ -3313,23 +4175,23 @@ function SecretsFields({
   const current = (r) => value[r.name] ?? initialKeys([r])[r.name];
   const set = (r, patch) => onChange({ ...value, [r.name]: { ...current(r), ...patch } });
   const missing = missingRequired(secrets, value);
-  return /* @__PURE__ */ jsxs4("fieldset", { disabled, className: "mb-keys", children: [
-    /* @__PURE__ */ jsx4("legend", { children: t("Service keys") }),
-    /* @__PURE__ */ jsx4("p", { className: "mb-muted", children: t(STORAGE_NOTICE) }),
+  return /* @__PURE__ */ jsxs5("fieldset", { disabled, className: "mb-keys", children: [
+    /* @__PURE__ */ jsx5("legend", { children: t("Service keys") }),
+    /* @__PURE__ */ jsx5("p", { className: "mb-muted", children: t(STORAGE_NOTICE) }),
     secrets.map((r, i) => {
       const c = current(r), fromDefault = usesDefault(r, value), purpose = `${id}-${i}-purpose`, note = `${id}-${i}-note`;
-      return /* @__PURE__ */ jsxs4("div", { className: "mb-key", children: [
-        /* @__PURE__ */ jsxs4("div", { className: "mb-key-head", children: [
-          /* @__PURE__ */ jsx4("b", { children: r.label }),
-          /* @__PURE__ */ jsx4(Badge, { variant: "muted", children: r.required ? t("Required") : t("Optional") })
+      return /* @__PURE__ */ jsxs5("div", { className: "mb-key", children: [
+        /* @__PURE__ */ jsxs5("div", { className: "mb-key-head", children: [
+          /* @__PURE__ */ jsx5("b", { children: r.label }),
+          /* @__PURE__ */ jsx5(Badge, { variant: "muted", children: r.required ? t("Required") : t("Optional") })
         ] }),
-        (r.purpose || r.url) && /* @__PURE__ */ jsxs4("p", { id: purpose, className: "mb-muted", children: [
+        (r.purpose || r.url) && /* @__PURE__ */ jsxs5("p", { id: purpose, className: "mb-muted", children: [
           r.purpose,
           r.purpose && r.url && " · ",
-          r.url && /* @__PURE__ */ jsx4("a", { href: r.url, target: "_blank", rel: "noopener noreferrer", children: t("Get a key") })
+          r.url && /* @__PURE__ */ jsx5("a", { href: r.url, target: "_blank", rel: "noopener noreferrer", children: t("Get a key") })
         ] }),
-        r.prefill === "default" && /* @__PURE__ */ jsxs4("label", { className: "mb-option", children: [
-          /* @__PURE__ */ jsx4(
+        r.prefill === "default" && /* @__PURE__ */ jsxs5("label", { className: "mb-option", children: [
+          /* @__PURE__ */ jsx5(
             Checkbox,
             {
               "aria-label": `${r.label}: ${t(FROM_DEFAULT)}`,
@@ -3337,10 +4199,10 @@ function SecretsFields({
               onCheckedChange: (checked) => set(r, { useDefault: checked === true, value: "" })
             }
           ),
-          /* @__PURE__ */ jsx4("span", { children: t(FROM_DEFAULT) })
+          /* @__PURE__ */ jsx5("span", { children: t(FROM_DEFAULT) })
         ] }),
-        !fromDefault && /* @__PURE__ */ jsxs4(Fragment3, { children: [
-          /* @__PURE__ */ jsx4(
+        !fromDefault && /* @__PURE__ */ jsxs5(Fragment4, { children: [
+          /* @__PURE__ */ jsx5(
             Input,
             {
               type: "password",
@@ -3357,8 +4219,8 @@ function SecretsFields({
               onChange: (e) => set(r, { value: e.target.value })
             }
           ),
-          r.defaultHasValue ? /* @__PURE__ */ jsx4("small", { id: note, className: "mb-muted", children: t("The default profile value stays as it is") }) : /* @__PURE__ */ jsxs4("label", { className: "mb-option", children: [
-            /* @__PURE__ */ jsx4(
+          r.defaultHasValue ? /* @__PURE__ */ jsx5("small", { id: note, className: "mb-muted", children: t("The default profile value stays as it is") }) : /* @__PURE__ */ jsxs5("label", { className: "mb-option", children: [
+            /* @__PURE__ */ jsx5(
               Checkbox,
               {
                 "aria-label": `${r.label}: ${t(SAVE_DEFAULT)}`,
@@ -3366,12 +4228,12 @@ function SecretsFields({
                 onCheckedChange: (checked) => set(r, { save: checked === true })
               }
             ),
-            /* @__PURE__ */ jsx4("span", { children: t(SAVE_DEFAULT) })
+            /* @__PURE__ */ jsx5("span", { children: t(SAVE_DEFAULT) })
           ] })
         ] })
       ] }, r.name);
     }),
-    /* @__PURE__ */ jsx4("p", { role: "status", className: "mb-muted", children: missing > 0 ? t(missingMessage, missing) : "" })
+    /* @__PURE__ */ jsx5("p", { role: "status", className: "mb-muted", children: missing > 0 ? t(missingMessage, missing) : "" })
   ] });
 }
 var STATE_LABELS = {
@@ -3392,24 +4254,24 @@ function KeyResults({
   labels: labels2
 }) {
   const { t } = useMyBots();
-  return /* @__PURE__ */ jsx4("ul", { className: "mb-key-results", children: rows.map((r) => /* @__PURE__ */ jsxs4("li", { children: [
-    /* @__PURE__ */ jsx4("b", { children: labels2[r.name] || r.name }),
+  return /* @__PURE__ */ jsx5("ul", { className: "mb-key-results", children: rows.map((r) => /* @__PURE__ */ jsxs5("li", { children: [
+    /* @__PURE__ */ jsx5("b", { children: labels2[r.name] || r.name }),
     " ·",
     " ",
     t(STATE_LABELS[r.state] ?? "Could not check"),
-    r.fromDefault && /* @__PURE__ */ jsxs4(Fragment3, { children: [
+    r.fromDefault && /* @__PURE__ */ jsxs5(Fragment4, { children: [
       " · ",
       t("Taken from the default profile")
     ] }),
-    r.savedToDefault && /* @__PURE__ */ jsxs4(Fragment3, { children: [
+    r.savedToDefault && /* @__PURE__ */ jsxs5(Fragment4, { children: [
       " · ",
       t("Also saved to the default profile")
     ] }),
-    r.defaultKept && /* @__PURE__ */ jsxs4(Fragment3, { children: [
+    r.defaultKept && /* @__PURE__ */ jsxs5(Fragment4, { children: [
       " · ",
       t("The default profile value was kept")
     ] }),
-    r.defaultError && /* @__PURE__ */ jsxs4(Fragment3, { children: [
+    r.defaultError && /* @__PURE__ */ jsxs5(Fragment4, { children: [
       " ",
       "·",
       " ",
@@ -3428,10 +4290,10 @@ function AddKeysForm({
   onSaved
 }) {
   const { t } = useMyBots();
-  const [keys, setKeys] = useState4(
+  const [keys, setKeys] = useState5(
     () => initialKeys(secrets)
-  ), [busy, setBusy] = useState4(false), [error, setError] = useState4(""), [result, setResult] = useState4(null);
-  const posting = useRef4(false), local = useLocal();
+  ), [busy, setBusy] = useState5(false), [error, setError] = useState5(""), [result, setResult] = useState5(null);
+  const posting = useRef5(false), local = useLocal();
   const labels2 = Object.fromEntries(secrets.map((r) => [r.name, r.label]));
   const request = keyRequest(secrets, keys), empty2 = Object.values(request).every((x) => x.source === "skip");
   async function save() {
@@ -3456,14 +4318,14 @@ function AddKeysForm({
     }
   }
   if (result)
-    return /* @__PURE__ */ jsxs4("section", { role: "status", className: "mb-section", children: [
-      /* @__PURE__ */ jsx4(KeyResults, { rows: result.secrets, labels: labels2 }),
-      /* @__PURE__ */ jsx4("p", { children: t(APPLY_NOTICE) })
+    return /* @__PURE__ */ jsxs5("section", { role: "status", className: "mb-section", children: [
+      /* @__PURE__ */ jsx5(KeyResults, { rows: result.secrets, labels: labels2 }),
+      /* @__PURE__ */ jsx5("p", { children: t(APPLY_NOTICE) })
     ] });
-  return /* @__PURE__ */ jsxs4("div", { className: "mb-section", children: [
-    error && /* @__PURE__ */ jsx4(Failure, { message: error }),
-    states2 && /* @__PURE__ */ jsx4(KeyResults, { rows: states2, labels: labels2 }),
-    /* @__PURE__ */ jsx4(
+  return /* @__PURE__ */ jsxs5("div", { className: "mb-section", children: [
+    error && /* @__PURE__ */ jsx5(Failure, { message: error }),
+    states2 && /* @__PURE__ */ jsx5(KeyResults, { rows: states2, labels: labels2 }),
+    /* @__PURE__ */ jsx5(
       SecretsFields,
       {
         secrets,
@@ -3473,7 +4335,7 @@ function AddKeysForm({
         missingMessage: "Required keys still empty: {0}."
       }
     ),
-    /* @__PURE__ */ jsx4(DialogFooter, { children: /* @__PURE__ */ jsx4(
+    /* @__PURE__ */ jsx5(DialogFooter, { children: /* @__PURE__ */ jsx5(
       Button2,
       {
         disabled: busy || !local || empty2,
@@ -3503,16 +4365,16 @@ function AddKeysDialog({
   onSaved
 }) {
   const { t, locale, dir } = useMyBots();
-  const opener = useRef4(document.activeElement);
-  const [fields2] = useState4(() => installedFields(status.secrets));
-  return /* @__PURE__ */ jsx4(
+  const opener = useRef5(document.activeElement);
+  const [fields2] = useState5(() => installedFields(status.secrets));
+  return /* @__PURE__ */ jsx5(
     Dialog,
     {
       open: true,
       onOpenChange: (open) => {
         if (!open) onClose();
       },
-      children: /* @__PURE__ */ jsxs4(
+      children: /* @__PURE__ */ jsxs5(
         DialogContent,
         {
           "aria-label": t("Add keys for {0}", label),
@@ -3526,11 +4388,11 @@ function AddKeysDialog({
             }
           },
           children: [
-            /* @__PURE__ */ jsxs4(DialogHeader, { children: [
-              /* @__PURE__ */ jsx4(DialogTitle, { children: t("Add keys for {0}", label) }),
-              /* @__PURE__ */ jsx4(DialogDescription, { children: t("Bot profile: {0}", status.profile) })
+            /* @__PURE__ */ jsxs5(DialogHeader, { children: [
+              /* @__PURE__ */ jsx5(DialogTitle, { children: t("Add keys for {0}", label) }),
+              /* @__PURE__ */ jsx5(DialogDescription, { children: t("Bot profile: {0}", status.profile) })
             ] }),
-            /* @__PURE__ */ jsx4(
+            /* @__PURE__ */ jsx5(
               AddKeysForm,
               {
                 ctx,
@@ -3548,9 +4410,410 @@ function AddKeysDialog({
   );
 }
 
+// packages/hermes-plugin/desktop/teams-page.tsx
+import { Fragment as Fragment5, jsx as jsx6, jsxs as jsxs6 } from "react/jsx-runtime";
+var ROUTE = {
+  connectionId: "local",
+  mode: "local",
+  profile: "default",
+  targetProfile: "default"
+};
+var roomId = (team) => "team-" + team.id;
+var GOOGLE = {
+  copied: "Copied the Google connection to the leader.",
+  refused: "The Google connection was not copied.",
+  none: "There was no Google connection in the default profile to copy."
+};
+function TeamsPage({ ctx }) {
+  const { t } = useMyBots();
+  const [teams, setTeams] = useState6(null), [error, setError] = useState6(""), [reload, setReload] = useState6(0), [open, setOpen] = useState6(null), [review, setReview] = useState6(null), [consents, setConsents] = useState6([]), [keys, setKeys] = useState6({}), [busy, setBusy] = useState6(false), [stepError, setStepError] = useState6(""), [result, setResult] = useState6(null), [disband, setDisband] = useState6(null), [disbanded, setDisbanded] = useState6(null);
+  useEffect5(() => {
+    let active = true;
+    setError("");
+    ctx.rest("/teams").then(
+      (r) => active && setTeams(Array.isArray(r?.teams) ? r.teams : []),
+      () => {
+        if (active) {
+          setTeams(null);
+          setError("Could not load teams. Please retry.");
+        }
+      }
+    );
+    return () => {
+      active = false;
+    };
+  }, [ctx, reload]);
+  const startReview = async (team) => {
+    setOpen(team);
+    setReview(null);
+    setResult(null);
+    setDisbanded(null);
+    setStepError("");
+    setConsents([]);
+    try {
+      const r = await ctx.rest(`/teams/${team.id}/review`, {
+        method: "POST",
+        body: {},
+        timeoutMs: 12e4
+      });
+      setReview(r);
+      setKeys(
+        Object.fromEntries(
+          (r.members || []).map((m) => [m.bot, initialKeys(m.secrets || [])])
+        )
+      );
+    } catch {
+      setStepError("Could not review this team. Please retry.");
+    }
+  };
+  const makeRoom = async (team, created) => {
+    if (!team.room) return "none";
+    const request = sdk2.host.requestProfile;
+    if (typeof request !== "function") return "failed";
+    try {
+      const members = created.map((b) => ({
+        member_id: b,
+        profile: b,
+        handle: b.replace(/^mybots-/, "")
+      }));
+      await request.call(
+        sdk2.host,
+        ROUTE,
+        "groups.create",
+        { room_id: roomId(team), name: team.name, members },
+        3e4
+      );
+      await ctx.rest(`/teams/${team.id}/room`, {
+        method: "POST",
+        body: { room_id: roomId(team) }
+      });
+      return "made";
+    } catch {
+      return "failed";
+    }
+  };
+  const recruit = async () => {
+    if (!open || !review?.members) return;
+    const team = open, members = review.members;
+    setBusy(true);
+    setStepError("");
+    const secrets = Object.fromEntries(
+      members.filter((m) => m.secrets?.length).map((m) => [m.bot, keyRequest(m.secrets, keys[m.bot] || {})])
+    );
+    setKeys({});
+    try {
+      const installed = await ctx.rest(`/teams/${team.id}/install`, {
+        method: "POST",
+        body: {
+          members: members.map((m) => ({ bot: m.bot, token: m.token })),
+          secrets,
+          consents
+        },
+        timeoutMs: 9e5
+      });
+      const room = installed.ok ? await makeRoom(team, installed.created || []) : "none";
+      setResult({ team, installed, room });
+      setOpen(null);
+      setReview(null);
+      setReload((n) => n + 1);
+    } catch {
+      const after = await ctx.rest("/teams").catch(() => null);
+      const done = after?.teams?.find((x) => x.id === team.id)?.recruited;
+      if (after?.teams) setTeams(after.teams);
+      if (done) {
+        setOpen(null);
+        setReview(null);
+        setStepError("The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.");
+      } else setStepError("Could not recruit. Please retry.");
+    } finally {
+      setBusy(false);
+    }
+  };
+  const confirmDisband = async () => {
+    if (!disband) return;
+    const team = disband;
+    setBusy(true);
+    setStepError("");
+    try {
+      const out = await ctx.rest(`/teams/${team.id}/disband`, {
+        method: "POST",
+        body: {},
+        timeoutMs: 3e5
+      });
+      let left = out.left || [];
+      const request = sdk2.host.requestProfile;
+      if (out.room && typeof request === "function") {
+        const closed = await request.call(
+          sdk2.host,
+          ROUTE,
+          "groups.disband",
+          {
+            room_id: out.room,
+            cancel_id: "disband-" + Date.now().toString(36)
+          },
+          3e4
+        ).then(
+          () => true,
+          () => false
+        );
+        if (closed) {
+          const after = await ctx.rest(`/teams/${team.id}/room-closed`, {
+            method: "POST",
+            body: {}
+          }).catch(() => null);
+          if (after) left = after.left || [];
+        }
+      }
+      setDisbanded({ left, kept: out.kept || null });
+      setDisband(null);
+      setResult(null);
+      setReload((n) => n + 1);
+    } catch {
+      setStepError("Could not disband. Please retry.");
+    } finally {
+      setBusy(false);
+    }
+  };
+  const createLine = (c) => c.kind === "bot" ? t("Bot {0} · {1}", c.id || "", c.role || "") : c.kind === "folder" ? t("Team folder {0}", c.path || "") : c.kind === "board" ? t("Team board {0}", c.id || "") : c.kind === "room" ? t("Group room {0}", c.name || "") : c.kind === "review_notice" ? t(
+    "Review notice every {0} in the leader's bot chat",
+    c.every || ""
+  ) : c.kind;
+  const blocked = review?.blocked;
+  return /* @__PURE__ */ jsxs6("section", { className: "mb-stack", children: [
+    /* @__PURE__ */ jsxs6("div", { className: "mb-section", children: [
+      /* @__PURE__ */ jsx6("h2", { children: t("Teams") }),
+      /* @__PURE__ */ jsx6("p", { className: "mb-muted", children: t(
+        "Recruit a whole team of bots that share one board and one folder."
+      ) })
+    ] }),
+    /* @__PURE__ */ jsx6("div", { children: /* @__PURE__ */ jsx6(Button2, { variant: "ghost", onClick: () => setReload((n) => n + 1), children: t("Refresh") }) }),
+    error && /* @__PURE__ */ jsx6(Failure, { message: t(error) }),
+    teams === null && !error && /* @__PURE__ */ jsx6(Loader, { label: t("Loading teams") }),
+    teams && teams.length === 0 && /* @__PURE__ */ jsx6(EmptyState, { title: t("No teams yet"), description: "" }),
+    result && /* @__PURE__ */ jsx6(
+      "section",
+      {
+        role: "status",
+        className: "mb-section",
+        "data-result": result.team.id,
+        children: result.installed.ok ? /* @__PURE__ */ jsxs6(Fragment5, { children: [
+          /* @__PURE__ */ jsx6("h3", { children: t("Recruited {0}.", result.team.name) }),
+          /* @__PURE__ */ jsxs6("ul", { className: "mb-list", children: [
+            (result.installed.created || []).map((b) => /* @__PURE__ */ jsx6("li", { children: b }, b)),
+            result.installed.board && /* @__PURE__ */ jsx6("li", { children: t("Team board {0}", result.installed.board) }),
+            result.installed.review_notice && /* @__PURE__ */ jsx6("li", { children: t(
+              "Review notice job: {0}",
+              result.installed.review_notice.profile
+            ) }),
+            result.installed.google && /* @__PURE__ */ jsx6("li", { children: t(GOOGLE[result.installed.google]) }),
+            !!result.installed.problems?.length && /* @__PURE__ */ jsx6("li", { className: "mb-error", children: t(
+              "Some steps did not finish: {0}",
+              result.installed.problems.join(", ")
+            ) })
+          ] }),
+          result.room === "made" && /* @__PURE__ */ jsx6("p", { children: t("Created the group room.") }),
+          result.room === "failed" && /* @__PURE__ */ jsx6("p", { className: "mb-error", children: t(
+            "Could not create the group room. Make one in Desktop's group chat with: {0}",
+            (result.installed.created || []).join(", ")
+          ) })
+        ] }) : /* @__PURE__ */ jsxs6(Fragment5, { children: [
+          /* @__PURE__ */ jsx6("p", { className: "mb-error", children: t("Stopped at installing {0}.", result.installed.failed || "") }),
+          result.installed.left?.length ? /* @__PURE__ */ jsx6("p", { className: "mb-error", children: t("Could not remove: {0}", result.installed.left.join(", ")) }) : /* @__PURE__ */ jsx6("p", { children: t("Rolled back every bot it created.") })
+        ] })
+      }
+    ),
+    disbanded && /* @__PURE__ */ jsxs6(
+      "p",
+      {
+        role: "status",
+        className: disbanded.left.length ? "mb-error" : "mb-muted",
+        children: [
+          disbanded.left.length ? t(
+            "Some things were left: {0}. Try disbanding again.",
+            disbanded.left.join(", ")
+          ) : t("Disbanded the team."),
+          disbanded.kept && /* @__PURE__ */ jsxs6(Fragment5, { children: [
+            " ",
+            t("Its work files were kept in {0}.", disbanded.kept)
+          ] })
+        ]
+      }
+    ),
+    stepError && !open && !disband && /* @__PURE__ */ jsx6(Failure, { message: t(stepError) }),
+    (teams || []).map((team) => /* @__PURE__ */ jsxs6("section", { "data-team": team.id, className: "mb-section", children: [
+      /* @__PURE__ */ jsxs6("h3", { children: [
+        team.name,
+        " ",
+        team.recruited && /* @__PURE__ */ jsx6(Badge, { variant: "muted", children: t("Recruited") }),
+        team.available === false && !team.recruited && /* @__PURE__ */ jsx6(Badge, { variant: "muted", children: t("Coming soon") })
+      ] }),
+      /* @__PURE__ */ jsx6("p", { children: team.summary }),
+      /* @__PURE__ */ jsx6("p", { className: "mb-muted", children: team.mode === "pull" ? t("A bot with the matching role picks up the work") : t("The leader hands out the work") }),
+      /* @__PURE__ */ jsx6("ul", { className: "mb-list", children: team.members.map((m) => /* @__PURE__ */ jsxs6("li", { children: [
+        m.role,
+        " · ",
+        /* @__PURE__ */ jsx6("small", { className: "mb-muted", children: m.bot }),
+        m.is_leader && /* @__PURE__ */ jsxs6(Fragment5, { children: [
+          " ",
+          /* @__PURE__ */ jsx6(Badge, { children: t("Leader") })
+        ] })
+      ] }, m.bot)) }),
+      team.recruited ? /* @__PURE__ */ jsx6(
+        Button2,
+        {
+          variant: "secondary",
+          disabled: busy,
+          onClick: () => setDisband(team),
+          children: t("Disband team")
+        }
+      ) : /* @__PURE__ */ jsx6(
+        Button2,
+        {
+          disabled: busy || team.available === false,
+          onClick: () => void startReview(team),
+          children: t("Recruit team")
+        }
+      )
+    ] }, team.id)),
+    /* @__PURE__ */ jsx6(
+      Dialog,
+      {
+        open: !!open,
+        onOpenChange: (o) => {
+          if (!o && !busy) {
+            setOpen(null);
+            setReview(null);
+            setKeys({});
+          }
+        },
+        children: /* @__PURE__ */ jsxs6(DialogContent, { children: [
+          /* @__PURE__ */ jsxs6(DialogHeader, { children: [
+            /* @__PURE__ */ jsx6(DialogTitle, { children: open ? t("Recruit {0}", open.name) : "" }),
+            /* @__PURE__ */ jsx6(DialogDescription, { children: t("Nothing that already exists is overwritten.") })
+          ] }),
+          stepError && /* @__PURE__ */ jsx6(Failure, { message: t(stepError) }),
+          !review && !stepError && /* @__PURE__ */ jsx6(Loader, { label: t("Reviewing every bot") }),
+          blocked && /* @__PURE__ */ jsx6("p", { className: "mb-error", children: blocked.team ? t("This team is already recruited.") : t(
+            "Already existing bots: {0}. Nothing was installed.",
+            (blocked.profiles || []).join(", ")
+          ) }),
+          review && !blocked && /* @__PURE__ */ jsxs6("div", { className: "mb-stack", children: [
+            /* @__PURE__ */ jsx6("h4", { children: t("This recruit creates") }),
+            /* @__PURE__ */ jsx6("ul", { className: "mb-list", children: (review.creates || []).map((c, i) => /* @__PURE__ */ jsx6("li", { children: createLine(c) }, i)) }),
+            !!review.consents?.length && /* @__PURE__ */ jsxs6(Fragment5, { children: [
+              /* @__PURE__ */ jsx6("h4", { children: t("Choose") }),
+              review.consents.map((c) => /* @__PURE__ */ jsxs6("label", { className: "mb-row", children: [
+                /* @__PURE__ */ jsx6(
+                  "input",
+                  {
+                    type: "checkbox",
+                    "data-consent": c.id,
+                    disabled: !c.available || busy,
+                    checked: consents.includes(c.id),
+                    onChange: (e) => setConsents(
+                      (x) => e.target.checked ? [...x, c.id] : x.filter((y) => y !== c.id)
+                    )
+                  }
+                ),
+                " ",
+                c.label,
+                !c.available && /* @__PURE__ */ jsxs6("small", { className: "mb-muted", children: [
+                  " ",
+                  "· ",
+                  t("Not available on this computer")
+                ] })
+              ] }, c.id))
+            ] }),
+            (review.members || []).filter((m) => m.secrets?.length).map((m) => /* @__PURE__ */ jsxs6("div", { children: [
+              /* @__PURE__ */ jsx6("h4", { children: t("Keys for {0}", m.name || m.bot) }),
+              /* @__PURE__ */ jsx6(
+                SecretsFields,
+                {
+                  secrets: m.secrets,
+                  value: keys[m.bot] || {},
+                  disabled: busy,
+                  onChange: (next) => setKeys((k) => ({ ...k, [m.bot]: next }))
+                }
+              )
+            ] }, m.bot)),
+            busy && /* @__PURE__ */ jsx6(Loader, { label: t("Recruiting. This can take a few minutes.") })
+          ] }),
+          /* @__PURE__ */ jsxs6(DialogFooter, { children: [
+            /* @__PURE__ */ jsx6(
+              Button2,
+              {
+                variant: "text",
+                disabled: busy,
+                onClick: () => {
+                  setOpen(null);
+                  setReview(null);
+                  setKeys({});
+                },
+                children: t("Cancel")
+              }
+            ),
+            review && !blocked && /* @__PURE__ */ jsx6(Button2, { disabled: busy, onClick: () => void recruit(), children: t("Recruit") })
+          ] })
+        ] })
+      }
+    ),
+    /* @__PURE__ */ jsx6(
+      Dialog,
+      {
+        open: !!disband,
+        onOpenChange: (o) => {
+          if (!o && !busy) setDisband(null);
+        },
+        children: /* @__PURE__ */ jsxs6(DialogContent, { children: [
+          /* @__PURE__ */ jsxs6(DialogHeader, { children: [
+            /* @__PURE__ */ jsx6(DialogTitle, { children: disband ? t("Disband {0}?", disband.name) : "" }),
+            /* @__PURE__ */ jsx6(DialogDescription, { children: t(
+              "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched."
+            ) })
+          ] }),
+          stepError && disband && /* @__PURE__ */ jsx6(Failure, { message: t(stepError) }),
+          /* @__PURE__ */ jsxs6(DialogFooter, { children: [
+            /* @__PURE__ */ jsx6(
+              Button2,
+              {
+                variant: "text",
+                disabled: busy,
+                onClick: () => setDisband(null),
+                children: t("Cancel")
+              }
+            ),
+            /* @__PURE__ */ jsx6(Button2, { disabled: busy, onClick: () => void confirmDisband(), children: t("Disband") })
+          ] })
+        ] })
+      }
+    )
+  ] });
+}
+
+// packages/hermes-plugin/desktop/lumi-icon.ts
+var lumiIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><rect x="1.5" y="2" width="13" height="12" rx="5.5" fill="none" stroke="black" stroke-width="1.25"/><ellipse cx="6" cy="8" rx=".75" ry="1.5"/><ellipse cx="10" cy="8" rx=".75" ry="1.5"/></svg>';
+function registerLumiIcon() {
+  if (typeof document === "undefined") return () => {
+  };
+  const style = document.createElement("style");
+  style.dataset.mybotsIcon = "lumi";
+  const mask = `url("data:image/svg+xml,${encodeURIComponent(lumiIconSvg)}")`;
+  style.textContent = `.codicon.codicon-mybots-lumi::before{content:"";display:block;width:1em;height:1em;background-color:currentColor;mask-image:${mask};mask-repeat:no-repeat;mask-position:center;mask-size:contain}`;
+  document.head.append(style);
+  return () => style.remove();
+}
+
+// packages/hermes-plugin/desktop/market-page.tsx
+import { useCallback as useCallback2, useEffect as useEffect10, useRef as useRef9, useState as useState10 } from "react";
+import { host as host5 } from "@hermes/plugin-sdk";
+
+// packages/hermes-plugin/desktop/install-confirmation.tsx
+import { useEffect as useEffect7, useRef as useRef7, useState as useState7 } from "react";
+import { host as host3 } from "@hermes/plugin-sdk";
+
 // packages/hermes-plugin/desktop/bot-avatar.tsx
-import { useEffect as useEffect4, useRef as useRef5 } from "react";
-import * as sdk2 from "@hermes/plugin-sdk";
+import { useEffect as useEffect6, useRef as useRef6 } from "react";
+import * as sdk3 from "@hermes/plugin-sdk";
 
 // packages/hermes-plugin/desktop/avatar-presets.ts
 var portraits = {
@@ -4062,8 +5325,8 @@ function mountAvatarScene(svg, src, calibration, loopFactory) {
     if (disposed) return;
     const target = poseAt(mood, now / 1e3 * calibration.pace + calibration.phase), mix = previous ? 1 - Math.exp(-Math.min(100, now - previous) / 85) : 1;
     previous = now;
-    for (const key of ["x", "y", "rotation", "scaleX", "scaleY"])
-      pose[key] += (target[key] - pose[key]) * mix;
+    for (const key2 of ["x", "y", "rotation", "scaleX", "scaleY"])
+      pose[key2] += (target[key2] - pose[key2]) * mix;
     pose.eye = target.eye;
     body.setAttribute(
       "transform",
@@ -4125,13 +5388,13 @@ function mountAvatarScene(svg, src, calibration, loopFactory) {
 }
 
 // packages/hermes-plugin/desktop/bot-avatar.tsx
-import { jsx as jsx5 } from "react/jsx-runtime";
+import { jsx as jsx7 } from "react/jsx-runtime";
 var targets = /* @__PURE__ */ new Set();
 var clock;
 var sharedLoop = (draw, options) => {
   const target = { draw, idle: options.idleWhen };
   targets.add(target);
-  if (!clock) clock = sdk2.createBudgetedLoop?.((now) => {
+  if (!clock) clock = sdk3.createBudgetedLoop?.((now) => {
     for (const t of targets) if (!t.idle()) t.draw(now);
   }, { fps: 24, idleWhen: () => [...targets].every((t) => t.idle()) });
   else clock.wake();
@@ -4148,50 +5411,50 @@ var sharedLoop = (draw, options) => {
 function BotAvatar({ bot, name, src, sha256, mood = "idle", size = 80 }) {
   const { t } = useMyBots();
   const accessibleLabel = t("{0} avatar", name);
-  const ref = useRef5(null), scene = useRef5(null);
+  const ref = useRef6(null), scene = useRef6(null);
   const calibration = sha256 ? avatarPreset(bot, sha256) : null;
   const animate = !!calibration && mood !== "unavailable";
-  useEffect4(() => {
+  useEffect6(() => {
     if (!ref.current || !calibration || !animate) return;
-    const controller = mountAvatarScene(ref.current, src, { ...calibration, name }, typeof sdk2.createBudgetedLoop === "function" ? sharedLoop : void 0);
+    const controller = mountAvatarScene(ref.current, src, { ...calibration, name }, typeof sdk3.createBudgetedLoop === "function" ? sharedLoop : void 0);
     scene.current = controller;
     return () => {
       controller.dispose();
       scene.current = null;
     };
   }, [src, calibration, name, animate]);
-  useEffect4(() => {
+  useEffect6(() => {
     ref.current?.setAttribute("aria-label", accessibleLabel);
   }, [accessibleLabel, src, animate]);
-  useEffect4(() => {
+  useEffect6(() => {
     if (mood !== "unavailable") scene.current?.setMood(mood);
   }, [mood, src, animate]);
-  return animate ? /* @__PURE__ */ jsx5("svg", { ref, width: size, height: size, className: "mb-avatar" }) : /* @__PURE__ */ jsx5("img", { src, alt: accessibleLabel, width: size, height: size, className: "mb-avatar" });
+  return animate ? /* @__PURE__ */ jsx7("svg", { ref, width: size, height: size, className: "mb-avatar" }) : /* @__PURE__ */ jsx7("img", { src, alt: accessibleLabel, width: size, height: size, className: "mb-avatar" });
 }
 
 // packages/hermes-plugin/desktop/install-confirmation.tsx
-import { Fragment as Fragment4, jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
+import { Fragment as Fragment6, jsx as jsx8, jsxs as jsxs7 } from "react/jsx-runtime";
 var labels = { skills: "Skills", mcp: "MCP · runs local Python", plugin: "Plugin · runs local Python", voice: "Recommended GPT Live voice" };
 var CHAT_NOTE = "Wait until the chat in progress ends, then try again.";
 function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood = "idle", status, comingSoon: comingSoon2 = false, mode = "install" }) {
   const { t, locale, dir } = useMyBots();
   const updating = mode === "update";
-  const [selection, setSelection] = useState5(() => initialSelection(bot)), [review, setReview] = useState5(null), [result, setResult] = useState5(null), [busy, setBusy] = useState5(false), [error, setError] = useState5(""), [retry, setRetry] = useState5(0);
-  const [keys, setKeys] = useState5({}), [decls, setDecls] = useState5([]), [addKeys, setAddKeys] = useState5(null), [typed, setTyped] = useState5(false), [existing, setExisting] = useState5(null);
-  const opener = useRef6(document.activeElement);
-  const fence = useRef6(new ReviewFence()), posting = useRef6(false), local = useLocal();
+  const [selection, setSelection] = useState7(() => initialSelection(bot)), [review, setReview] = useState7(null), [result, setResult] = useState7(null), [busy, setBusy] = useState7(false), [error, setError] = useState7(""), [retry, setRetry] = useState7(0);
+  const [keys, setKeys] = useState7({}), [decls, setDecls] = useState7([]), [addKeys, setAddKeys] = useState7(null), [typed, setTyped] = useState7(false), [existing, setExisting] = useState7(null);
+  const opener = useRef7(document.activeElement);
+  const fence = useRef7(new ReviewFence()), posting = useRef7(false), local = useLocal();
   const identity = bot.id + "@" + bot.version;
   const conflict = !updating && status?.state === "name-conflict", chatBusy = updating && mood === "think";
-  const owner = useRef6(identity);
+  const owner = useRef7(identity);
   owner.current = identity;
-  useEffect5(() => {
+  useEffect7(() => {
     setSelection(initialSelection(bot));
     setReview(null);
     setResult(null);
     setError("");
   }, [identity]);
-  useEffect5(() => () => fence.current.invalidate(), []);
-  useEffect5(() => {
+  useEffect7(() => () => fence.current.invalidate(), []);
+  useEffect7(() => {
     const ticket = fence.current.begin();
     setReview(null);
     setResult(null);
@@ -4250,104 +5513,104 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
       if (fence.current.isCurrent(ticket)) setBusy(false);
     }
   }
-  return /* @__PURE__ */ jsx6(Dialog, { open: true, onOpenChange: (open) => {
+  return /* @__PURE__ */ jsx8(Dialog, { open: true, onOpenChange: (open) => {
     if (!open) onClose();
-  }, children: /* @__PURE__ */ jsxs5(DialogContent, { "aria-label": updating ? t("Update {0}", bot.name) : t("Confirm installation of {0}", bot.name), "aria-busy": busy, lang: locale, dir, className: "mb-install", onCloseAutoFocus: (event) => {
+  }, children: /* @__PURE__ */ jsxs7(DialogContent, { "aria-label": updating ? t("Update {0}", bot.name) : t("Confirm installation of {0}", bot.name), "aria-busy": busy, lang: locale, dir, className: "mb-install", onCloseAutoFocus: (event) => {
     if (opener.current?.isConnected) {
       event.preventDefault();
       opener.current.focus();
     }
   }, children: [
-    /* @__PURE__ */ jsxs5(DialogHeader, { children: [
-      /* @__PURE__ */ jsx6(DialogTitle, { children: updating ? t("Update {0}", bot.name) : t("Meet {0}", bot.name) }),
-      /* @__PURE__ */ jsxs5(DialogDescription, { children: [
+    /* @__PURE__ */ jsxs7(DialogHeader, { children: [
+      /* @__PURE__ */ jsx8(DialogTitle, { children: updating ? t("Update {0}", bot.name) : t("Meet {0}", bot.name) }),
+      /* @__PURE__ */ jsxs7(DialogDescription, { children: [
         bot.role,
         " · ",
         bot.personality
       ] })
     ] }),
-    /* @__PURE__ */ jsxs5("div", { className: "mb-install-hero", children: [
-      review && /* @__PURE__ */ jsx6(BotAvatar, { bot: bot.id, name: bot.name, src: review.avatar, sha256: review.manifest.files.find((f) => f.component === "avatar")?.sha256, mood, size: 96 }),
-      /* @__PURE__ */ jsxs5("div", { children: [
-        /* @__PURE__ */ jsx6("p", { children: bot.description }),
-        /* @__PURE__ */ jsxs5("div", { className: "mb-badges", children: [
-          /* @__PURE__ */ jsxs5(Badge, { variant: "muted", children: [
+    /* @__PURE__ */ jsxs7("div", { className: "mb-install-hero", children: [
+      review && /* @__PURE__ */ jsx8(BotAvatar, { bot: bot.id, name: bot.name, src: review.avatar, sha256: review.manifest.files.find((f) => f.component === "avatar")?.sha256, mood, size: 96 }),
+      /* @__PURE__ */ jsxs7("div", { children: [
+        /* @__PURE__ */ jsx8("p", { children: bot.description }),
+        /* @__PURE__ */ jsxs7("div", { className: "mb-badges", children: [
+          /* @__PURE__ */ jsxs7(Badge, { variant: "muted", children: [
             "v",
             bot.version
           ] }),
-          /* @__PURE__ */ jsx6(Badge, { variant: "muted", children: t("Soul and avatar required") }),
-          comingSoon2 && /* @__PURE__ */ jsx6(Badge, { variant: "muted", children: t("Coming soon") })
+          /* @__PURE__ */ jsx8(Badge, { variant: "muted", children: t("Soul and avatar required") }),
+          comingSoon2 && /* @__PURE__ */ jsx8(Badge, { variant: "muted", children: t("Coming soon") })
         ] })
       ] })
     ] }),
-    comingSoon2 ? /* @__PURE__ */ jsx6("section", { role: "status", className: "mb-notice", children: /* @__PURE__ */ jsx6("p", { children: t("This bot is still being prepared. You can install it once it opens.") }) }) : /* @__PURE__ */ jsxs5(Fragment4, { children: [
-      !local && /* @__PURE__ */ jsx6(LocalNotice, {}),
-      error && /* @__PURE__ */ jsx6(Failure, { message: t(error) })
+    comingSoon2 ? /* @__PURE__ */ jsx8("section", { role: "status", className: "mb-notice", children: /* @__PURE__ */ jsx8("p", { children: t("This bot is still being prepared. You can install it once it opens.") }) }) : /* @__PURE__ */ jsxs7(Fragment6, { children: [
+      !local && /* @__PURE__ */ jsx8(LocalNotice, {}),
+      error && /* @__PURE__ */ jsx8(Failure, { message: t(error) })
     ] }),
-    !result && !comingSoon2 && !updating && /* @__PURE__ */ jsxs5("fieldset", { disabled: busy && posting.current, className: "mb-options", children: [
-      /* @__PURE__ */ jsx6("legend", { children: t("Include these features") }),
-      bot.optional.length === 0 && /* @__PURE__ */ jsx6("p", { className: "mb-muted", children: t("Start with a Soul and avatar.") }),
-      bot.optional.map((c) => /* @__PURE__ */ jsxs5("label", { className: "mb-option", children: [
-        /* @__PURE__ */ jsx6(Checkbox, { "aria-label": t(labels[c]), checked: selection.includes(c), onCheckedChange: (checked) => {
+    !result && !comingSoon2 && !updating && /* @__PURE__ */ jsxs7("fieldset", { disabled: busy && posting.current, className: "mb-options", children: [
+      /* @__PURE__ */ jsx8("legend", { children: t("Include these features") }),
+      bot.optional.length === 0 && /* @__PURE__ */ jsx8("p", { className: "mb-muted", children: t("Start with a Soul and avatar.") }),
+      bot.optional.map((c) => /* @__PURE__ */ jsxs7("label", { className: "mb-option", children: [
+        /* @__PURE__ */ jsx8(Checkbox, { "aria-label": t(labels[c]), checked: selection.includes(c), onCheckedChange: (checked) => {
           fence.current.invalidate();
           setReview(null);
           setSelection((s) => normalizeSelection(bot, checked === true ? [...s, c] : s.filter((x) => x !== c)));
         } }),
-        /* @__PURE__ */ jsxs5("span", { children: [
+        /* @__PURE__ */ jsxs7("span", { children: [
           t(labels[c]),
           c === "voice" && bot.voice && ` · ${bot.voice.id} (${t("Not auditioned")})`
         ] })
       ] }, c))
     ] }),
-    busy && !posting.current && /* @__PURE__ */ jsx6(Loader, { label: updating ? t("Reviewing update") : t("Reviewing installation") }),
-    review && /* @__PURE__ */ jsxs5(Fragment4, { children: [
-      updating && review.update ? /* @__PURE__ */ jsx6(UpdateSummary, { plan: review.update, to: review.manifest.version }) : /* @__PURE__ */ jsxs5(Fragment4, { children: [
-        conflict ? /* @__PURE__ */ jsx6(Failure, { message: nameConflictMessage(review.manifest.id, t) }) : /* @__PURE__ */ jsxs5("p", { className: "mb-muted", children: [
+    busy && !posting.current && /* @__PURE__ */ jsx8(Loader, { label: updating ? t("Reviewing update") : t("Reviewing installation") }),
+    review && /* @__PURE__ */ jsxs7(Fragment6, { children: [
+      updating && review.update ? /* @__PURE__ */ jsx8(UpdateSummary, { plan: review.update, to: review.manifest.version }) : /* @__PURE__ */ jsxs7(Fragment6, { children: [
+        conflict ? /* @__PURE__ */ jsx8(Failure, { message: nameConflictMessage(review.manifest.id, t) }) : /* @__PURE__ */ jsxs7("p", { className: "mb-muted", children: [
           t("New profile:"),
-          /* @__PURE__ */ jsx6("b", { children: review.manifest.id }),
+          /* @__PURE__ */ jsx8("b", { children: review.manifest.id }),
           " ",
           t("Author:"),
           review.manifest.author
         ] }),
-        /* @__PURE__ */ jsx6("p", { children: modelReviewMessage(review.model, t) }),
-        languagePackMessage(review.languagePacks, t) && /* @__PURE__ */ jsx6("p", { children: languagePackMessage(review.languagePacks, t) })
+        /* @__PURE__ */ jsx8("p", { children: modelReviewMessage(review.model, t) }),
+        languagePackMessage(review.languagePacks, t) && /* @__PURE__ */ jsx8("p", { children: languagePackMessage(review.languagePacks, t) })
       ] }),
-      review.components.some((c) => c === "mcp" || c === "plugin") && /* @__PURE__ */ jsx6("p", { children: t("Selected MCP and plugins execute Python on this device.") }),
-      review.voice && /* @__PURE__ */ jsxs5("p", { children: [
+      review.components.some((c) => c === "mcp" || c === "plugin") && /* @__PURE__ */ jsx8("p", { children: t("Selected MCP and plugins execute Python on this device.") }),
+      review.voice && /* @__PURE__ */ jsxs7("p", { children: [
         t("Recommended voice:"),
         review.voice.voice,
         " · ",
         review.voice.instructions,
-        /* @__PURE__ */ jsx6("br", {}),
+        /* @__PURE__ */ jsx8("br", {}),
         t("Configure voice authentication in Hermes.")
       ] }),
-      updating && !!review.secrets?.length && /* @__PURE__ */ jsx6("p", { children: t("Keys new in this version. You can skip them and add them later with Add keys.") }),
-      /* @__PURE__ */ jsx6(SecretsFields, { secrets: review.secrets ?? [], value: keys, onChange: setKeys, disabled: busy }),
-      /* @__PURE__ */ jsxs5("details", { children: [
-        /* @__PURE__ */ jsx6("summary", { children: t("Soul and file verification") }),
-        /* @__PURE__ */ jsx6("pre", { className: "mb-source", children: review.soul }),
-        /* @__PURE__ */ jsxs5("small", { children: [
+      updating && !!review.secrets?.length && /* @__PURE__ */ jsx8("p", { children: t("Keys new in this version. You can skip them and add them later with Add keys.") }),
+      /* @__PURE__ */ jsx8(SecretsFields, { secrets: review.secrets ?? [], value: keys, onChange: setKeys, disabled: busy }),
+      /* @__PURE__ */ jsxs7("details", { children: [
+        /* @__PURE__ */ jsx8("summary", { children: t("Soul and file verification") }),
+        /* @__PURE__ */ jsx8("pre", { className: "mb-source", children: review.soul }),
+        /* @__PURE__ */ jsxs7("small", { children: [
           "SHA-256: ",
           review.digest
         ] }),
-        /* @__PURE__ */ jsx6("ul", { children: review.manifest.files.filter((f) => ["soul", "avatar", ...review.components].includes(f.component)).map((f) => /* @__PURE__ */ jsxs5("li", { children: [
+        /* @__PURE__ */ jsx8("ul", { children: review.manifest.files.filter((f) => ["soul", "avatar", ...review.components].includes(f.component)).map((f) => /* @__PURE__ */ jsxs7("li", { children: [
           f.path,
           " · ",
           t("{0} bytes", f.size)
         ] }, f.path)) })
       ] }),
-      updating && /* @__PURE__ */ jsx6("p", { role: "status", className: "mb-notice", children: t(CHAT_NOTE) }),
-      /* @__PURE__ */ jsx6(DialogFooter, { children: /* @__PURE__ */ jsx6(Button2, { disabled: busy || !local || conflict || chatBusy, loading: posting.current && busy, onClick: install, children: updating ? t("Update {0}", bot.name) : t("Install {0}", bot.name) }) })
+      updating && /* @__PURE__ */ jsx8("p", { role: "status", className: "mb-notice", children: t(CHAT_NOTE) }),
+      /* @__PURE__ */ jsx8(DialogFooter, { children: /* @__PURE__ */ jsx8(Button2, { disabled: busy || !local || conflict || chatBusy, loading: posting.current && busy, onClick: install, children: updating ? t("Update {0}", bot.name) : t("Install {0}", bot.name) }) })
     ] }),
-    !review && !result && !busy && local && !comingSoon2 && /* @__PURE__ */ jsx6(Button2, { variant: "secondary", onClick: () => setRetry((n) => n + 1), children: t("Review again") }),
-    result && /* @__PURE__ */ jsxs5("section", { role: "status", className: "mb-section", children: [
-      /* @__PURE__ */ jsx6("h3", { children: updating ? t("Update complete") : result.status === "already-installed" ? t("Already installed") : t("Installation complete") }),
-      updating ? /* @__PURE__ */ jsx6("p", { children: t("Restart Hermes to apply.") }) : /* @__PURE__ */ jsxs5(Fragment4, { children: [
-        /* @__PURE__ */ jsx6("p", { children: modelResultMessage(result, t) }),
-        /* @__PURE__ */ jsx6("p", { children: voiceResultMessage(result, t) })
+    !review && !result && !busy && local && !comingSoon2 && /* @__PURE__ */ jsx8(Button2, { variant: "secondary", onClick: () => setRetry((n) => n + 1), children: t("Review again") }),
+    result && /* @__PURE__ */ jsxs7("section", { role: "status", className: "mb-section", children: [
+      /* @__PURE__ */ jsx8("h3", { children: updating ? t("Update complete") : result.status === "already-installed" ? t("Already installed") : t("Installation complete") }),
+      updating ? /* @__PURE__ */ jsx8("p", { children: t("Restart Hermes to apply.") }) : /* @__PURE__ */ jsxs7(Fragment6, { children: [
+        /* @__PURE__ */ jsx8("p", { children: modelResultMessage(result, t) }),
+        /* @__PURE__ */ jsx8("p", { children: voiceResultMessage(result, t) })
       ] }),
-      result.status === "already-installed" && typed && /* @__PURE__ */ jsx6("p", { children: t("This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.") }),
-      result.status === "already-installed" && existing?.secrets && (addKeys ? /* @__PURE__ */ jsx6(AddKeysForm, { ctx, bot: bot.id, version: bot.version, secrets: addKeys, states: existing.secrets, onSaved: () => onKeysSaved?.() }) : /* @__PURE__ */ jsx6(Button2, { variant: "secondary", onClick: () => setAddKeys(installedFields(existing.secrets)), children: t("Add keys") })),
+      result.status === "already-installed" && typed && /* @__PURE__ */ jsx8("p", { children: t("This bot was already installed, so the keys you entered were not saved. Add them below with Add keys.") }),
+      result.status === "already-installed" && existing?.secrets && (addKeys ? /* @__PURE__ */ jsx8(AddKeysForm, { ctx, bot: bot.id, version: bot.version, secrets: addKeys, states: existing.secrets, onSaved: () => onKeysSaved?.() }) : /* @__PURE__ */ jsx8(Button2, { variant: "secondary", onClick: () => setAddKeys(installedFields(existing.secrets)), children: t("Add keys") })),
       !!result.secrets?.length && (() => {
         const labels2 = Object.fromEntries(decls.map((d) => [d.name, d.label])), badge = keyBadge(result.secrets.map((r) => ({ required: decls.find((d) => d.name === r.name)?.required ?? false, state: r.state })));
         const open = () => decls.filter((d) => result.secrets.find((r) => r.name === d.name)?.state !== "set").map((d) => {
@@ -4362,22 +5625,22 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
           }) });
           onKeysSaved?.();
         };
-        return /* @__PURE__ */ jsxs5("div", { className: "mb-section", children: [
-          /* @__PURE__ */ jsxs5("div", { className: "mb-key-head", children: [
-            /* @__PURE__ */ jsx6("b", { children: t("Service keys") }),
-            badge && /* @__PURE__ */ jsx6(Badge, { variant: badge.variant, children: t(badge.label) })
+        return /* @__PURE__ */ jsxs7("div", { className: "mb-section", children: [
+          /* @__PURE__ */ jsxs7("div", { className: "mb-key-head", children: [
+            /* @__PURE__ */ jsx8("b", { children: t("Service keys") }),
+            badge && /* @__PURE__ */ jsx8(Badge, { variant: badge.variant, children: t(badge.label) })
           ] }),
-          /* @__PURE__ */ jsx6(KeyResults, { rows: result.secrets, labels: labels2 }),
-          addKeys ? /* @__PURE__ */ jsx6(AddKeysForm, { ctx, bot: bot.id, version: bot.version, secrets: addKeys, onSaved: saved }) : open().length > 0 && /* @__PURE__ */ jsx6(Button2, { variant: "secondary", onClick: () => setAddKeys(open()), children: t("Add keys") })
+          /* @__PURE__ */ jsx8(KeyResults, { rows: result.secrets, labels: labels2 }),
+          addKeys ? /* @__PURE__ */ jsx8(AddKeysForm, { ctx, bot: bot.id, version: bot.version, secrets: addKeys, onSaved: saved }) : open().length > 0 && /* @__PURE__ */ jsx8(Button2, { variant: "secondary", onClick: () => setAddKeys(open()), children: t("Add keys") })
         ] });
       })(),
-      !updating && /* @__PURE__ */ jsxs5(Fragment4, { children: [
-        /* @__PURE__ */ jsxs5("p", { children: [
+      !updating && /* @__PURE__ */ jsxs7(Fragment6, { children: [
+        /* @__PURE__ */ jsxs7("p", { children: [
           t("First prompt:"),
           bot.firstPrompt
         ] }),
-        bot.external.map((e) => /* @__PURE__ */ jsxs5("p", { children: [
-          /* @__PURE__ */ jsxs5("a", { href: e.guide, target: "_blank", rel: "noopener noreferrer", children: [
+        bot.external.map((e) => /* @__PURE__ */ jsxs7("p", { children: [
+          /* @__PURE__ */ jsxs7("a", { href: e.guide, target: "_blank", rel: "noopener noreferrer", children: [
             e.label,
             " · ",
             t("Setup guide")
@@ -4385,10 +5648,10 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
           " · ",
           e.requirement
         ] }, e.service)),
-        /* @__PURE__ */ jsx6(DialogFooter, { children: /* @__PURE__ */ jsx6(Button2, { onClick: () => {
+        /* @__PURE__ */ jsx8(DialogFooter, { children: /* @__PURE__ */ jsx8(Button2, { onClick: () => {
           const d = profileDestination(result.profile);
           onClose();
-          host2.newChat(d.route, d.options);
+          host3.newChat(d.route, d.options);
           location.hash = "#/";
         }, children: t("Open bot chat") }) })
       ] })
@@ -4397,28 +5660,28 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
 }
 function UpdateSummary({ plan, to }) {
   const { t } = useMyBots();
-  return /* @__PURE__ */ jsxs5("section", { className: "mb-section", children: [
-    /* @__PURE__ */ jsx6("p", { children: /* @__PURE__ */ jsx6("b", { children: t("Version {0} → {1}", plan.from, to) }) }),
-    /* @__PURE__ */ jsx6("p", { children: t("{0} files will be replaced and {1} removed.", plan.replace, plan.remove) }),
-    /* @__PURE__ */ jsx6("p", { className: "mb-muted", children: t("Updates files of the installed local profile; files you added are kept") }),
-    plan.modified.length > 0 && /* @__PURE__ */ jsxs5("div", { role: "note", className: "mb-notice", children: [
-      /* @__PURE__ */ jsx6("p", { children: t("{0} files you changed will be backed up, then replaced by the new version.", plan.modified.length) }),
-      /* @__PURE__ */ jsx6("ul", { children: plan.modified.map((path) => /* @__PURE__ */ jsx6("li", { children: path }, path)) })
+  return /* @__PURE__ */ jsxs7("section", { className: "mb-section", children: [
+    /* @__PURE__ */ jsx8("p", { children: /* @__PURE__ */ jsx8("b", { children: t("Version {0} → {1}", plan.from, to) }) }),
+    /* @__PURE__ */ jsx8("p", { children: t("{0} files will be replaced and {1} removed.", plan.replace, plan.remove) }),
+    /* @__PURE__ */ jsx8("p", { className: "mb-muted", children: t("Updates files of the installed local profile; files you added are kept") }),
+    plan.modified.length > 0 && /* @__PURE__ */ jsxs7("div", { role: "note", className: "mb-notice", children: [
+      /* @__PURE__ */ jsx8("p", { children: t("{0} files you changed will be backed up, then replaced by the new version.", plan.modified.length) }),
+      /* @__PURE__ */ jsx8("ul", { children: plan.modified.map((path) => /* @__PURE__ */ jsx8("li", { children: path }, path)) })
     ] })
   ] });
 }
 
 // packages/hermes-plugin/desktop/bot-status.ts
-import { useEffect as useEffect6, useState as useState6 } from "react";
-import { host as host3 } from "@hermes/plugin-sdk";
-var isLocalSource = () => host3.state.connectionId.get() === "local";
+import { useEffect as useEffect8, useState as useState8 } from "react";
+import { host as host4 } from "@hermes/plugin-sdk";
+var isLocalSource = () => host4.state.connectionId.get() === "local";
 function useBotStatuses(enabled) {
-  const [moods, setMoods] = useState6({});
-  useEffect6(() => {
+  const [moods, setMoods] = useState8({});
+  useEffect8(() => {
     let disposed = false, inflight = false, generation = 0;
     setMoods({});
     let rows = [];
-    const state = host3.state, supported = !!(state.busy && state.focusedSessionOwner && host3.requestProfile);
+    const state = host4.state, supported = !!(state.busy && state.focusedSessionOwner && host4.requestProfile);
     const update = () => {
       if (disposed) return;
       const base = { supported, owner: state.focusedSessionOwner?.get() ?? null, busy: state.busy?.get() ?? false, now: Date.now() };
@@ -4431,7 +5694,7 @@ function useBotStatuses(enabled) {
       inflight = true;
       const ticket = generation;
       try {
-        const result = await host3.requestProfile({ connectionId: "local", mode: "local", profile: "default", targetProfile: "default" }, "profiles.list", { include_sessions: true }, 1e4);
+        const result = await host4.requestProfile({ connectionId: "local", mode: "local", profile: "default", targetProfile: "default" }, "profiles.list", { include_sessions: true }, 1e4);
         if (!disposed && ticket === generation && isLocalSource()) {
           rows = result.profiles;
           update();
@@ -4516,7 +5779,7 @@ function presentBot(bot, display) {
   const p = display?.bots.find((p2) => p2.id === bot.id && p2.version === bot.version);
   if (!p) return display?.locale === "en" ? { ...bot, name: bot.englishName } : bot;
   const next = structuredClone(bot);
-  for (const key of ["name", "role", "personality", "description", "firstPrompt"]) if (typeof p[key] === "string" && p[key].trim() && p[key].length <= (key === "name" ? 80 : 1e3)) next[key] = p[key];
+  for (const key2 of ["name", "role", "personality", "description", "firstPrompt"]) if (typeof p[key2] === "string" && p[key2].trim() && p[key2].length <= (key2 === "name" ? 80 : 1e3)) next[key2] = p[key2];
   if (next.voice && typeof p.voiceStyle === "string" && p.voiceStyle.length <= 2e3) next.voice.style = p.voiceStyle;
   if (Array.isArray(p.external) && p.external.length === next.external.length) next.external = next.external.map((link, i) => {
     const label = p.external[i]?.label, requirement = p.external[i]?.requirement;
@@ -4527,8 +5790,8 @@ function presentBot(bot, display) {
 var comingSoon = (bot, display) => display?.bots.some((p) => p.id === bot.id && p.availability === "coming-soon") === true;
 
 // packages/hermes-plugin/desktop/self-update.tsx
-import { useEffect as useEffect7, useRef as useRef7, useState as useState7 } from "react";
-import { jsx as jsx7, jsxs as jsxs6 } from "react/jsx-runtime";
+import { useEffect as useEffect9, useRef as useRef8, useState as useState9 } from "react";
+import { jsx as jsx9, jsxs as jsxs8 } from "react/jsx-runtime";
 var VERSION2 = /^[0-9]+\.[0-9]+\.[0-9]+$/;
 var LATEST = /^([0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?|[0-9a-f]{7})$/;
 var SELF_NOTES = { "local-changes-kept": "Your edits to MyBots files were kept on top of the update.", "local-changes-stashed": "Your edits to MyBots files conflicted with the update and were saved in git stash.", "scan-blocked": "Hermes' security scan blocked this update. The current version stays installed.", "local-changes-unsaved": "MyBots files have edits that could not be set aside, so nothing was changed.", "dependencies": "This update needs new Python packages. Run hermes plugins update mybots in a terminal." };
@@ -4539,9 +5802,9 @@ var valid = (x) => !!x && typeof x.installed === "string" && VERSION2.test(x.ins
 function SelfUpdate({ ctx }) {
   const { t } = useMyBots();
   const local = useLocal();
-  const [status, setStatus] = useState7(null), [result, setResult] = useState7(null), [failed, setFailed] = useState7(false), [busy, setBusy] = useState7(false), [restart, setRestart] = useState7(false), [running, setRunning] = useState7(false);
-  const posting = useRef7(false);
-  useEffect7(() => {
+  const [status, setStatus] = useState9(null), [result, setResult] = useState9(null), [failed, setFailed] = useState9(false), [busy, setBusy] = useState9(false), [restart, setRestart] = useState9(false), [running, setRunning] = useState9(false);
+  const posting = useRef8(false);
+  useEffect9(() => {
     let active = true;
     setStatus(null);
     ctx.rest("/self-update", { timeoutMs: 15e3 }).then((x) => {
@@ -4579,26 +5842,26 @@ function SelfUpdate({ ctx }) {
     }
   };
   const note = result?.note ? SELF_NOTES[result.note] : void 0;
-  return /* @__PURE__ */ jsxs6("section", { className: "mb-self", children: [
-    /* @__PURE__ */ jsx7("span", { className: "mb-muted", children: t("MyBots {0}", status.installed) }),
-    latest && !done && /* @__PURE__ */ jsx7(Badge, { variant: "muted", children: t("New version {0}", latest) }),
-    latest && !done && /* @__PURE__ */ jsx7(Button2, { variant: "secondary", disabled: !local || busy, loading: busy, onClick: run, children: t("Update MyBots") }),
-    done && /* @__PURE__ */ jsx7("p", { role: "status", children: updated ? t("Restart Hermes to apply.") : t("MyBots is already up to date.") }),
-    running && /* @__PURE__ */ jsx7("p", { role: "status", className: "mb-muted", children: t(RUNNING) }),
-    (failed || note) && /* @__PURE__ */ jsx7("p", { role: failed ? "alert" : "status", className: "mb-muted", children: t(note || FAILED) })
+  return /* @__PURE__ */ jsxs8("section", { className: "mb-self", children: [
+    /* @__PURE__ */ jsx9("span", { className: "mb-muted", children: t("MyBots {0}", status.installed) }),
+    latest && !done && /* @__PURE__ */ jsx9(Badge, { variant: "muted", children: t("New version {0}", latest) }),
+    latest && !done && /* @__PURE__ */ jsx9(Button2, { variant: "secondary", disabled: !local || busy, loading: busy, onClick: run, children: t("Update MyBots") }),
+    done && /* @__PURE__ */ jsx9("p", { role: "status", children: updated ? t("Restart Hermes to apply.") : t("MyBots is already up to date.") }),
+    running && /* @__PURE__ */ jsx9("p", { role: "status", className: "mb-muted", children: t(RUNNING) }),
+    (failed || note) && /* @__PURE__ */ jsx9("p", { role: failed ? "alert" : "status", className: "mb-muted", children: t(note || FAILED) })
   ] });
 }
 
 // packages/hermes-plugin/desktop/market-page.tsx
-import { Fragment as Fragment5, jsx as jsx8, jsxs as jsxs7 } from "react/jsx-runtime";
+import { Fragment as Fragment7, jsx as jsx10, jsxs as jsxs9 } from "react/jsx-runtime";
 var INSTALLED_FAILED = "Could not load installed bots. Please retry.";
 function MarketPage({ ctx, renderTab }) {
   const { t, locale, dir, contentLocale } = useMyBots();
-  const [display, setDisplay] = useState8(null);
-  const [displayDone, setDisplayDone] = useState8("");
-  const [tab, setTab] = useState8("browse"), [view, setView] = useState8(null), [installed, setInstalled] = useState8([]), [query, setQuery] = useState8(""), [category, setCategory] = useState8("all"), [selected, setSelected] = useState8(null), [error, setError] = useState8(""), [busy, setBusy] = useState8(false), [reload, setReload] = useState8(0), [hash, setHash] = useState8(location.hash), [linkSequence, setLinkSequence] = useState8(0), [keysFor, setKeysFor] = useState8(null), [updateFor, setUpdateFor] = useState8(null), [detached, setDetached] = useState8(false);
-  const fence = useRef8(new ReviewFence()), local = useLocal();
-  useEffect8(() => {
+  const [display, setDisplay] = useState10(null);
+  const [displayDone, setDisplayDone] = useState10("");
+  const [tab, setTab] = useState10("browse"), [view, setView] = useState10(null), [installed, setInstalled] = useState10([]), [query, setQuery] = useState10(""), [category, setCategory] = useState10("all"), [selected, setSelected] = useState10(null), [error, setError] = useState10(""), [busy, setBusy] = useState10(false), [reload, setReload] = useState10(0), [hash, setHash] = useState10(location.hash), [linkSequence, setLinkSequence] = useState10(0), [keysFor, setKeysFor] = useState10(null), [updateFor, setUpdateFor] = useState10(null), [detached, setDetached] = useState10(false);
+  const fence = useRef9(new ReviewFence()), local = useLocal();
+  useEffect10(() => {
     const update = () => {
       setSelected(null);
       setHash(location.hash);
@@ -4624,7 +5887,7 @@ function MarketPage({ ctx, renderTab }) {
       unsubscribe?.();
     };
   }, []);
-  useEffect8(() => {
+  useEffect10(() => {
     const ticket = fence.current.begin();
     let fresh = false;
     setBusy(true);
@@ -4661,7 +5924,7 @@ function MarketPage({ ctx, renderTab }) {
     });
     return () => fence.current.invalidate();
   }, [ctx, reload, local]);
-  useEffect8(() => {
+  useEffect10(() => {
     if (!view || view.cached || displayDone !== view.origin + "|" + contentLocale) return;
     try {
       const link = parseInstallLink("hermes://" + hash.replace(/^#\/?/, ""));
@@ -4674,7 +5937,7 @@ function MarketPage({ ctx, renderTab }) {
     } catch {
     }
   }, [hash, view, linkSequence, displayDone, contentLocale]);
-  const close = useCallback(() => {
+  const close = useCallback2(() => {
     setSelected(null);
     try {
       parseInstallLink("hermes://" + location.hash.replace(/^#\/?/, ""));
@@ -4683,7 +5946,7 @@ function MarketPage({ ctx, renderTab }) {
     } catch {
     }
   }, []);
-  const done = useCallback(() => {
+  const done = useCallback2(() => {
     const api = new MarketApi(ctx), fallback = () => api.installed().then(setInstalled);
     api.load().then((v) => Array.isArray(v?.statuses) ? setInstalled(v.statuses) : fallback(), fallback).catch(() => setError("Refresh to check installation status."));
   }, [ctx]);
@@ -4693,11 +5956,11 @@ function MarketPage({ ctx, renderTab }) {
     const own = installedProfile(bot);
     return own ? moods[own.profile] || "unavailable" : "idle";
   };
-  useEffect8(() => {
+  useEffect10(() => {
     let active = true;
     if (!view) return;
-    const key = view.origin + "|" + contentLocale, settle = () => {
-      if (active) setDisplayDone(key);
+    const key2 = view.origin + "|" + contentLocale, settle = () => {
+      if (active) setDisplayDone(key2);
     };
     const timer = setTimeout(settle, 3e3);
     new MarketApi(ctx).presentations(contentLocale).then((catalog) => {
@@ -4734,108 +5997,108 @@ function MarketPage({ ctx, renderTab }) {
     const f = b?.files.find((f2) => f2.component === "avatar");
     return f ? { sha256: f.sha256, src: new URL(`/api/bots/${id}/${version}/files/${f.path.split("/").map(encodeURIComponent).join("/")}`, view.origin).href } : null;
   };
-  return /* @__PURE__ */ jsxs7("main", { lang: locale, dir, className: "mybots px-[clamp(1.25rem,4vw,4rem)]", children: [
-    /* @__PURE__ */ jsx8("style", { children: marketStyles }),
-    /* @__PURE__ */ jsxs7("header", { className: "mb-header", children: [
-      /* @__PURE__ */ jsxs7("div", { children: [
-        /* @__PURE__ */ jsx8("h1", { children: "MyBots" }),
-        /* @__PURE__ */ jsx8("p", { children: t("Find your next AI colleague.") })
+  return /* @__PURE__ */ jsxs9("main", { lang: locale, dir, className: "mybots px-[clamp(1.25rem,4vw,4rem)]", children: [
+    /* @__PURE__ */ jsx10("style", { children: marketStyles }),
+    /* @__PURE__ */ jsxs9("header", { className: "mb-header", children: [
+      /* @__PURE__ */ jsxs9("div", { children: [
+        /* @__PURE__ */ jsx10("h1", { children: "MyBots" }),
+        /* @__PURE__ */ jsx10("p", { children: t("Find your next AI colleague.") })
       ] }),
-      (tab === "browse" || tab === "installed") && /* @__PURE__ */ jsx8(Button2, { variant: "ghost", disabled: busy, loading: busy, onClick: () => setReload((n) => n + 1), children: t("Refresh") })
+      (tab === "browse" || tab === "installed") && /* @__PURE__ */ jsx10(Button2, { variant: "ghost", disabled: busy, loading: busy, onClick: () => setReload((n) => n + 1), children: t("Refresh") })
     ] }),
-    /* @__PURE__ */ jsx8(SelfUpdate, { ctx }),
-    /* @__PURE__ */ jsx8(Tabs, { dir, value: tab, onValueChange: (v) => setTab(v), children: /* @__PURE__ */ jsx8(TabsList, { className: "self-start", "aria-label": t("MyBots menu"), children: [["browse", t("Browse bots")], ["installed", t("Installed bots")], ["submissions", t("My submissions")], ["connection", t("Connection settings")]].map(([value, label]) => /* @__PURE__ */ jsx8(TabsTrigger, { value, children: label }, value)) }) }),
-    detached ? /* @__PURE__ */ jsx8(DefaultProfileNotice, { onRetry: () => setReload((n) => n + 1) }) : error && /* @__PURE__ */ jsx8(Failure, { message: t(error) }),
-    /* @__PURE__ */ jsxs7("div", { className: "mb-content", children: [
-      linkWaiting && /* @__PURE__ */ jsx8(Loader, { label: t("Loading colleagues") }),
-      tab === "browse" && /* @__PURE__ */ jsxs7(Fragment5, { children: [
-        !local && !detached && /* @__PURE__ */ jsx8(LocalNotice, {}),
-        view?.cached && /* @__PURE__ */ jsxs7("section", { className: "mb-notice", role: "status", children: [
-          /* @__PURE__ */ jsx8("p", { children: t("Showing the saved catalog while offline. Reconnect to install.") }),
-          /* @__PURE__ */ jsxs7("small", { children: [
+    /* @__PURE__ */ jsx10(SelfUpdate, { ctx }),
+    /* @__PURE__ */ jsx10(Tabs, { dir, value: tab, onValueChange: (v) => setTab(v), children: /* @__PURE__ */ jsx10(TabsList, { className: "self-start", "aria-label": t("MyBots menu"), children: [["browse", t("Browse bots")], ["installed", t("Installed bots")], ["routines", t("Bot calls")], ["teams", t("Teams")], ["submissions", t("My submissions")], ["connection", t("Connection settings")]].map(([value, label]) => /* @__PURE__ */ jsx10(TabsTrigger, { value, children: label }, value)) }) }),
+    detached ? /* @__PURE__ */ jsx10(DefaultProfileNotice, { onRetry: () => setReload((n) => n + 1) }) : error && /* @__PURE__ */ jsx10(Failure, { message: t(error) }),
+    /* @__PURE__ */ jsxs9("div", { className: "mb-content", children: [
+      linkWaiting && /* @__PURE__ */ jsx10(Loader, { label: t("Loading colleagues") }),
+      tab === "browse" && /* @__PURE__ */ jsxs9(Fragment7, { children: [
+        !local && !detached && /* @__PURE__ */ jsx10(LocalNotice, {}),
+        view?.cached && /* @__PURE__ */ jsxs9("section", { className: "mb-notice", role: "status", children: [
+          /* @__PURE__ */ jsx10("p", { children: t("Showing the saved catalog while offline. Reconnect to install.") }),
+          /* @__PURE__ */ jsxs9("small", { children: [
             t("Last checked:"),
             new Date(view.checkedAt).toLocaleString(locale === "zh-hant" ? "zh-TW" : locale)
           ] })
         ] }),
-        !!view?.catalog.bots.length && /* @__PURE__ */ jsxs7("div", { className: "mb-toolbar", children: [
-          /* @__PURE__ */ jsx8(SearchField, { "aria-label": t("Search bots"), placeholder: t("Search by name or role"), value: query, onChange: setQuery }),
-          /* @__PURE__ */ jsx8("div", { className: "mb-filter", children: /* @__PURE__ */ jsx8(Choice, { label: t("Bot category"), value: category, onChange: (v) => setCategory(v), options: [["all", t("All categories")], ["business", t("Business")], ["learning", t("Learning")], ["daily", t("Daily life")]] }) })
+        !!view?.catalog.bots.length && /* @__PURE__ */ jsxs9("div", { className: "mb-toolbar", children: [
+          /* @__PURE__ */ jsx10(SearchField, { "aria-label": t("Search bots"), placeholder: t("Search by name or role"), value: query, onChange: setQuery }),
+          /* @__PURE__ */ jsx10("div", { className: "mb-filter", children: /* @__PURE__ */ jsx10(Choice, { label: t("Bot category"), value: category, onChange: (v) => setCategory(v), options: [["all", t("All categories")], ["business", t("Business")], ["learning", t("Learning")], ["daily", t("Daily life")]] }) })
         ] }),
-        busy && !view && /* @__PURE__ */ jsx8(Loader, { label: t("Loading colleagues") }),
-        view && /* @__PURE__ */ jsx8("p", { className: "mb-count", children: t("{0} colleagues", visible.length) }),
-        /* @__PURE__ */ jsx8("div", { className: "mb-grid", children: visible.map((bot) => {
+        busy && !view && /* @__PURE__ */ jsx10(Loader, { label: t("Loading colleagues") }),
+        view && /* @__PURE__ */ jsx10("p", { className: "mb-count", children: t("{0} colleagues", visible.length) }),
+        /* @__PURE__ */ jsx10("div", { className: "mb-grid", children: visible.map((bot) => {
           const asset = portrait(bot.id, bot.version), owned = !!installedProfile(bot), soon = comingSoon(bot, presentation);
           const mood = botMood(bot);
-          return /* @__PURE__ */ jsxs7("article", { className: "mb-bot", children: [
-            /* @__PURE__ */ jsx8(BotAvatar, { bot: bot.id, name: bot.name, src: new URL(bot.avatarUrl, view.origin).href, sha256: asset?.sha256, mood, size: 112 }),
-            /* @__PURE__ */ jsx8("h2", { children: bot.name }),
-            /* @__PURE__ */ jsx8("p", { children: bot.role }),
-            /* @__PURE__ */ jsx8("p", { className: "mb-description", children: bot.description }),
-            /* @__PURE__ */ jsxs7("div", { className: "mb-badges", children: [
-              soon && /* @__PURE__ */ jsx8(Badge, { id: "mb-soon-" + bot.id, variant: "muted", children: t("Coming soon") }),
-              /* @__PURE__ */ jsx8(Badge, { variant: "muted", children: t("Soul") }),
-              bot.optional.map((c) => /* @__PURE__ */ jsx8(Badge, { variant: "muted", children: { skills: t("Skills"), mcp: "MCP", plugin: t("Plugins"), voice: t("Voice") }[c] }, c))
+          return /* @__PURE__ */ jsxs9("article", { className: "mb-bot", children: [
+            /* @__PURE__ */ jsx10(BotAvatar, { bot: bot.id, name: bot.name, src: new URL(bot.avatarUrl, view.origin).href, sha256: asset?.sha256, mood, size: 112 }),
+            /* @__PURE__ */ jsx10("h2", { children: bot.name }),
+            /* @__PURE__ */ jsx10("p", { children: bot.role }),
+            /* @__PURE__ */ jsx10("p", { className: "mb-description", children: bot.description }),
+            /* @__PURE__ */ jsxs9("div", { className: "mb-badges", children: [
+              soon && /* @__PURE__ */ jsx10(Badge, { id: "mb-soon-" + bot.id, variant: "muted", children: t("Coming soon") }),
+              /* @__PURE__ */ jsx10(Badge, { variant: "muted", children: t("Soul") }),
+              bot.optional.map((c) => /* @__PURE__ */ jsx10(Badge, { variant: "muted", children: { skills: t("Skills"), mcp: "MCP", plugin: t("Plugins"), voice: t("Voice") }[c] }, c))
             ] }),
-            /* @__PURE__ */ jsxs7("div", { className: "mb-actions", children: [
-              /* @__PURE__ */ jsx8(Button2, { variant: "secondary", disabled: view.cached || !local || soon, "aria-describedby": soon ? "mb-soon-" + bot.id : void 0, onClick: () => setSelected(view.catalog.bots.find((b) => b.id === bot.id && b.version === bot.version) ?? bot), children: t("Meet") }),
-              /* @__PURE__ */ jsx8("small", { className: "mb-muted", children: owned ? t(moodLabels[mood]) : t("Motion preview") })
+            /* @__PURE__ */ jsxs9("div", { className: "mb-actions", children: [
+              /* @__PURE__ */ jsx10(Button2, { variant: "secondary", disabled: view.cached || !local || soon, "aria-describedby": soon ? "mb-soon-" + bot.id : void 0, onClick: () => setSelected(view.catalog.bots.find((b) => b.id === bot.id && b.version === bot.version) ?? bot), children: t("Meet") }),
+              /* @__PURE__ */ jsx10("small", { className: "mb-muted", children: owned ? t(moodLabels[mood]) : t("Motion preview") })
             ] })
           ] }, bot.id);
         }) }),
-        view && visible.length === 0 && /* @__PURE__ */ jsx8(EmptyState, { title: t("No matching bots"), description: t("Try another search or category.") })
+        view && visible.length === 0 && /* @__PURE__ */ jsx10(EmptyState, { title: t("No matching bots"), description: t("Try another search or category.") })
       ] }),
-      tab === "installed" && /* @__PURE__ */ jsxs7("section", { className: "mb-section", children: [
-        /* @__PURE__ */ jsx8("h2", { children: t("Installed bots") }),
-        !detached && listedInstalled(installed).length === 0 && /* @__PURE__ */ jsx8(EmptyState, { title: t("No bots installed yet"), description: t("Find your first colleague in Browse bots.") }),
+      tab === "installed" && /* @__PURE__ */ jsxs9("section", { className: "mb-section", children: [
+        /* @__PURE__ */ jsx10("h2", { children: t("Installed bots") }),
+        !detached && listedInstalled(installed).length === 0 && /* @__PURE__ */ jsx10(EmptyState, { title: t("No bots installed yet"), description: t("Find your first colleague in Browse bots.") }),
         listedInstalled(installed).map((x) => {
           const asset = portrait(x.bot, x.version);
           const mood = moods[x.profile] || "unavailable", label = installedLabel(x);
-          return /* @__PURE__ */ jsxs7("article", { className: "mb-row", children: [
-            asset && /* @__PURE__ */ jsx8(BotAvatar, { bot: x.bot, name: label, src: asset.src, sha256: asset.sha256, mood, size: 56 }),
-            /* @__PURE__ */ jsxs7("div", { children: [
-              /* @__PURE__ */ jsx8("h3", { children: label }),
-              /* @__PURE__ */ jsxs7("p", { children: [
+          return /* @__PURE__ */ jsxs9("article", { className: "mb-row", children: [
+            asset && /* @__PURE__ */ jsx10(BotAvatar, { bot: x.bot, name: label, src: asset.src, sha256: asset.sha256, mood, size: 56 }),
+            /* @__PURE__ */ jsxs9("div", { children: [
+              /* @__PURE__ */ jsx10("h3", { children: label }),
+              /* @__PURE__ */ jsxs9("p", { children: [
                 x.profile,
                 " · ",
                 x.version || t("Check version")
               ] }),
-              /* @__PURE__ */ jsx8("small", { className: "mb-muted", children: t(moodLabels[mood]) })
+              /* @__PURE__ */ jsx10("small", { className: "mb-muted", children: t(moodLabels[mood]) })
             ] }),
-            /* @__PURE__ */ jsx8(Badge, { variant: x.state === "name-conflict" ? "warn" : "muted", children: x.updatable ? t("Update available") : x.state === "installed" ? t("Installed") : x.state === "other-version" ? t("Other version") : t("Check files") }),
+            /* @__PURE__ */ jsx10(Badge, { variant: x.state === "name-conflict" ? "warn" : "muted", children: x.updatable ? t("Update available") : x.state === "installed" ? t("Installed") : x.state === "other-version" ? t("Other version") : t("Check files") }),
             (() => {
               const badge = keyBadge(x.secrets);
-              return badge && /* @__PURE__ */ jsx8(Badge, { variant: badge.variant, children: t(badge.label) });
+              return badge && /* @__PURE__ */ jsx10(Badge, { variant: badge.variant, children: t(badge.label) });
             })(),
-            !!x.secrets?.length && x.version && (x.state === "installed" || x.state === "other-version") && /* @__PURE__ */ jsx8(Button2, { variant: "secondary", disabled: !local, onClick: () => setKeysFor(x), children: t("Add keys") }),
+            !!x.secrets?.length && x.version && (x.state === "installed" || x.state === "other-version") && /* @__PURE__ */ jsx10(Button2, { variant: "secondary", disabled: !local, onClick: () => setKeysFor(x), children: t("Add keys") }),
             (() => {
               const latest = latestBot(x);
-              return latest && /* @__PURE__ */ jsx8(Button2, { variant: "secondary", disabled: !local || view.cached || comingSoon(latest, presentation), onClick: () => setUpdateFor(x), children: t("Update") });
+              return latest && /* @__PURE__ */ jsx10(Button2, { variant: "secondary", disabled: !local || view.cached || comingSoon(latest, presentation), onClick: () => setUpdateFor(x), children: t("Update") });
             })(),
-            (x.state === "installed" || x.state === "other-version") && /* @__PURE__ */ jsx8(Button2, { variant: "secondary", onClick: () => {
+            (x.state === "installed" || x.state === "other-version") && /* @__PURE__ */ jsx10(Button2, { variant: "secondary", onClick: () => {
               const d = profileDestination(x.profile);
-              host4.newChat(d.route, d.options);
+              host5.newChat(d.route, d.options);
               location.hash = "#/";
             }, children: t("Open chat") })
           ] }, x.profile);
         })
       ] }),
-      (tab === "connection" || tab === "submissions") && (renderTab ? renderTab(tab) : /* @__PURE__ */ jsx8(Loader, { label: t("Loading submissions") }))
+      (tab === "connection" || tab === "submissions" || tab === "routines" || tab === "teams") && (renderTab ? renderTab(tab) : /* @__PURE__ */ jsx10(Loader, { label: t("Loading submissions") }))
     ] }),
-    keysFor?.version && keysFor.secrets && /* @__PURE__ */ jsx8(AddKeysDialog, { ctx, status: { ...keysFor, version: keysFor.version, secrets: keysFor.secrets }, label: installedLabel(keysFor), onClose: () => setKeysFor(null), onSaved: done }, keysFor.profile),
+    keysFor?.version && keysFor.secrets && /* @__PURE__ */ jsx10(AddKeysDialog, { ctx, status: { ...keysFor, version: keysFor.version, secrets: keysFor.secrets }, label: installedLabel(keysFor), onClose: () => setKeysFor(null), onSaved: done }, keysFor.profile),
     updateFor && (() => {
       const latest = latestBot(updateFor);
-      return latest && /* @__PURE__ */ jsx8(InstallConfirmation, { mode: "update", ctx, bot: shown(latest), mood: moods[updateFor.profile] || "unavailable", status: updateFor, onClose: () => setUpdateFor(null), onInstalled: done, onKeysSaved: done, comingSoon: comingSoon(latest, presentation) }, "update:" + updateFor.profile);
+      return latest && /* @__PURE__ */ jsx10(InstallConfirmation, { mode: "update", ctx, bot: shown(latest), mood: moods[updateFor.profile] || "unavailable", status: updateFor, onClose: () => setUpdateFor(null), onInstalled: done, onKeysSaved: done, comingSoon: comingSoon(latest, presentation) }, "update:" + updateFor.profile);
     })(),
-    selected && /* @__PURE__ */ jsx8(InstallConfirmation, { ctx, bot: shown(selected), mood: botMood(selected), status: installed.find((x) => x.bot === selected.id), onClose: close, onInstalled: done, onKeysSaved: done, comingSoon: comingSoon(selected, presentation) }, selected.id + "@" + selected.version)
+    selected && /* @__PURE__ */ jsx10(InstallConfirmation, { ctx, bot: shown(selected), mood: botMood(selected), status: installed.find((x) => x.bot === selected.id), onClose: close, onInstalled: done, onKeysSaved: done, comingSoon: comingSoon(selected, presentation) }, selected.id + "@" + selected.version)
   ] });
 }
 
 // packages/hermes-plugin/desktop/plugin.tsx
-import { jsx as jsx9 } from "react/jsx-runtime";
+import { jsx as jsx11 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.6.1",
+  version: "0.7.0",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {
@@ -4843,8 +6106,8 @@ var plugin_default = {
     const disposeIcon = registerLumiIcon();
     ctx.onDispose?.(disposeIcon);
     ctx.registerMany([
-      { id: "market", area: ROUTES_AREA, data: { path: "/mybots" }, render: () => /* @__PURE__ */ jsx9(MarketPage, { ctx, renderTab: (tab) => tab === "connection" ? /* @__PURE__ */ jsx9(ConnectionPage, { ctx }) : /* @__PURE__ */ jsx9(SubmissionsPage, { ctx }) }) },
-      { id: "install", area: ROUTES_AREA, data: { path: "/mybots/install" }, render: () => /* @__PURE__ */ jsx9(MarketPage, { ctx, renderTab: (tab) => tab === "connection" ? /* @__PURE__ */ jsx9(ConnectionPage, { ctx }) : /* @__PURE__ */ jsx9(SubmissionsPage, { ctx }) }) },
+      { id: "market", area: ROUTES_AREA, data: { path: "/mybots" }, render: () => /* @__PURE__ */ jsx11(MarketPage, { ctx, renderTab: (tab) => tab === "connection" ? /* @__PURE__ */ jsx11(ConnectionPage, { ctx }) : tab === "routines" ? /* @__PURE__ */ jsx11(RoutinesPage, { ctx }) : tab === "teams" ? /* @__PURE__ */ jsx11(TeamsPage, { ctx }) : /* @__PURE__ */ jsx11(SubmissionsPage, { ctx }) }) },
+      { id: "install", area: ROUTES_AREA, data: { path: "/mybots/install" }, render: () => /* @__PURE__ */ jsx11(MarketPage, { ctx, renderTab: (tab) => tab === "connection" ? /* @__PURE__ */ jsx11(ConnectionPage, { ctx }) : tab === "routines" ? /* @__PURE__ */ jsx11(RoutinesPage, { ctx }) : tab === "teams" ? /* @__PURE__ */ jsx11(TeamsPage, { ctx }) : /* @__PURE__ */ jsx11(SubmissionsPage, { ctx }) }) },
       { id: "nav", area: SIDEBAR_NAV_AREA, data: { path: "/mybots", label: "MyBots", codicon: "mybots-lumi" } }
     ]);
   }

@@ -1,0 +1,157 @@
+"""mybots-team-kit (MyBots 0.7.0): copied by team recruit into every member profile.
+
+Tools: team_post_card (a card on the team board by role) and team_info (the team as recorded in team.json).
+pre_llm_call adds one short pointer to the team's TEAM.md and its rules; the rules themselves live in that file.
+The team is found by looking for this profile in <root>/teams/*/team.json, so a disbanded team simply stops matching.
+"""
+import json
+import os
+from pathlib import Path
+import re
+import shutil
+import subprocess
+import sys
+
+TAG_DEFAULT = '역할'
+_CARD_ID = re.compile(r'^[A-Za-z0-9_][A-Za-z0-9_.:-]{0,79}$')
+
+
+class TeamKitError(Exception):
+    pass
+
+
+def find_team(root, bot):
+    for p in sorted((Path(root) / 'teams').glob('*/team.json')):
+        try:
+            t = json.loads(p.read_text(encoding='utf-8'))
+        except (OSError, ValueError):
+            continue
+        if isinstance(t, dict) and bot in (t.get('members') or []):
+            t['_dir'] = str(p.parent)
+            return t
+    return None
+
+
+def _team_or_error(root, bot):
+    t = find_team(root, bot)
+    if t is None:
+        raise TeamKitError('이 봇은 영입된 팀에 속해 있지 않아요.')
+    return t
+
+
+def _role_of(team, bot):
+    return next((r for r, bots in (team.get('roles') or {}).items() if bot in bots), None)
+
+
+def info(*, root, bot):
+    t = _team_or_error(root, bot)
+    return dict(id=t['id'], name=t.get('name'), mode=t.get('mode'), leader=t.get('leader'), board=t.get('board'),
+                work=t.get('work'), roles=t.get('roles'), team_md=str(Path(t['_dir']) / 'TEAM.md'),
+                me=dict(bot=bot, role=_role_of(t, bot), is_leader=t.get('leader') == bot))
+
+
+def post_card(args, *, root, bot, run):
+    t = _team_or_error(root, bot)
+    roles = t.get('roles') or {}
+    role, title, body = args.get('role') or '', (args.get('title') or '').strip(), args.get('body') or ''
+    if role not in roles:
+        raise TeamKitError('팀에 없는 역할이에요. 고를 수 있는 역할: ' + ', '.join(roles))
+    if not title or len(title) > 200 or len(body) > 20000:
+        raise TeamKitError('제목(200자 이하)과 본문(2만 자 이하)을 확인해 주세요.')
+    parents = args.get('parents') or []
+    if not isinstance(parents, list) or len(parents) > 10 or not all(isinstance(p, str) and _CARD_ID.fullmatch(p)
+                                                                     for p in parents):
+        raise TeamKitError('앞 카드(parents)는 카드 id 목록이어야 해요.')
+    pull = t.get('mode') == 'pull'
+    if pull:  # MyBots assigns it by this first line on a later dispatcher tick
+        body = f"{(t.get('pull') or {}).get('tag') or TAG_DEFAULT}: {role}\n{body}".rstrip('\n')
+    argv = ['kanban', '--board', t['board'], 'create', '--body=' + body, '--workspace=dir:' + t['work']]
+    argv += ['--parent=' + p for p in parents]
+    if not pull:
+        argv.append('--assignee=' + roles[role][0])
+    argv += ['--created-by=' + bot, '--json', '--', title]
+    code, out, _err = run(argv)
+    if code:
+        raise TeamKitError('카드를 올리지 못했어요. 팀 보드가 있는지 확인해 주세요.')
+    try:
+        d = json.loads(out or '{}')
+        card = d.get('id') or (d.get('task') or {}).get('id')
+    except (ValueError, AttributeError):
+        card = None
+    nxt = ('담당은 팀 역할 표를 보고 MyBots가 붙여요(약 2분). 맞는 역할이 없으면 리더에게 돌아와요.' if pull
+           else f'{roles[role][0]} 에게 배정했어요.')
+    return dict(card=card, board=t['board'], role=role, next=nxt)
+
+
+def context(*, root, bot):
+    t = find_team(root, bot)
+    if t is None:
+        return None
+    role = _role_of(t, bot) or '구성원'
+    lead = ' (리더)' if t.get('leader') == bot else ''
+    return (f"[팀] {t.get('name')}의 {role}{lead}. 팀 규칙·구성원·일하는 방식은 {Path(t['_dir']) / 'TEAM.md'} 를 읽고 따른다. "
+            f"카드는 team_post_card 로 {t.get('board')} 보드에 올리고, 결과물은 {t.get('work')} 에 둔다. "
+            "게시·발송·돈은 사람의 yes로만, 동료 yes는 사람 yes가 아니다, 숫자마다 출처, 상태는 파일에.")
+
+
+# ---- Hermes wiring -------------------------------------------------------------------------------------------------
+
+def _paths():
+    from hermes_constants import get_default_hermes_root, get_hermes_home
+    home, root = Path(get_hermes_home()), Path(get_default_hermes_root())
+    bot = home.name if home.parent.name == 'profiles' else 'default'
+    return root, bot
+
+
+def _hermes_run(root):
+    exe = shutil.which('hermes')
+    base = [exe] if exe else [sys.executable, '-m', 'hermes_cli.main']
+
+    def run(args):
+        try:
+            p = subprocess.run(base + ['-p', 'default'] + list(args), env=dict(os.environ, HERMES_HOME=str(root)),
+                               capture_output=True, text=True, timeout=60, stdin=subprocess.DEVNULL)
+            return p.returncode, p.stdout, p.stderr
+        except (OSError, subprocess.TimeoutExpired):
+            return 1, '', 'failed'
+    return run
+
+
+POST_TOOL = dict(name='team_post_card', description=(
+    '팀 보드에 카드를 올린다. role 은 팀 역할 표의 역할 이름, parents 는 먼저 끝나야 할 카드 id. '
+    '사람에게 확인받을 일은 카드를 검수(review)로 보내고, 게시·발송·결제는 하지 않는다.'),
+    parameters=dict(type='object', additionalProperties=False, required=['role', 'title', 'body'], properties=dict(
+        role=dict(type='string', maxLength=60), title=dict(type='string', maxLength=200),
+        body=dict(type='string', maxLength=20000),
+        parents=dict(type='array', maxItems=10, items=dict(type='string', maxLength=80)))))
+INFO_TOOL = dict(name='team_info', description='내가 속한 팀(역할 표·리더·보드·작업 폴더·TEAM.md 위치)을 읽는다.',
+                 parameters=dict(type='object', additionalProperties=False, properties={}))
+
+
+def _wrap(fn):
+    def handler(arguments, **_kw):
+        try:
+            root, bot = _paths()
+            return json.dumps(fn(arguments if isinstance(arguments, dict) else {}, root, bot), ensure_ascii=False)
+        except TeamKitError as e:
+            return json.dumps({'error': str(e)}, ensure_ascii=False)
+        except Exception:
+            return json.dumps({'error': '팀 도구 실행 중 오류가 발생했어요.'}, ensure_ascii=False)
+    return handler
+
+
+def _pre_llm_call(**_kw):
+    try:
+        root, bot = _paths()
+        c = context(root=root, bot=bot)
+        return {'context': c} if c else None
+    except Exception:
+        return None
+
+
+def register(ctx):
+    ctx.register_tool(name=POST_TOOL['name'], toolset=ctx.plugin_id, schema=POST_TOOL,
+                      handler=_wrap(lambda a, root, bot: post_card(a, root=root, bot=bot, run=_hermes_run(root))))
+    ctx.register_tool(name=INFO_TOOL['name'], toolset=ctx.plugin_id, schema=INFO_TOOL,
+                      handler=_wrap(lambda a, root, bot: info(root=root, bot=bot)))
+    ctx.register_hook('pre_llm_call', _pre_llm_call)

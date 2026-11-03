@@ -105,35 +105,28 @@
     {
       "metadata": {
         "id": "mybots-mira",
-        "version": "0.1.0",
+        "version": "0.2.6",
         "name": "미라",
         "englishName": "Mira",
         "role": "UI 디자이너",
         "personality": "작은 차이를 잘 보는 미감 있는 동료",
-        "description": "화면 비평 → 우선 수정 3개 → 색·타입·간격 표.",
+        "description": "화면 비평 → 우선 수정 3개 → 색·타입·간격 표. 회사 자료에서 근거 있는 디자인 시스템을 뽑아 대비 검수 뒤 Open Design 에 등록·게시.",
         "category": "business",
-        "firstPrompt": "이 화면을 더 읽기 쉽게 만드는 수정 세 가지와 대비 비율을 알려줘.",
+        "firstPrompt": "이 로고와 화면 캡처로 우리 디자인 시스템 초안을 만들고, 대비가 통과하는지 같이 보여 줘.",
         "optional": [
           "skills",
-          "mcp",
           "plugin",
           "voice"
         ],
         "skillId": "interface-critique",
-        "mcp": {
-          "serverId": "mybots-mira-materials",
-          "tools": [
-            "mira_list_materials",
-            "mira_read_material"
-          ]
-        },
+        "mcp": null,
         "pluginId": "mybots-mira-tools",
         "external": [
           {
-            "service": "figma",
-            "label": "Figma",
-            "guide": "https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/",
-            "requirement": "Figma 계정과 사용자 인증 필요",
+            "service": "web-search",
+            "label": "Open Design(Docker, 이 컴퓨터)",
+            "guide": "https://github.com/nexu-io/open-design",
+            "requirement": "화면 비평·대비·색 추출은 바로 동작 · 디자인 시스템 등록·게시: 이 컴퓨터에서 Docker 로 띄운 Open Design(미라가 연결을 돕습니다)",
             "status": "not-connected"
           }
         ],
@@ -143,7 +136,7 @@
           "audition": "not-tested"
         }
       },
-      "manifestSha256": "cc647af3f05f8827864f2bc57baaee5e0266561c1e50df88e1512fa26749db47",
+      "manifestSha256": "805fb91192bc0b3e45f1df62f39ec8cde815c28ea6fcac482363a67d9fc62628",
       "files": [
         {
           "path": "assets/avatar.png",
@@ -152,64 +145,106 @@
           "sha256": "352a7fd23f1b0ffc8aece97502256575e19ec5d4908fcda706d25f5f97f1c08b"
         },
         {
-          "path": "mcp/data.json",
-          "component": "mcp",
-          "size": 1461,
-          "sha256": "65b0766922a6fe08edb2897e17623bf69c66300936e0c4ba5c3af437ba86bdc0"
-        },
-        {
-          "path": "mcp/server.py",
-          "component": "mcp",
-          "size": 157,
-          "sha256": "27620da0de89c93b517223ae65412ac1958582c47dd7fe4cb19258f870ae556c"
-        },
-        {
-          "path": "mcp/transport.py",
-          "component": "mcp",
-          "size": 6199,
-          "sha256": "4963caee2e01391e502a7caf0fb52b6e712ef0224b89d1aa1d135509c3d4935b"
-        },
-        {
           "path": "plugins/mybots-mira-tools/__init__.py",
           "component": "plugin",
-          "size": 127,
-          "sha256": "4b821811fe8813ec3a75538c63853ac3849ac424129e80bad5b501d3b5e6d5ad"
+          "size": 1230,
+          "sha256": "fa614b31ebae4070316510f941f169d8eb2078350222222041c743ae392f81d5"
         },
         {
           "path": "plugins/mybots-mira-tools/adapter.py",
           "component": "plugin",
-          "size": 2726,
-          "sha256": "99db6b696a3516b84402bcd0fae15e56ec259bb0d20bb4bda2bb9bb31d358997"
+          "size": 3073,
+          "sha256": "c57a304a0410ab27b27a02261e5267c528fda297cf1d5d1264747ba6a225134f"
+        },
+        {
+          "path": "plugins/mybots-mira-tools/consent.py",
+          "component": "plugin",
+          "size": 11182,
+          "sha256": "82cf36ade8b3c0ae49a7525ed8dc1214654713ae4d306f1252ea2f9c2d464b8a"
+        },
+        {
+          "path": "plugins/mybots-mira-tools/data.json",
+          "component": "plugin",
+          "size": 8252,
+          "sha256": "0f79d5b4584d5f1deeb39de252cdc80affd87c59b22cecc31a723d609ecc26a1"
+        },
+        {
+          "path": "plugins/mybots-mira-tools/docfile.py",
+          "component": "plugin",
+          "size": 10468,
+          "sha256": "d4376b8520b5edfad6bf26976bc09c47293cce6d54adade6dc1953f8807b5115"
+        },
+        {
+          "path": "plugins/mybots-mira-tools/errors.py",
+          "component": "plugin",
+          "size": 127,
+          "sha256": "6f81fd8d2cd8640bfb5bcceba764581024135b46be4716960d63d5958b37ff3b"
         },
         {
           "path": "plugins/mybots-mira-tools/logic.py",
           "component": "plugin",
-          "size": 1443,
-          "sha256": "e3e6892bdf4d72a0ee0f9225ba209f7fac67534d43b4768d6e1a99136a9b8292"
+          "size": 2688,
+          "sha256": "fdf65b45311b9b02574727383286d40e32a47f670c3a8c11cf3296beacf607f4"
+        },
+        {
+          "path": "plugins/mybots-mira-tools/od.py",
+          "component": "plugin",
+          "size": 14572,
+          "sha256": "8ebb661b50d03d59177a1dd09be4663dd44b503af367d84701bd71cc6d85a247"
+        },
+        {
+          "path": "plugins/mybots-mira-tools/palette.py",
+          "component": "plugin",
+          "size": 3216,
+          "sha256": "2c8be9c4afe921343c6cc2f90a817591ccfd2e9d04a7f5d5aabdda0f897a5f3e"
         },
         {
           "path": "plugins/mybots-mira-tools/plugin.yaml",
           "component": "plugin",
-          "size": 143,
-          "sha256": "950bc4b1149d742042e54de8fb76afd4e3e2f412baad5fad3c4fdf52e5d1a9f2"
+          "size": 415,
+          "sha256": "7d68034786cc4f0699ee1e3193788c09430d9afec1b58d58c4fd164723ed8110"
+        },
+        {
+          "path": "plugins/mybots-mira-tools/publish.py",
+          "component": "plugin",
+          "size": 4619,
+          "sha256": "8bf557867d5c6eceee46b66f1a29f8ddb66d362e2b67461b90130c012af830b5"
+        },
+        {
+          "path": "plugins/mybots-mira-tools/safefs.py",
+          "component": "plugin",
+          "size": 3487,
+          "sha256": "c781836888a4898623bab59c9e5f23bd1890d91edce1492d35793d2e413cdd99"
+        },
+        {
+          "path": "plugins/mybots-mira-tools/setup.py",
+          "component": "plugin",
+          "size": 12520,
+          "sha256": "ff818b0499f0bcbf7a79ee949658f0aea1b969bfb1367c686786dc3ae47b45cd"
+        },
+        {
+          "path": "plugins/mybots-mira-tools/skill.py",
+          "component": "plugin",
+          "size": 7926,
+          "sha256": "7c64c5c2ed9633b88e79bff9713267aa38f4dab11c872fdaf6d4e9d18e47c57b"
         },
         {
           "path": "skills/interface-critique/example.md",
           "component": "skills",
-          "size": 797,
-          "sha256": "01cd9336f074f76a6c37a8827b6f390c3950133b4abbdf3d8c8e3fb41345b42e"
+          "size": 1275,
+          "sha256": "3477a5bf11b2d3e3b327357da7da83ab669aa291d840511a04807d24b0e4b589"
         },
         {
           "path": "skills/interface-critique/SKILL.md",
           "component": "skills",
-          "size": 2153,
-          "sha256": "ad2ab71cb4f405108bfa05825c2c770b916cde695c54d96ae32257b07da86bf1"
+          "size": 2269,
+          "sha256": "296e6aa59b71c98e8ad496724ea3c773fecb5e71b3ced7180cf20c4b5294a35c"
         },
         {
           "path": "SOUL.md",
           "component": "soul",
-          "size": 2373,
-          "sha256": "2ff61019ddf1b8175fea564635a76d0641b80e05f87f65d90ee2ee5e9ab5fc6d"
+          "size": 5002,
+          "sha256": "795d05cdebc433aba09ca6e3fa7fe48b6a444c5568c6b6f55a4dc3eef8c2191e"
         },
         {
           "path": "voice/preset.json",
@@ -218,14 +253,7 @@
           "sha256": "56d4ac0df3359980a20110a83d310e653ef362c075fb68bffc8863a6bdbf07be"
         }
       ],
-      "mcp": {
-        "serverId": "mybots-mira-materials",
-        "tools": [
-          "mira_list_materials",
-          "mira_read_material"
-        ],
-        "entrypoint": "mcp/server.py"
-      },
+      "mcp": null,
       "pluginId": "mybots-mira-tools"
     },
     {
@@ -325,7 +353,7 @@
     {
       "metadata": {
         "id": "mybots-sage",
-        "version": "0.4.4",
+        "version": "0.4.6",
         "name": "세이지",
         "englishName": "Sage",
         "role": "데스크 리서처",
@@ -356,7 +384,7 @@
           "audition": "not-tested"
         }
       },
-      "manifestSha256": "7ebbf9724bc1f1a181080555668f54adf3e9fcb18c0dcb3fd9361c554d6022ea",
+      "manifestSha256": "6eecdea82993bd6645d8419cf63817272b5dd6adda2a687af5d8b46210b717e4",
       "files": [
         {
           "path": "assets/avatar.png",
@@ -367,8 +395,8 @@
         {
           "path": "plugins/mybots-sage-tools/__init__.py",
           "component": "plugin",
-          "size": 1518,
-          "sha256": "556d36c54ad467723946a3991da836785c51b7b09542dc2c2f83c5ab06faaaca"
+          "size": 1728,
+          "sha256": "ab1b98ed9f7f55f74e362391b4aa196f1a8ea7d191385a89297e1419e1dd618c"
         },
         {
           "path": "plugins/mybots-sage-tools/adapter.py",
@@ -391,8 +419,8 @@
         {
           "path": "plugins/mybots-sage-tools/data.json",
           "component": "plugin",
-          "size": 15508,
-          "sha256": "1c622eefc9b4405b3beaf6bd537d8b679de808d90d0bdd1afcbb779d0d48e3af"
+          "size": 15676,
+          "sha256": "47de4ee6e116371237ce8a89e0627f8c5ecb6a4bcc32ffdf367637849cd4ff00"
         },
         {
           "path": "plugins/mybots-sage-tools/docx_writer.py",
@@ -409,8 +437,8 @@
         {
           "path": "plugins/mybots-sage-tools/flight_skill.py",
           "component": "plugin",
-          "size": 7464,
-          "sha256": "4798201ce333e30c209f99a05c990916f924d2812802a3fb0067f525884e1319"
+          "size": 8105,
+          "sha256": "6f1db7cf60f3346e3aff01eaf41addd8968e2a2f84cbceb9c3aed857b949ea51"
         },
         {
           "path": "plugins/mybots-sage-tools/flight_watch.py",
@@ -434,7 +462,7 @@
           "path": "plugins/mybots-sage-tools/plugin.yaml",
           "component": "plugin",
           "size": 502,
-          "sha256": "fba062a108a9b165f50e52f70bead8a48bf769600277540d8deccecf9abe95b0"
+          "sha256": "c3674d34f29e2b7d5e6b9332b961576f9787b5f80636c1dc3978207dae7a1fce"
         },
         {
           "path": "plugins/mybots-sage-tools/report.py",
@@ -445,20 +473,20 @@
         {
           "path": "plugins/mybots-sage-tools/review_report.py",
           "component": "plugin",
-          "size": 43313,
-          "sha256": "19b8adbea95e255d251e3ff0ca8a788fcbca1f502608a2f474ab7cd7f9d91e3c"
+          "size": 43403,
+          "sha256": "4ae68bcb782001cea61efbd6f0011dc6eab08038fcc6efe687e28ee9db0a9de0"
         },
         {
           "path": "plugins/mybots-sage-tools/review_setup.py",
           "component": "plugin",
-          "size": 28133,
-          "sha256": "4441747336ca7f383b39249044b779c7a87f76fdc42bd2eefd597d18acc27088"
+          "size": 28609,
+          "sha256": "94e61f53f903f58b9ae5a857ec29578427c18e80574f660e96ea3ab0560391f1"
         },
         {
           "path": "plugins/mybots-sage-tools/reviews.py",
           "component": "plugin",
-          "size": 25266,
-          "sha256": "4e5f1f38d50c4d1cef00e0672bb5055094d6b98a3861469d29fe7abf4d78d1bd"
+          "size": 27374,
+          "sha256": "de7d5a338fca29d4b3e2d7c7f70a14fc8b73efd8e947f5415b1f638a0e8f9c7c"
         },
         {
           "path": "plugins/mybots-sage-tools/runtime.py",
@@ -481,8 +509,8 @@
         {
           "path": "skills/desk-research/review.md",
           "component": "skills",
-          "size": 22602,
-          "sha256": "e6e5ab8ae3ac9d7e7b02978e9cc0f20adb02c2122b5ca53d91956a3705895bb1"
+          "size": 24170,
+          "sha256": "adcbb2b941df67604bca51fc3d96fd530545fab4615999286c1ece319674d40c"
         },
         {
           "path": "skills/desk-research/SKILL.md",
@@ -1037,52 +1065,38 @@
     {
       "metadata": {
         "id": "mybots-milo",
-        "version": "0.1.0",
+        "version": "0.3.5",
         "name": "마일로",
         "englishName": "Milo",
-        "role": "프로젝트 코디네이터",
+        "role": "운영 코디네이터",
         "personality": "일정의 빈틈을 부드럽게 짚는 정리자",
-        "description": "작업·의존성 → 일정 → 병목·리스크 → 주간 상태.",
+        "description": "조건표 고정 → 문서 N건 나눠 읽기 → 판정·근거 장부 → 확인 질문 → 마감 역산. 받은 공문·서류에 회신 묶음을 만들고, 일정·의존성 점검도 함께.",
         "category": "business",
-        "firstPrompt": "병렬로 할 수 있는 일과 출시를 늦출 병목을 찾아 줘.",
+        "firstPrompt": "우리 조건표와 이 문서들을 대조해서 낼 수 있는지 근거와 함께 판정해 줘.",
         "optional": [
           "skills",
-          "mcp",
           "plugin",
           "voice"
         ],
         "skillId": "project-checkpoint",
-        "mcp": {
-          "serverId": "mybots-milo-materials",
-          "tools": [
-            "milo_list_materials",
-            "milo_read_material"
-          ]
-        },
+        "mcp": null,
         "pluginId": "mybots-milo-tools",
         "external": [
           {
-            "service": "notion",
-            "label": "Notion",
-            "guide": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
-            "requirement": "Notion 계정과 OAuth 연결 필요",
-            "status": "not-connected"
-          },
-          {
-            "service": "todoist",
-            "label": "Todoist",
-            "guide": "https://developer.todoist.com/",
-            "requirement": "Todoist 계정과 OAuth 연결 필요",
+            "service": "web-search",
+            "label": "Google 시트·캘린더 · Slack",
+            "guide": "https://hermes-agent.nousresearch.com/docs/user-guide/features/tools",
+            "requirement": "문서 읽기·판정은 바로 동작 · 필수(결과 표·일정): Google Workspace 연결(Hermes google-workspace 스킬) · 선택: Slack 게이트웨이",
             "status": "not-connected"
           }
         ],
         "voice": {
           "id": "meridian",
-          "style": "또렷하고 안정적으로, 의존성과 다음 일을 짚으세요.",
+          "style": "또렷하고 안정적으로, 근거와 다음 일을 짚으세요.",
           "audition": "not-tested"
         }
       },
-      "manifestSha256": "0c84dd33eaabf6caa2556cd83f774c0e1c1d51bee0f132d0197cf4d4b6b25f84",
+      "manifestSha256": "af5885f6d74e39287039d2ca8031ea820507debdc42b494dc1b9e07b167c4e90",
       "files": [
         {
           "path": "assets/avatar.png",
@@ -1091,80 +1105,121 @@
           "sha256": "41b78d2472ca3fe3a102ef0b14c5def578eb4b9bff3cc79f79804f273a0a43f2"
         },
         {
-          "path": "mcp/data.json",
-          "component": "mcp",
-          "size": 1152,
-          "sha256": "c04a3f8d672eb8b0452b33a5d8b832b5e8e5092f89c9d4398cb2927041a3cf46"
-        },
-        {
-          "path": "mcp/server.py",
-          "component": "mcp",
-          "size": 157,
-          "sha256": "05011696130db7ecb41140be42aea8487beb86138d06c08c9236e64ce9a1800f"
-        },
-        {
-          "path": "mcp/transport.py",
-          "component": "mcp",
-          "size": 6199,
-          "sha256": "4963caee2e01391e502a7caf0fb52b6e712ef0224b89d1aa1d135509c3d4935b"
-        },
-        {
           "path": "plugins/mybots-milo-tools/__init__.py",
           "component": "plugin",
-          "size": 127,
-          "sha256": "4b821811fe8813ec3a75538c63853ac3849ac424129e80bad5b501d3b5e6d5ad"
+          "size": 1112,
+          "sha256": "d909cd4a86575cb0d18c21b6a175ba0b2ba2c0b588914e0d809c2aeb1b1054e4"
         },
         {
           "path": "plugins/mybots-milo-tools/adapter.py",
           "component": "plugin",
-          "size": 2726,
-          "sha256": "99db6b696a3516b84402bcd0fae15e56ec259bb0d20bb4bda2bb9bb31d358997"
+          "size": 3073,
+          "sha256": "36d4335c6b2c2bcf5ebe34a84231e11cd8d50f492a783a4867fcbbeb186610b5"
+        },
+        {
+          "path": "plugins/mybots-milo-tools/consent.py",
+          "component": "plugin",
+          "size": 11195,
+          "sha256": "b207affdeb8f366805b045abf6e39db0658f63486eab59821282fc6c47af5325"
+        },
+        {
+          "path": "plugins/mybots-milo-tools/data.json",
+          "component": "plugin",
+          "size": 12898,
+          "sha256": "09b3cf50fdb48f0b76c0a35fafde1f8a45d6b7963d60be20772067930522218a"
+        },
+        {
+          "path": "plugins/mybots-milo-tools/deadline.py",
+          "component": "plugin",
+          "size": 3548,
+          "sha256": "8920596941ee45f8b0d46d8c9dcec0e9bafd1b821c210bb6d206e977b8406547"
+        },
+        {
+          "path": "plugins/mybots-milo-tools/doclog.py",
+          "component": "plugin",
+          "size": 7759,
+          "sha256": "7975f18a4d68ef0b1d369363af0f77766795604e9de04f78c84bc721b4415465"
+        },
+        {
+          "path": "plugins/mybots-milo-tools/errors.py",
+          "component": "plugin",
+          "size": 127,
+          "sha256": "265b24d4aadc37d6203c05da6b3518459828ba7d45e8b8d923998a04a70a9c68"
+        },
+        {
+          "path": "plugins/mybots-milo-tools/gws.py",
+          "component": "plugin",
+          "size": 11580,
+          "sha256": "be2b2deeb455c74b7a2f8ce48a73d5421c936bf3e6e31acbe05e034f5ba00c22"
+        },
+        {
+          "path": "plugins/mybots-milo-tools/ledger.py",
+          "component": "plugin",
+          "size": 7189,
+          "sha256": "434976b103091fc633f7207ace8e073e71aa1faf49569427aaec826f7e2a79bc"
         },
         {
           "path": "plugins/mybots-milo-tools/logic.py",
           "component": "plugin",
-          "size": 2315,
-          "sha256": "4dfcc729477f3684127ca9f968f70198a4701ce90e7dec215962e2f367351940"
+          "size": 1864,
+          "sha256": "bca7e1260fbad2fb731db27dad73ad03981d70c19c58b37fc4bc6e33bc0288d2"
         },
         {
           "path": "plugins/mybots-milo-tools/plugin.yaml",
           "component": "plugin",
-          "size": 163,
-          "sha256": "652744e29852aaaa63364e9ad1488b125a98db340cf86c6c43a05e2176f6b306"
+          "size": 350,
+          "sha256": "acead6a90b5e6abc1ead4449f7d23526cac39a475d65719f98e79b83b2519b02"
+        },
+        {
+          "path": "plugins/mybots-milo-tools/rhwp.py",
+          "component": "plugin",
+          "size": 4700,
+          "sha256": "59136b61c3ff299124053b5d9978fc7053d05aa2f633db1f5f4bb934e4c0b9d3"
+        },
+        {
+          "path": "plugins/mybots-milo-tools/safefs.py",
+          "component": "plugin",
+          "size": 3487,
+          "sha256": "c781836888a4898623bab59c9e5f23bd1890d91edce1492d35793d2e413cdd99"
+        },
+        {
+          "path": "plugins/mybots-milo-tools/setup.py",
+          "component": "plugin",
+          "size": 15703,
+          "sha256": "b2575014d104973ae4d11eeb3e614abbd0744b08bbfdb5675642b6ad74f7d536"
+        },
+        {
+          "path": "plugins/mybots-milo-tools/skill.py",
+          "component": "plugin",
+          "size": 7909,
+          "sha256": "cfcb70b2740ad778b0c6a89e8642acd20843c3bd89e7132d768ea949567f9854"
         },
         {
           "path": "skills/project-checkpoint/example.md",
           "component": "skills",
-          "size": 691,
-          "sha256": "7ed1ca8d93080b573033ad27bbb219491ea129a521bab23c10f1eb4ebfa28d42"
+          "size": 1297,
+          "sha256": "5aed57e99e35908a426f8da321874f307ee3ab1737e66d9dc45b75e97d942ecd"
         },
         {
           "path": "skills/project-checkpoint/SKILL.md",
           "component": "skills",
-          "size": 1969,
-          "sha256": "47f8ecb473ada50382e76b39a41ca6fe1d5c5ff42a1e2f335d2abe0bbfeb4f26"
+          "size": 2267,
+          "sha256": "7306960f79facc1a265c5587819dae9b28e916eed5052e317783c15fb351b108"
         },
         {
           "path": "SOUL.md",
           "component": "soul",
-          "size": 2154,
-          "sha256": "14db8e1d7fa3b4a8558ea72df69d9f27632d12caa03522dba53bfce4b3e93420"
+          "size": 9461,
+          "sha256": "2d814324a7004dfe52600c062041531054b1b12d4d80559b788043e3e1bbbff2"
         },
         {
           "path": "voice/preset.json",
           "component": "voice",
-          "size": 485,
-          "sha256": "a7a1c8f99040afd14ffde2362933ae040f3b0e5118e0bd94d1a0d09866fe11f2"
+          "size": 476,
+          "sha256": "05447e31202e3031f4a6a425b3b10f7aa362104cdf879db8cf15e016c44b2967"
         }
       ],
-      "mcp": {
-        "serverId": "mybots-milo-materials",
-        "tools": [
-          "milo_list_materials",
-          "milo_read_material"
-        ],
-        "entrypoint": "mcp/server.py"
-      },
+      "mcp": null,
       "pluginId": "mybots-milo-tools"
     },
     {
