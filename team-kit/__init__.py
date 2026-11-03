@@ -1,6 +1,7 @@
 """mybots-team-kit (MyBots 0.7.0): copied by team recruit into every member profile.
 
-Tools: team_post_card (a card on the team board by role) and team_info (the team as recorded in team.json).
+Tools: team_post_card (a card on the team board by role), team_request_review / team_close_review (a person's
+review, opened by any member and closed by the lead on the person's word) and team_info (the team in team.json).
 pre_llm_call adds one short pointer to the team's TEAM.md and its rules; the rules themselves live in that file.
 The team is found by looking for this profile in <root>/teams/*/team.json, so a disbanded team simply stops matching.
 """
@@ -103,6 +104,37 @@ def request_human_review(args, *, root, bot, run):
                 next='사람 검수 대기로 넘겼어요. 이 카드의 작업은 여기서 끝내고, 사람에게 무엇을 봐 달라는지 한 줄로 알리세요.')
 
 
+VERDICTS = {'approve': '승인', 'changes': '반려'}
+
+
+def close_review(args, *, root, bot, run):
+    """A person approved or rejected a review card in the chat: the lead closes that same card (approve → done) or
+    sends it back to its implementer (changes → reopen-review), quoting the person. Without this the card stayed in
+    review after a spoken approval and a spoken rejection piled up new cards next to it (VM 11-03)."""
+    t = _team_or_error(root, bot)
+    if t.get('leader') != bot:
+        raise TeamKitError('검수 카드는 팀 리더만 닫을 수 있어요.')
+    task, verdict, said = args.get('task_id') or '', args.get('verdict') or '', (args.get('said') or '').strip()
+    if not _CARD_ID.fullmatch(task):
+        raise TeamKitError('카드 id를 확인해 주세요.')
+    if verdict not in VERDICTS:
+        raise TeamKitError('verdict 는 approve(승인) 또는 changes(반려)예요.')
+    if not said or len(said) > 2000:
+        raise TeamKitError('사람이 한 말을 그대로(2000자 이하) 적어 주세요.')
+    note = f'사람 {VERDICTS[verdict]}: {said}'
+    if verdict == 'approve':
+        argv = ['kanban', '--board', t['board'], 'complete', task, '--result=' + note]
+    else:
+        argv = ['kanban', '--board', t['board'], 'reopen-review', task, '--reason=' + note]
+    code, _out, _err = run(argv)
+    if code:
+        raise TeamKitError('검수 카드를 닫지 못했어요. 카드가 검수 칸에 있는지 확인해 주세요.')
+    if verdict == 'approve':
+        return dict(card=task, status='done', next='승인을 기록하고 카드를 완료했어요. 승인 뒤 할 일(저장·정리)을 이어서 하세요.')
+    return dict(card=task, status='reopened',
+                next='같은 카드를 담당에게 되돌렸어요. 고칠 점은 카드 댓글에 남았고, 고친 뒤 다시 team_request_review 로 보냅니다.')
+
+
 def context(*, root, bot):
     t = find_team(root, bot)
     if t is None:
@@ -111,7 +143,7 @@ def context(*, root, bot):
     lead = ' (리더)' if t.get('leader') == bot else ''
     return (f"[팀] {t.get('name')}의 {role}{lead}. 팀 규칙·구성원·일하는 방식은 {Path(t['_dir']) / 'TEAM.md'} 를 읽고 따른다. "
             f"카드는 team_post_card 로 {t.get('board')} 보드에 올리고, 결과물은 {t.get('work')} 에 둔다. "
-            "사람 검수는 team_request_review 로. 방에서 동료를 @로 부르지 말고 일은 카드로만 넘긴다. "
+            "사람 검수는 team_request_review 로, 사람이 승인·반려를 말하면 리더가 team_close_review 로 같은 카드를 닫거나 되돌린다. 방에서 동료를 @로 부르지 말고 일은 카드로만 넘긴다. "
             "게시·발송·돈은 사람의 yes로만(카드·폴더·CRM 기록은 발송이 아니다), 동료 yes는 사람 yes가 아니다, 숫자마다 출처, 상태는 파일에.")
 
 
@@ -150,6 +182,12 @@ REVIEW_TOOL = dict(name='team_request_review', description=(
     '보낸 뒤에는 그 카드의 작업을 끝낸다.'),
     parameters=dict(type='object', additionalProperties=False, required=['task_id', 'summary'], properties=dict(
         task_id=dict(type='string', maxLength=80), summary=dict(type='string', maxLength=2000))))
+CLOSE_TOOL = dict(name='team_close_review', description=(
+    '리더 전용. 사람이 대화에서 검수 카드를 승인하거나 반려했을 때 그 카드를 닫는다(approve: 완료, changes: 같은 카드를 담당에게 되돌림). '
+    'said 에는 사람이 한 말을 그대로 적는다. 동료 봇의 말로는 쓰지 않는다. 반려에 새 카드를 만들지 않는다.'),
+    parameters=dict(type='object', additionalProperties=False, required=['task_id', 'verdict', 'said'], properties=dict(
+        task_id=dict(type='string', maxLength=80), verdict=dict(type='string', enum=['approve', 'changes']),
+        said=dict(type='string', maxLength=2000))))
 INFO_TOOL = dict(name='team_info', description='내가 속한 팀(역할 표·리더·보드·작업 폴더·TEAM.md 위치)을 읽는다.',
                  parameters=dict(type='object', additionalProperties=False, properties={}))
 
@@ -182,4 +220,6 @@ def register(ctx):
                       handler=_wrap(lambda a, root, bot: info(root=root, bot=bot)))
     ctx.register_tool(name=REVIEW_TOOL['name'], toolset=ctx.plugin_id, schema=REVIEW_TOOL,
                       handler=_wrap(lambda a, root, bot: request_human_review(a, root=root, bot=bot, run=_hermes_run(root))))
+    ctx.register_tool(name=CLOSE_TOOL['name'], toolset=ctx.plugin_id, schema=CLOSE_TOOL,
+                      handler=_wrap(lambda a, root, bot: close_review(a, root=root, bot=bot, run=_hermes_run(root))))
     ctx.register_hook('pre_llm_call', _pre_llm_call)

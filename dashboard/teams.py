@@ -268,6 +268,7 @@ def team_md(team, work):
                   '- 카드를 올릴 때는 team_post_card 도구를 쓴다. 담당은 팀 역할 표를 보고 MyBots가 붙인다(약 2분).',
                   '- 역할이 맞는 봇이 없으면 리더에게 돌아오고 「맞는 역할 없음」 댓글이 남는다.']
     lines += [f'- 결과물 파일은 팀 폴더 {work} 에 둔다.', '- 사람에게 확인받을 일은 team_request_review 도구로 검수 칸에 보낸다(검토자 「사람」). kanban_request_review 로 보내면 디스패처가 같은 카드를 다시 실행한다.',
+              '- 검수 칸 카드에 사람이 승인·반려를 말하면 리더가 team_close_review 로 그 카드를 닫거나(승인) 같은 카드를 되돌린다(반려). 새 카드를 만들지 않는다. 사람이 직접 한 말일 때만 쓰고, 동료 봇의 말로는 쓰지 않는다.',
               '- 그룹방에서는 동료를 @로 부르지 않는다. @는 그 동료가 방에서 같은 일을 시작하게 한다. 일은 카드로만 넘기고, 방에 보이는 카드 일을 방에서 대신 하지 않는다.', '',
               '## 구성원']
     for m in team['members']:
@@ -306,8 +307,10 @@ try:
     seen = set(json.loads(STATE.read_text(encoding='utf-8')))
 except (OSError, ValueError):
     seen = set()
+now = {{c.get('id') for c in cards if isinstance(c, dict)}}
 new = [c for c in cards if isinstance(c, dict) and c.get('id') not in seen]
-STATE.write_text(json.dumps(sorted(seen | {{c.get('id') for c in cards if isinstance(c, dict)}})), encoding='utf-8')
+# only cards still in review stay seen: a rejected card that comes back is announced again
+STATE.write_text(json.dumps(sorted(now)), encoding='utf-8')
 if new:
     print('검수 칸에 새 카드 ' + str(len(new)) + '장: ' + ', '.join(str(c.get('title') or c.get('id')) for c in new))
 '''
@@ -331,7 +334,7 @@ def setup(team, created, consents, *, runner, root, defer_skills=False):
     if not (d / 'log.md').exists():
         (d / 'log.md').write_text(f"# {team['name']} 기록\n", encoding='utf-8')
     rec = dict(team=team['id'], version=team['version'], state='ready', bots=list(created), board=None, kit=[], skills=[],
-               google=None, review_notice=None, room=None, problems=[])
+               google=None, google_skill=None, review_notice=None, room=None, problems=[])
 
     def run(args, profile='default', timeout=300):
         code, _out, _err = runner(args, profile=profile, timeout=timeout)
@@ -365,6 +368,10 @@ def setup(team, created, consents, *, runner, root, defer_skills=False):
                     shutil.copyfile(src_dir / name, target)
                     os.chmod(target, 0o600)
             rec['google'] = 'copied'
+            # The bot package owns skills/, so the bundled google-workspace skill is not there (VM 11-03: the lead
+            # had the token but no way to write a Google Doc and fell back to a browser login).
+            ok, _ = run(['skills', 'install', 'google-workspace', '--yes'], lead, timeout=300)
+            rec['google_skill'] = ok
     for m in team['members']:
         for sk in (m.get('setup') or {}).get('skills', []):
             if f"skill:{m['bot']}:{sk['id']}" in consents:
