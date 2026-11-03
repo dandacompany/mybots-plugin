@@ -4449,7 +4449,7 @@ var ROUTE = {
   targetProfile: "default"
 };
 var roomId = (team) => "team-" + team.id;
-var ROOM_TRIES = 5;
+var ROOM_TRIES = 20;
 var GOOGLE = {
   copied: "Copied the Google connection to the leader.",
   refused: "The Google connection was not copied.",
@@ -6182,7 +6182,7 @@ import { jsx as jsx11 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.7.5",
+  version: "0.7.6",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {
