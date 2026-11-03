@@ -315,7 +315,10 @@ var locales_default = {
     "Could not disband. Please retry.": "Could not disband. Please retry.",
     "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.",
     "Its work files were kept in {0}.": "Its work files were kept in {0}.",
-    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one."
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.",
+    "{0}: installing. This can take a few minutes.": "{0}: installing. This can take a few minutes.",
+    "{0}: installed.": "{0}: installed.",
+    "{0}: could not install. You can install it later from that bot.": "{0}: could not install. You can install it later from that bot."
   },
   ko: {
     "Could not load installed bots. Please retry.": "설치된 봇을 확인하지 못했습니다. 다시 시도해 주세요.",
@@ -626,7 +629,10 @@ var locales_default = {
     "Could not disband. Please retry.": "해산하지 못했어요. 다시 시도해 주세요.",
     "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "이 팀이 만든 봇·보드·예약만 지워요. 작업 결과(work)는 지우지 않고 teams/_disbanded 로 옮겨요. 다른 봇은 건드리지 않아요.",
     "Its work files were kept in {0}.": "작업 결과는 {0} 에 보관했어요.",
-    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "영입은 끝났어요. 다만 이 화면이 결과를 받지 못했어요. 팀 폴더를 확인하고, 그룹방이 있는 팀이면 직접 만들어 주세요."
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "영입은 끝났어요. 다만 이 화면이 결과를 받지 못했어요. 팀 폴더를 확인하고, 그룹방이 있는 팀이면 직접 만들어 주세요.",
+    "{0}: installing. This can take a few minutes.": "{0} 설치 중이에요. 몇 분 걸릴 수 있어요.",
+    "{0}: installed.": "{0} 설치했어요.",
+    "{0}: could not install. You can install it later from that bot.": "{0} 설치하지 못했어요. 나중에 그 봇에서 다시 설치할 수 있어요."
   },
   zh: {
     "Could not load installed bots. Please retry.": "无法加载已安装的机器人。请重试。",
@@ -937,7 +943,10 @@ var locales_default = {
     "Could not disband. Please retry.": "解散失败。请重试。",
     "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "只删除该团队创建的机器人、看板和任务。工作文件不会删除，会移到 teams/_disbanded。不影响其他机器人。",
     "Its work files were kept in {0}.": "工作文件已保存在 {0}。",
-    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "招募已完成，但此画面没有收到结果。请检查团队文件夹；如果团队有群聊，请手动创建。"
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "招募已完成，但此画面没有收到结果。请检查团队文件夹；如果团队有群聊，请手动创建。",
+    "{0}: installing. This can take a few minutes.": "{0}：正在安装，可能需要几分钟。",
+    "{0}: installed.": "{0}：已安装。",
+    "{0}: could not install. You can install it later from that bot.": "{0}：安装失败。之后可以在该机器人中重新安装。"
   },
   "zh-hant": {
     "Could not load installed bots. Please retry.": "無法載入已安裝的機器人。請重試。",
@@ -1248,7 +1257,10 @@ var locales_default = {
     "Could not disband. Please retry.": "解散失敗。請重試。",
     "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "只刪除此團隊建立的機器人、看板和排程。工作檔案不會刪除，會移到 teams/_disbanded。不影響其他機器人。",
     "Its work files were kept in {0}.": "工作檔案已保存在 {0}。",
-    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "招募已完成，但此畫面沒有收到結果。請檢查團隊資料夾；若團隊有群組聊天室，請手動建立。"
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "招募已完成，但此畫面沒有收到結果。請檢查團隊資料夾；若團隊有群組聊天室，請手動建立。",
+    "{0}: installing. This can take a few minutes.": "{0}：正在安裝，可能需要幾分鐘。",
+    "{0}: installed.": "{0}：已安裝。",
+    "{0}: could not install. You can install it later from that bot.": "{0}：安裝失敗。之後可以在該機器人中重新安裝。"
   },
   ja: {
     "Could not load installed bots. Please retry.": "インストール済みボットを読み込めません。再試行してください。",
@@ -1559,7 +1571,10 @@ var locales_default = {
     "Could not disband. Please retry.": "解散できませんでした。もう一度お試しください。",
     "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "このチームが作ったボット・ボード・予約だけを削除します。作業ファイルは削除せず teams/_disbanded に移します。他のボットには触れません。",
     "Its work files were kept in {0}.": "作業ファイルは {0} に残しました。",
-    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "迎え入れは終わりましたが、この画面は結果を受け取れませんでした。チームフォルダーを確認し、グループルームがあるチームなら手動で作ってください。"
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "迎え入れは終わりましたが、この画面は結果を受け取れませんでした。チームフォルダーを確認し、グループルームがあるチームなら手動で作ってください。",
+    "{0}: installing. This can take a few minutes.": "{0} をインストール中です。数分かかることがあります。",
+    "{0}: installed.": "{0} をインストールしました。",
+    "{0}: could not install. You can install it later from that bot.": "{0} をインストールできませんでした。あとでそのボットから入れ直せます。"
   },
   ar: {
     "Could not load installed bots. Please retry.": "تعذر تحميل البوتات المثبتة. حاول مجددًا.",
@@ -1870,7 +1885,10 @@ var locales_default = {
     "Could not disband. Please retry.": "تعذّر الحلّ. أعد المحاولة.",
     "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "يزيل فقط ما أنشأه هذا الفريق: البوتات واللوحة والمهام. لا تُحذف ملفات العمل بل تُنقل إلى teams/_disbanded. لا يمس البوتات الأخرى.",
     "Its work files were kept in {0}.": "حُفظت ملفات العمل في {0}.",
-    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "اكتمل الاستقطاب لكن هذه الشاشة لم تتلقَّ النتيجة. تحقّق من مجلد الفريق، وأنشئ غرفة المجموعة بنفسك إن كان للفريق غرفة."
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "اكتمل الاستقطاب لكن هذه الشاشة لم تتلقَّ النتيجة. تحقّق من مجلد الفريق، وأنشئ غرفة المجموعة بنفسك إن كان للفريق غرفة.",
+    "{0}: installing. This can take a few minutes.": "{0}: جارٍ التثبيت. قد يستغرق بضع دقائق.",
+    "{0}: installed.": "{0}: تم التثبيت.",
+    "{0}: could not install. You can install it later from that bot.": "{0}: تعذّر التثبيت. يمكنك تثبيته لاحقًا من ذلك البوت."
   },
   ru: {
     "Could not load installed bots. Please retry.": "Не удалось загрузить установленных ботов. Повторите попытку.",
@@ -2181,7 +2199,10 @@ var locales_default = {
     "Could not disband. Please retry.": "Не удалось распустить. Повторите попытку.",
     "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "Удаляет только созданное командой: ботов, доску и задания. Рабочие файлы не удаляются, а переносятся в teams/_disbanded. Другие боты не затрагиваются.",
     "Its work files were kept in {0}.": "Рабочие файлы сохранены в {0}.",
-    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "Найм завершён, но экран не получил ответ. Проверьте папку команды и, если у команды есть комната, создайте её вручную."
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "Найм завершён, но экран не получил ответ. Проверьте папку команды и, если у команды есть комната, создайте её вручную.",
+    "{0}: installing. This can take a few minutes.": "{0}: устанавливается. Это может занять несколько минут.",
+    "{0}: installed.": "{0}: установлено.",
+    "{0}: could not install. You can install it later from that bot.": "{0}: не удалось установить. Можно установить позже из этого бота."
   },
   fr: {
     "Could not load installed bots. Please retry.": "Impossible de charger les bots installés. Réessayez.",
@@ -2492,7 +2513,10 @@ var locales_default = {
     "Could not disband. Please retry.": "Dissolution impossible. Réessayez.",
     "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "Supprime uniquement ce que l’équipe a créé : bots, tableau et tâches. Les fichiers de travail ne sont pas supprimés ; ils vont dans teams/_disbanded. Les autres bots ne sont pas touchés.",
     "Its work files were kept in {0}.": "Les fichiers de travail sont conservés dans {0}.",
-    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "Le recrutement est terminé, mais cet écran n’a pas reçu la réponse. Vérifiez le dossier de l’équipe et créez vous-même le salon si l’équipe en a un."
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "Le recrutement est terminé, mais cet écran n’a pas reçu la réponse. Vérifiez le dossier de l’équipe et créez vous-même le salon si l’équipe en a un.",
+    "{0}: installing. This can take a few minutes.": "{0} : installation en cours. Cela peut prendre quelques minutes.",
+    "{0}: installed.": "{0} : installé.",
+    "{0}: could not install. You can install it later from that bot.": "{0} : installation impossible. Vous pourrez l’installer plus tard depuis ce bot."
   },
   de: {
     "Could not load installed bots. Please retry.": "Installierte Bots konnten nicht geladen werden. Bitte erneut versuchen.",
@@ -2803,7 +2827,10 @@ var locales_default = {
     "Could not disband. Please retry.": "Konnte nicht aufgelöst werden. Bitte erneut versuchen.",
     "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "Entfernt nur, was dieses Team angelegt hat: Bots, Board und Jobs. Arbeitsdateien werden nicht gelöscht, sondern nach teams/_disbanded verschoben. Andere Bots bleiben unberührt.",
     "Its work files were kept in {0}.": "Die Arbeitsdateien liegen in {0}.",
-    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "Das Holen ist abgeschlossen, aber dieser Bildschirm hat die Antwort verloren. Prüfen Sie den Team-Ordner und legen Sie den Gruppenraum selbst an, falls das Team einen hat."
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "Das Holen ist abgeschlossen, aber dieser Bildschirm hat die Antwort verloren. Prüfen Sie den Team-Ordner und legen Sie den Gruppenraum selbst an, falls das Team einen hat.",
+    "{0}: installing. This can take a few minutes.": "{0}: wird installiert. Das kann einige Minuten dauern.",
+    "{0}: installed.": "{0}: installiert.",
+    "{0}: could not install. You can install it later from that bot.": "{0}: konnte nicht installiert werden. Später über diesen Bot nachholen."
   },
   es: {
     "Could not load installed bots. Please retry.": "No se pudieron cargar los bots instalados. Inténtalo de nuevo.",
@@ -3114,7 +3141,10 @@ var locales_default = {
     "Could not disband. Please retry.": "No se pudo disolver. Inténtalo de nuevo.",
     "Removes only what this team created: its bots, board and jobs. Its work files are not deleted; they move to teams/_disbanded. Other bots are not touched.": "Elimina solo lo que creó este equipo: bots, tablero y tareas. Los archivos de trabajo no se borran; se mueven a teams/_disbanded. No toca otros bots.",
     "Its work files were kept in {0}.": "Los archivos de trabajo se guardaron en {0}.",
-    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "El reclutamiento terminó, pero esta pantalla no recibió la respuesta. Revisa la carpeta del equipo y crea tú la sala si el equipo tiene una."
+    "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "El reclutamiento terminó, pero esta pantalla no recibió la respuesta. Revisa la carpeta del equipo y crea tú la sala si el equipo tiene una.",
+    "{0}: installing. This can take a few minutes.": "{0}: instalando. Puede tardar unos minutos.",
+    "{0}: installed.": "{0}: instalado.",
+    "{0}: could not install. You can install it later from that bot.": "{0}: no se pudo instalar. Puedes instalarlo más tarde desde ese bot."
   }
 };
 
@@ -4148,7 +4178,7 @@ function RoutinesPage({
 }
 
 // packages/hermes-plugin/desktop/teams-page.tsx
-import { useEffect as useEffect5, useState as useState6 } from "react";
+import { useEffect as useEffect5, useRef as useRef6, useState as useState6 } from "react";
 import * as sdk2 from "@hermes/plugin-sdk";
 
 // packages/hermes-plugin/desktop/secrets-fields.tsx
@@ -4424,8 +4454,30 @@ var GOOGLE = {
   refused: "The Google connection was not copied.",
   none: "There was no Google connection in the default profile to copy."
 };
-function TeamsPage({ ctx }) {
+var skillName = (id) => id.split("/").pop() || id;
+function TeamsPage({
+  ctx,
+  pollMs = 3e3
+}) {
   const { t } = useMyBots();
+  const alive = useRef6(true);
+  useEffect5(
+    () => () => {
+      alive.current = false;
+    },
+    []
+  );
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const poll = async (team, job, until, onJob) => {
+    for (; ; ) {
+      await sleep(pollMs);
+      if (!alive.current) return null;
+      const j = await ctx.rest(`/teams/${team.id}/install/${job}`).catch(() => null);
+      if (!j) continue;
+      onJob(j);
+      if (until(j)) return j;
+    }
+  };
   const [teams, setTeams] = useState6(null), [error, setError] = useState6(""), [reload, setReload] = useState6(0), [open, setOpen] = useState6(null), [review, setReview] = useState6(null), [consents, setConsents] = useState6([]), [keys, setKeys] = useState6({}), [busy, setBusy] = useState6(false), [stepError, setStepError] = useState6(""), [result, setResult] = useState6(null), [disband, setDisband] = useState6(null), [disbanded, setDisbanded] = useState6(null);
   useEffect5(() => {
     let active = true;
@@ -4459,7 +4511,12 @@ function TeamsPage({ ctx }) {
       setReview(r);
       setKeys(
         Object.fromEntries(
-          (r.members || []).map((m) => [m.bot, initialKeys(m.secrets || [])])
+          (r.members || []).map((m) => [
+            m.bot,
+            Object.fromEntries(
+              Object.entries(initialKeys(m.secrets || [])).map(([k, v]) => [k, { ...v, save: false }])
+            )
+          ])
         )
       );
     } catch {
@@ -4502,20 +4559,30 @@ function TeamsPage({ ctx }) {
     );
     setKeys({});
     try {
-      const installed = await ctx.rest(`/teams/${team.id}/install`, {
+      const { job } = await ctx.rest(`/teams/${team.id}/install`, {
         method: "POST",
         body: {
           members: members.map((m) => ({ bot: m.bot, token: m.token })),
           secrets,
           consents
         },
-        timeoutMs: 9e5
+        timeoutMs: 6e4
       });
+      const done = await poll(team, job, (j) => j.state === "done", () => void 0);
+      if (!done || !done.result) return;
+      const installed = done.result;
       const room = installed.ok ? await makeRoom(team, installed.created || []) : "none";
-      setResult({ team, installed, room });
+      setResult({ team, installed, room, skills: done.skills });
       setOpen(null);
       setReview(null);
       setReload((n) => n + 1);
+      if (done.skills_state === "running")
+        void poll(
+          team,
+          job,
+          (j) => j.skills_state !== "running",
+          (j) => setResult((r) => r && r.team.id === team.id ? { ...r, skills: j.skills } : r)
+        );
     } catch {
       const after = await ctx.rest("/teams").catch(() => null);
       const done = after?.teams?.find((x) => x.id === team.id)?.recruited;
@@ -4611,13 +4678,21 @@ function TeamsPage({ ctx }) {
               result.installed.problems.join(", ")
             ) })
           ] }),
+          (result.skills || []).map((sk) => /* @__PURE__ */ jsx6(
+            "p",
+            {
+              className: sk.state === "failed" ? "mb-error" : "mb-muted",
+              children: sk.state === "installing" ? t("{0}: installing. This can take a few minutes.", skillName(sk.skill)) : sk.state === "installed" ? t("{0}: installed.", skillName(sk.skill)) : t("{0}: could not install. You can install it later from that bot.", skillName(sk.skill))
+            },
+            sk.bot + sk.skill
+          )),
           result.room === "made" && /* @__PURE__ */ jsx6("p", { children: t("Created the group room.") }),
           result.room === "failed" && /* @__PURE__ */ jsx6("p", { className: "mb-error", children: t(
             "Could not create the group room. Make one in Desktop's group chat with: {0}",
             (result.installed.created || []).join(", ")
           ) })
         ] }) : /* @__PURE__ */ jsxs6(Fragment5, { children: [
-          /* @__PURE__ */ jsx6("p", { className: "mb-error", children: t("Stopped at installing {0}.", result.installed.failed || "") }),
+          /* @__PURE__ */ jsx6("p", { className: "mb-error", children: result.installed.error ? result.installed.error : t("Stopped at installing {0}.", result.installed.failed || "") }),
           result.installed.left?.length ? /* @__PURE__ */ jsx6("p", { className: "mb-error", children: t("Could not remove: {0}", result.installed.left.join(", ")) }) : /* @__PURE__ */ jsx6("p", { children: t("Rolled back every bot it created.") })
         ] })
       }
@@ -4804,15 +4879,15 @@ function registerLumiIcon() {
 }
 
 // packages/hermes-plugin/desktop/market-page.tsx
-import { useCallback as useCallback2, useEffect as useEffect10, useRef as useRef9, useState as useState10 } from "react";
+import { useCallback as useCallback2, useEffect as useEffect10, useRef as useRef10, useState as useState10 } from "react";
 import { host as host5 } from "@hermes/plugin-sdk";
 
 // packages/hermes-plugin/desktop/install-confirmation.tsx
-import { useEffect as useEffect7, useRef as useRef7, useState as useState7 } from "react";
+import { useEffect as useEffect7, useRef as useRef8, useState as useState7 } from "react";
 import { host as host3 } from "@hermes/plugin-sdk";
 
 // packages/hermes-plugin/desktop/bot-avatar.tsx
-import { useEffect as useEffect6, useRef as useRef6 } from "react";
+import { useEffect as useEffect6, useRef as useRef7 } from "react";
 import * as sdk3 from "@hermes/plugin-sdk";
 
 // packages/hermes-plugin/desktop/avatar-presets.ts
@@ -5411,7 +5486,7 @@ var sharedLoop = (draw, options) => {
 function BotAvatar({ bot, name, src, sha256, mood = "idle", size = 80 }) {
   const { t } = useMyBots();
   const accessibleLabel = t("{0} avatar", name);
-  const ref = useRef6(null), scene = useRef6(null);
+  const ref = useRef7(null), scene = useRef7(null);
   const calibration = sha256 ? avatarPreset(bot, sha256) : null;
   const animate = !!calibration && mood !== "unavailable";
   useEffect6(() => {
@@ -5441,11 +5516,11 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
   const updating = mode === "update";
   const [selection, setSelection] = useState7(() => initialSelection(bot)), [review, setReview] = useState7(null), [result, setResult] = useState7(null), [busy, setBusy] = useState7(false), [error, setError] = useState7(""), [retry, setRetry] = useState7(0);
   const [keys, setKeys] = useState7({}), [decls, setDecls] = useState7([]), [addKeys, setAddKeys] = useState7(null), [typed, setTyped] = useState7(false), [existing, setExisting] = useState7(null);
-  const opener = useRef7(document.activeElement);
-  const fence = useRef7(new ReviewFence()), posting = useRef7(false), local = useLocal();
+  const opener = useRef8(document.activeElement);
+  const fence = useRef8(new ReviewFence()), posting = useRef8(false), local = useLocal();
   const identity = bot.id + "@" + bot.version;
   const conflict = !updating && status?.state === "name-conflict", chatBusy = updating && mood === "think";
-  const owner = useRef7(identity);
+  const owner = useRef8(identity);
   owner.current = identity;
   useEffect7(() => {
     setSelection(initialSelection(bot));
@@ -5790,7 +5865,7 @@ function presentBot(bot, display) {
 var comingSoon = (bot, display) => display?.bots.some((p) => p.id === bot.id && p.availability === "coming-soon") === true;
 
 // packages/hermes-plugin/desktop/self-update.tsx
-import { useEffect as useEffect9, useRef as useRef8, useState as useState9 } from "react";
+import { useEffect as useEffect9, useRef as useRef9, useState as useState9 } from "react";
 import { jsx as jsx9, jsxs as jsxs8 } from "react/jsx-runtime";
 var VERSION2 = /^[0-9]+\.[0-9]+\.[0-9]+$/;
 var LATEST = /^([0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?|[0-9a-f]{7})$/;
@@ -5803,7 +5878,7 @@ function SelfUpdate({ ctx }) {
   const { t } = useMyBots();
   const local = useLocal();
   const [status, setStatus] = useState9(null), [result, setResult] = useState9(null), [failed, setFailed] = useState9(false), [busy, setBusy] = useState9(false), [restart, setRestart] = useState9(false), [running, setRunning] = useState9(false);
-  const posting = useRef8(false);
+  const posting = useRef9(false);
   useEffect9(() => {
     let active = true;
     setStatus(null);
@@ -5860,7 +5935,7 @@ function MarketPage({ ctx, renderTab }) {
   const [display, setDisplay] = useState10(null);
   const [displayDone, setDisplayDone] = useState10("");
   const [tab, setTab] = useState10("browse"), [view, setView] = useState10(null), [installed, setInstalled] = useState10([]), [query, setQuery] = useState10(""), [category, setCategory] = useState10("all"), [selected, setSelected] = useState10(null), [error, setError] = useState10(""), [busy, setBusy] = useState10(false), [reload, setReload] = useState10(0), [hash, setHash] = useState10(location.hash), [linkSequence, setLinkSequence] = useState10(0), [keysFor, setKeysFor] = useState10(null), [updateFor, setUpdateFor] = useState10(null), [detached, setDetached] = useState10(false);
-  const fence = useRef9(new ReviewFence()), local = useLocal();
+  const fence = useRef10(new ReviewFence()), local = useLocal();
   useEffect10(() => {
     const update = () => {
       setSelected(null);
@@ -6098,7 +6173,7 @@ import { jsx as jsx11 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.7.0",
+  version: "0.7.1",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {

@@ -31,7 +31,7 @@ class _LazyTeams:
         return getattr(_LazyTeams._mod,name)
 teams=_LazyTeams()
 router=APIRouter()
-VERSION='0.7.0'
+VERSION='0.7.1'
 # After a self-update the files on disk are the new version while this process still runs the old
 # one, and installer.py/plugin_api.py load sibling modules from disk per request. Until Hermes
 # restarts, every write answers this fixed 409 so old and new code never mix in a write.
@@ -535,11 +535,18 @@ async def teams_install(team_id:str,request:Request):
     members=body['members'];secrets_by_bot=body.get('secrets')or{};consents=body.get('consents')or[]
     if(type(members)is not list or len(members)>6 or any(type(m)is not dict or type(m.get('bot'))is not str or type(m.get('token'))is not str for m in members)
        or type(secrets_by_bot)is not dict or type(consents)is not list or any(type(c)is not str for c in consents)):raise HTTPException(422,INVALID_REQUEST)
-    def run():
-        try:return teams.install(team,{'members':[{'bot':m['bot'],'token':m['token']}for m in members]},secrets_by_bot,consents,
-                                 engine=engine(write=True),runner=teams.HermesRunner(get_default_hermes_root()),root=get_default_hermes_root())
-        except teams.TeamError as exc:raise HTTPException(409,str(exc)) from exc
-    return await run_in_threadpool(run)
+    # A recruit can take many minutes (VM 11-03: ~15 with ppt-master): start a job and let the Desktop poll it.
+    try:return {'job':teams.start_install(team,{'members':[{'bot':m['bot'],'token':m['token']}for m in members]},secrets_by_bot,consents,
+                                          engine=engine(write=True),runner=teams.HermesRunner(get_default_hermes_root()),root=get_default_hermes_root())}
+    except teams.TeamError as exc:raise HTTPException(409,str(exc)) from exc
+
+_JOB_ID=re.compile(r'^[0-9a-f]{32}$')
+@router.get('/teams/{team_id}/install/{job_id}')
+def teams_install_status(team_id:str,job_id:str):
+    team=_team(team_id)
+    if not _JOB_ID.fullmatch(job_id or ''):raise HTTPException(404,'영입 작업을 찾지 못했습니다.')
+    try:return teams.job_status(team,job_id)
+    except teams.TeamError as exc:raise HTTPException(404,str(exc)) from exc
 
 @router.post('/teams/{team_id}/room')
 async def teams_room(team_id:str,request:Request):

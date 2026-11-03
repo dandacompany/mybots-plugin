@@ -8,7 +8,9 @@ import re
 import shutil
 import subprocess
 import sys
+import threading
 import time
+import uuid
 
 HERE = Path(__file__).resolve().parent
 _SCHEMA = json.loads((HERE / 'team.schema.json').read_text(encoding='utf-8'))
@@ -103,6 +105,21 @@ def team_lock(team, root):
         f.close()
 
 
+RETRY_SLEEP = 2.0
+
+
+def _retry(fn, attempts=3):
+    """A team review fetches every member from the catalog; right after a Hermes restart one fetch can fail
+    (VM 11-03: 「Catalog unavailable」, fine a minute later). Retry that one error a couple of times."""
+    for i in range(attempts):
+        try:
+            return fn()
+        except Exception as exc:
+            if 'Catalog unavailable' not in str(exc) or i == attempts - 1:
+                raise
+            time.sleep(RETRY_SLEEP * (i + 1))
+
+
 def review(team, engine, root, runner=None):
     """Review every member with the existing installer (signed catalog, hashes, key declarations) and list what the
     recruit will create. A profile or recruit record that already exists stops it before any review: nothing is
@@ -112,9 +129,9 @@ def review(team, engine, root, runner=None):
         return {'team': team['id'], 'blocked': blocked}
     members = []
     for m in team['members']:
-        meta = engine.metadata(m['bot'], m['version'])
+        meta = _retry(lambda: engine.metadata(m['bot'], m['version']))
         comps = [c for c in meta.get('optional', []) if c in ('skills', 'plugin', 'voice', 'mcp')]
-        r = engine.review(m['bot'], m['version'], comps)
+        r = _retry(lambda: engine.review(m['bot'], m['version'], comps))
         members.append(dict(bot=m['bot'], version=m['version'], role=m['role'], is_leader=m['is_leader'],
                             name=meta.get('name') or m['bot'], token=r['token'], components=r.get('components', comps),
                             secrets=r.get('secrets') or []))
@@ -148,7 +165,7 @@ def team_dir(team, root):
     return Path(root) / 'teams' / team['id']
 
 
-def install(team, reviewed, secrets_by_bot, consents, *, engine, runner, root):
+def install(team, reviewed, secrets_by_bot, consents, *, engine, runner, root, defer_skills=False):
     """Install every reviewed member in order with the existing installer, under the team lock. recruit.json is
     written first and grows with every installed bot, so a crash or restart at any point leaves a record disband can
     act on. On an install failure, delete every profile this run created (never one that existed before) and the
@@ -181,7 +198,7 @@ def install(team, reviewed, secrets_by_bot, consents, *, engine, runner, root):
             rec['bots'].append(m['bot'])
             _write_json(d / 'recruit.json', rec)
         try:
-            record = setup(team, list(rec['bots']), consents, runner=runner, root=root)
+            record = setup(team, list(rec['bots']), consents, runner=runner, root=root, defer_skills=defer_skills)
         except Exception:
             rec['state'] = 'partial'
             _write_json(d / 'recruit.json', rec)
@@ -268,7 +285,7 @@ def _hermes_argv():
     return [found] if found else [sys.executable, '-m', 'hermes_cli.main']
 
 
-def setup(team, created, consents, *, runner, root):
+def setup(team, created, consents, *, runner, root, defer_skills=False):
     """Team folder (TEAM.md · team.json · log.md · work/), team kit in every member, kanban tools, board with its
     default workdir, Google copy (consent), setup skills (consent), review notice job. Every step lands in
     recruit.json so disband removes exactly this."""
@@ -318,6 +335,9 @@ def setup(team, created, consents, *, runner, root):
     for m in team['members']:
         for sk in (m.get('setup') or {}).get('skills', []):
             if f"skill:{m['bot']}:{sk['id']}" in consents:
+                if defer_skills:  # installed after the result card by the install job (it can take many minutes)
+                    rec['skills'].append(dict(bot=m['bot'], skill=sk['id'], ok=None))
+                    continue
                 ok, _ = run(['skills', 'install', sk['id'], '--yes'], m['bot'], timeout=900)  # measured: >4 min (deps)
                 rec['skills'].append(dict(bot=m['bot'], skill=sk['id'], ok=ok))
     if team['review_notice']:
@@ -426,3 +446,69 @@ def room_closed(team, root):
         else:
             _write_json(d / 'recruit.json', rec)
         return dict(team=team['id'], left=left if rec.get('state') == 'disbanding' else [])
+
+
+# ---- Background recruit (VM 11-03: a recruit with ppt-master took ~15 minutes; the screen could not wait) ------------
+JOBS = {}
+_JOBS_LOCK = threading.Lock()
+
+
+def start_install(team, reviewed, secrets_by_bot, consents, *, engine, runner, root):
+    """Run install in a thread and return a job id at once. The job is 'running' while bots are installed and the
+    team is set up, then 'done' with the result card; consented setup skills install after that, each tracked as
+    installing → installed | failed (and written back to recruit.json). Key values live only in this call."""
+    with _JOBS_LOCK:
+        if any(j['team'] == team['id'] and (j['state'] == 'running' or j['skills_state'] == 'running')
+               for j in JOBS.values()):
+            raise TeamError('이 팀의 영입이 이미 진행 중이에요. 끝난 뒤 다시 시도해 주세요.')
+        job_id = uuid.uuid4().hex
+        job = dict(team=team['id'], state='running', result=None, skills=[], skills_state='none',
+                   started=time.time(), thread=None)
+        JOBS[job_id] = job
+
+    def work(secrets):
+        try:
+            try:
+                result = install(team, reviewed, secrets, consents, engine=engine, runner=runner, root=root,
+                                 defer_skills=True)
+            except TeamError as exc:
+                result = dict(ok=False, error=str(exc), failed=None, rolled_back=[], left=[])
+            finally:
+                secrets = None
+            pending = [dict(bot=sk['bot'], skill=sk['skill'], state='installing')
+                       for sk in (result.get('skills') or []) if sk.get('ok') is None] if result.get('ok') else []
+            job.update(result=result, skills=pending, skills_state='running' if pending else 'none', state='done')
+            for sk in pending:
+                code, _, _ = runner(['skills', 'install', sk['skill'], '--yes'], profile=sk['bot'], timeout=900)
+                sk['state'] = 'installed' if code == 0 else 'failed'
+                _mark_skill(team, root, sk['bot'], sk['skill'], code == 0)
+            job['skills_state'] = 'done' if pending else 'none'
+        except Exception:
+            job.update(state='done', skills_state='done' if job['skills'] else 'none',
+                       result=job['result'] or dict(ok=False, error='영입 중 오류가 났어요. 팀 목록을 새로고침해 확인해 주세요.',
+                                                     failed=None, rolled_back=[], left=[]))
+    t = threading.Thread(target=work, args=(secrets_by_bot,), daemon=True)
+    job['thread'] = t
+    t.start()
+    return job_id
+
+
+def _mark_skill(team, root, bot, skill, ok):
+    path = team_dir(team, root) / 'recruit.json'
+    try:
+        rec = json.loads(path.read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        return
+    for sk in rec.get('skills') or []:
+        if sk.get('bot') == bot and sk.get('skill') == skill:
+            sk['ok'] = ok
+    if not ok:
+        rec.setdefault('problems', []).append(f'{bot} skills install')
+    _write_json(path, rec)
+
+
+def job_status(team, job_id):
+    job = JOBS.get(job_id)
+    if not job or job['team'] != team['id']:
+        raise TeamError('이 영입 작업을 찾지 못했어요. 팀 목록을 새로고침해 주세요.')
+    return {k: v for k, v in job.items() if k != 'thread'}
