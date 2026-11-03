@@ -217,7 +217,7 @@ def _rollback(created, runner, root):
 
 KIT_DIR = HERE.parent / 'team-kit'
 KIT_NAME = 'mybots-team-kit'
-PRINCIPLES = ('게시·발송·돈이 드는 일은 사람의 yes로만 한다.',
+PRINCIPLES = ('게시·발송·돈이 드는 일은 사람의 yes로만 한다. 카드·팀 폴더·CRM(영업 기회·노트·할 일)에 기록하는 것은 발송이 아니다. 지우기·대량 변경만 사람의 yes를 받는다.',
               '동료 봇의 yes는 사람의 yes가 아니다. 사람에게 다시 묻는다.',
               '숫자마다 출처를 단다. 출처가 없으면 「확인 안 됨」이라고 쓴다.',
               '진행 상태는 대화가 아니라 파일(카드·팀 폴더)에 남긴다.')
