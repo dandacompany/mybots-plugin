@@ -4448,7 +4448,8 @@ var ROUTE = {
   profile: "default",
   targetProfile: "default"
 };
-var roomId = (team) => "team-" + team.id;
+var roomId = (team) => "team-" + team.id + "-" + Date.now().toString(36);
+var notServedYet = (err) => /not local to this gateway/i.test(String(err?.message ?? err));
 var ROOM_TRIES = 20;
 var GOOGLE = {
   copied: "Copied the Google connection to the leader.",
@@ -4525,9 +4526,10 @@ function TeamsPage({
     }
   };
   const makeRoom = async (team, created) => {
-    if (!team.room) return "none";
+    if (!team.room) return { room: "none" };
     const request = sdk2.host.requestProfile;
-    if (typeof request !== "function") return "failed";
+    if (typeof request !== "function") return { room: "failed", roomError: "This Desktop cannot create group rooms." };
+    const id = roomId(team);
     try {
       const members = created.map((b) => ({
         member_id: b,
@@ -4540,22 +4542,24 @@ function TeamsPage({
             sdk2.host,
             ROUTE,
             "groups.create",
-            { room_id: roomId(team), name: team.name, members },
+            { room_id: id, name: team.name, members },
             3e4
           );
           break;
         } catch (err) {
-          if (attempt >= ROOM_TRIES) throw err;
+          if (attempt >= ROOM_TRIES || !notServedYet(err)) throw err;
           await sleep(pollMs);
         }
       }
       await ctx.rest(`/teams/${team.id}/room`, {
         method: "POST",
-        body: { room_id: roomId(team) }
+        body: { room_id: id }
       });
-      return "made";
-    } catch {
-      return "failed";
+      return { room: "made" };
+    } catch (err) {
+      const roomError = String(err?.message ?? err).slice(0, 300);
+      console.warn("[mybots] group room was not created:", roomError);
+      return { room: "failed", roomError };
     }
   };
   const recruit = async () => {
@@ -4580,8 +4584,8 @@ function TeamsPage({
       const done = await poll(team, job, (j) => j.state === "done", () => void 0);
       if (!done || !done.result) return;
       const installed = done.result;
-      const room = installed.ok ? await makeRoom(team, installed.created || []) : "none";
-      setResult({ team, installed, room, skills: done.skills });
+      const room = installed.ok ? await makeRoom(team, installed.created || []) : { room: "none" };
+      setResult({ team, installed, ...room, skills: done.skills });
       setOpen(null);
       setReview(null);
       setReload((n) => n + 1);
@@ -4696,10 +4700,16 @@ function TeamsPage({
             sk.bot + sk.skill
           )),
           result.room === "made" && /* @__PURE__ */ jsx6("p", { children: t("Created the group room.") }),
-          result.room === "failed" && /* @__PURE__ */ jsx6("p", { className: "mb-error", children: t(
-            "Could not create the group room. Make one in Desktop's group chat with: {0}",
-            (result.installed.created || []).join(", ")
-          ) })
+          result.room === "failed" && /* @__PURE__ */ jsxs6("p", { className: "mb-error", children: [
+            t(
+              "Could not create the group room. Make one in Desktop's group chat with: {0}",
+              (result.installed.created || []).join(", ")
+            ),
+            result.roomError && /* @__PURE__ */ jsxs6(Fragment5, { children: [
+              /* @__PURE__ */ jsx6("br", {}),
+              /* @__PURE__ */ jsx6("small", { children: result.roomError })
+            ] })
+          ] })
         ] }) : /* @__PURE__ */ jsxs6(Fragment5, { children: [
           /* @__PURE__ */ jsx6("p", { className: "mb-error", children: result.installed.error ? result.installed.error : t("Stopped at installing {0}.", result.installed.failed || "") }),
           result.installed.left?.length ? /* @__PURE__ */ jsx6("p", { className: "mb-error", children: t("Could not remove: {0}", result.installed.left.join(", ")) }) : /* @__PURE__ */ jsx6("p", { children: t("Rolled back every bot it created.") })
@@ -6182,7 +6192,7 @@ import { jsx as jsx11 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.7.6",
+  version: "0.7.7",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {
