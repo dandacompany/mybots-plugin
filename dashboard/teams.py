@@ -120,6 +120,39 @@ def _retry(fn, attempts=3):
             time.sleep(RETRY_SLEEP * (i + 1))
 
 
+_PROFILE_NAME = re.compile(r'^[a-z0-9][a-z0-9_-]{0,63}$')
+
+
+def _google_sources(team, root):
+    """Where a Google connection can be copied from: the default profile, then any other profile that has one
+    (VM 11-03: learners often connected Google only in another bot's profile). Team members are excluded."""
+    root = Path(root)
+    members = {m['bot'] for m in team['members']}
+    out = [('google', root, '기본 프로필')] if (root / 'google_token.json').is_file() else []
+    for p in sorted((root / 'profiles').glob('*/google_token.json')):
+        name = p.parent.name
+        if _PROFILE_NAME.fullmatch(name) and name not in members:
+            out.append((f'google:{name}', p.parent, f'{name} 프로필'))
+    return out
+
+
+def _google_consents(team, root):
+    found = _google_sources(team, root)
+    if not found:
+        return [dict(id='google', available=False, label='기본 프로필의 구글 연결을 리더에게 복사')]
+    return [dict(id=cid, available=True, label=f'{label}의 구글 연결을 리더에게 복사') for cid, _, label in found]
+
+
+def _google_source(team, consents, root):
+    """The profile folder the user consented to copy Google from, or None. Only sources that exist right now and
+    were offered at review count; anything else (a typo, a path) is refused."""
+    by_id = {cid: folder for cid, folder, _ in _google_sources(team, root)}
+    chosen = [c for c in consents if c in by_id]
+    if 'google' in consents and 'google' not in by_id:
+        return Path(root)  # consented to the default profile, which has no token: reported as 'none'
+    return by_id[chosen[0]] if chosen else None
+
+
 def review(team, engine, root, runner=None):
     """Review every member with the existing installer (signed catalog, hashes, key declarations) and list what the
     recruit will create. A profile or recruit record that already exists stops it before any review: nothing is
@@ -143,8 +176,7 @@ def review(team, engine, root, runner=None):
         creates.append(dict(kind='review_notice', every=team['review_notice']['every'], deliver='bot-chat'))
     consents = []
     if team['google']['copy_default_to']:
-        consents.append(dict(id='google', available=(Path(root) / 'google_token.json').is_file(),
-                             label='기본 프로필의 구글 연결을 리더에게 복사'))
+        consents += _google_consents(team, root)
     for m in team['members']:
         for s in (m.get('setup') or {}).get('skills', []):
             consents.append(dict(id=f"skill:{m['bot']}:{s['id']}", available=True, label=f"{s['label']} 설치"))
@@ -235,7 +267,8 @@ def team_md(team, work):
         lines += [f'- 리더는 담당 없이 카드를 올리고, 본문 첫 줄에 「{tag}: <아래 역할 이름>」을 적는다. 앞뒤 카드는 연결로 잇는다.',
                   '- 카드를 올릴 때는 team_post_card 도구를 쓴다. 담당은 팀 역할 표를 보고 MyBots가 붙인다(약 2분).',
                   '- 역할이 맞는 봇이 없으면 리더에게 돌아오고 「맞는 역할 없음」 댓글이 남는다.']
-    lines += [f'- 결과물 파일은 팀 폴더 {work} 에 둔다.', '- 사람에게 확인받을 것은 카드를 검수 칸(review)으로 보낸다.', '',
+    lines += [f'- 결과물 파일은 팀 폴더 {work} 에 둔다.', '- 사람에게 확인받을 일은 team_request_review 도구로 검수 칸에 보낸다(검토자 「사람」). kanban_request_review 로 보내면 디스패처가 같은 카드를 다시 실행한다.',
+              '- 그룹방에서는 동료를 @로 부르지 않는다. @는 그 동료가 방에서 같은 일을 시작하게 한다. 일은 카드로만 넘기고, 방에 보이는 카드 일을 방에서 대신 하지 않는다.', '',
               '## 구성원']
     for m in team['members']:
         lines += [f"### {m['role']} — {m['bot']}" + (' (리더)' if m['is_leader'] else ''),
@@ -320,16 +353,16 @@ def setup(team, created, consents, *, runner, root, defer_skills=False):
         run(['kanban', 'boards', 'set-default-workdir', slug, str(work)])
     lead = leader(team)['bot']
     if team['google']['copy_default_to']:
-        src = root / 'google_token.json'
-        if 'google' not in consents:
+        src_dir = _google_source(team, consents, root)
+        if src_dir is None:
             rec['google'] = 'refused'
-        elif not src.is_file():
+        elif not (src_dir / 'google_token.json').is_file():
             rec['google'] = 'none'
         else:
             for name in ('google_token.json', 'google_client_secret.json'):
-                if (root / name).is_file():
+                if (src_dir / name).is_file():
                     target = root / 'profiles' / lead / name
-                    shutil.copyfile(root / name, target)
+                    shutil.copyfile(src_dir / name, target)
                     os.chmod(target, 0o600)
             rec['google'] = 'copied'
     for m in team['members']:

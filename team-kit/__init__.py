@@ -13,6 +13,7 @@ import subprocess
 import sys
 
 TAG_DEFAULT = '역할'
+HUMAN_REVIEWER = '사람'  # not a profile: the dispatcher's review lane skips it (measured 11-03, skipped_nonspawnable)
 _CARD_ID = re.compile(r'^[A-Za-z0-9_][A-Za-z0-9_.:-]{0,79}$')
 
 
@@ -83,6 +84,25 @@ def post_card(args, *, root, bot, run):
     return dict(card=card, board=t['board'], role=role, next=nxt)
 
 
+def request_human_review(args, *, root, bot, run):
+    """Move a card to the review column with the reviewer 「사람」. A reviewer profile (or kanban_request_review
+    keeping the assignee) makes the dispatcher's review lane run the card again (VM 11-03: the lead's package card
+    was re-claimed, crashed twice and ended blocked); a non-profile reviewer is skipped, so the card waits for a
+    person and the review notice sees it."""
+    t = _team_or_error(root, bot)
+    task, summary = args.get('task_id') or '', (args.get('summary') or '').strip()
+    if not _CARD_ID.fullmatch(task):
+        raise TeamKitError('카드 id를 확인해 주세요.')
+    if not summary or len(summary) > 2000:
+        raise TeamKitError('사람이 볼 요약(2000자 이하)을 적어 주세요.')
+    code, _out, _err = run(['kanban', '--board', t['board'], 'request-review', task, '--summary=' + summary,
+                            '--reviewer=' + HUMAN_REVIEWER, '--force'])
+    if code:
+        raise TeamKitError('검수 칸으로 보내지 못했어요. 카드 id와 상태를 확인해 주세요.')
+    return dict(card=task, board=t['board'], reviewer=HUMAN_REVIEWER,
+                next='사람 검수 대기로 넘겼어요. 이 카드의 작업은 여기서 끝내고, 사람에게 무엇을 봐 달라는지 한 줄로 알리세요.')
+
+
 def context(*, root, bot):
     t = find_team(root, bot)
     if t is None:
@@ -91,6 +111,7 @@ def context(*, root, bot):
     lead = ' (리더)' if t.get('leader') == bot else ''
     return (f"[팀] {t.get('name')}의 {role}{lead}. 팀 규칙·구성원·일하는 방식은 {Path(t['_dir']) / 'TEAM.md'} 를 읽고 따른다. "
             f"카드는 team_post_card 로 {t.get('board')} 보드에 올리고, 결과물은 {t.get('work')} 에 둔다. "
+            "사람 검수는 team_request_review 로. 방에서 동료를 @로 부르지 말고 일은 카드로만 넘긴다. "
             "게시·발송·돈은 사람의 yes로만(카드·폴더·CRM 기록은 발송이 아니다), 동료 yes는 사람 yes가 아니다, 숫자마다 출처, 상태는 파일에.")
 
 
@@ -124,6 +145,11 @@ POST_TOOL = dict(name='team_post_card', description=(
         role=dict(type='string', maxLength=60), title=dict(type='string', maxLength=200),
         body=dict(type='string', maxLength=20000),
         parents=dict(type='array', maxItems=10, items=dict(type='string', maxLength=80)))))
+REVIEW_TOOL = dict(name='team_request_review', description=(
+    '사람에게 확인받을 카드를 검수 칸으로 보낸다(검토자 「사람」). 사람 검수에는 kanban_request_review 대신 이것을 쓴다. '
+    '보낸 뒤에는 그 카드의 작업을 끝낸다.'),
+    parameters=dict(type='object', additionalProperties=False, required=['task_id', 'summary'], properties=dict(
+        task_id=dict(type='string', maxLength=80), summary=dict(type='string', maxLength=2000))))
 INFO_TOOL = dict(name='team_info', description='내가 속한 팀(역할 표·리더·보드·작업 폴더·TEAM.md 위치)을 읽는다.',
                  parameters=dict(type='object', additionalProperties=False, properties={}))
 
@@ -154,4 +180,6 @@ def register(ctx):
                       handler=_wrap(lambda a, root, bot: post_card(a, root=root, bot=bot, run=_hermes_run(root))))
     ctx.register_tool(name=INFO_TOOL['name'], toolset=ctx.plugin_id, schema=INFO_TOOL,
                       handler=_wrap(lambda a, root, bot: info(root=root, bot=bot)))
+    ctx.register_tool(name=REVIEW_TOOL['name'], toolset=ctx.plugin_id, schema=REVIEW_TOOL,
+                      handler=_wrap(lambda a, root, bot: request_human_review(a, root=root, bot=bot, run=_hermes_run(root))))
     ctx.register_hook('pre_llm_call', _pre_llm_call)

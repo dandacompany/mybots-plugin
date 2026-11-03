@@ -611,7 +611,7 @@ var locales_default = {
     Recruit: "영입하기",
     "Could not review this team. Please retry.": "이 팀을 검토하지 못했어요. 다시 시도해 주세요.",
     "Could not recruit. Please retry.": "영입하지 못했어요. 다시 시도해 주세요.",
-    "Recruited {0}.": "{0}을(를) 영입했어요.",
+    "Recruited {0}.": "{0} 영입을 마쳤어요.",
     "Review notice job: {0}": "검수 알림 예약: {0}",
     "Copied the Google connection to the leader.": "구글 연결을 리더에게 복사했어요.",
     "The Google connection was not copied.": "구글 연결은 복사하지 않았어요.",
@@ -622,7 +622,7 @@ var locales_default = {
     "Stopped at installing {0}.": "{0} 설치에서 멈췄어요.",
     "Rolled back every bot it created.": "만든 봇을 모두 되돌렸어요.",
     "Could not remove: {0}": "지우지 못한 봇: {0}",
-    "Disband {0}?": "{0}을(를) 해산할까요?",
+    "Disband {0}?": "{0} 해산할까요?",
     Disband: "해산하기",
     "Disbanded the team.": "팀을 해산했어요.",
     "Some things were left: {0}. Try disbanding again.": "남은 것: {0}. 해산을 다시 눌러 주세요.",
@@ -6173,7 +6173,7 @@ import { jsx as jsx11 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.7.2",
+  version: "0.7.3",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {
