@@ -289,27 +289,44 @@ def team_json(team, work):
 
 
 def _notice_script(board, hermes):
-    return f'''"""New cards in the review column of the {board} board since the last run; nothing when there are none
-(written by MyBots team recruit; runs without a model)."""
+    return f'''"""New review requests in the review column of the {board} board since the last run; nothing when there are
+none (written by MyBots team recruit; runs without a model). A card counts as new each time it is sent to review
+again, even if it was rejected and came back between two runs."""
 import json
 import subprocess
 from pathlib import Path
 
 STATE = Path(__file__).with_suffix('.seen.json')
-out = subprocess.run({hermes!r} + ['kanban', '--board', {board!r}, 'list', '--status', 'review', '--json'],
-                     capture_output=True, text=True, timeout=60)
-try:
-    cards = json.loads(out.stdout or '[]')
-    cards = cards.get('tasks', cards) if isinstance(cards, dict) else cards
-except ValueError:
-    cards = []
+HERMES = {hermes!r}
+BOARD = {board!r}
+
+
+def run(*args):
+    out = subprocess.run(HERMES + ['kanban', '--board', BOARD] + list(args), capture_output=True, text=True, timeout=60)
+    try:
+        return json.loads(out.stdout or 'null')
+    except ValueError:
+        return None
+
+
+cards = run('list', '--status', 'review', '--json') or []
+cards = cards.get('tasks', cards) if isinstance(cards, dict) else cards
+cards = [c for c in cards if isinstance(c, dict) and c.get('id')]
+
+
+def key(card):
+    shown = run('show', str(card['id']), '--json')
+    events = shown.get('events') if isinstance(shown, dict) else None
+    n = sum(1 for e in events or [] if isinstance(e, dict) and e.get('kind') == 'review_requested')
+    return str(card['id']) + '#' + str(n)
+
+
 try:
     seen = set(json.loads(STATE.read_text(encoding='utf-8')))
 except (OSError, ValueError):
     seen = set()
-now = {{c.get('id') for c in cards if isinstance(c, dict)}}
-new = [c for c in cards if isinstance(c, dict) and c.get('id') not in seen]
-# only cards still in review stay seen: a rejected card that comes back is announced again
+now = {{key(c): c for c in cards}}
+new = [c for k, c in now.items() if k not in seen]
 STATE.write_text(json.dumps(sorted(now)), encoding='utf-8')
 if new:
     print('검수 칸에 새 카드 ' + str(len(new)) + '장: ' + ', '.join(str(c.get('title') or c.get('id')) for c in new))

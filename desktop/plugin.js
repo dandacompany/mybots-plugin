@@ -4449,6 +4449,7 @@ var ROUTE = {
   targetProfile: "default"
 };
 var roomId = (team) => "team-" + team.id;
+var ROOM_TRIES = 5;
 var GOOGLE = {
   copied: "Copied the Google connection to the leader.",
   refused: "The Google connection was not copied.",
@@ -4533,13 +4534,21 @@ function TeamsPage({
         profile: b,
         handle: b.replace(/^mybots-/, "")
       }));
-      await request.call(
-        sdk2.host,
-        ROUTE,
-        "groups.create",
-        { room_id: roomId(team), name: team.name, members },
-        3e4
-      );
+      for (let attempt = 1; ; attempt++) {
+        try {
+          await request.call(
+            sdk2.host,
+            ROUTE,
+            "groups.create",
+            { room_id: roomId(team), name: team.name, members },
+            3e4
+          );
+          break;
+        } catch (err) {
+          if (attempt >= ROOM_TRIES) throw err;
+          await sleep(pollMs);
+        }
+      }
       await ctx.rest(`/teams/${team.id}/room`, {
         method: "POST",
         body: { room_id: roomId(team) }
@@ -6173,7 +6182,7 @@ import { jsx as jsx11 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.7.4",
+  version: "0.7.5",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {
