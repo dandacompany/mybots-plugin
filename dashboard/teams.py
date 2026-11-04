@@ -378,6 +378,8 @@ def setup(team, created, consents, *, runner, root, defer_skills=False):
         shutil.copytree(KIT_DIR, dst, ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
         run(['plugins', 'enable', KIT_NAME], bot)
         run(['tools', 'enable', 'kanban'], bot)
+        # `tools enable` applies to cli only; a cron run (the lead's weekly card job) needs the board too (6.6, 11-05).
+        run(['tools', 'enable', '--platform', 'cron', 'kanban'], bot)
         rec['kit'].append(bot)
     slug = team['board']['slug']
     ok, _ = run(['kanban', 'boards', 'create', slug, '--name', team['name']])
