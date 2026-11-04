@@ -4591,7 +4591,14 @@ function TeamsPage({
     const secrets = Object.fromEntries(
       members.filter((m) => m.secrets?.length).map((m) => [m.bot, keyRequest(m.secrets, keys[m.bot] || {})])
     );
-    setKeys({});
+    setKeys(
+      (k) => Object.fromEntries(
+        Object.entries(k).map(([bot, rows]) => [
+          bot,
+          Object.fromEntries(Object.entries(rows).map(([name, c]) => [name, { ...c, value: "" }]))
+        ])
+      )
+    );
     try {
       const { job } = await ctx.rest(`/teams/${team.id}/install`, {
         method: "POST",
@@ -5601,7 +5608,7 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
     setBusy(true);
     setError("");
     const rows = review.secrets ?? [], request = keyRequest(rows, keys);
-    setKeys({});
+    setKeys((k) => Object.fromEntries(Object.entries(k).map(([n, c]) => [n, { ...c, value: "" }])));
     setDecls(rows);
     setAddKeys(null);
     setExisting(null);
@@ -6213,7 +6220,7 @@ import { jsx as jsx11 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.7.14",
+  version: "0.7.15",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {
