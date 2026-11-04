@@ -31,7 +31,7 @@ class _LazyTeams:
         return getattr(_LazyTeams._mod,name)
 teams=_LazyTeams()
 router=APIRouter()
-VERSION='0.7.12'
+VERSION='0.7.13'
 # After a self-update the files on disk are the new version while this process still runs the old
 # one, and installer.py/plugin_api.py load sibling modules from disk per request. Until Hermes
 # restarts, every write answers this fixed 409 so old and new code never mix in a write.

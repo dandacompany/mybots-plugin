@@ -4526,7 +4526,8 @@ function TeamsPage({
       const r = await ctx.rest(`/teams/${team.id}/review`, {
         method: "POST",
         body: {},
-        timeoutMs: 12e4
+        timeoutMs: 18e4
+        // right after a Hermes restart one bot can take ~50s (6.6, 11-04)
       });
       setReview(r);
       setKeys(
@@ -6212,7 +6213,7 @@ import { jsx as jsx11 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.7.12",
+  version: "0.7.13",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {

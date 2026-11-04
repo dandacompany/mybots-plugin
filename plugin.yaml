@@ -1,5 +1,5 @@
 name: mybots
-version: 0.7.12
+version: 0.7.13
 description: Review and install MyBots profiles from a signed server catalog.
 author: Dante Labs
 pip_dependencies:

@@ -1,5 +1,6 @@
 """MyBots 0.7.0 teams: templates shipped with the plugin (dashboard/teams/<id>.json), validated against
 team.schema.json plus rules the schema cannot say (one leader, leader id, unique roles for pull)."""
+from concurrent.futures import ThreadPoolExecutor
 from contextlib import contextmanager
 import json
 import logging
@@ -166,16 +167,20 @@ def review(team, engine, root, runner=None):
     LOG.info('team review %s: existing-check %.1fs', team['id'], time.monotonic() - t0)
     if blocked:
         return {'team': team['id'], 'blocked': blocked}
-    members = []
-    for m in team['members']:
+    def one(m):
         t1 = time.monotonic()
         meta = _retry(lambda: engine.metadata(m['bot'], m['version']))
         comps = [c for c in meta.get('optional', []) if c in ('skills', 'plugin', 'voice', 'mcp')]
         r = _retry(lambda: engine.review(m['bot'], m['version'], comps))
         LOG.info('team review %s: %s %.1fs', team['id'], m['bot'], time.monotonic() - t1)
-        members.append(dict(bot=m['bot'], version=m['version'], role=m['role'], is_leader=m['is_leader'],
-                            name=meta.get('name') or m['bot'], token=r['token'], components=r.get('components', comps),
-                            secrets=r.get('secrets') or []))
+        return dict(bot=m['bot'], version=m['version'], role=m['role'], is_leader=m['is_leader'],
+                    name=meta.get('name') or m['bot'], token=r['token'], components=r.get('components', comps),
+                    secrets=r.get('secrets') or [])
+    # All members at once (6.6, 11-04: right after a restart one bot took 20-50s, and one after another five bots
+    # passed Desktop's 120s limit). The catalog refresh inside the engine is under its own lock.
+    with ThreadPoolExecutor(max_workers=len(team['members']) or 1) as pool:
+        members = list(pool.map(one, team['members']))
+    LOG.info('team review %s: all %.1fs', team['id'], time.monotonic() - t0)
     creates = [dict(kind='bot', id=m['bot'], role=m['role']) for m in team['members']]
     creates += [dict(kind='folder', path=f"teams/{team['id']}"), dict(kind='board', id=team['board']['slug'])]
     if team['room']:
