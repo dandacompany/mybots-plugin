@@ -2,6 +2,7 @@
 team.schema.json plus rules the schema cannot say (one leader, leader id, unique roles for pull)."""
 from contextlib import contextmanager
 import json
+import logging
 import os
 from pathlib import Path
 import re
@@ -11,6 +12,8 @@ import sys
 import threading
 import time
 import uuid
+
+LOG = logging.getLogger('mybots.teams')
 
 HERE = Path(__file__).resolve().parent
 _SCHEMA = json.loads((HERE / 'team.schema.json').read_text(encoding='utf-8'))
@@ -157,14 +160,19 @@ def review(team, engine, root, runner=None):
     """Review every member with the existing installer (signed catalog, hashes, key declarations) and list what the
     recruit will create. A profile or recruit record that already exists stops it before any review: nothing is
     ever overwritten."""
+    # Timed per step: right after a Hermes restart this took minutes on the VM (11-04), cause not yet known.
+    t0 = time.monotonic()
     blocked = _blocked(team, root, runner)
+    LOG.info('team review %s: existing-check %.1fs', team['id'], time.monotonic() - t0)
     if blocked:
         return {'team': team['id'], 'blocked': blocked}
     members = []
     for m in team['members']:
+        t1 = time.monotonic()
         meta = _retry(lambda: engine.metadata(m['bot'], m['version']))
         comps = [c for c in meta.get('optional', []) if c in ('skills', 'plugin', 'voice', 'mcp')]
         r = _retry(lambda: engine.review(m['bot'], m['version'], comps))
+        LOG.info('team review %s: %s %.1fs', team['id'], m['bot'], time.monotonic() - t1)
         members.append(dict(bot=m['bot'], version=m['version'], role=m['role'], is_leader=m['is_leader'],
                             name=meta.get('name') or m['bot'], token=r['token'], components=r.get('components', comps),
                             secrets=r.get('secrets') or []))

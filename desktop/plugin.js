@@ -4531,7 +4531,7 @@ function TeamsPage({
       setStepError("Could not review this team. Please retry.");
     }
   };
-  const makeRoom = async (team, created) => {
+  const makeRoom = async (team, created, names = {}) => {
     if (!team.room) return { room: "none" };
     const request = sdk2.host.requestProfile;
     if (typeof request !== "function") return { room: "failed", roomError: "This Desktop cannot create group rooms." };
@@ -4540,7 +4540,9 @@ function TeamsPage({
       const members = created.map((b) => ({
         member_id: b,
         profile: b,
-        handle: b.replace(/^mybots-/, "")
+        handle: b.replace(/^mybots-/, ""),
+        // The room header shows display_name (a hand-made room shows the bots' names; VM 11-04).
+        ...names[b]?.trim() ? { display_name: names[b].trim().slice(0, 200) } : {}
       }));
       for (let attempt = 1; ; attempt++) {
         try {
@@ -4590,7 +4592,7 @@ function TeamsPage({
       const done = await poll(team, job, (j) => j.state === "done", () => void 0);
       if (!done || !done.result) return;
       const installed = done.result;
-      const room = installed.ok ? await makeRoom(team, installed.created || []) : { room: "none" };
+      const room = installed.ok ? await makeRoom(team, installed.created || [], Object.fromEntries(members.map((m) => [m.bot, m.name]))) : { room: "none" };
       setResult({ team, installed, ...room, skills: done.skills });
       setOpen(null);
       setReview(null);
@@ -6198,7 +6200,7 @@ import { jsx as jsx11 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.7.8",
+  version: "0.7.9",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {
