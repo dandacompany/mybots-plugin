@@ -132,7 +132,7 @@ def close_review(args, *, root, bot, run):
     if verdict == 'approve':
         return dict(card=task, status='done', next='승인을 기록하고 카드를 완료했어요. 승인 뒤 할 일(저장·정리)을 이어서 하세요.')
     return dict(card=task, status='reopened',
-                next='같은 검수 카드를 되돌렸어요. 고칠 점은 카드 댓글에 남았어요. 고칠 일은 담당 동료에게 새 카드로 맡기고(끝난 동료 카드는 다시 열지 않음), 고친 결과가 모이면 같은 카드를 다시 team_request_review 로 보내세요.')
+                next='같은 검수 카드를 되돌렸어요. 고칠 점은 카드 댓글에 남았어요. 지금(방 대화) 고칠 카드를 만들지 마세요. 되돌아온 카드가 곧 리더에게 실행되면 그때 한 번만 고칠 일을 담당 동료에게 새 카드로 맡기고(끝난 동료 카드는 다시 열지 않음), 고친 결과가 모이면 같은 카드를 다시 team_request_review 로 보내세요.')
 
 
 def context(*, root, bot):
