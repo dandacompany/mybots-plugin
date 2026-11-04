@@ -4449,7 +4449,13 @@ var ROUTE = {
   targetProfile: "default"
 };
 var roomId = (team) => "team-" + team.id + "-" + Date.now().toString(36);
-var notServedYet = (err) => /not local to this gateway/i.test(String(err?.message ?? err));
+var refusal = (err) => {
+  const e = err;
+  const detail2 = typeof e?.data?.detail === "string" ? e.data.detail : "";
+  const message = typeof e?.message === "string" ? e.message : String(err);
+  return (detail2 ? message + ": " + detail2 : message).slice(0, 300);
+};
+var notServedYet = (err) => /not local to this gateway/i.test(refusal(err));
 var ROOM_TRIES = 20;
 var GOOGLE = {
   copied: "Copied the Google connection to the leader.",
@@ -4557,7 +4563,7 @@ function TeamsPage({
       });
       return { room: "made" };
     } catch (err) {
-      const roomError = String(err?.message ?? err).slice(0, 300);
+      const roomError = refusal(err);
       console.warn("[mybots] group room was not created:", roomError);
       return { room: "failed", roomError };
     }
@@ -6192,7 +6198,7 @@ import { jsx as jsx11 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.7.7",
+  version: "0.7.8",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {
