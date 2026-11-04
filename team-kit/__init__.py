@@ -128,11 +128,11 @@ def close_review(args, *, root, bot, run):
         argv = ['kanban', '--board', t['board'], 'reopen-review', task, '--reason=' + note]
     code, _out, _err = run(argv)
     if code:
-        raise TeamKitError('검수 카드를 닫지 못했어요. 카드가 검수 칸에 있는지 확인해 주세요.')
+        raise TeamKitError('검수 카드를 닫지 못했어요. 검수 칸에 있는 카드만 닫거나 되돌릴 수 있어요. 이미 끝난 동료 카드는 다시 열지 말고, 고칠 일은 그 동료에게 새 카드로 맡기세요.')
     if verdict == 'approve':
         return dict(card=task, status='done', next='승인을 기록하고 카드를 완료했어요. 승인 뒤 할 일(저장·정리)을 이어서 하세요.')
     return dict(card=task, status='reopened',
-                next='같은 카드를 담당에게 되돌렸어요. 고칠 점은 카드 댓글에 남았고, 고친 뒤 다시 team_request_review 로 보냅니다.')
+                next='같은 검수 카드를 되돌렸어요. 고칠 점은 카드 댓글에 남았어요. 고칠 일은 담당 동료에게 새 카드로 맡기고(끝난 동료 카드는 다시 열지 않음), 고친 결과가 모이면 같은 카드를 다시 team_request_review 로 보내세요.')
 
 
 def context(*, root, bot):

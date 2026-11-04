@@ -318,7 +318,8 @@ var locales_default = {
     "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.",
     "{0}: installing. This can take a few minutes.": "{0}: installing. This can take a few minutes.",
     "{0}: installed.": "{0}: installed.",
-    "{0}: could not install. You can install it later from that bot.": "{0}: could not install. You can install it later from that bot."
+    "{0}: could not install. You can install it later from that bot.": "{0}: could not install. You can install it later from that bot.",
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough."
   },
   ko: {
     "Could not load installed bots. Please retry.": "설치된 봇을 확인하지 못했습니다. 다시 시도해 주세요.",
@@ -632,7 +633,8 @@ var locales_default = {
     "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "영입은 끝났어요. 다만 이 화면이 결과를 받지 못했어요. 팀 폴더를 확인하고, 그룹방이 있는 팀이면 직접 만들어 주세요.",
     "{0}: installing. This can take a few minutes.": "{0} 설치 중이에요. 몇 분 걸릴 수 있어요.",
     "{0}: installed.": "{0} 설치했어요.",
-    "{0}: could not install. You can install it later from that bot.": "{0} 설치하지 못했어요. 나중에 그 봇에서 다시 설치할 수 있어요."
+    "{0}: could not install. You can install it later from that bot.": "{0} 설치하지 못했어요. 나중에 그 봇에서 다시 설치할 수 있어요.",
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Hermes 게이트웨이를 다시 시작하면 적용됩니다. 터미널에서 hermes gateway restart 를 실행하세요. Desktop만 다시 켜서는 적용되지 않습니다."
   },
   zh: {
     "Could not load installed bots. Please retry.": "无法加载已安装的机器人。请重试。",
@@ -946,7 +948,8 @@ var locales_default = {
     "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "招募已完成，但此画面没有收到结果。请检查团队文件夹；如果团队有群聊，请手动创建。",
     "{0}: installing. This can take a few minutes.": "{0}：正在安装，可能需要几分钟。",
     "{0}: installed.": "{0}：已安装。",
-    "{0}: could not install. You can install it later from that bot.": "{0}：安装失败。之后可以在该机器人中重新安装。"
+    "{0}: could not install. You can install it later from that bot.": "{0}：安装失败。之后可以在该机器人中重新安装。",
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "重新启动 Hermes 网关后生效：在终端运行 hermes gateway restart。仅重启 Desktop 不会生效。"
   },
   "zh-hant": {
     "Could not load installed bots. Please retry.": "無法載入已安裝的機器人。請重試。",
@@ -1260,7 +1263,8 @@ var locales_default = {
     "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "招募已完成，但此畫面沒有收到結果。請檢查團隊資料夾；若團隊有群組聊天室，請手動建立。",
     "{0}: installing. This can take a few minutes.": "{0}：正在安裝，可能需要幾分鐘。",
     "{0}: installed.": "{0}：已安裝。",
-    "{0}: could not install. You can install it later from that bot.": "{0}：安裝失敗。之後可以在該機器人中重新安裝。"
+    "{0}: could not install. You can install it later from that bot.": "{0}：安裝失敗。之後可以在該機器人中重新安裝。",
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "重新啟動 Hermes 閘道後生效：在終端機執行 hermes gateway restart。只重新啟動 Desktop 不會生效。"
   },
   ja: {
     "Could not load installed bots. Please retry.": "インストール済みボットを読み込めません。再試行してください。",
@@ -1574,7 +1578,8 @@ var locales_default = {
     "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "迎え入れは終わりましたが、この画面は結果を受け取れませんでした。チームフォルダーを確認し、グループルームがあるチームなら手動で作ってください。",
     "{0}: installing. This can take a few minutes.": "{0} をインストール中です。数分かかることがあります。",
     "{0}: installed.": "{0} をインストールしました。",
-    "{0}: could not install. You can install it later from that bot.": "{0} をインストールできませんでした。あとでそのボットから入れ直せます。"
+    "{0}: could not install. You can install it later from that bot.": "{0} をインストールできませんでした。あとでそのボットから入れ直せます。",
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Hermes ゲートウェイを再起動すると反映されます。ターミナルで hermes gateway restart を実行してください。Desktop の再起動だけでは反映されません。"
   },
   ar: {
     "Could not load installed bots. Please retry.": "تعذر تحميل البوتات المثبتة. حاول مجددًا.",
@@ -1888,7 +1893,8 @@ var locales_default = {
     "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "اكتمل الاستقطاب لكن هذه الشاشة لم تتلقَّ النتيجة. تحقّق من مجلد الفريق، وأنشئ غرفة المجموعة بنفسك إن كان للفريق غرفة.",
     "{0}: installing. This can take a few minutes.": "{0}: جارٍ التثبيت. قد يستغرق بضع دقائق.",
     "{0}: installed.": "{0}: تم التثبيت.",
-    "{0}: could not install. You can install it later from that bot.": "{0}: تعذّر التثبيت. يمكنك تثبيته لاحقًا من ذلك البوت."
+    "{0}: could not install. You can install it later from that bot.": "{0}: تعذّر التثبيت. يمكنك تثبيته لاحقًا من ذلك البوت.",
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "أعد تشغيل بوابة Hermes لتطبيق التحديث: شغّل hermes gateway restart في الطرفية. إعادة تشغيل Desktop وحدها لا تكفي."
   },
   ru: {
     "Could not load installed bots. Please retry.": "Не удалось загрузить установленных ботов. Повторите попытку.",
@@ -2202,7 +2208,8 @@ var locales_default = {
     "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "Найм завершён, но экран не получил ответ. Проверьте папку команды и, если у команды есть комната, создайте её вручную.",
     "{0}: installing. This can take a few minutes.": "{0}: устанавливается. Это может занять несколько минут.",
     "{0}: installed.": "{0}: установлено.",
-    "{0}: could not install. You can install it later from that bot.": "{0}: не удалось установить. Можно установить позже из этого бота."
+    "{0}: could not install. You can install it later from that bot.": "{0}: не удалось установить. Можно установить позже из этого бота.",
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Перезапустите шлюз Hermes, чтобы применить изменения: выполните hermes gateway restart в терминале. Одного перезапуска Desktop недостаточно."
   },
   fr: {
     "Could not load installed bots. Please retry.": "Impossible de charger les bots installés. Réessayez.",
@@ -2516,7 +2523,8 @@ var locales_default = {
     "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "Le recrutement est terminé, mais cet écran n’a pas reçu la réponse. Vérifiez le dossier de l’équipe et créez vous-même le salon si l’équipe en a un.",
     "{0}: installing. This can take a few minutes.": "{0} : installation en cours. Cela peut prendre quelques minutes.",
     "{0}: installed.": "{0} : installé.",
-    "{0}: could not install. You can install it later from that bot.": "{0} : installation impossible. Vous pourrez l’installer plus tard depuis ce bot."
+    "{0}: could not install. You can install it later from that bot.": "{0} : installation impossible. Vous pourrez l’installer plus tard depuis ce bot.",
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Redémarrez la passerelle Hermes pour l’appliquer : lancez hermes gateway restart dans un terminal. Redémarrer Desktop seul ne suffit pas."
   },
   de: {
     "Could not load installed bots. Please retry.": "Installierte Bots konnten nicht geladen werden. Bitte erneut versuchen.",
@@ -2830,7 +2838,8 @@ var locales_default = {
     "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "Das Holen ist abgeschlossen, aber dieser Bildschirm hat die Antwort verloren. Prüfen Sie den Team-Ordner und legen Sie den Gruppenraum selbst an, falls das Team einen hat.",
     "{0}: installing. This can take a few minutes.": "{0}: wird installiert. Das kann einige Minuten dauern.",
     "{0}: installed.": "{0}: installiert.",
-    "{0}: could not install. You can install it later from that bot.": "{0}: konnte nicht installiert werden. Später über diesen Bot nachholen."
+    "{0}: could not install. You can install it later from that bot.": "{0}: konnte nicht installiert werden. Später über diesen Bot nachholen.",
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Starten Sie das Hermes-Gateway neu, um es anzuwenden: Führen Sie hermes gateway restart im Terminal aus. Ein Neustart von Desktop allein reicht nicht."
   },
   es: {
     "Could not load installed bots. Please retry.": "No se pudieron cargar los bots instalados. Inténtalo de nuevo.",
@@ -3144,7 +3153,8 @@ var locales_default = {
     "The recruit finished, but this screen lost its answer. Check the team folder, and make the group room yourself if the team has one.": "El reclutamiento terminó, pero esta pantalla no recibió la respuesta. Revisa la carpeta del equipo y crea tú la sala si el equipo tiene una.",
     "{0}: installing. This can take a few minutes.": "{0}: instalando. Puede tardar unos minutos.",
     "{0}: installed.": "{0}: instalado.",
-    "{0}: could not install. You can install it later from that bot.": "{0}: no se pudo instalar. Puedes instalarlo más tarde desde ese bot."
+    "{0}: could not install. You can install it later from that bot.": "{0}: no se pudo instalar. Puedes instalarlo más tarde desde ese bot.",
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Reinicia el gateway de Hermes para aplicarla: ejecuta hermes gateway restart en una terminal. Reiniciar solo Desktop no basta."
   }
 };
 
@@ -5948,7 +5958,7 @@ function SelfUpdate({ ctx }) {
     /* @__PURE__ */ jsx9("span", { className: "mb-muted", children: t("MyBots {0}", status.installed) }),
     latest && !done && /* @__PURE__ */ jsx9(Badge, { variant: "muted", children: t("New version {0}", latest) }),
     latest && !done && /* @__PURE__ */ jsx9(Button2, { variant: "secondary", disabled: !local || busy, loading: busy, onClick: run, children: t("Update MyBots") }),
-    done && /* @__PURE__ */ jsx9("p", { role: "status", children: updated ? t("Restart Hermes to apply.") : t("MyBots is already up to date.") }),
+    done && /* @__PURE__ */ jsx9("p", { role: "status", children: updated ? t("Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.") : t("MyBots is already up to date.") }),
     running && /* @__PURE__ */ jsx9("p", { role: "status", className: "mb-muted", children: t(RUNNING) }),
     (failed || note) && /* @__PURE__ */ jsx9("p", { role: failed ? "alert" : "status", className: "mb-muted", children: t(note || FAILED) })
   ] });
@@ -6200,7 +6210,7 @@ import { jsx as jsx11 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.7.9",
+  version: "0.7.10",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {
