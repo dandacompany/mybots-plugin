@@ -4070,7 +4070,9 @@ function RoutinesPage({
       try {
         const res = await ctx.rest("/routines/run", {
           method: "POST",
-          body: { profile: r.profile, job: r.id }
+          // Not "profile": Hermes' dashboard auth rejects a JSON body whose profile names another profile than
+          // the caller's (hermes_cli/dashboard_auth/native_http.py, 403 profile_scope_mismatch; VM 11-04).
+          body: { bot: r.profile, job: r.id }
         });
         if (alive.current && res?.run_id)
           setRuns((x) => ({
@@ -6210,7 +6212,7 @@ import { jsx as jsx11 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.7.11",
+  version: "0.7.12",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {

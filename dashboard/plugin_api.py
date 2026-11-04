@@ -31,7 +31,7 @@ class _LazyTeams:
         return getattr(_LazyTeams._mod,name)
 teams=_LazyTeams()
 router=APIRouter()
-VERSION='0.7.11'
+VERSION='0.7.12'
 # After a self-update the files on disk are the new version while this process still runs the old
 # one, and installer.py/plugin_api.py load sibling modules from disk per request. Until Hermes
 # restarts, every write answers this fixed 409 so old and new code never mix in a write.
@@ -486,8 +486,12 @@ def routines_list():return {'routines':routines.list_all(get_default_hermes_root
 
 @router.post('/routines/run')
 async def routines_run(request:Request):
-    restart_guard();body=await json_body(request,512,('profile','job'))
-    try:return {'run_id':runs().start(body['profile'],body['job'])}
+    # The bot rides in "bot": a body "profile" naming another profile is refused by Hermes' dashboard auth
+    # (profile_scope_mismatch). "profile" stays accepted for an older Desktop page.
+    restart_guard();body=await json_body(request,512,('job',),('bot','profile'))
+    bot=body.get('bot',body.get('profile'))
+    if type(bot) is not str:raise HTTPException(422,INVALID_REQUEST)
+    try:return {'run_id':runs().start(bot,body['job'])}
     except routines.NotFound:raise HTTPException(404,'그 예약 작업을 찾지 못했습니다. 목록을 새로고침해 주세요.')
     except routines.Paused:raise HTTPException(409,'멈춘 작업입니다. 봇에서 다시 켠 뒤 실행해 주세요.')
     except routines.Busy:raise HTTPException(409,'이미 실행 중입니다.')
