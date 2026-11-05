@@ -27,6 +27,19 @@ def _on_kanban_dispatch_tick(**kw):
         return None
 
 
+def _refresh_team_kits():
+    """At gateway start, before the bots' own plugins load: every recruited bot gets this version's team kit."""
+    try:
+        from hermes_constants import get_default_hermes_root
+        spec = importlib.util.spec_from_file_location('mybots_teams_kit_refresh', _HERE / 'dashboard' / 'teams.py')
+        teams = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(teams)
+        return teams.refresh_kits(get_default_hermes_root())
+    except Exception:
+        return None
+
+
 def register(ctx):
     """Hermes discovers the dashboard API and desktop half from this package."""
+    _refresh_team_kits()
     ctx.register_hook('on_kanban_dispatch_tick', _on_kanban_dispatch_tick)
