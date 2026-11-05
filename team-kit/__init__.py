@@ -66,7 +66,13 @@ def post_card(args, *, root, bot, run):
         raise TeamKitError('앞 카드(parents)는 카드 id 목록이어야 해요.')
     pull = t.get('mode') == 'pull'
     if pull:  # MyBots assigns it by this first line on a later dispatcher tick
-        body = f"{(t.get('pull') or {}).get('tag') or TAG_DEFAULT}: {role}\n{body}".rstrip('\n')
+        tag = (t.get('pull') or {}).get('tag') or TAG_DEFAULT
+        # The lead often writes the role line itself; keep only the one MyBots matches on (VM 11-05: it was doubled).
+        rest = body.split('\n')
+        while rest and (not rest[0].strip() or re.fullmatch(rf'\s*{re.escape(tag)}\s*:.*', rest[0])):
+            rest.pop(0)
+        body = f"{tag}: {role}\n" + '\n'.join(rest)
+        body = body.rstrip('\n')
     argv = ['kanban', '--board', t['board'], 'create', '--body=' + body, '--workspace=dir:' + t['work']]
     argv += ['--parent=' + p for p in parents]
     if not pull:

@@ -6220,7 +6220,7 @@ import { jsx as jsx11 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.7.17",
+  version: "0.7.18",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {
