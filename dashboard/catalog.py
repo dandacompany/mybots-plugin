@@ -2,7 +2,7 @@
 import copy,json,re
 from pathlib import Path
 from urllib.parse import urlsplit
-INSTALLER_VERSION='0.7.20'
+INSTALLER_VERSION='0.7.21'
 META={'id','version','name','englishName','role','personality','description','category','firstPrompt','optional','skillId','mcp','pluginId','external','voice'}
 OPTIONAL=('skills','mcp','plugin','voice')
 _voice_schema=Path(__file__).with_name('voice.schema.json')
@@ -40,7 +40,9 @@ def parse_metadata(value):
     if not isinstance(b['external'],list)or len(b['external'])>8:raise ValueError('Invalid guides')
     for link in b['external']:
         e=record(link,('service','label','guide','requirement','status'))
-        if e['service']not in('figma','notion','github','context7','todoist','web-search')or e['status']!='not-connected':raise ValueError('Invalid guide state')
+        # Any safe service slug: one unknown value used to invalidate the whole trust list, so the catalog could not
+        # add a service (Google Workspace, Slack) without breaking every older helper (10-29 backlog).
+        if not isinstance(e['service'],str)or not re.fullmatch(r'[a-z][a-z0-9-]{0,39}',e['service'])or e['status']!='not-connected':raise ValueError('Invalid guide state')
         text(e['label'],80);text(e['guide']);text(e['requirement']);u=urlsplit(e['guide'])
         if u.scheme!='https'or not u.hostname or u.username or u.password:raise ValueError('Unsafe guide')
     return copy.deepcopy(b)

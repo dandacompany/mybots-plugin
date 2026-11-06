@@ -3491,6 +3491,7 @@ function reviewErrorMessage(error) {
   const reason = detail(error);
   if (reason === NOT_OPEN) return "This bot is not open yet.";
   if (reason === RESTART_REQUIRED) return RESTART_MESSAGE;
+  if (reason === "This bot/version is not in the connected catalog") return "This bot version is no longer published.";
   if (reason === "Invalid manifest" || reason.startsWith("This bot/version requires a newer MyBots helper")) return "This bot needs a newer MyBots helper. Update MyBots and retry.";
   return "Could not review the installation. Check connection and publication status.";
 }
@@ -4209,14 +4210,18 @@ function SecretsFields({
   value,
   onChange,
   disabled = false,
-  missingMessage = "Required keys left empty: {0}. You can add them after installing."
+  missingMessage = "Required keys left empty: {0}. You can add them after installing.",
+  alreadySet
 }) {
   const { t } = useMyBots();
   const id = useId();
   if (!secrets.length) return null;
   const current = (r) => value[r.name] ?? initialKeys([r])[r.name];
   const set = (r, patch) => onChange({ ...value, [r.name]: { ...current(r), ...patch } });
-  const missing = missingRequired(secrets, value);
+  const missing = missingRequired(
+    secrets.filter((r) => !alreadySet?.includes(r.name)),
+    value
+  );
   return /* @__PURE__ */ jsxs5("fieldset", { disabled, className: "mb-keys", children: [
     /* @__PURE__ */ jsx5("legend", { children: t("Service keys") }),
     /* @__PURE__ */ jsx5("p", { className: "mb-muted", children: t(STORAGE_NOTICE) }),
@@ -4323,6 +4328,9 @@ function KeyResults({
     ] })
   ] }, r.name)) });
 }
+var perBotKeys = (secrets) => Object.fromEntries(
+  Object.entries(initialKeys(secrets)).map(([k, v]) => [k, { ...v, save: false }])
+);
 function AddKeysForm({
   ctx,
   bot,
@@ -4333,7 +4341,7 @@ function AddKeysForm({
 }) {
   const { t } = useMyBots();
   const [keys, setKeys] = useState5(
-    () => initialKeys(secrets)
+    () => perBotKeys(secrets)
   ), [busy, setBusy] = useState5(false), [error, setError] = useState5(""), [result, setResult] = useState5(null);
   const posting = useRef5(false), local = useLocal();
   const labels2 = Object.fromEntries(secrets.map((r) => [r.name, r.label]));
@@ -4343,7 +4351,7 @@ function AddKeysForm({
     posting.current = true;
     setBusy(true);
     setError("");
-    setKeys(initialKeys(secrets));
+    setKeys(perBotKeys(secrets));
     try {
       const value = await new MarketApi(ctx).updateSecrets(
         bot,
@@ -4374,7 +4382,8 @@ function AddKeysForm({
         value: keys,
         onChange: setKeys,
         disabled: busy || !local,
-        missingMessage: "Required keys still empty: {0}."
+        missingMessage: "Required keys still empty: {0}.",
+        alreadySet: states2?.filter((s) => s.state === "set").map((s) => s.name)
       }
     ),
     /* @__PURE__ */ jsx5(DialogFooter, { children: /* @__PURE__ */ jsx5(
@@ -5761,7 +5770,7 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
           t("First prompt:"),
           bot.firstPrompt
         ] }),
-        bot.external.map((e) => /* @__PURE__ */ jsxs7("p", { children: [
+        bot.external.map((e, i) => /* @__PURE__ */ jsxs7("p", { children: [
           /* @__PURE__ */ jsxs7("a", { href: e.guide, target: "_blank", rel: "noopener noreferrer", children: [
             e.label,
             " · ",
@@ -5769,7 +5778,7 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
           ] }),
           " · ",
           e.requirement
-        ] }, e.service)),
+        ] }, i + ":" + e.service)),
         /* @__PURE__ */ jsx8(DialogFooter, { children: /* @__PURE__ */ jsx8(Button2, { onClick: () => {
           const d = profileDestination(result.profile);
           onClose();
@@ -5982,7 +5991,8 @@ function MarketPage({ ctx, renderTab }) {
   const [display, setDisplay] = useState10(null);
   const [displayDone, setDisplayDone] = useState10("");
   const [tab, setTab] = useState10("browse"), [view, setView] = useState10(null), [installed, setInstalled] = useState10([]), [query, setQuery] = useState10(""), [category, setCategory] = useState10("all"), [selected, setSelected] = useState10(null), [error, setError] = useState10(""), [busy, setBusy] = useState10(false), [reload, setReload] = useState10(0), [hash, setHash] = useState10(location.hash), [linkSequence, setLinkSequence] = useState10(0), [keysFor, setKeysFor] = useState10(null), [updateFor, setUpdateFor] = useState10(null), [detached, setDetached] = useState10(false);
-  const fence = useRef10(new ReviewFence()), local = useLocal();
+  const fence = useRef10(new ReviewFence()), local = useLocal(), installedNow = useRef10(installed), refetched = useRef10("");
+  installedNow.current = installed;
   useEffect10(() => {
     const update = () => {
       setSelected(null);
@@ -6054,6 +6064,21 @@ function MarketPage({ ctx, renderTab }) {
       const exact = view.catalog.trusted.find((b) => b.metadata.id === link.bot && b.metadata.version === link.version);
       const avatar = exact?.files.find((f) => f.component === "avatar");
       const bot = latest || (exact && avatar ? { ...exact.metadata, avatarUrl: `/api/bots/${link.bot}/${link.version}/files/${avatar.path.split("/").map(encodeURIComponent).join("/")}`, detailUrl: `/bots/${link.bot}`, installUrl: installLink(link.bot, link.version) } : null);
+      const key2 = hash + "|" + linkSequence;
+      if (!bot && refetched.current !== key2) {
+        refetched.current = key2;
+        setReload((n) => n + 1);
+        return;
+      }
+      const own = installedNow.current.find((s) => s.bot === link.bot && (s.state === "installed" || s.state === "other-version"));
+      if (bot && own && own.version === link.version) {
+        setTab("installed");
+        return;
+      }
+      if (bot && own && own.updatable && own.latest === link.version) {
+        setUpdateFor(own);
+        return;
+      }
       if (bot) setSelected(bot);
       else setError("This bot version is no longer published.");
     } catch {
@@ -6220,7 +6245,7 @@ import { jsx as jsx11 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.7.20",
+  version: "0.7.21",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {

@@ -34,6 +34,11 @@ _catalog=_sibling("catalog");_voice=_sibling("voice");_roster_motion=_sibling("r
 
 _log=logging.getLogger(__name__)
 
+
+def _seed_bundled_skills(profile_dir):
+    from hermes_cli.profiles import seed_profile_skills
+    return seed_profile_skills(Path(profile_dir),quiet=True)
+
 class InstallError(Exception):
     pass
 
@@ -43,7 +48,7 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 def fetch_bytes(url, limit):
     try:
-        request=urllib.request.Request(url,headers={"User-Agent":"MyBots/0.7.20"})
+        request=urllib.request.Request(url,headers={"User-Agent":"MyBots/0.7.21"})
         with urllib.request.build_opener(NoRedirect).open(request, timeout=15) as response:
             blob=response.read(limit+1)
         if len(blob)>limit:raise InstallError('File exceeds size limit')
@@ -185,6 +190,7 @@ class Installer:
         self.save_default=_secret_decls.save_default_env
         self.run_staging=subprocess.run
         self.run_icacls=subprocess.run # Windows only (W4): portable.grant_private on MyBots folder roots
+        self.seed_skills=_seed_bundled_skills
         schema_path=Path(__file__).with_name('bot.schema.json')
         if not schema_path.exists():schema_path=Path(__file__).resolve().parents[2]/'contracts/bot.schema.json'
         self.schema=json.loads(schema_path.read_text(encoding='utf-8'))
@@ -206,7 +212,9 @@ class Installer:
     def _entry(self,bot,version):
         if self.authority:self._refresh()
         entry=self.trusted.get((bot,version))
-        if not entry:raise InstallError('This bot/version requires a newer MyBots helper')
+        # Not in this catalog (a dev-only version on the live catalog, or not published yet) is not a helper
+        # version problem; the newer-helper text sent people to update MyBots (bots-5.4, 10-30).
+        if not entry:raise InstallError('This bot/version is not in the connected catalog')
         return entry
 
     def _check_live(self,preview):
@@ -383,6 +391,12 @@ class Installer:
             except _portable.AclError:raise InstallError(_portable.STAGING_ACL_FAILED)from None
             except Exception as exc:raise InstallError('Installation failed; no existing profile was changed') from exc
             report=self._save_defaults(plan,values)
+        # install_distribution does not copy Hermes' bundled skills (google-workspace, pdf …) as
+        # `hermes profile create` does, so a new bot started with none until the next `hermes update`.
+        # A failure here never fails the install: the next update seeds them.
+        try:
+            if self.seed_skills(target) is None:_log.warning('MyBots: bundled skills were not seeded into a new profile')
+        except Exception:_log.warning('MyBots: bundled skills were not seeded into a new profile')
         return self._result('installed',target.name,preview,report)
 
     def _grant_root(self,folder):
