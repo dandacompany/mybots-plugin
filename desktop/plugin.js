@@ -3343,7 +3343,7 @@ function parseAuthoredCatalog(input) {
     if (!Array.isArray(b.external) || b.external.length > 8) throw new Error("Invalid external guides");
     for (const link of b.external) {
       const e = record(link, ["service", "label", "guide", "requirement", "status"]);
-      if (!["figma", "notion", "github", "context7", "todoist", "web-search"].includes(String(e.service)) || e.status !== "not-connected") throw new Error("Invalid external service state");
+      if (typeof e.service !== "string" || !/^[a-z][a-z0-9-]{0,39}$/.test(e.service) || e.status !== "not-connected") throw new Error("Invalid external service state");
       text(e.label, 80);
       text(e.guide, 1e3);
       text(e.requirement, 1e3);
@@ -5388,6 +5388,218 @@ var portraits = {
     ],
     "pace": 1.06,
     "phase": 12.2
+  },
+  // Team bots and Tinker (2026-11-07): measured from their 256px PNGs with the same rule as the entries
+  // above (centre -0.5px, half-size +1.5px over the dark eye pixels); pace/phase continue the sequence.
+  "mybots-bram": {
+    "sha256": "81cf4e519b461a83bbcd03b3c5673648c7996744ac60d12083bf29807b5625cf",
+    "eyes": [
+      {
+        "x": 109,
+        "y": 130.5,
+        "rx": 9,
+        "ry": 15.5,
+        "skin": "#8ca1da"
+      },
+      {
+        "x": 143.5,
+        "y": 131,
+        "rx": 9.5,
+        "ry": 15,
+        "skin": "#8a9fd8"
+      }
+    ],
+    "pace": 0.94,
+    "phase": 12.81
+  },
+  "mybots-dex": {
+    "sha256": "1ed986eec4a394af48f229074962f43b88806b671a4bc1d1f8d5a364031f69fb",
+    "eyes": [
+      {
+        "x": 111.5,
+        "y": 109,
+        "rx": 8.5,
+        "ry": 14,
+        "skin": "#c69fcf"
+      },
+      {
+        "x": 144,
+        "y": 109,
+        "rx": 9,
+        "ry": 14,
+        "skin": "#c49dce"
+      }
+    ],
+    "pace": 1,
+    "phase": 13.42
+  },
+  "mybots-faye": {
+    "sha256": "527c91c0cf69856f1060ac943d8c75bfcecac4a71be9f5c03d11d42d057643b7",
+    "eyes": [
+      {
+        "x": 109.5,
+        "y": 130,
+        "rx": 8.5,
+        "ry": 14,
+        "skin": "#e6d285"
+      },
+      {
+        "x": 142.5,
+        "y": 130,
+        "rx": 8.5,
+        "ry": 14,
+        "skin": "#e4d184"
+      }
+    ],
+    "pace": 1.06,
+    "phase": 14.03
+  },
+  "mybots-iris": {
+    "sha256": "63f8478a2111f9d8f6f830b37a4bc04e3d805699ffc4e14acde95d62021ec8b1",
+    "eyes": [
+      {
+        "x": 105,
+        "y": 114.5,
+        "rx": 8,
+        "ry": 13.5,
+        "skin": "#80d4b6"
+      },
+      {
+        "x": 135,
+        "y": 114.5,
+        "rx": 8,
+        "ry": 13.5,
+        "skin": "#7fd4b4"
+      }
+    ],
+    "pace": 0.94,
+    "phase": 14.64
+  },
+  "mybots-juno": {
+    "sha256": "773e9b638e449de2ee59d30bc7d4d2bdefed7b6aa21d5d6a3455f1112a165204",
+    "eyes": [
+      {
+        "x": 105,
+        "y": 104.5,
+        "rx": 9,
+        "ry": 14.5,
+        "skin": "#85bcde"
+      },
+      {
+        "x": 138.5,
+        "y": 104.5,
+        "rx": 8.5,
+        "ry": 14.5,
+        "skin": "#84bbde"
+      }
+    ],
+    "pace": 1,
+    "phase": 15.25
+  },
+  "mybots-kit": {
+    "sha256": "78a92c0952dd62d6300d6f901d10498e1bbbf5acce9717672befbd5335ffacd1",
+    "eyes": [
+      {
+        "x": 111.5,
+        "y": 130,
+        "rx": 7.5,
+        "ry": 13,
+        "skin": "#ecad73"
+      },
+      {
+        "x": 141,
+        "y": 130,
+        "rx": 8,
+        "ry": 13,
+        "skin": "#ebab6e"
+      }
+    ],
+    "pace": 1.06,
+    "phase": 15.86
+  },
+  "mybots-nell": {
+    "sha256": "47f23e75f143808997a115b44a3bfb7381715b0d45ec9af748cfd99f99b79d9c",
+    "eyes": [
+      {
+        "x": 109,
+        "y": 132.5,
+        "rx": 9,
+        "ry": 14.5,
+        "skin": "#9eb79a"
+      },
+      {
+        "x": 143,
+        "y": 132.5,
+        "rx": 9,
+        "ry": 14.5,
+        "skin": "#9cb597"
+      }
+    ],
+    "pace": 0.94,
+    "phase": 16.47
+  },
+  "mybots-otto": {
+    "sha256": "c88e15d14824c69b324a85b1dfe0417d2087516c4741d566e425555620505a63",
+    "eyes": [
+      {
+        "x": 109.5,
+        "y": 130.5,
+        "rx": 8.5,
+        "ry": 14.5,
+        "skin": "#c8dd7e"
+      },
+      {
+        "x": 142.5,
+        "y": 130.5,
+        "rx": 8.5,
+        "ry": 14.5,
+        "skin": "#adc85b"
+      }
+    ],
+    "pace": 1,
+    "phase": 17.08
+  },
+  "mybots-tinker": {
+    "sha256": "c442082e13c31cf7d51b8fe50e2da4087b998044b0fd07f0bf1c02a619f8af8f",
+    "eyes": [
+      {
+        "x": 109,
+        "y": 130.5,
+        "rx": 9,
+        "ry": 14.5,
+        "skin": "#e5bb61"
+      },
+      {
+        "x": 143,
+        "y": 130.5,
+        "rx": 9,
+        "ry": 14.5,
+        "skin": "#e3ba5d"
+      }
+    ],
+    "pace": 1.06,
+    "phase": 17.69
+  },
+  "mybots-wren": {
+    "sha256": "e3539462da77322bdc13d5aa7e1250b6eba4438e5dcc1a177060bb67801eba98",
+    "eyes": [
+      {
+        "x": 110,
+        "y": 120.5,
+        "rx": 9,
+        "ry": 14.5,
+        "skin": "#e3a6b4"
+      },
+      {
+        "x": 143.5,
+        "y": 120.5,
+        "rx": 8.5,
+        "ry": 14.5,
+        "skin": "#e2a4b2"
+      }
+    ],
+    "pace": 0.94,
+    "phase": 18.3
   }
 };
 function avatarPreset(bot, sha256) {
@@ -6245,7 +6457,7 @@ import { jsx as jsx11 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.7.21",
+  version: "0.7.22",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {

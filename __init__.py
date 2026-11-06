@@ -39,7 +39,21 @@ def _refresh_team_kits():
         return None
 
 
+def _backfill_motion():
+    """At gateway start: installed MyBots bots whose portrait was calibrated after they were installed get their
+    blink motion (team bots and Tinker, 2026-11-07)."""
+    try:
+        from hermes_constants import get_default_hermes_root
+        spec = importlib.util.spec_from_file_location('mybots_roster_motion_backfill', _HERE / 'dashboard' / 'roster_motion.py')
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod.backfill(get_default_hermes_root())
+    except Exception:
+        return None
+
+
 def register(ctx):
     """Hermes discovers the dashboard API and desktop half from this package."""
     _refresh_team_kits()
+    _backfill_motion()
     ctx.register_hook('on_kanban_dispatch_tick', _on_kanban_dispatch_tick)
