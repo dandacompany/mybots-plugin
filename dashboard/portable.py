@@ -196,14 +196,26 @@ def grant_private(path,run=None):
     checked, means no icacls call at all (an empty, freshly made folder passes at once).
     Never raises; output is discarded."""
     if not WINDOWS:return True
+    reason="path-check"
     try:
         path=os.path.abspath(path)
-        if is_link(path)or not os.path.isdir(path):return False
-        if not tree_is_plain(path):_log.warning(ACL_SKIPPED_LOG);return False
+        if is_link(path)or not os.path.isdir(path):
+            _log.warning("MyBots ACL diagnostic reason=link-or-not-folder");return False
+        if not tree_is_plain(path):
+            _log.warning(ACL_SKIPPED_LOG);_log.warning("MyBots ACL diagnostic reason=tree-check");return False
+        reason="sid-query"
         sid=user_sid()
-        if type(sid)is not str or not SID_RE.fullmatch(sid):return False
+        if type(sid)is not str or not SID_RE.fullmatch(sid):
+            _log.warning("MyBots ACL diagnostic reason=sid-invalid");return False
         argv=[icacls_path(),path,'/inheritance:r','/grant:r',*(f'*{s}:(OI)(CI)F'for s in (sid,SYSTEM_SID,ADMINISTRATORS_SID))]
+        reason="icacls"
         result=(run or subprocess.run)(argv,shell=False,stdin=subprocess.DEVNULL,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,
             timeout=ACL_TIMEOUT,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0x08000000))
+        if result.returncode:_log.warning("MyBots ACL diagnostic reason=icacls rc=%d",result.returncode)
         return result.returncode==0
-    except Exception:return False
+    except Exception as exc:
+        winerror=getattr(exc,"winerror",None)
+        _log.warning("MyBots ACL diagnostic reason=%s exception=%s winerror=%s",
+                     "timeout" if isinstance(exc,subprocess.TimeoutExpired) else reason,
+                     type(exc).__name__,winerror if type(winerror)is int else None)
+        return False

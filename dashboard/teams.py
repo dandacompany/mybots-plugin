@@ -340,7 +340,7 @@ BOARD = {board!r}
 
 
 def run(*args):
-    out = subprocess.run(HERMES + ['kanban', '--board', BOARD] + list(args), capture_output=True, text=True, timeout=60)
+    out = subprocess.run(HERMES + ['kanban', '--board', BOARD] + list(args), capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=60)
     try:
         return json.loads(out.stdout or 'null')
     except ValueError:
@@ -461,7 +461,7 @@ class HermesRunner:
         env = dict(os.environ, HERMES_HOME=str(self.root))
         try:
             p = subprocess.run(_hermes_argv() + ['-p', profile] + [str(a) for a in args], env=env, capture_output=True,
-                               text=True, timeout=timeout, stdin=subprocess.DEVNULL)
+                               text=True, encoding='utf-8', errors='replace', timeout=timeout, stdin=subprocess.DEVNULL)
             return p.returncode, p.stdout, p.stderr
         except (subprocess.TimeoutExpired, OSError):
             return 1, '', 'failed'

@@ -319,7 +319,8 @@ var locales_default = {
     "{0}: installing. This can take a few minutes.": "{0}: installing. This can take a few minutes.",
     "{0}: installed.": "{0}: installed.",
     "{0}: could not install. You can install it later from that bot.": "{0}: could not install. You can install it later from that bot.",
-    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough."
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.",
+    "(Code: {0})": "(Code: {0})"
   },
   ko: {
     "Could not load installed bots. Please retry.": "설치된 봇을 확인하지 못했습니다. 다시 시도해 주세요.",
@@ -634,7 +635,8 @@ var locales_default = {
     "{0}: installing. This can take a few minutes.": "{0} 설치 중이에요. 몇 분 걸릴 수 있어요.",
     "{0}: installed.": "{0} 설치했어요.",
     "{0}: could not install. You can install it later from that bot.": "{0} 설치하지 못했어요. 나중에 그 봇에서 다시 설치할 수 있어요.",
-    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Hermes 게이트웨이를 다시 시작하면 적용됩니다. 터미널에서 hermes gateway restart 를 실행하세요. Desktop만 다시 켜서는 적용되지 않습니다."
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Hermes 게이트웨이를 다시 시작하면 적용됩니다. 터미널에서 hermes gateway restart 를 실행하세요. Desktop만 다시 켜서는 적용되지 않습니다.",
+    "(Code: {0})": "(코드: {0})"
   },
   zh: {
     "Could not load installed bots. Please retry.": "无法加载已安装的机器人。请重试。",
@@ -949,7 +951,8 @@ var locales_default = {
     "{0}: installing. This can take a few minutes.": "{0}：正在安装，可能需要几分钟。",
     "{0}: installed.": "{0}：已安装。",
     "{0}: could not install. You can install it later from that bot.": "{0}：安装失败。之后可以在该机器人中重新安装。",
-    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "重新启动 Hermes 网关后生效：在终端运行 hermes gateway restart。仅重启 Desktop 不会生效。"
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "重新启动 Hermes 网关后生效：在终端运行 hermes gateway restart。仅重启 Desktop 不会生效。",
+    "(Code: {0})": "(代码：{0})"
   },
   "zh-hant": {
     "Could not load installed bots. Please retry.": "無法載入已安裝的機器人。請重試。",
@@ -1264,7 +1267,8 @@ var locales_default = {
     "{0}: installing. This can take a few minutes.": "{0}：正在安裝，可能需要幾分鐘。",
     "{0}: installed.": "{0}：已安裝。",
     "{0}: could not install. You can install it later from that bot.": "{0}：安裝失敗。之後可以在該機器人中重新安裝。",
-    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "重新啟動 Hermes 閘道後生效：在終端機執行 hermes gateway restart。只重新啟動 Desktop 不會生效。"
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "重新啟動 Hermes 閘道後生效：在終端機執行 hermes gateway restart。只重新啟動 Desktop 不會生效。",
+    "(Code: {0})": "(代碼：{0})"
   },
   ja: {
     "Could not load installed bots. Please retry.": "インストール済みボットを読み込めません。再試行してください。",
@@ -1579,7 +1583,8 @@ var locales_default = {
     "{0}: installing. This can take a few minutes.": "{0} をインストール中です。数分かかることがあります。",
     "{0}: installed.": "{0} をインストールしました。",
     "{0}: could not install. You can install it later from that bot.": "{0} をインストールできませんでした。あとでそのボットから入れ直せます。",
-    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Hermes ゲートウェイを再起動すると反映されます。ターミナルで hermes gateway restart を実行してください。Desktop の再起動だけでは反映されません。"
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Hermes ゲートウェイを再起動すると反映されます。ターミナルで hermes gateway restart を実行してください。Desktop の再起動だけでは反映されません。",
+    "(Code: {0})": "(コード: {0})"
   },
   ar: {
     "Could not load installed bots. Please retry.": "تعذر تحميل البوتات المثبتة. حاول مجددًا.",
@@ -1894,7 +1899,8 @@ var locales_default = {
     "{0}: installing. This can take a few minutes.": "{0}: جارٍ التثبيت. قد يستغرق بضع دقائق.",
     "{0}: installed.": "{0}: تم التثبيت.",
     "{0}: could not install. You can install it later from that bot.": "{0}: تعذّر التثبيت. يمكنك تثبيته لاحقًا من ذلك البوت.",
-    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "أعد تشغيل بوابة Hermes لتطبيق التحديث: شغّل hermes gateway restart في الطرفية. إعادة تشغيل Desktop وحدها لا تكفي."
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "أعد تشغيل بوابة Hermes لتطبيق التحديث: شغّل hermes gateway restart في الطرفية. إعادة تشغيل Desktop وحدها لا تكفي.",
+    "(Code: {0})": "(الرمز: {0})"
   },
   ru: {
     "Could not load installed bots. Please retry.": "Не удалось загрузить установленных ботов. Повторите попытку.",
@@ -2209,7 +2215,8 @@ var locales_default = {
     "{0}: installing. This can take a few minutes.": "{0}: устанавливается. Это может занять несколько минут.",
     "{0}: installed.": "{0}: установлено.",
     "{0}: could not install. You can install it later from that bot.": "{0}: не удалось установить. Можно установить позже из этого бота.",
-    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Перезапустите шлюз Hermes, чтобы применить изменения: выполните hermes gateway restart в терминале. Одного перезапуска Desktop недостаточно."
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Перезапустите шлюз Hermes, чтобы применить изменения: выполните hermes gateway restart в терминале. Одного перезапуска Desktop недостаточно.",
+    "(Code: {0})": "(Код: {0})"
   },
   fr: {
     "Could not load installed bots. Please retry.": "Impossible de charger les bots installés. Réessayez.",
@@ -2524,7 +2531,8 @@ var locales_default = {
     "{0}: installing. This can take a few minutes.": "{0} : installation en cours. Cela peut prendre quelques minutes.",
     "{0}: installed.": "{0} : installé.",
     "{0}: could not install. You can install it later from that bot.": "{0} : installation impossible. Vous pourrez l’installer plus tard depuis ce bot.",
-    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Redémarrez la passerelle Hermes pour l’appliquer : lancez hermes gateway restart dans un terminal. Redémarrer Desktop seul ne suffit pas."
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Redémarrez la passerelle Hermes pour l’appliquer : lancez hermes gateway restart dans un terminal. Redémarrer Desktop seul ne suffit pas.",
+    "(Code: {0})": "(Code : {0})"
   },
   de: {
     "Could not load installed bots. Please retry.": "Installierte Bots konnten nicht geladen werden. Bitte erneut versuchen.",
@@ -2839,7 +2847,8 @@ var locales_default = {
     "{0}: installing. This can take a few minutes.": "{0}: wird installiert. Das kann einige Minuten dauern.",
     "{0}: installed.": "{0}: installiert.",
     "{0}: could not install. You can install it later from that bot.": "{0}: konnte nicht installiert werden. Später über diesen Bot nachholen.",
-    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Starten Sie das Hermes-Gateway neu, um es anzuwenden: Führen Sie hermes gateway restart im Terminal aus. Ein Neustart von Desktop allein reicht nicht."
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Starten Sie das Hermes-Gateway neu, um es anzuwenden: Führen Sie hermes gateway restart im Terminal aus. Ein Neustart von Desktop allein reicht nicht.",
+    "(Code: {0})": "(Code: {0})"
   },
   es: {
     "Could not load installed bots. Please retry.": "No se pudieron cargar los bots instalados. Inténtalo de nuevo.",
@@ -3154,7 +3163,8 @@ var locales_default = {
     "{0}: installing. This can take a few minutes.": "{0}: instalando. Puede tardar unos minutos.",
     "{0}: installed.": "{0}: instalado.",
     "{0}: could not install. You can install it later from that bot.": "{0}: no se pudo instalar. Puedes instalarlo más tarde desde ese bot.",
-    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Reinicia el gateway de Hermes para aplicarla: ejecuta hermes gateway restart en una terminal. Reiniciar solo Desktop no basta."
+    "Restart the Hermes gateway to apply: run hermes gateway restart in a terminal. Restarting Desktop alone is not enough.": "Reinicia el gateway de Hermes para aplicarla: ejecuta hermes gateway restart en una terminal. Reiniciar solo Desktop no basta.",
+    "(Code: {0})": "(Código: {0})"
   }
 };
 
@@ -3445,7 +3455,12 @@ function profileDestination(profile) {
   return { route: { connectionId: "local", mode: "local", profile, targetProfile: profile }, options: { workspaceMode: "bots", workspaceOwnerKey: `bot:local::${profile}` } };
 }
 function installErrorMessage(error, profile, t = format) {
-  const reason = detail(error);
+  const raw = detail(error), match = raw.match(/ \[stage:([a-z0-9-]{1,64})\]$/);
+  const reason = match ? raw.slice(0, match.index) : raw;
+  const message = installRefusal(reason, profile, t);
+  return match ? message + " " + t("(Code: {0})", match[1]) : message;
+}
+function installRefusal(reason, profile, t) {
   if (reason.startsWith("Profile name already exists")) return t("A bot named {0} already exists. The existing bot was not changed.", profile);
   if (reason.startsWith("Existing MyBots profile has changes")) return t("The {0} profile has manual changes, so installation stopped. The existing bot was not changed.", profile);
   if (reason.startsWith("Review expired")) return t("The review expired, so nothing was installed. Review the configuration again.");
@@ -3488,7 +3503,7 @@ function keyErrorMessage(error, t = format) {
 }
 var NOT_OPEN = "This bot is not open yet";
 function reviewErrorMessage(error) {
-  const reason = detail(error);
+  const reason = detail(error).replace(/ \[stage:[a-z0-9-]{1,64}\]$/, "");
   if (reason === NOT_OPEN) return "This bot is not open yet.";
   if (reason === RESTART_REQUIRED) return RESTART_MESSAGE;
   if (reason === "This bot/version is not in the connected catalog") return "This bot version is no longer published.";
@@ -6457,7 +6472,7 @@ import { jsx as jsx11 } from "react/jsx-runtime";
 var plugin_default = {
   id: "mybots",
   name: "MyBots",
-  version: "0.7.22",
+  version: "0.7.23",
   description: "Browse and install MyBots profiles",
   defaultEnabled: true,
   register(ctx) {

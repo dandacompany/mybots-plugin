@@ -169,7 +169,7 @@ def _hermes_run(root):
     def run(args):
         try:
             p = subprocess.run(base + ['-p', 'default'] + list(args), env=dict(os.environ, HERMES_HOME=str(root)),
-                               capture_output=True, text=True, timeout=60, stdin=subprocess.DEVNULL)
+                               capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=60, stdin=subprocess.DEVNULL)
             return p.returncode, p.stdout, p.stderr
         except (OSError, subprocess.TimeoutExpired):
             return 1, '', 'failed'

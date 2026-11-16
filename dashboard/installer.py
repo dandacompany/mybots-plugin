@@ -2,6 +2,8 @@
 from __future__ import annotations
 import base64
 import copy
+import contextvars
+import functools
 import ctypes
 import errno
 import hashlib
@@ -42,13 +44,77 @@ def _seed_bundled_skills(profile_dir):
 class InstallError(Exception):
     pass
 
+# Context-local stages keep concurrent reviews/installations independent. Only fixed
+# stage names and exception metadata are logged, never exception messages or inputs.
+_stage = contextvars.ContextVar('mybots_install_stage', default=None)
+
+def _at(stage):
+    _stage.set(stage)
+
+def _diagnosed(stage):
+    def decorate(fn):
+        @functools.wraps(fn)
+        def call(*args, **kwargs):
+            token = _stage.set(stage)
+            try:
+                return fn(*args, **kwargs)
+            except Exception as exc:
+                if isinstance(exc, InstallError) and re.search(r' \[stage:[a-z0-9-]+\]$', str(exc)):
+                    raise
+                current = _stage.get()
+                cause = exc.__cause__ or exc.__context__ or exc
+                winerror = getattr(cause, 'winerror', None)
+                _log.warning('MyBots install diagnostic stage=%s exception=%s winerror=%s',
+                             current, type(cause).__name__, winerror if type(winerror) is int else None)
+                message = str(exc) if isinstance(exc, InstallError) else 'Installation failed; no existing profile was changed'
+                raise InstallError(f'{message} [stage:{current}]') from exc
+            finally:
+                _stage.reset(token)
+        return call
+    return decorate
+
+def _stderr_diagnostic(stderr):
+    """Last 4 KiB, fail-closed: retain only traceback line numbers, built-in
+    exception types and OS error numbers. Source, paths, arbitrary messages and
+    request bodies are untrusted and never copied (even when split at the bound)."""
+    import builtins
+    if not isinstance(stderr, (str, bytes)):
+        return '[empty]'
+    tail = stderr[-4096:] if isinstance(stderr, bytes) else stderr.encode('utf-8', 'replace')[-4096:]
+    out = []
+    for line in tail.decode('utf-8', 'replace').splitlines():
+        frame = re.fullmatch(r'  File "(.*)", line ([0-9]{1,8}), in .*', line)
+        if frame:
+            # Fixed filenames locate the common staging failure sites without
+            # admitting arbitrary filenames or user-directory names.
+            name = frame[1].replace('\\', '/').rsplit('/', 1)[-1]
+            safe = name if name in {'profile_distribution.py', 'profiles.py', 'hermes_constants.py',
+                                   'shutil.py', 'os.py', 'pathlib.py', '_local.py', '<string>'} else '[path redacted]'
+            out.append('traceback file=' + safe + ' line=' + frame[2]); continue
+        match = re.match(r'^([A-Za-z]+(?:Error|Exception))(?::|$)', line)
+        cls = getattr(builtins, match[1], None) if match else None
+        if (isinstance(cls, type) and issubclass(cls, BaseException)) or (match and match[1] == 'DistributionError'):
+            codes = re.findall(r'\[(?:WinError|Errno) [0-9]{1,10}\]', line)
+            out.append(match[1] + (' ' + ' '.join(codes) if codes else '') + ': [message redacted]')
+        else:
+            out.append('[redacted]')
+    return '\n'.join(out)[-4096:] or '[empty]'
+
+def _staging_failure(result):
+    # The executable is diagnostic evidence; represent control characters safely.
+    _log.warning('MyBots install diagnostic stage=staging rc=%d executable=%r python=%s stderr_tail=%s',
+                 result.returncode, sys.executable, sys.version.split()[0], _stderr_diagnostic(getattr(result, 'stderr', None)))
+    _at('staging-rc' + str(result.returncode))
+    raise InstallError(STAGING_FAILED)
+
 class NoRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, *args, **kwargs):
         raise InstallError('Catalog redirects are not allowed')
 
+@_diagnosed("catalog")
 def fetch_bytes(url, limit):
     try:
-        request=urllib.request.Request(url,headers={"User-Agent":"MyBots/0.7.22"})
+        request=urllib.request.Request(url,headers={"User-Agent":"MyBots/0.7.23"})
         with urllib.request.build_opener(NoRedirect).open(request, timeout=15) as response:
             blob=response.read(limit+1)
         if len(blob)>limit:raise InstallError('File exceeds size limit')
@@ -173,6 +239,7 @@ def _prune(root,rel):
 
 
 class Installer:
+    @_diagnosed("catalog")
     def __init__(self, home:Path, origin:str, *, fetch=fetch_bytes, trusted_path=None, authority=None):
         u=urlsplit(origin)
         loopback=u.scheme=='http' and u.hostname in ('127.0.0.1','localhost','::1')
@@ -203,6 +270,7 @@ class Installer:
         entry=self._entry(bot,version)
         return {**entry['metadata'],'installerVersion':_catalog.INSTALLER_VERSION}
 
+    @_diagnosed("catalog")
     def _refresh(self):
         try:
             if self.authority.origin!=self.origin:raise ValueError('Catalog origin changed')
@@ -223,6 +291,7 @@ class Installer:
         if preview['origin']!=self.origin or current.key_id!=preview['publisherKeyId']or not entry or entry['manifestSha256']!=preview['digest']:
             raise InstallError('This version is no longer published; review again')
 
+    @_diagnosed("review")
     def review(self, bot, version, components):
         if not isinstance(bot,str) or not re.fullmatch(r'[a-z][a-z0-9-]{0,39}',bot) or not isinstance(version,str) or not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+',version):
             raise InstallError('Invalid bot or fixed version')
@@ -231,7 +300,9 @@ class Installer:
         trusted_entry=self._entry(bot,version);metadata={**trusted_entry['metadata'],'installerVersion':_catalog.INSTALLER_VERSION}
         if not set(components)<=set(metadata['optional']):raise InstallError('Selected component is not provided by this bot')
         url=f'{self.origin}/api/bots/{bot}/{version}'
+        _at('catalog')
         raw=self.fetch(url,32768)
+        _at('review')
         if len(raw)>32768:raise InstallError('Manifest exceeds size limit')
         if hashlib.sha256(raw).hexdigest()!=trusted_entry['manifestSha256']:raise InstallError('Manifest is not trusted by this helper version')
         try:
@@ -253,10 +324,13 @@ class Installer:
             if rel in seen or allowed.get(rel)!=entry['component'] or PurePosixPath(rel).is_absolute() or total>5_000_000:
                 raise InstallError('Unexpected, duplicate or oversized package file')
             seen.add(rel)
+            _at('catalog')
             blob=self.fetch(url+'/files/'+quote(rel,safe='/'),size)
+            _at('hash')
             if len(blob)!=size or hashlib.sha256(blob).hexdigest()!=entry['sha256']:
                 raise InstallError('Package integrity check failed')
             blobs[rel]=blob
+        _at('review')
         avatars=[p for p,c in allowed.items()if c=='avatar']
         if len(avatars)!=1 or avatars[0]not in ('assets/avatar.jpg','assets/avatar.png') or 'SOUL.md'not in blobs or not blobs['SOUL.md'].strip():
             raise InstallError('Soul and one valid avatar are required')
@@ -296,6 +370,7 @@ class Installer:
             'model':model_summary(seed.get('model')),'languagePacks':[dict(name=p['name'],locales=p['locales'])for p in packs],
             'secrets':listed,'permissions':['Writes a new local profile','Selected MCP and plugin run local Python code',_secret_decls.STORAGE_NOTICE]}
 
+    @_diagnosed("review")
     def install(self, token, secrets=None):
         with self.mutex:
             preview=self.previews.get(token)
@@ -306,15 +381,20 @@ class Installer:
                 except ValueError as exc:raise InstallError(str(exc))from None
             self.previews.pop(token,None)
         if not live:raise InstallError('Review expired or already used; review again')
+        _at('keys-read')
         values=self._key_values(plan)
+        _at('catalog')
         self._check_live(preview)
+        _at('profiles')
         if _portable.is_link(self.home):raise InstallError('Symlinked Hermes home is not supported')
         profiles=self.home/'profiles'
         if _portable.is_link(profiles):raise InstallError('Symlinked profiles directory is not supported')
         _portable.make_dir(profiles,parents=True,exist_ok=True)
         target=profiles/preview['manifest']['id']
         lock_path=profiles/'.mybots-install.lock'
+        _at('lock')
         with _portable.file_lock(lock_path):
+            _at('profile-check')
             receipt=self._new_receipt(preview)
             if target.exists() or _portable.is_link(target):
                 marker=target/'mybots-receipt.json'
@@ -322,6 +402,7 @@ class Installer:
                     try:
                         if json.loads(self._profile_file(target,'mybots-receipt.json',32768))==receipt:
                             if self.authority and not self._profile_matches(target,receipt):raise InstallError('Existing MyBots profile has changes; nothing was overwritten')
+                            _at('activation')
                             activate_profile(target)
                             # Nothing is written to an existing profile, so no key was set here.
                             return self._result('already-installed',target.name,preview,[])
@@ -330,7 +411,9 @@ class Installer:
             try:
                 # Windows (W4): a TemporaryDirectory would carry its owner-only DACL into the profile, so
                 # the staging root gets the explicit DACL while still empty; everything below inherits it.
+                _at('tempdir')
                 with _portable.staging_dir('.mybots-stage-',self.home.parent,self.run_icacls) as work:
+                    _at('file-write')
                     work=Path(work);source=work/'source';source.mkdir()
                     for entry in preview['manifest']['files']:
                         if entry['component'] not in ['soul','avatar',*preview['components']]:continue
@@ -367,29 +450,38 @@ class Installer:
                     hermes_source=str(Path(hermes_cli.__file__).resolve().parent.parent)
                     import_paths=json.dumps([hermes_source,*[p for p in sys.path if p and Path(p).is_absolute()]])
                     code='import sys,json; from pathlib import Path; sys.path[:0]=json.loads(sys.argv[1]); from hermes_constants import get_default_hermes_root; assert get_default_hermes_root().resolve()==Path(sys.argv[3]).resolve(), "Unsafe staging root"; from hermes_cli.profile_distribution import install_distribution; plan=install_distribution(sys.argv[2],create_alias=False); assert plan.target_dir.resolve().is_relative_to(Path(sys.argv[3]).resolve())'
+                    _at('staging')
                     result=self.run_staging([sys.executable,'-I','-c',code,import_paths,str(source),str(isolated)],env=env,capture_output=True,timeout=60)
-                    if result.returncode:raise InstallError(STAGING_FAILED)
+                    if result.returncode:_staging_failure(result)
+                    _at('hash')
                     staged=isolated/'profiles'/target.name
                     for entry in preview['manifest']['files']:
                         if entry['component'] in ['soul','avatar',*preview['components']]:
                             if hashlib.sha256((staged/entry['path']).read_bytes()).hexdigest()!=entry['sha256']:
                                 raise InstallError('Installed file verification failed')
                     # Distribution staging provenance is temporary; record the real fixed catalog source.
+                    _at('file-write')
                     dist=yaml.safe_load((staged/'distribution.yaml').read_text(encoding='utf-8'));dist['source']=f'{self.origin}/api/bots/{target.name}/{receipt["version"]}'
                     (staged/'distribution.yaml').write_text(yaml.safe_dump(dist),encoding='utf-8')
                     (staged/'mybots-receipt.json').write_text(json.dumps(receipt,sort_keys=True),encoding='utf-8')
                     # .env is a Hermes credential path, so distribution staging never writes it; it
                     # goes in now and is published by the same atomic commit as the profile.
+                    _at('keys-write')
                     if values:self.write_env(staged,values)
+                    _at('catalog')
                     self._check_live(preview)
                     # Windows (W4): the profile root keeps its own explicit DACL after the rename
                     # (root only: its children already inherited the same entries from staging).
+                    _at('final-acl')
                     if not _portable.grant_private(staged,self.run_icacls):raise _portable.AclError(_portable.STAGING_ACL_FAILED)
+                    _at('rename')
                     self.commit(staged,target)
+                    _at('activation')
                     activate_profile(target)
             except InstallError:raise
             except _portable.AclError:raise InstallError(_portable.STAGING_ACL_FAILED)from None
             except Exception as exc:raise InstallError('Installation failed; no existing profile was changed') from exc
+            _at('keys-default')
             report=self._save_defaults(plan,values)
         # install_distribution does not copy Hermes' bundled skills (google-workspace, pdf …) as
         # `hermes profile create` does, so a new bot started with none until the next `hermes update`.
