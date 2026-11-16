@@ -31,6 +31,65 @@ MyBots는 Hermes Agent만 지원합니다. 봇 탐색과 설치에는 MyBots 제
 로컬에서 개발할 때도 같은 창에 해당 Git 저장소 주소를 입력하세요. CLI로 에이전트
 구성만 설치하면 위 데스크톱 설치 절차가 완료되지 않습니다.
 
+## 업데이트
+
+macOS·Linux·Windows에서 같은 명령을 실행합니다.
+
+```sh
+hermes plugins update mybots
+```
+
+현재 활성 Hermes 프로필의 MyBots를 업데이트합니다. 기본 프로필을 명시하려면
+`hermes -p default plugins update mybots`를 사용하세요. 여러 프로필에 MyBots를
+별도로 설치했다면 `hermes -p PROFILE plugins update mybots`의 `PROFILE`을 각
+프로필 이름으로 바꿔 반복합니다. `-p`는 `plugins` 앞에 두며, 아래 활성화·버전 확인
+명령에도 같은 프로필 지정을 사용하세요.
+
+MyBots가 비활성화돼 있으면 업데이트 성공 후 다시 켭니다.
+
+```sh
+hermes plugins enable mybots
+```
+
+이전 버전은 의존성 충돌로 자동 비활성화될 수 있었습니다. 업데이트로 알려진 충돌은
+해소되지만, 이후 플러그인이 켜져 있는지 확인하세요.
+
+해당 프로필들을 서비스하는 Hermes 게이트웨이를 다시 시작합니다. 기본 게이트웨이는
+다음 명령을 사용합니다.
+
+```sh
+hermes -p default gateway restart
+```
+
+이어서 Hermes Desktop을 완전히 종료한 뒤 다시 실행하세요. 창만 닫는 것으로는
+충분하지 않습니다. 대시보드 API와 Desktop 번들을 다시 불러오며, 게이트웨이 재시작으로
+팀 키트를 적용합니다. 대시보드 백엔드를 별도로 실행 중이면 그것도 재시작하세요.
+Desktop만 다시 열어도 독립적으로 실행 중인 게이트웨이가 재시작되지는 않습니다.
+
+다음 목록의 `mybots` 행에서 설치된 버전과 활성 상태를 확인합니다.
+
+```sh
+hermes -p default plugins list --plain
+```
+
+Windows 관리자 계정에서 발생하던 카탈로그 소유자 검사 오류는 **0.7.23**에서
+수정했습니다. 설치가 계속 실패하면 오류 코드가 보이는 화면, 발생 시각, 봇 이름,
+Hermes 버전(`hermes --version`), MyBots 버전과 `<Hermes home>/logs/errors.log`의
+관련 진단 줄 및 바로 뒤의 정제된 traceback을 보내 주세요. 로그 명령이 실제 파일
+위치를 표시합니다.
+
+Windows PowerShell:
+
+```powershell
+hermes -p default logs errors -n 300 | Select-String 'MyBots (install|ACL|owner) diagnostic' -Context 0,30
+```
+
+macOS / Linux:
+
+```sh
+hermes -p default logs errors -n 300 | grep -E -A 30 'MyBots (install|ACL|owner) diagnostic'
+```
+
 ## 사용
 
 MyBots에서 동료를 고르고 설치할 구성을 검토하세요. 웹사이트의 영입 버튼으로도

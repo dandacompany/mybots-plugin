@@ -34,6 +34,64 @@ For a local development checkout, enter its Git repository URL in the same
 dialog. Installing only the Agent half through the CLI does not complete the
 Desktop setup described here.
 
+## Update
+
+On macOS, Linux and Windows, run:
+
+```sh
+hermes plugins update mybots
+```
+
+This updates MyBots in the active Hermes profile. To target the default profile
+explicitly, use `hermes -p default plugins update mybots`. If you installed MyBots
+separately in several profiles, repeat `hermes -p PROFILE plugins update mybots`
+for each one, replacing `PROFILE` with its name. Put `-p` before `plugins`; use the
+same profile prefix for enable and version checks below.
+
+If MyBots is disabled, enable it after the update succeeds:
+
+```sh
+hermes plugins enable mybots
+```
+
+Older versions could be automatically disabled by a dependency conflict. Updating
+resolves the known conflict, but check that the plugin is enabled afterward.
+
+Restart the Hermes gateway that serves your profiles. For the default gateway:
+
+```sh
+hermes -p default gateway restart
+```
+
+Then fully quit Hermes Desktop and launch it again; closing its window alone is
+not enough. This reloads the dashboard API and Desktop bundle, while the gateway
+restart applies the team kit. Restart any separately running dashboard backend
+too. Restarting Desktop alone does not restart an independent gateway.
+
+Check the installed version and enabled status on the `mybots` row:
+
+```sh
+hermes -p default plugins list --plain
+```
+
+The Windows administrator-account catalog ownership failure was fixed in
+**0.7.23**. If installation still fails, send the error-code screenshot, failure
+time, bot name, Hermes version (`hermes --version`), MyBots version, and relevant
+diagnostic entries from `<Hermes home>/logs/errors.log` with their following
+sanitized traceback lines. The log command prints the effective file path.
+
+Windows PowerShell:
+
+```powershell
+hermes -p default logs errors -n 300 | Select-String 'MyBots (install|ACL|owner) diagnostic' -Context 0,30
+```
+
+macOS / Linux:
+
+```sh
+hermes -p default logs errors -n 300 | grep -E -A 30 'MyBots (install|ACL|owner) diagnostic'
+```
+
 ## Use
 
 Open MyBots, select a colleague and review the proposed components before
