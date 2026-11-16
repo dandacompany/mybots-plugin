@@ -61,8 +61,8 @@ hermes plugins enable mybots
 hermes -p default gateway restart
 ```
 
-이어서 Hermes Desktop을 완전히 종료한 뒤 다시 실행하세요. 창만 닫는 것으로는
-충분하지 않습니다. 대시보드 API와 Desktop 번들을 다시 불러오며, 게이트웨이 재시작으로
+이어서 Hermes Desktop의 종료(Quit/Exit) 메뉴로 완전히 종료한 뒤 다시 실행하세요.
+창을 닫아도 앱이 계속 실행될 수 있습니다. 대시보드 API와 Desktop 번들을 다시 불러오며, 게이트웨이 재시작으로
 팀 키트를 적용합니다. 대시보드 백엔드를 별도로 실행 중이면 그것도 재시작하세요.
 Desktop만 다시 열어도 독립적으로 실행 중인 게이트웨이가 재시작되지는 않습니다.
 

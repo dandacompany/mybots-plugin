@@ -63,8 +63,8 @@ Restart the Hermes gateway that serves your profiles. For the default gateway:
 hermes -p default gateway restart
 ```
 
-Then fully quit Hermes Desktop and launch it again; closing its window alone is
-not enough. This reloads the dashboard API and Desktop bundle, while the gateway
+Then fully quit Hermes Desktop using Quit/Exit and launch it again; a closed
+window may leave the app running. This reloads the dashboard API and Desktop bundle, while the gateway
 restart applies the team kit. Restart any separately running dashboard backend
 too. Restarting Desktop alone does not restart an independent gateway.
 
