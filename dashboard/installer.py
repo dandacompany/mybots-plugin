@@ -61,8 +61,8 @@ def _diagnosed(stage):
             except Exception as exc:
                 if isinstance(exc, InstallError) and re.search(r' \[stage:[a-z0-9-]+\]$', str(exc)):
                     raise
-                current = _stage.get()
                 cause = exc.__cause__ or exc.__context__ or exc
+                current = "catalog-owner" if getattr(cause,"diagnostic_stage",None)=="catalog-owner" else _stage.get()
                 winerror = getattr(cause, 'winerror', None)
                 _log.warning('MyBots install diagnostic stage=%s exception=%s winerror=%s',
                              current, type(cause).__name__, winerror if type(winerror) is int else None)

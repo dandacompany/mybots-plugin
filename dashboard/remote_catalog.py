@@ -48,6 +48,9 @@ def no_links(path):
 def timestamp(value):
     if not isinstance(value,str)or not re.fullmatch(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?Z',value):raise ValueError('Invalid catalog timestamp')
     return datetime.fromisoformat(value.replace('Z','+00:00'))
+class CatalogOwnerError(ValueError):
+    """Fixed diagnostic classification shared across dynamically loaded modules."""
+    diagnostic_stage='catalog-owner'
 class VerifiedCatalog:
     def __init__(self,data,key_id):
         self.data=data;self.key_id=key_id;self.revision=int(data['revision']);self.expires_at=timestamp(data['expiresAt']);self.issued_at=timestamp(data['issuedAt']);self.bots=data['bots'];self.trusted=contract.parse_entries(data['trusted'])
@@ -65,7 +68,7 @@ class CatalogAuthority:
                 if not re.fullmatch(r'[a-zA-Z0-9_-]{1,64}',key_id)or len(base64.b64decode(key,validate=True))!=32:raise ValueError('Invalid publisher key')
         except (OSError,TypeError,KeyError)as exc:raise ValueError('Publisher keys unavailable')from exc
         self.state_dir=Path(state_dir).absolute();no_links(self.state_dir);self.state_dir.mkdir(mode=0o700,parents=True,exist_ok=True)
-        if not portable.owner_only(self.state_dir.stat(),self.state_dir):raise ValueError('Catalog state must be owner-only')
+        if not portable.owner_only(self.state_dir.stat(),self.state_dir):raise CatalogOwnerError('Catalog state must be owner-only')
         self.states={key_id:self.state_dir/(hashlib.sha256((self.origin+'\0'+key_id).encode()).hexdigest()+'.json')for key_id in self.keys}
         self.high_water={}
         for key_id,state in self.states.items():
@@ -78,7 +81,8 @@ class CatalogAuthority:
         fd=portable.open_nofollow(self.states[key_id],os.O_RDONLY|portable.NONBLOCK)
         with os.fdopen(fd,'rb')as f:
             info=os.fstat(f.fileno())
-            if not stat.S_ISREG(info.st_mode)or not portable.owner_only(info,self.states[key_id]):raise ValueError('Invalid saved catalog state')
+            if not stat.S_ISREG(info.st_mode):raise ValueError('Invalid saved catalog state')
+            if not portable.owner_only(info,self.states[key_id]):raise CatalogOwnerError('Invalid saved catalog state')
             raw=f.read(2_000_001)
             if len(raw)>2_000_000:raise ValueError('Saved catalog size limit')
             return raw

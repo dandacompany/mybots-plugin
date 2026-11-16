@@ -41,8 +41,8 @@ def file_lock(path):
         else:
             import fcntl
             fcntl.flock(lock,fcntl.LOCK_EX);yield
-def _win_user_sid():
-    """Binary SID of the user running this process (token user), via ctypes. Raises on any failure."""
+def _win_token_sid(info_class):
+    """Copy the first SID pointer from TOKEN_USER (1) or TOKEN_OWNER (4)."""
     import ctypes
     from ctypes import wintypes
     adv=ctypes.WinDLL('advapi32',use_last_error=True);k32=ctypes.WinDLL('kernel32',use_last_error=True)
@@ -53,13 +53,19 @@ def _win_user_sid():
     token=wintypes.HANDLE()
     if not adv.OpenProcessToken(k32.GetCurrentProcess(),8,ctypes.byref(token)):raise ctypes.WinError(ctypes.get_last_error()) # TOKEN_QUERY
     try:
-        size=wintypes.DWORD();adv.GetTokenInformation(token,1,None,0,ctypes.byref(size)) # TokenUser; sizing call fails by design
+        size=wintypes.DWORD();adv.GetTokenInformation(token,info_class,None,0,ctypes.byref(size)) # sizing call fails by design
         if not size.value:raise ctypes.WinError(ctypes.get_last_error())
         buf=ctypes.create_string_buffer(size.value)
-        if not adv.GetTokenInformation(token,1,buf,size,ctypes.byref(size)):raise ctypes.WinError(ctypes.get_last_error())
+        if not adv.GetTokenInformation(token,info_class,buf,size,ctypes.byref(size)):raise ctypes.WinError(ctypes.get_last_error())
         sid=ctypes.cast(buf,ctypes.POINTER(ctypes.c_void_p))[0]
         return ctypes.string_at(sid,adv.GetLengthSid(sid))
     finally:k32.CloseHandle(token)
+def _win_user_sid():
+    """User SID of this process token; never a group membership test."""
+    return _win_token_sid(1)
+def _win_default_owner_sid():
+    """Default owner for newly created objects, from this process's TokenOwner."""
+    return _win_token_sid(4)
 def _win_owner_sid(path):
     """Binary SID of the owner of ``path`` (GetNamedSecurityInfoW, OWNER_SECURITY_INFORMATION). Raises on failure."""
     import ctypes
@@ -76,16 +82,33 @@ def _win_owner_sid(path):
         if not owner.value:raise OSError('No owner SID')
         return ctypes.string_at(owner.value,adv.GetLengthSid(owner))
     finally:k32.LocalFree(sd)
+def _owner_kind(owner,me):
+    # Binary S-1-5-32-544. Classification only, never an authorization rule.
+    admins=b'\x01\x02\x00\x00\x00\x00\x00\x05'+(32).to_bytes(4,'little')+(544).to_bytes(4,'little')
+    return 'user' if owner and owner==me else 'administrators' if owner==admins else 'other'
 def win_owner_is_me(path):
-    """True only when the owner SID equals this process's user SID. Administrators are NOT accepted. Any failure: False."""
+    """Accept this token's user or default owner only. Never accept Administrators
+    merely because it is a group on the machine. Any failed query rejects the
+    non-user owner; callers for files, state directories and keys share this rule."""
+    kind='unknown'
     try:
-        owner=_win_owner_sid(path);me=_win_user_sid()
-        return bool(owner)and owner==me
-    except Exception:return False
+        owner=_win_owner_sid(path);me=_win_user_sid();kind=_owner_kind(owner,me)
+        if not owner or not me:return False
+        if owner==me:return True
+        default_owner=_win_default_owner_sid()
+        accepted=bool(default_owner)and owner==default_owner
+        (_log.info if accepted else _log.warning)(
+            'MyBots owner diagnostic owner_kind=%s accepted=%s',kind,accepted)
+        return accepted
+    except Exception as exc:
+        winerror=getattr(exc,'winerror',None)
+        _log.warning('MyBots owner diagnostic owner_kind=%s accepted=False exception=%s winerror=%s',
+                     kind,type(exc).__name__,winerror if type(winerror)is int else None)
+        return False
 def is_mine(info,path):
     return win_owner_is_me(path)if WINDOWS else info.st_uid==os.getuid()
 def owner_only(info,path):
-    """Owned by this user with no group/other bits. Windows: owner SID check only; the mode bits there are fixed and meaningless."""
+    """POSIX: this user with no group/other bits. Windows: token user/default owner; mode bits are meaningless."""
     return win_owner_is_me(path)if WINDOWS else info.st_uid==os.getuid()and not info.st_mode&0o077
 def fchmod(fd,mode):
     # Windows: no POSIX mode bits to tighten; privacy rests on the owner check and the inherited ACL.

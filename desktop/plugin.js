@@ -3502,8 +3502,12 @@ function keyErrorMessage(error, t = format) {
   return keyRefusal(detail(error), t) ?? t("Could not save the keys. Retry.");
 }
 var NOT_OPEN = "This bot is not open yet";
-function reviewErrorMessage(error) {
-  const reason = detail(error).replace(/ \[stage:[a-z0-9-]{1,64}\]$/, "");
+function reviewErrorMessage(error, t = format) {
+  const raw = detail(error), match = raw.match(/ \[stage:([a-z0-9-]{1,64})\]$/);
+  const message = t(reviewRefusal(match ? raw.slice(0, match.index) : raw));
+  return match ? message + " " + t("(Code: {0})", match[1]) : message;
+}
+function reviewRefusal(reason) {
   if (reason === NOT_OPEN) return "This bot is not open yet.";
   if (reason === RESTART_REQUIRED) return RESTART_MESSAGE;
   if (reason === "This bot/version is not in the connected catalog") return "This bot version is no longer published.";
@@ -5830,7 +5834,7 @@ function InstallConfirmation({ ctx, bot, onClose, onInstalled, onKeysSaved, mood
         setReview(value);
       }
     }, (reason) => {
-      if (fence.current.isCurrent(ticket)) setError(updating ? updateErrorMessage(reason, "review") : reviewErrorMessage(reason));
+      if (fence.current.isCurrent(ticket)) setError(updating ? updateErrorMessage(reason, "review") : reviewErrorMessage(reason, t));
     }).finally(() => {
       if (fence.current.isCurrent(ticket)) setBusy(false);
     });

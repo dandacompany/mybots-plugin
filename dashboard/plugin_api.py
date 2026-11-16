@@ -91,7 +91,10 @@ def engine(write=False):
                 remote=_module._sibling('remote_catalog')
                 authority=remote.CatalogAuthority(settings['catalogOrigin'],Path(__file__).with_name('publisher-keys.json'),home/'.mybots/catalog-cache',_module.fetch_bytes)
             _engine=Installer(home,settings['catalogOrigin'],authority=authority)
-        except (ValueError,InstallError)as exc:raise HTTPException(503,'MyBots의 서버 출처와 공개키 연결 설정을 확인해 주세요.')from exc
+        except (ValueError,InstallError)as exc:
+            stage='catalog-owner' if getattr(exc,'diagnostic_stage',None)=='catalog-owner' else 'catalog'
+            _module._log.warning('MyBots install diagnostic stage=%s exception=%s',stage,type(exc).__name__)
+            raise HTTPException(503,'MyBots의 서버 출처와 공개키 연결 설정을 확인해 주세요. [stage:'+stage+']')from exc
     return _engine
 
 # Request bodies are parsed here, not by pydantic models: a pydantic v2 422 carries the offending
